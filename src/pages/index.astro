@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CardServices from "../components/ui/cardServices.astro";
+import CardStore from "../components/ui/CardStore.astro";
 ---
 
 <Layout title="Arquitectos digitales">
   <header
-    class="min-h-screen w-screen flex flex-col gap-8 justify-center items-center"
-    id="main"
+    class="min-h-[calc(100vh_-_3rem)] w-screen flex flex-col gap-8 justify-center items-center"
   >
     <section class="font-bold text-center text-5xl">
       <h1>Arquitectos digitales</h1>
@@ -145,22 +145,81 @@ import CardServices from "../components/ui/cardServices.astro";
     </section>
   </header>
   <main>
-    <section class="h-96 bg-woodsmoke-600">
-
+    <section class="h-96 flex items-center justify-center" id="banner">
+      <div class="max-w-6xl h-full items-center grid grid-cols-3">
+        <div class="h-[calc(24rem_/_2)]">
+          <img class="h-full w-full" src="/logos_banner.svg" alt="" />
+        </div>
+        <div class="col-span-2">
+          <h1 class="text-4xl font-extrabold">¿QUIENES SOMOS?</h1>
+          <p class="text-sm font-light mt-5">
+            En NeenByss, nos especializamos en convertir tus ideas en realidad a
+            través del diseño y desarrollo. Ya sea que necesites crear una
+            interfaz desde cero o darle un nuevo diseño a una existente, estamos
+            aquí para ayudarte. Además, si requieres llevar ese diseño al
+            desarrollo, ¡también estamos preparados para comenzar!
+          </p>
+          <button class="mt-5 px-4 py-2" id="cotizar">Comienza Ahora</button>
+        </div>
+      </div>
     </section>
     <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
-        <h1 class="text-center font-black uppercase text-4xl">servicios</h1>
-        <h2 class="text-center text-sm mt-2">ofrecemos una gama de servicios especializados para potenciar tu presencia en línea y optimizar tus herramientas digitales.</h2>
-        <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
-          <CardServices title="Discord Bots" desc="Desde bots personalizados para moderación y entretenimiento hasta integraciones avanzadas, creamos soluciones inteligentes para tu servidor de Discord." />
-          <CardServices title="Diseño de para Web y FiveM" desc="ransformamos tus ideas en interfaces web modernas y amigables, tanto para aplicaciones convencionales como para entornos de FiveM." />
-          <CardServices title="Páginas Web" desc="Desarrollamos sitios web a medida que cautivan a tus visitantes y reflejan la identidad única de tu marca." />
-        </div>
-      </section>
+      <h1 class="text-center font-black uppercase text-4xl">servicios</h1>
+      <h2 class="text-center text-sm mt-2">
+        ofrecemos una gama de servicios especializados para potenciar tu
+        presencia en línea y optimizar tus herramientas digitales.
+      </h2>
+      <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
+        <CardServices
+          title="Discord Bots"
+          desc="Desde bots personalizados para moderación y entretenimiento hasta integraciones avanzadas, creamos soluciones inteligentes para tu servidor de Discord."
+        />
+        <CardServices
+          title="Diseño de para Web y FiveM"
+          desc="ransformamos tus ideas en interfaces web modernas y amigables, tanto para aplicaciones convencionales como para entornos de FiveM."
+        />
+        <CardServices
+          title="Páginas Web"
+          desc="Desarrollamos sitios web a medida que cautivan a tus visitantes y reflejan la identidad única de tu marca."
+        />
+      </div>
+    </section>
+    <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
+      <h1 class="text-center font-black uppercase text-4xl">nuestra tienda</h1>
+      <h2 class="text-center text-sm mt-2">
+        ofrecemos una gama de servicios especializados para potenciar tu
+        presencia en línea y optimizar tus herramientas digitales.
+      </h2>
+      <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        <CardStore
+          img=""
+          title="Discord Ticket"
+          desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
+          price={29.0}
+        />
+      </div>
+    </section>
   </main>
 </Layout>
 
 <style>
+  #cotizar {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: radial-gradient(
+      100% 100% at 0% 50.82%,
+      #1a5bd9 0%,
+      #287cdf 100%
+    );
+  }
+  #banner {
+    background: linear-gradient(
+      90deg,
+      rgba(22, 22, 22, 0.48) 0%,
+      rgba(33, 44, 71, 0.48) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E") 0% 0% / 114.0625px 114.0625px repeat;
+  }
   #IA {
     border: 2px solid transparent;
     max-width: 65%;
