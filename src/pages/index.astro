@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CardServices from "../components/ui/cardServices.astro";
 ---
 
 <Layout title="Arquitectos digitales">
-  <main
+  <header
     class="min-h-screen w-screen flex flex-col gap-8 justify-center items-center"
     id="main"
   >
@@ -142,23 +143,24 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
     </section>
+  </header>
+  <main>
+    <section class="h-96 bg-woodsmoke-600">
+
+    </section>
+    <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
+        <h1 class="text-center font-black uppercase text-4xl">servicios</h1>
+        <h2 class="text-center text-sm mt-2">ofrecemos una gama de servicios especializados para potenciar tu presencia en línea y optimizar tus herramientas digitales.</h2>
+        <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
+          <CardServices title="Discord Bots" desc="Desde bots personalizados para moderación y entretenimiento hasta integraciones avanzadas, creamos soluciones inteligentes para tu servidor de Discord." />
+          <CardServices title="Diseño de para Web y FiveM" desc="ransformamos tus ideas en interfaces web modernas y amigables, tanto para aplicaciones convencionales como para entornos de FiveM." />
+          <CardServices title="Páginas Web" desc="Desarrollamos sitios web a medida que cautivan a tus visitantes y reflejan la identidad única de tu marca." />
+        </div>
+      </section>
   </main>
 </Layout>
 
 <style>
-  #main {
-    background: radial-gradient(
-        50% 75% at 100% 0%,
-        rgba(93, 69, 253, 0.2) 0%,
-        rgba(22, 22, 22, 0) 100%
-      ),
-      radial-gradient(
-        50% 75% at 0% 100%,
-        rgba(93, 69, 253, 0.2) 0%,
-        rgba(22, 22, 22, 0) 100%
-      ),
-      #161616;
-  }
   #IA {
     border: 2px solid transparent;
     max-width: 65%;
