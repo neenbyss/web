@@ -1,208 +1,141 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import CardServices from "../components/ui/cardServices.astro";
-import CardStore from "../components/ui/CardStore.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import CardServices from "@/components/ui/cardServices.astro";
+import CardStore from "@/components/ui/CardStore.astro";
+
+import Slider from "@/components/Slider.astro";
+
+import DiscordIcon from "@/icons/DiscordIcon.astro";
+import GlobalIcon from "@/icons/GlobalIcon.astro";
+import DesignIcon from "@/icons/DesignIcon.astro";
+import FivemIcon from "@/icons/FivemIcon.astro";
+import WrenchIcon from "@/icons/WrenchIcon.astro";
+import MinecraftIcon from "@/icons/MinecraftIcon.astro"
+
+const SlidersInfo = [
+  {
+    label: "Páginas Webs",
+    icon: GlobalIcon
+  },
+  {
+    label: "Diseños UI",
+    icon: DesignIcon
+  },
+  {
+    label: "Mantenimiento",
+    icon: WrenchIcon
+  },
+  {
+    label: "Fivem Scripts",
+    icon: FivemIcon
+  },
+  {
+    label: "Minecraft Plugins",
+    icon: MinecraftIcon
+  },
+  {
+    label: "Discord Apps",
+    icon: DiscordIcon
+  }
+]
 ---
 
 <Layout title="Arquitectos digitales">
-  <header
-    class="min-h-[calc(100vh_-_3rem)] w-screen flex flex-col gap-8 justify-center items-center"
-  >
-    <section class="font-bold text-center text-5xl">
-      <h1>Arquitectos digitales</h1>
-      <div>
-        <span class="text-dull-lavender-400">diseñamos</span> y <span
-          class="text-dull-lavender-400">desarrollamos</span
-        >
-      </div>
-    </section>
-    <section id="IA">
-      <div id="IA_animation">
-        <div class="flex gap-2 w-full">
-          <span
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 flex transition-all place-items-center w-full"
-          >
-            <h1 class="font-light text-sm text-nowrap">Paginas Webs</h1>
-          </span>
-          <article
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Scripts Fivem</h1>
-          </article>
-          <article
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Bot Discord</h1>
-          </article>
-          <article
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Plugins Minecraft</h1>
-          </article>
-          <article
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Mantenimiento</h1>
-          </article>
-        </div>
-        <div class="flex gap-2 w-full">
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 flex transition-all place-items-center w-full"
-          >
-            <h1 class="font-light text-sm text-nowrap">Paginas Webs</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Scripts Fivem</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Bot Discord</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Plugins Minecraft</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Mantenimiento</h1>
-          </article>
-        </div>
-        <div class="flex gap-2 w-full">
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 flex transition-all place-items-center w-full"
-          >
-            <h1 class="font-light text-sm text-nowrap">Paginas Webs</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Scripts Fivem</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Bot Discord</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Plugins Minecraft</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Mantenimiento</h1>
-          </article>
-        </div>
-        <div class="flex gap-2 w-full">
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 flex transition-all place-items-center w-full"
-          >
-            <h1 class="font-light text-sm text-nowrap">Paginas Webs</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Scripts Fivem</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Bot Discord</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Plugins Minecraft</h1>
-          </article>
-          <article
-            aria-hidden
-            class="bg-woodsmoke-950 p-2 rounded border border-electric-violet-500/50 grid transition-all place-items-center w-fit"
-          >
-            <h1 class="font-light text-sm text-nowrap">Mantenimiento</h1>
-          </article>
-        </div>
-      </div>
-    </section>
-  </header>
   <main>
-    <section class="h-96 flex items-center justify-center" id="banner">
-      <div class="max-w-6xl h-full items-center grid grid-cols-3">
-        <div class="h-[calc(24rem_/_2)]">
-          <img class="h-full w-full" src="/logos_banner.svg" alt="" />
+    <section id="header" class="h-dvh w-full ">
+      <div class="flex flex-col gap-12 justify-center items-center size-full max-w-7xl mx-auto px-4 -mt-20">
+        <h1 class="font-black text-6xl text-center">
+          ARQUITECTO DIGITALES
+          <span class="text-5xl block font-bold py-1">
+            <span class="bg-gradient-to-r from-[#AFFFFA] to-[#8AA4FF] bg-clip-text text-transparent"> Diseñamos </span>
+            Y
+            <span class="bg-gradient-to-r from-[#C388FF] to-[#FF613F] bg-clip-text text-transparent"> Desarrollamos </span>
+          </span>
+        </h1>
+        <div id="IA" class="max-w-7xl mx-auto px-4">
+          <Slider>
+            {SlidersInfo.map(({label, icon}) => {
+              const Icon = icon
+              return (
+                <span
+                  class="flex items-center gap-2 text-nowrap bg-gradient-to-r from-[#28304E] to-[#181F2F px-4 py-2 rounded-lg border border-white/10 w-full"
+                >
+                  <Icon />
+                  {label}
+                </span>
+              )
+            })}
+          </Slider>
         </div>
-        <div class="col-span-2">
-          <h1 class="text-4xl font-extrabold">¿QUIENES SOMOS?</h1>
-          <p class="text-sm font-light mt-5">
-            En NeenByss, nos especializamos en convertir tus ideas en realidad a
-            través del diseño y desarrollo. Ya sea que necesites crear una
-            interfaz desde cero o darle un nuevo diseño a una existente, estamos
-            aquí para ayudarte. Además, si requieres llevar ese diseño al
-            desarrollo, ¡también estamos preparados para comenzar!
-          </p>
-          <button class="mt-5 px-4 py-2" id="cotizar">Comienza Ahora</button>
+      </div>
+    </section>
+    <div>
+      <section class="h-96 flex items-center justify-center" id="banner">
+        <div class="max-w-6xl h-full items-center grid grid-cols-3">
+          <div class="h-[calc(24rem_/_2)]">
+            <img class="h-full w-full" src="/logos_banner.svg" alt="" />
+          </div>
+          <div class="col-span-2">
+            <h1 class="text-4xl font-extrabold">¿QUIENES SOMOS?</h1>
+            <p class="text-sm font-light mt-5">
+              En NeenByss, nos especializamos en convertir tus ideas en realidad a
+              través del diseño y desarrollo. Ya sea que necesites crear una
+              interfaz desde cero o darle un nuevo diseño a una existente, estamos
+              aquí para ayudarte. Además, si requieres llevar ese diseño al
+              desarrollo, ¡también estamos preparados para comenzar!
+            </p>
+            <button class="mt-5 px-4 py-2" id="cotizar">Comienza Ahora</button>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
-      <h1 class="text-center font-black uppercase text-4xl">servicios</h1>
-      <h2 class="text-center text-sm mt-2">
-        ofrecemos una gama de servicios especializados para potenciar tu
-        presencia en línea y optimizar tus herramientas digitales.
-      </h2>
-      <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
-        <CardServices
-          title="Discord Bots"
-          desc="Desde bots personalizados para moderación y entretenimiento hasta integraciones avanzadas, creamos soluciones inteligentes para tu servidor de Discord."
-        />
-        <CardServices
-          title="Diseño de para Web y FiveM"
-          desc="ransformamos tus ideas en interfaces web modernas y amigables, tanto para aplicaciones convencionales como para entornos de FiveM."
-        />
-        <CardServices
-          title="Páginas Web"
-          desc="Desarrollamos sitios web a medida que cautivan a tus visitantes y reflejan la identidad única de tu marca."
-        />
-      </div>
-    </section>
-    <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
-      <h1 class="text-center font-black uppercase text-4xl">nuestra tienda</h1>
-      <h2 class="text-center text-sm mt-2">
-        ofrecemos una gama de servicios especializados para potenciar tu
-        presencia en línea y optimizar tus herramientas digitales.
-      </h2>
-      <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-        <CardStore
-          img=""
-          title="Discord Ticket"
-          desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
-          price={29.0}
-        />
-      </div>
-    </section>
+      </section>
+      <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
+        <h1 class="text-center font-black uppercase text-4xl">servicios</h1>
+        <h2 class="text-center text-sm mt-2">
+          ofrecemos una gama de servicios especializados para potenciar tu
+          presencia en línea y optimizar tus herramientas digitales.
+        </h2>
+        <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
+          <CardServices
+            title="Discord Bots"
+            desc="Desde bots personalizados para moderación y entretenimiento hasta integraciones avanzadas, creamos soluciones inteligentes para tu servidor de Discord."
+          />
+          <CardServices
+            title="Diseño de para Web y FiveM"
+            desc="ransformamos tus ideas en interfaces web modernas y amigables, tanto para aplicaciones convencionales como para entornos de FiveM."
+          />
+          <CardServices
+            title="Páginas Web"
+            desc="Desarrollamos sitios web a medida que cautivan a tus visitantes y reflejan la identidad única de tu marca."
+          />
+        </div>
+      </section>
+      <section class="mt-28 max-w-6xl m-auto px-5 lg:px-0">
+        <h1 class="text-center font-black uppercase text-4xl">nuestra tienda</h1>
+        <h2 class="text-center text-sm mt-2">
+          ofrecemos una gama de servicios especializados para potenciar tu
+          presencia en línea y optimizar tus herramientas digitales.
+        </h2>
+        <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+          <CardStore
+            img=""
+            title="Discord Ticket"
+            desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
+            price={29.0}
+          />
+        </div>
+      </section>
+    </div>
   </main>
 </Layout>
 
 <style>
+
+  #header {
+    background-image: url('/pattern.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   #cotizar {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -222,7 +155,7 @@ import CardStore from "../components/ui/CardStore.astro";
   }
   #IA {
     border: 2px solid transparent;
-    max-width: 65%;
+    max-width: 100%;
     mask-image: linear-gradient(
       to right,
       transparent 0%,
@@ -230,19 +163,5 @@ import CardStore from "../components/ui/CardStore.astro";
       white 70%,
       transparent 100%
     );
-  }
-
-  #IA_animation {
-    min-width: fit-content;
-    display: flex;
-    gap: 16px;
-    animation: scroll_left 20s linear infinite;
-    padding: 0 8px;
-  }
-
-  @keyframes scroll_left {
-    to {
-      transform: translateX(-50%);
-    }
   }
 </style>

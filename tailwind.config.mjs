@@ -7,6 +7,9 @@ export default {
         poppins: ["outfit", "sans-serif"]
       },
       colors: {
+        primary: {
+					DEFAULT: "rgb(var(--primary), <alpha-value>)",
+				},
         "electric-violet": {
           50: "#edeeff",
           100: "#dde1ff",
