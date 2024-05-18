@@ -1,50 +1,181 @@
 ---
-import DiscordIcon from "@/icons/DiscordIcon.astro"
-import TwitterIcon from "@/icons/TwitterIcon.astro"
+import DiscordIcon from "@/icons/DiscordIcon.astro";
+import TwitterIcon from "@/icons/TwitterIcon.astro";
 
 const Navigation = [
-    {
-        label: "Inicio",
-        href: "/"
-    },
-    {
-        label: "Nosotros",
-        href: "/"
-    },
-    {
-        label: "Servicios",
-        href: "/"
-    },
-    {
-        label: "Políticas",
-        href: "/"
-    }
-]
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Nosotros",
+    href: "/",
+  },
+  {
+    label: "Servicios",
+    href: "/",
+  },
+  {
+    label: "Políticas",
+    href: "/",
+  },
+];
 ---
-<header class="bg-transparent backdrop-blur-xl py-2 sticky top-0 z-50">
-<nav class="flex justify-between items-center px-4 max-w-7xl mx-auto">
+
+<header class="bg-transparent backdrop-blur-xl py-4 md:py-2 sticky top-0 z-50">
+  <nav class="flex justify-between items-center px-4 max-w-7xl mx-auto">
     <div class="h-10">
-        <img class="h-full" src="/logo.png" alt="Logo NeenByss">
+      <img class="h-full" src="/logo.png" alt="Logo NeenByss" />
     </div>
-    <div class="flex items-center gap-8">
-        <div class="flex items-center gap-6 [&_>_a]:font-bold [&_>_a]:block [&_>_a]:py-6">
-            {Navigation.map(({label, href}) => 
-                <a 
-                    class="block py-6 font-bold hover:text-primary transition-colors"
-                    href={href}
-                > 
-                    {label} 
-                </a>
-            )}
-        </div>
-        <div class="flex items-center gap-4 [&_>_a]:block [&_>_a]:py-6 [&_>_a]:transition-colors [&_>_a:hover]:text-primary">
-            <a href="/" aria-label="discord-icon">
-                <DiscordIcon />
+    <div class="hidden md:flex items-center gap-8">
+      <div
+        class="flex items-center gap-6 [&_>_a]:font-bold [&_>_a]:block [&_>_a]:py-6"
+      >
+        {
+          Navigation.map(({ label, href }) => (
+            <a
+              class="block py-6 font-bold hover:text-primary transition-colors"
+              href={href}
+            >
+              {label}
             </a>
-            <a href="/" aria-label="twitter-icon">
-                <TwitterIcon />
-            </a>
-        </div>
+          ))
+        }
+      </div>
+      <div
+        class="flex items-center gap-4 [&_>_a]:block [&_>_a]:py-6 [&_>_a]:transition-colors [&_>_a:hover]:text-primary"
+      >
+        <a href="/" aria-label="discord-icon">
+          <DiscordIcon />
+        </a>
+        <a href="/" aria-label="twitter-icon">
+          <TwitterIcon />
+        </a>
+      </div>
     </div>
-</nav>
+
+    <label
+      class="hamburger block md:hidden p-2.5 rounded-lg hover:bg-white/20 active:duration-0 active:scale-90 transition hover:scale-110 ease-in-out"
+    >
+      <input class="btn-menu" type="checkbox" id="menuToggle" />
+      <svg class="size-6" viewBox="0 0 32 32">
+        <path
+          class="line line-top-bottom"
+          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+        ></path>
+        <path class="line" d="M7 16 27 16"></path>
+      </svg>
+    </label>
+  </nav>
 </header>
+
+<menu
+  id="navmenu"
+  class="fixed md:!hidden z-40 w-full min-h-dvh max-h-full overflow-y-auto bg-[#191622] pt-20 pb-10 px-4 top-0"
+>
+    <div class="flex flex-col gap-3">
+      <span
+        class="flex items-center gap-3 text-xs text-white/30 font-bold text-center mb-4 text-nowrap"
+      >
+        <span class="h-0.5 w-full bg-white/10"></span>
+        Navegación
+        <span class="h-0.5 w-full bg-white/10"></span>
+      </span>
+
+      {
+        Navigation.map(({ label, href }) => (
+          <a
+            class="flex justify-center py-3 font-bold hover:text-primary hover:bg-white/10 transition-colors rounded-lg"
+            href={href}
+          >
+            {label}
+          </a>
+        ))
+      }
+
+      <span
+        class="flex items-center gap-3 text-xs text-white/30 font-bold text-center my-4 text-nowrap"
+      >
+        <span class="h-0.5 w-full bg-white/10"></span>
+        Redes sociales
+        <span class="h-0.5 w-full bg-white/10"></span>
+      </span>
+
+      <a
+        href="/"
+        aria-label="discord-icon"
+        class="flex items-center gap-3 justify-center py-3 font-bold hover:text-primary hover:bg-white/10 transition-colors rounded-lg"
+      >
+        <DiscordIcon />
+        Servidor de Discord
+      </a>
+      <a
+        href="/"
+        aria-label="twitter-icon"
+        class="flex items-center gap-3 justify-center py-3 font-bold hover:text-primary hover:bg-white/10 transition-colors rounded-lg"
+      >
+        <TwitterIcon />
+        Nuestro Twitter
+      </a>
+    </div>
+  </menu>
+
+<style>
+  .hamburger {
+    cursor: pointer;
+  }
+
+  .hamburger input {
+    display: none;
+  }
+
+  .hamburger svg {
+    /* The size of the SVG defines the overall size */
+    /* Define the transition for transforming the SVG */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition:
+      stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+
+  #navmenu::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+
+  #navmenu {
+    display: none;
+  }
+  #navmenu.show {
+    display: block;
+  }
+</style>
+
+<script>
+  document.getElementById('menuToggle')?.addEventListener('change', function() {
+    document.getElementById('navmenu')?.classList.toggle('show', (this as HTMLInputElement).checked);
+  });
+</script>

@@ -41,3 +41,27 @@
 body {
     background: radial-gradient(at center top, #232733, #161616);
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #232733;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #ffffff;
+	border-radius: 1rem
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+	background: #b1aac4;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+	background: #9086aa;
+  }
