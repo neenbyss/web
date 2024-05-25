@@ -9,16 +9,16 @@ interface Props {
 const { img, title, desc, price } = Astro.props;
 ---
 
-<article class="p-3 flex flex-col gap-3">
-  <div class="aspect-video">
-    <img src={img} alt="">
+<article class="p-4 flex flex-col gap-3">
+  <div class="aspect-video bg-white/20 border border-white/10 overflow-hidden rounded-lg ">
+    <img src={img} class="size-full" alt="banner">
   </div>
   <div>
     <h1 class="font-bold text-xl">{title}</h1>
     <p class="font-thin text-sm">{desc}</p>
   </div>
   <div class="mt-2 w-full">
-    <button class="p-1 w-full font-bold">{price} $</button>
+    <button class="p-1 w-full font-bold hover:brightness-75 transition">{price} $</button>
   </div>
 </article>
 
@@ -26,20 +26,12 @@ const { img, title, desc, price } = Astro.props;
   article {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(
-        95deg,
-        rgba(203, 92, 255, 0.05) 4.09%,
-        rgba(255, 255, 255, 0) 95.91%
-      ),
-      radial-gradient(
-        100% 100% at 49.88% 0%,
-        #2e2350 0%,
-        rgba(41, 50, 95, 0.2) 100%
-      );
+    background: linear-gradient(95deg, rgba(159, 78, 198, .05), rgba(255, 255, 255, 0)),
+                  radial-gradient(at center top, #362B56, rgbA(24, 28, 48, .2))
   }
   button {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(90deg, #1a7dd9 0%, #ba52eb 100%);
+    background: linear-gradient(90deg, #1a7dd9, #287CDF);
   }
 </style>

@@ -1,0 +1,97 @@
+---
+import DiscordIcon from "@/icons/DiscordIcon.astro";
+import LinkedinIcon from "@/icons/LinkedinIcon.astro";
+import TwitterIcon from "@/icons/TwitterIcon.astro";
+
+const Navigation = [
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Nosotros",
+    href: "/",
+  },
+  {
+    label: "Servicios",
+    href: "/",
+  },
+  {
+    label: "Políticas",
+    href: "/",
+  },
+];
+---
+
+<footer class="relative py-20">
+    <div class="footer-bg absolute bottom-0 w-full h-[940px] z-[-1]"/>
+    <div class="max-w-6xl px-4 items-center flex flex-col lg:flex-row gap-4 justify-between mx-auto">
+        <div class="flex flex-col sm:flex-row items-center gap-4 max-w-lg">
+            <div>
+                <img 
+                    src="/logo.png"
+                    alt="neenbys"
+                    class="w-36"
+                />
+                <span class="hidden sm:block pt-3 opacity-50 text-sm">
+                    © Neenbys {new Date().getFullYear()} | Derechos reservados. 
+                </span>
+            </div>
+
+            <div class="h-40 w-0.5 bg-white opacity-50 hidden sm:block " />
+
+            <div class="text-sm">
+                <div
+                    class="flex items-center justify-center sm:justift-start gap-6 [&_>_a]:font-bold [&_>_a]:block [&_>_a]:py-6"
+                >
+                    {
+                    Navigation.map(({ label, href }) => (
+                        <a
+                            class="block font-bold hover:text-primary transition-colors"
+                            href={href}
+                        >
+                        {label}
+                        </a>
+                    ))
+                    }
+                </div>
+
+                <span class="hidden sm:block opacity-50"> Web desarrollada por el equipo de desarrollo y diseño de neenbys 💙 </span>
+            </div> 
+        </div>
+
+        <div class="flex flex-col gap-4 items-center lg:items-end">
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-primary hover:scale-110 transition">
+                    <LinkedinIcon />
+                </a>
+                <a href="#" class="hover:text-primary hover:scale-110 transition">
+                    <TwitterIcon />
+                </a>
+            </div>
+
+            <a href="#" class="block px-6 py-3 bg-gradient-to-tr from-[#5552EB] to-primary rounded-lg hover:brightness-75 transition">
+                <span class="flex items-center gap-2 font-bold">
+                    <DiscordIcon />
+
+                    Nuestro Discord
+                </span>
+            </a>
+        </div> 
+
+        <div class="sm:hidden block text-center">
+            <span class="opacity-50 text-xs"> Web desarrollada por el equipo de desarrollo y diseño de neenbys 💙 </span>
+
+            <span class="block pt-3 opacity-50 text-sm">
+                © Neenbys {new Date().getFullYear()} | Derechos reservados. 
+            </span>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-bg {
+        background: radial-gradient(98.3% 100% at 50% 0%, rgba(0, 0, 0, 0.00) 60%, rgba(52, 76, 160, 0.20) 100%);
+    }
+    
+</style>

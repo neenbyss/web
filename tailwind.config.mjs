@@ -10,6 +10,9 @@ export default {
         primary: {
 					DEFAULT: "rgb(var(--primary), <alpha-value>)",
 				},
+        secondary: {
+					DEFAULT: "rgb(var(--secondary), <alpha-value>)",
+				},
         "electric-violet": {
           50: "#edeeff",
           100: "#dde1ff",
