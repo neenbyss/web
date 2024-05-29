@@ -3,12 +3,12 @@ layout: ../layouts/markdown.astro
 title: Terminos y condiciones
 ---
 
-## Términos y Condiciones
+# Términos y Condiciones
 
-### 1. Introducción
+## 1. Introducción
 Bienvenido a Neenbyss ("nosotros", "nuestro" o "la empresa"). Estos Términos y Condiciones ("Términos") rigen el uso de nuestros servicios de desarrollo de software personalizado, diseño y productos en nuestra tienda en línea. Al contratar nuestros servicios o comprar nuestros productos, aceptas estos Términos en su totalidad. Si no estás de acuerdo con estos Términos, no deberías utilizar nuestros servicios.
 
-### 2. Servicios Ofrecidos
+## 2. Servicios Ofrecidos
 Neenbyss ofrece una variedad de servicios de desarrollo y diseño, incluyendo pero no limitándose a:
 - **Desarrollo de Bots para Discord**
 - **Desarrollo y Diseño de Páginas Web (Fullstack)**
@@ -20,10 +20,10 @@ Neenbyss ofrece una variedad de servicios de desarrollo y diseño, incluyendo pe
 
 Además, nuestra tienda en línea ofrece plantillas y bases pre-hechas para quienes deseen una solución rápida.
 
-### 3. Contratación de Servicios y Compras en la Tienda
+## 3. Contratación de Servicios y Compras en la Tienda
 Los servicios pueden ser contratados directamente desde nuestro servidor de Discord o desde nuestra página web https://neenbyss.com. Sin embargo, todos los registros y pagos deberán realizarse a través de nuestra página web para mantener un registro adecuado de los servicios y transacciones.
 
-### 4. Proceso de Trabajo y Entregables
+## 4. Proceso de Trabajo y Entregables
 El proceso de trabajo generalmente incluye las siguientes etapas:
 - **Consulta Inicial:** Discusión de requisitos y objetivos del proyecto.
 - **Propuesta:** Presentación de una propuesta detallada con tiempos y costos estimados.
@@ -31,30 +31,30 @@ El proceso de trabajo generalmente incluye las siguientes etapas:
 - **Revisiones:** Realización de revisiones y ajustes según el feedback del cliente.
 - **Entrega Final:** Entrega del producto terminado y aprobación final por parte del cliente.
 
-### 5. Pagos y Facturación
+## 5. Pagos y Facturación
 - **Depósito Inicial:** Se requiere un depósito del 50% del costo total antes de comenzar el trabajo. El saldo restante del 50% se pagará al finalizar el proyecto.
 - **Pago Completo:** También puedes optar por pagar el 100% del costo total al inicio.
 - **Comisión por Transacción:** Si optas por el método de pago 50-50, se aplicará una comisión del 7% sobre el monto total debido a la transacción fraccionada.
 - **Métodos de Pago:** Aceptamos pagos mediante PayPal, criptomoneda en USDT a través de Binance, y tarjetas de crédito.
 
-### 6. Propiedad Intelectual
+## 6. Propiedad Intelectual
 - **Derechos del Cliente:** Si el cliente proporciona sus propios diseños, esquemas, estrategias y funcionalidades, estos seguirán siendo propiedad del cliente. Al completar y recibir el pago total del proyecto, el cliente obtiene una licencia para usar el producto final para sus propios fines. Sin embargo, Neenbyss retiene ciertos derechos de propiedad intelectual sobre los elementos creados por nosotros desde cero.
 - **Compra de Derechos Totales:** El cliente tiene la opción de comprar los derechos totales del producto, lo que transferirá toda la propiedad intelectual al cliente. Esta opción debe ser negociada y acordada por escrito. Al hacerlo, Neenbyss ya no será responsable de nada relacionado con el producto.
 - **Productos de la Tienda:** Los productos comprados en nuestra tienda siguen siendo propiedad de Neenbyss. Los clientes pueden usarlos y editarlos hasta cierto límite para su propio uso, pero no pueden reclamarlos como propios ni venderlos en cualquier forma. La redistribución o reventa está estrictamente prohibida.
 - **Código Encriptado u Ofuscado:** Dependiendo del proyecto o producto, el código puede venir encriptado u ofuscado para proteger nuestra propiedad intelectual y la seguridad del proyecto.
 - **Derechos de la Empresa:** Nos reservamos el derecho de utilizar el trabajo creado como parte de nuestro portafolio y para fines promocionales, a menos que se acuerde lo contrario por escrito. En caso de violación de estos términos, nos reservamos el derecho de bloquear o negar el acceso a nuestros servicios y productos.
 
-### 7. Confidencialidad
+## 7. Confidencialidad
 Nos comprometemos a mantener la confidencialidad de toda la información proporcionada por el cliente y no divulgaremos dicha información a terceros sin el consentimiento del cliente, excepto según lo requerido por ley.
 
-### 8. Limitación de Responsabilidad
+## 8. Limitación de Responsabilidad
 No seremos responsables por cualquier daño indirecto, incidental, especial o consecuente que surja del uso de nuestros servicios o productos. Nuestra responsabilidad total ante el cliente no excederá el monto total pagado por el cliente por los servicios o productos específicos que dieron lugar a la reclamación.
 
-### 9. Terminación del Contrato
+## 9. Terminación del Contrato
 - **Terminación por Comportamiento Inapropiado:** Nos reservamos el derecho de terminar cualquier contrato si el cliente muestra un comportamiento inapropiado, deja de comunicarse después de 5 días, o muestra falta de respeto hacia nuestro equipo o staff. En tales casos, no se ofrecerán reembolsos si el desarrollo se encuentra en un estado intermedio o avanzado. Además, nos reservamos el derecho de finalizar el proyecto y ponerlo a la venta si así lo decidimos.
 - **Terminación por Incumplimiento:** Cualquiera de las partes puede terminar el contrato si la otra parte incumple de manera sustancial cualquiera de los términos establecidos. En caso de terminación por incumplimiento del cliente, no se reembolsarán los pagos realizados.
 
-### 10. Modificaciones
+## 10. Modificaciones
 Nos reservamos el derecho de modificar estos Términos en cualquier momento. Las modificaciones se publicarán en nuestro sitio web y entrarán en vigor a partir de su publicación.
 
 
