@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+const desc = frontmatter?.description ?? "En NeenByss, nos especializamos en convertir tus ideas en realidad a través del diseño y desarrollo. Ya sea que necesites crear una interfaz desde cero o darle un nuevo diseño a una existente, estamos aquí para ayudarte. Además, si requieres llevar ese diseño al desarrollo, ¡también estamos preparados para comenzar!"
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ const { frontmatter } = Astro.props;
     <title>{frontmatter.title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="description" content=`${desc}`>
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
