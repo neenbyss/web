@@ -1,6 +1,6 @@
 ---
-layout: ../layouts/markdown.astro
-title: Terminos y condiciones
+layout: ../../layouts/markdown.astro
+title: terminos y condiciones neenbyss
 ---
 
 # Términos y Condiciones

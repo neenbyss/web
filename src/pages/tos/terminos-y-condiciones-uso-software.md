@@ -1,10 +1,10 @@
 ---
-layout: ../layouts/markdown.astro
-title: Terminos y condiciones
+layout: ../../layouts/markdown.astro
+title: Términos y Condiciones de Uso del Software y Servicios
 ---
 
 
-# Términos y Condiciones de Venta y Soporte de Software
+# Términos y Condiciones de Uso del Software y Servicios
 
 ## 1. Entrega del Código
 
