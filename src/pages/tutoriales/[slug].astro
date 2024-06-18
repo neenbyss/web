@@ -1,0 +1,26 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/markdown.css"
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection("tutorials");
+
+  return tutorials.map((tutorial) => ({
+    params: { slug: tutorial.slug },
+    props: { tutorial },
+  }));
+}
+
+type Props = {
+  tutorial: CollectionEntry<"tutorials">;
+};
+
+const { tutorial } = Astro.props;
+const { Content } = await tutorial.render();
+---
+<Layout title={tutorial.data.title}>
+    <main class="max-w-6xl m-auto min-h-screen py-12">
+        <Content />
+    </main>
+</Layout>

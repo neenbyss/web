@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import {formatDate} from "@/utils/formats"
+
+const tutorials = (await getCollection("tutorials")).sort(
+  function (first, second) {
+    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+  }
+);
+---
+
+<Layout title="Tutoriales de neenbyss">
+  <main class="max-w-6xl m-auto min-h-screen py-12">
+    {
+      tutorials.map((tutorial) => (
+        <a
+          class="group flex flex-col gap-2 border-y border-neutral-700 py-4 transition-all"
+          href={`/tutoriales/${tutorial.slug}`}
+        >
+          <div class="flex justify-between">
+            <span class="text-2xl hover:text-primary">{tutorial.data.title}</span>
+            <span class="text-2xl hover:text-primary">{formatDate(tutorial.data.publishedAt)}</span>
+          </div>
+          <span>{tutorial.data.description}</span>
+        </a>
+      ))
+    }
+  </main>
+</Layout>

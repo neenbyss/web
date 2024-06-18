@@ -78,3 +78,12 @@ strong {
 li {
     padding-bottom: 0.6rem;
 }
+/* --- */
+
+main a {
+    color: rgb(var(--primary));
+}
+
+main a:hover {
+    opacity: .5;
+}
