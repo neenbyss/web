@@ -7,9 +7,9 @@ title: Política de Privacidad
 
 Última actualización: 07/12/2024
 
-Gracias por visitar nuestro sitio web y por considerar nuestros servicios de desarrollo personalizado. En [Nombre de la Empresa], valoramos y respetamos tu privacidad. Esta Política de Privacidad explica cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas.
+Gracias por visitar nuestro sitio web y por considerar nuestros servicios de desarrollo personalizado. En Neenbyss, valoramos y respetamos tu privacidad. Esta Política de Privacidad explica cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas.
 
-## 1. Recopilación de Información
+## Recopilación de Información
 
 Recopilamos información personal de varias formas cuando utilizas nuestros servicios, incluyendo, pero no limitándose a:
 
@@ -17,7 +17,7 @@ Recopilamos información personal de varias formas cuando utilizas nuestros serv
 - Información de facturación y pago.
 - Detalles técnicos relacionados con los servicios contratados (por ejemplo, especificaciones técnicas para el desarrollo de software, requisitos de diseño para páginas web, etc.).
 
-## 2. Uso de la Información
+## Uso de la Información
 
 La información personal recopilada se utiliza para los siguientes propósitos:
 
@@ -30,38 +30,62 @@ La información personal recopilada se utiliza para los siguientes propósitos:
 - Gestionar el historial de clientes actuales, pasados y futuros.
 - Control de pagos, facturas y presupuestos realizados.
 
-## 3. Protección de la Información
+## Protección de la Información
 
 Nos comprometemos a proteger la seguridad de tu información personal. Implementamos medidas técnicas y organizativas adecuadas para proteger tus datos contra el acceso no autorizado, la divulgación, la alteración o destrucción no autorizada.
 
-## 4. Acceso a la Información
+## Acceso a la Información
 
 Solo el personal administrativo tiene acceso a la información detallada de los clientes y servicios. Los equipos de desarrollo y diseño solo pueden acceder a la información relevante para los servicios que están realizando, como el nombre del cliente, el número de identificación y las tareas asignadas.
 
-## 5. Capacitación y Confidencialidad
+## Capacitación y Confidencialidad
 
 Todo nuestro personal recibe capacitación en ciberseguridad y protección de datos. Además, todos los empleados firman un acuerdo de confidencialidad para asegurar la protección de la información del cliente.
 
-## 6. Compartición de Información
+## Compartición de Información
 
 No compartimos tu información personal con terceros, excepto cuando es necesario para la prestación de servicios específicos contratados por ti (por ejemplo, proveedores de servicios de pago) o cuando lo exija la ley.
 
-## 7. Proveedores de Pagos
+## Retención de Datos
+
+Retenemos tu información personal solo durante el tiempo necesario para cumplir con los propósitos para los cuales fue recopilada, incluyendo el cumplimiento de obligaciones legales, contables o de informes.
+
+## Eliminación de Datos
+
+Si deseas que eliminemos tus datos personales de nuestros registros, puedes solicitarlo en cualquier momento contactándonos a través de la información proporcionada al final de esta política. Procesaremos tu solicitud de eliminación en un plazo razonable, sujeto a nuestras obligaciones legales y regulatorias.
+
+## Derechos de los Menores
+
+Nuestros servicios no están dirigidos a menores de edad y no recopilamos intencionadamente datos personales de menores. Si eres padre o tutor y crees que tu hijo nos ha proporcionado información personal, contáctanos para solicitar la eliminación de dicha información.
+
+## Proveedores de Pagos
 
 Utilizamos proveedores de servicios de pago como PayPal y Stripe para procesar los pagos. No almacenamos ni tenemos acceso a la información completa de tu tarjeta de crédito u otros datos de pago. Únicamente guardamos la ID de transacción proporcionada por estos proveedores para propósitos de registro y seguimiento del estado del pago. Te recomendamos revisar las políticas de privacidad y términos de servicio de PayPal y Stripe para más información sobre cómo manejan tus datos.
 
-## 8. Cookies y Tecnologías Similares
+## Cookies y Tecnologías Similares
 
 Utilizamos cookies y tecnologías similares para mejorar la experiencia del usuario en nuestro sitio web y para recopilar información sobre el uso del mismo. Puedes configurar tu navegador para rechazar todas las cookies o para indicarte cuándo se envía una cookie.
 
-## 9. Enlaces a Terceros
+## Enlaces a Terceros
 
 Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de las prácticas de privacidad o el contenido de estos sitios. Te recomendamos revisar las políticas de privacidad de cualquier sitio web que visites desde nuestro sitio.
 
-## 10. Cambios a esta Política de Privacidad
+## Cambios a esta Política de Privacidad
 
-Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. La fecha de la última actualización se indicará al principio de este documento. Te recomendamos revisar esta política periódicamente para estar informado sobre cómo protegemos tu información personal.
+Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento sin previo aviso. La fecha de la última actualización se indicará al principio de este documento. Te recomendamos revisar esta política periódicamente para estar informado sobre cómo protegemos tu información personal.
 
-## 11. Contacto
+## Reclamaciones y Quejas
 
-Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tus datos personales, por favor contáctanos a través de [correo electrónico de contacto].
+Si tienes alguna queja sobre cómo manejamos tus datos personales, tienes derecho a presentar una reclamación ante la autoridad de protección de datos competente. Te invitamos a que primero nos contactes directamente para intentar resolver cualquier preocupación. abuse@neenbyss.com
+
+## Detección y Prevención de Fraude
+
+Implementamos medidas para detectar y prevenir el fraude y actividades no autorizadas. Esto incluye el monitoreo de transacciones y actividades en nuestra plataforma para identificar y mitigar riesgos de seguridad. abuse@neenbyss.com
+
+## Responsable de Protección de Datos
+
+Hemos designado un responsable de protección de datos (DPO) para supervisar el cumplimiento de nuestra política de privacidad y responder a cualquier consulta relacionada con la protección de datos. Puedes contactarlo a través de email@neenbyss.com.
+
+## Contacto
+
+Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tus datos personales, por favor contáctanos.
