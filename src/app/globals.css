@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground text-sm min-h-dvh
+  }
+  main {
+    @apply flex-grow
+  }
+  svg {
+    @apply size-4
+  }
+  p, span, ul, ol {
+    @apply text-foreground-foreground
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #191B20;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #5D45FD;
+  border-radius: 20px;
+  border: 3px solid #191B20;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #392c8f;
+}
+
+
+textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #5D45FD;
+  border-radius: 20px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #392c8f;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+}
