@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
-const desc = frontmatter?.description ?? "En NeenByss, nos especializamos en convertir tus ideas en realidad a través del diseño y desarrollo. Ya sea que necesites crear una interfaz desde cero o darle un nuevo diseño a una existente, estamos aquí para ayudarte. Además, si requieres llevar ese diseño al desarrollo, ¡también estamos preparados para comenzar!"
+const desc = frontmatter?.description ?? "En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!"
 ---
 
 <!doctype html>
@@ -20,10 +20,27 @@ const desc = frontmatter?.description ?? "En NeenByss, nos especializamos en con
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <!-- Primary Meta Tags -->
     <title>{frontmatter.title}</title>
+    <meta name="title" content=`${frontmatter.title}` />
+    <meta name="description" content=`${desc}` />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neenbyss.com/" />
+    <meta property="og:title" content=`${frontmatter.title}` />
+    <meta property="og:description" content=`${desc}` />
+    <meta property="og:image" content="https://neenbyss.com/images/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://neenbyss.com/" />
+    <meta property="twitter:title" content=`${frontmatter.title}` />
+    <meta property="twitter:description" content=`${desc}` />
+    <meta property="twitter:image" content="https://neenbyss.com/images/twitter-card.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta name="description" content=`${desc}`>
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
