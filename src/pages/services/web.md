@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/markdown.astro
-title: Desarrollo Web Personalizado | Diseño, Dashboards y Landing Pages | Neenbyss
-description: Servicios profesionales de desarrollo web personalizado: diseño visual atractivo, dashboards interactivos y landing pages optimizadas. Soluciones adaptadas 100% a tu negocio. ¡Contáctanos hoy mismo!
+title: Desarrollo Web Personalizado | Diseño, Dashboards y Landing Pages | Neenbyss 
+description: Servicios profesionales de desarrollo web personalizado - diseño visual atractivo, dashboards interactivos y landing pages optimizadas. Soluciones adaptadas 100% a tu negocio. ¡Contáctanos hoy mismo! 
 ---
 
 # Servicio de Desarrollo Web Personalizado: Diseño y Funcionalidad a tu Medida

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/markdown.astro
-title: Desarrollo de Bots de Discord Personalizados | neenbyss
-description: Desarrollamos bots personalizados para Discord con funcionalidades exclusivas adaptadas a tu comunidad: moderación, juegos, economía virtual y mucho más. ¡Optimiza y potencia tu servidor hoy mismo!
+title: Desarrollo de Bots de Discord Personalizados - neenbyss
+description: Desarrollamos bots personalizados para Discord con funcionalidades exclusivas adaptadas a tu comunidad - moderación, juegos, economía virtual y mucho más. ¡Optimiza y potencia tu servidor hoy mismo!  
 ---
 # 🚀 Desarrollo Profesional de Bots de Discord Personalizados
 

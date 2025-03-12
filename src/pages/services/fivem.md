@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/markdown.astro
-title: Desarrollador Experto FiveM | Creación, Configuración y Soporte | Neenbyss
-description: Servicios profesionales de desarrollo, configuración y soporte técnico especializado para servidores FiveM. Creamos scripts personalizados, optimizamos rendimiento e interfaces únicas. ¡Haz destacar tu servidor con Neenbyss!
+title: Desarrollador Experto FiveM | Creación, Configuración y Soporte | Neenbyss   
+description: Servicios profesionales de desarrollo, configuración y soporte técnico especializado para servidores FiveM. Creamos scripts personalizados, optimizamos rendimiento e interfaces únicas. ¡Haz destacar tu servidor con Neenbyss!   
 ---
 
 # 🚀 Servicio Profesional de Desarrollo y Configuración para Servidores FiveM
