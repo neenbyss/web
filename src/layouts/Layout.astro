@@ -1,7 +1,7 @@
 ---
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
-import '@/styles/global.css';
+import "@/styles/global.css";
 interface Props {
   title: string;
 }
@@ -18,22 +18,46 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <!-- Primary Meta Tags -->
     <title>{title}</title>
-    <meta name="title" content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados" />
-    <meta name="description" content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!" />
+    <meta
+      name="title"
+      content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados"
+    />
+    <meta
+      name="description"
+      content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!"
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://neenbyss.com/" />
-    <meta property="og:title" content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados" />
-    <meta property="og:description" content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!" />
-    <meta property="og:image" content="https://neenbyss.com/images/og-image.png" />
+    <meta
+      property="og:title"
+      content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados"
+    />
+    <meta
+      property="og:description"
+      content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!"
+    />
+    <meta
+      property="og:image"
+      content="https://neenbyss.com/images/og-image.png"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://neenbyss.com/" />
-    <meta property="twitter:title" content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados" />
-    <meta property="twitter:description" content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!" />
-    <meta property="twitter:image" content="https://neenbyss.com/images/twitter-card.png" />
+    <meta
+      property="twitter:title"
+      content="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados"
+    />
+    <meta
+      property="twitter:description"
+      content="En Neenbyss creamos soluciones digitales personalizadas: desarrollo web profesional, bots para Discord y servidores FiveM optimizados. ¡Impulsa tu proyecto ahora!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://neenbyss.com/images/twitter-card.png"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,6 +65,17 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-PNEFE3E0PD"
+    ></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-PNEFE3E0PD");
+    </script>
   </head>
   <body class="font-outfit text-wild-sand-50 min-h-screen overflow-x-hidden">
     <Navbar />
@@ -54,4 +89,3 @@ const { title } = Astro.props;
     font-family: "Outfit", sans-serif;
   }
 </style>
-
