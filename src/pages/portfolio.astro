@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  { id: 'web', name: 'Aplicaciones Web', icon: '🌐' },
+  { id: 'design', name: 'Diseño UI/UX', icon: '🎨' },
+  { id: 'minecraft', name: 'Plugins Minecraft', icon: '🎮' },
+  { id: 'fivem', name: 'Scripts FiveM', icon: '🚗' },
+  { id: 'wordpress', name: 'Temas WordPress', icon: '📝' }
+];
+
+const projects = [
+  {
+    id: "metaverse-hub",
+    title: "MetaVerse Hub",
+    description: "Plataforma de realidad virtual para experiencias inmersivas",
+    image: "https://images.unsplash.com/photo-1614729939124-032d1e6c9945?w=800&auto=format&fit=crop&q=60",
+    category: "web",
+    tags: ["VR", "3D", "Blockchain"],
+    link: "/project/metaverse-hub"
+  },
+  {
+    id: "crypto-wallet",
+    title: "Crypto Wallet UI",
+    description: "Diseño moderno para wallet de criptomonedas",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
+    category: "design",
+    tags: ["Figma", "UI/UX", "Motion"],
+    link: "/project/crypto-wallet"
+  },
+  {
+    id: "skywars-pro",
+    title: "SkyWars Pro",
+    description: "Plugin avanzado para minijuegos en Minecraft",
+    image: "https://images.unsplash.com/photo-1623934199716-dc28818a6ec7?w=800&auto=format&fit=crop&q=60",
+    category: "minecraft",
+    tags: ["Java", "Spigot API", "MySQL"],
+    link: "/project/skywars-pro"
+  },
+  {
+    id: "rpg-framework",
+    title: "RPG Framework",
+    description: "Framework completo para servidores roleplay",
+    image: "https://images.unsplash.com/photo-1536751048178-14106afab4f9?w=800&auto=format&fit=crop&q=60",
+    category: "fivem",
+    tags: ["Lua", "JavaScript", "MySQL"],
+    link: "/project/rpg-framework"
+  },
+  {
+    id: "agency-pro",
+    title: "Agency Pro",
+    description: "Tema premium para agencias digitales",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop&q=60",
+    category: "wordpress",
+    tags: ["PHP", "WordPress", "SASS"],
+    link: "/project/agency-pro"
+  },
+  {
+    id: "social-network",
+    title: "Social Network App",
+    description: "Red social para profesionales creativos",
+    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&auto=format&fit=crop&q=60",
+    category: "web",
+    tags: ["Vue.js", "Firebase", "PWA"],
+    link: "/project/social-network"
+  },
+  {
+    id: "nft-marketplace",
+    title: "NFT Marketplace",
+    description: "Diseño para marketplace de NFTs",
+    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&auto=format&fit=crop&q=60",
+    category: "design",
+    tags: ["Adobe XD", "Illustration", "3D"],
+    link: "/project/nft-marketplace"
+  },
+  {
+    id: "economy-plus",
+    title: "Economy Plus",
+    description: "Sistema económico avanzado para Minecraft",
+    image: "https://images.unsplash.com/photo-1533751359665-9b3b0c48c937?w=800&auto=format&fit=crop&q=60",
+    category: "minecraft",
+    tags: ["Java", "Redis", "API"],
+    link: "/project/economy-plus"
+  }
+];
+
+let activeCategory = 'all';
+---
+
+<Layout title="Portafolio - Future Software">
+  <Navbar />
+  
+  <main class="relative min-h-screen bg-[#030014] cyber-grid pt-24">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+      <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-[150px]"></div>
+      <div class="absolute top-3/4 -right-1/4 w-96 h-96 bg-blue-500/30 rounded-full filter blur-[150px]"></div>
+    </div>
+
+    <!-- Header -->
+    <section class="relative container mx-auto px-4 py-16">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+          Nuestro Portafolio
+        </h1>
+        <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+          Explorá nuestra colección de proyectos innovadores en diferentes áreas de la tecnología.
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="relative container mx-auto px-4 mb-16">
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+        <button
+          class="category-btn px-6 py-3 rounded-xl glass text-white hover:text-cyan-400 transition-all duration-300 active"
+          data-category="all"
+        >
+          🌟 Todos
+        </button>
+        {categories.map(category => (
+          <button
+            class="category-btn px-6 py-3 rounded-xl glass text-white hover:text-cyan-400 transition-all duration-300"
+            data-category={category.id}
+          >
+            {category.icon} {category.name}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="relative container mx-auto px-4 pb-32">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map(project => (
+          <div 
+            class="project-card group relative overflow-hidden rounded-2xl"
+            data-category={project.category}
+            data-aos="fade-up"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">{project.title}</h3>
+              <p class="text-gray-300 mb-4">{project.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <span class="px-3 py-1 text-sm glass rounded-full text-cyan-400">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <a 
+              href={project.link}
+              class="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-sm"
+            >
+              <span class="px-6 py-3 glass rounded-xl text-white border border-white/20 hover:border-cyan-400/50 transition-colors">
+                Ver Detalles
+              </span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .category-btn.active {
+    @apply border border-cyan-400/50 text-cyan-400;
+  }
+</style>
+
+<script>
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Update active button
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Filter projects
+      const category = button.getAttribute('data-category');
+      projectCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

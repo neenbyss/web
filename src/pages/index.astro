@@ -1,354 +1,235 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-
-import CardServices from "@/components/ui/cardServices.astro";
-
-import Slider from "@/components/Slider.astro";
-
-import DiscordIcon from "@/icons/DiscordIcon.astro";
-import GlobalIcon from "@/icons/GlobalIcon.astro";
-import DesignIcon from "@/icons/DesignIcon.astro";
-import FivemIcon from "@/icons/FivemIcon.astro";
-import WrenchIcon from "@/icons/WrenchIcon.astro";
-import MinecraftIcon from "@/icons/MinecraftIcon.astro";
-import BoxIcon from "@/icons/BoxIcon.astro";
-
-const SlidersInfo = [
-  {
-    label: "Páginas Webs",
-    icon: GlobalIcon,
-  },
-  {
-    label: "Diseños UI",
-    icon: DesignIcon,
-  },
-  {
-    label: "Mantenimiento",
-    icon: WrenchIcon,
-  },
-  {
-    label: "Fivem Scripts",
-    icon: FivemIcon,
-  },
-  {
-    label: "Minecraft Plugins",
-    icon: MinecraftIcon,
-  },
-  {
-    label: "Discord Apps",
-    icon: DiscordIcon,
-  },
-];
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Neenbyss | Desarrollo Web, Bots Discord y Servidores FiveM Personalizados">
-  <main>
-    <section id="header" class="h-dvh w-full">
-      <div
-        class="flex flex-col gap-12 justify-center items-center size-full max-w-7xl mx-auto px-4 -mt-20"
-      >
-        <h1 class="font-black text-4xl sm:text-6xl text-center">
-          ARQUITECTOS DIGITALES
-          <span class="text-2xl sm:text-5xl block font-bold py-1">
-            <span
-              class="bg-gradient-to-r from-[#AFFFFA] to-[#8AA4FF] bg-clip-text text-transparent"
-            >
-              Diseñamos
-            </span>
-            Y
-            <span
-              class="bg-gradient-to-r from-[#C388FF] to-[#FF613F] bg-clip-text text-transparent"
-            >
-              Desarrollamos
-            </span>
-          </span>
+<Layout>
+  <Navbar />
+  <main class="relative min-h-screen bg-[#030014] cyber-grid">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+      <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-[150px]"></div>
+      <div class="absolute top-3/4 -right-1/4 w-96 h-96 bg-blue-500/30 rounded-full filter blur-[150px]"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative container mx-auto px-4 pt-32 pb-40">
+      <div class="text-center z-10 relative" data-aos="fade-up">
+        <div class="inline-block mb-4 px-6 py-2 glass rounded-full">
+          <!-- <span class="text-cyan-400">2025</span> -->
+          <!-- <span class="mx-2 text-gray-400">|</span> -->
+          <span class="text-purple-400">Neenbyss</span>
+        </div>
+        <h1 class="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+          Tu visión digital
         </h1>
-        <div id="IA" class="w-full px-4 overflow-hidden">
-          <Slider>
+        <p class="text-gray-400 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+          Desarrollo de páginas y aplicaciones web, bots para Discord que hacen la vida fácil, y servidores FiveM preparados para romperla.
+        </p>
+        <div class="flex gap-6 justify-center">
+          <a href="#contact" class="group px-8 py-4 neon-border rounded-xl glass hover:bg-white/10 transition-all duration-300">
+            <span class="text-white group-hover:text-cyan-400 transition-colors">Iniciar Proyecto</span>
+          </a>
+          <a href="#services" class="group px-8 py-4 border border-white/10 rounded-xl hover:border-cyan-400/50 hover:bg-white/5 transition-all duration-300">
+            <span class="text-white group-hover:text-cyan-400 transition-colors">Explorar</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-32 backdrop-blur-sm">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-white mb-4">Servicios Futuristas</h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {[
             {
-              SlidersInfo.map(({ label, icon }) => {
-                const Icon = icon;
-                return (
-                  <span class="flex items-center gap-2 text-nowrap bg-gradient-to-r from-[#2c273b] to-[#181F2F px-4 py-2 rounded-lg border border-white/10 w-full">
-                    <Icon />
-                    {label}
-                  </span>
-                );
-              })
+              title: "Páginas web",
+              description: "Creamos páginas web rápidas, seguras y optimizadas para SEO. Desarrollamos sitios personalizados que se adaptan a tu negocio y atraen más clientes.",
+              icon: "🤖",
+              gradient: "from-purple-500 to-pink-500"
+            },
+            {
+              title: "Aplicaciones web",
+              description: "Construimos aplicaciones web interactivas y escalables usando tecnologías modernas (Next.js, React.js, NestJS), asegurando velocidad y rendimiento excepcional.",
+              icon: "🤖",
+              gradient: "from-purple-500 to-pink-500"
+            },
+            {
+              title: "Bots para Discord",
+              description: "Desarrollamos bots personalizados para Discord, con funcionalidades únicas, comandos interactivos e integraciones avanzadas para mejorar tu comunidad.",
+              icon: "🌌",
+              gradient: "from-cyan-500 to-blue-500"
+            },
+            {
+              title: "Scripts para FiveM",
+              description: "Creamos scripts únicos para servidores de GTA FiveM, optimizados, seguros y compatibles con las últimas actualizaciones. Dale vida a tu servidor con nuestras soluciones únicas.",
+              icon: "⛓️",
+              gradient: "from-green-500 to-cyan-500"
+            },
+            {
+              title: "Configuración de servidores FiveM",
+              description: "Configuramos y optimizamos servidores de FiveM para asegurar estabilidad, rendimiento y seguridad. Te ayudamos a lanzar tu comunidad rápidamente y sin problemas técnicos.",
+              icon: "📡",
+              gradient: "from-orange-500 to-red-500"
+            },
+            {
+              title: "Diseño de interfaces (UI/UX)",
+              description: "Diseñamos interfaces atractivas, intuitivas y modernas, centradas en la experiencia del usuario. Creamos prototipos en Figma para aplicaciones web, móviles o gaming.",
+              icon: "⚛️",
+              gradient: "from-blue-500 to-purple-500"
             }
-          </Slider>
+          ].map(service => (
+            <div class="group relative" data-aos="fade-up">
+              <div class="absolute inset-0 bg-gradient-to-r {service.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div class="relative glass p-8 rounded-2xl hover:transform hover:scale-[1.02] transition-all duration-300  h-80">
+                <div class="text-5xl mb-6">{service.icon}</div>
+                <h3 class="text-xl font-semibold text-white mb-4">{service.title}</h3>
+                <p class="text-gray-400">{service.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="py-32 bg-gradient-to-r from-[rgba(23,19,31,0.5)] to-[rgb(49,49,77,0.5)]">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center">
-          <h3 class="text-primary text-2xl font-black">NOSOTROS</h3>
-          <h2 class="text-4xl font-black">OFRECEMOS UNA GRAN EXPERIENCIA</h2>
-          <p class="pt-3">
-            En Neenbyss combinamos diseño creativo, desarrollo profesional y tecnología avanzada para construir soluciones digitales a la medida exacta de tu negocio. Transformamos ideas en realidades digitales que cautivan, convierten y generan resultados excepcionales.
-          </p>
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-32 backdrop-blur-sm">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-white mb-4">Proyectos Destacados</h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto"></div>
         </div>
-
-        <div id="us-box" class="p-8 rounded-xl mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="">
-            <div class="text-primary">
-              <BoxIcon />
-              <h4 class="text-xl font-bold">Desarrollo de software</h4>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "MetaVerse Hub",
+              description: "Plataforma de realidad virtual para experiencias inmersivas",
+              image: "https://images.unsplash.com/photo-1614729939124-032d1e6c9945?w=800&auto=format&fit=crop&q=60",
+              tags: ["VR", "3D", "Blockchain"]
+            },
+            {
+              title: "AI Assistant Pro",
+              description: "Asistente virtual con procesamiento de lenguaje natural",
+              image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60",
+              tags: ["AI", "ML", "NLP"]
+            },
+            {
+              title: "CryptoSecure",
+              description: "Sistema de seguridad basado en blockchain",
+              image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&fit=crop&q=60",
+              tags: ["Blockchain", "Security"]
+            }
+          ].map(project => (
+            <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up">
+              <div class="relative h-64 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3 class="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                <p class="text-gray-300 mb-4">{project.description}</p>
+                <div class="flex gap-2">
+                  {project.tags.map(tag => (
+                    <span class="px-3 py-1 text-sm glass rounded-full text-cyan-400">{tag}</span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <p class="pt-1">
-              Soluciones personalizadas y adaptadas a tus necesidades.
-            </p>
-          </div>
-          <div class="">
-            <div class="text-primary">
-              <BoxIcon />
-              <h4 class="text-xl font-bold">Diseño UI/UX</h4>
-            </div>
-            <p class="pt-1">
-              Diseñamos y rediseñamos interfaces, además de crear tu nuevo branding.
-            </p>
-          </div>
-          <div class="">
-            <div class="text-primary">
-              <BoxIcon />
-              <h4 class="text-xl font-bold">Nuestro equipo</h4>
-            </div>
-            <p class="pt-1">
-              Experiencia y amabilidad para guiarte en todo lo que necesitas.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section id="services" class="py-40">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center">
-          <h2 class="font-black text-4xl"> SERVICIOS </h2>
-          <p class="pt-1">
-            Ofrecemos una gama de servicios especializados para potenciar tu
-            presencia en línea y optimizar tus herramientas digitales.
-          </p>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="relative py-32">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-white mb-4">Testimonios</h2>
+          <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto"></div>
         </div>
-
-        <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 mt-10">
-          <CardServices
-            
-            title="Discord Bots"
-            desc="Lleva tu comunidad en Discord al siguiente nivel con bots personalizados que gestionan, entretienen y fidelizan a tus usuarios."
-          />
-          <CardServices
-            title="Desarrollo y Soporte de servidores FiveM"
-            desc="Especialistas en servidores FiveM, ofreciendo desarrollo integral, optimización y soporte técnico constante"
-          />
-          <CardServices
-            title="Páginas Web"
-            desc="Crea una presencia online poderosa con páginas web adaptadas específicamente a tus objetivos comerciales. Desde landing pages que convierten hasta plataformas complejas"
-          />
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Guaguito",
+              role: "Newliferp",
+              content: "Servicio rapido y excelente lo recomiendo mucho. Muy atentos con lo que necesiten y explicacion 10/10 Lo recomiendo mucho.",
+              image: "/newlife.webp"
+            },
+            {
+              name: "Mitzunie",
+              role: "MitzuStudios",
+              content: "Excelente servicio, buena comunicación y organización. Totalmente recomendable para sus futuros proyectos.",
+              image: "https://singlecolorimage.com/get/0d304e/100x100"
+            },
+            {
+              name: "Peje",
+              role: "Cliente",
+              content: "Las 3 B's, los volveria a contratar, buen trato, comunicacion y comprension.",
+              image: "https://singlecolorimage.com/get/0d304e/100x100"
+            }
+          ].map(testimonial => (
+            <div class="glass p-8 rounded-2xl relative" data-aos="fade-up">
+              <div class="flex items-center gap-4 mb-6">
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  class="w-16 h-16 rounded-full object-cover border-2 "
+                />
+                <div>
+                  <h3 class="text-lg font-semibold text-white">{testimonial.name}</h3>
+                  <p class="text-cyan-400">{testimonial.role}</p>
+                </div>
+              </div>
+              <p class="text-gray-300 italic">"{testimonial.content}"</p>
+            </div>
+          ))}
         </div>
       </div>
-
-      <!-- <div class="mt-28 max-w-6xl m-auto px-4">
-        <h1 class="text-center font-black uppercase text-4xl">
-          nuestra tienda
-        </h1>
-        <h2 class="text-center text-sm mt-2">
-          ofrecemos una gama de servicios especializados para potenciar tu
-          presencia en línea y optimizar tus herramientas digitales.
-        </h2>
-        <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-          <CardStore
-            img=""
-            title="Discord Ticket"
-            desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
-            price={29.0}
-          />
-          <CardStore
-            img=""
-            title="Discord Ticket"
-            desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
-            price={29.0}
-          />
-          <CardStore
-            img=""
-            title="Discord Ticket"
-            desc="Ten un bonito bot de tickets para tu comunidad de discord, con todos los comandos esenciales, tickets por canales o por hilos, puedes cambiar los mensajes, el sistema por botones o por menus"
-            price={29.0}
-          />
-        </div>
-      </div> -->
     </section>
 
-    <!-- <section class="py-44">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center">
-          <h2 class="font-black text-4xl"> NUESTRO EQUIPO </h2>
-          <p class="pt-1">
-            Nuestro equipo está altamente enfocado y especializado en su campo, lo que nos permite ofrecer un trabajo de excelente calidad.
-          </p>
-        </div> -->
-
-        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
-
-          <div class="team-card p-4 bg-[rgba(36,42,54,0.1)] border border-white/10 rounded-xl shadow-[0px_0px_20px_0px_rgba(86,73,166,0.25)]">
-            <div class="flex items-center gap-2">
-              <div class="rounded-full size-12 bg-white overflow-hidden">
-                <img 
-                  alt="avatar"
-                  src="user"
-                  class="size-full"
-                />
-              </div>
-
-              <div class="flex flex-col gap-0">
-                <h4 class="font-black"> Kamerr Ezz </h4>
-                <span class="text-sm opacity-50"> @kamerrezz </span>
-              </div>
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-32">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto glass p-12 rounded-2xl" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-center text-white mb-8">Inicia tu Viaje Digital</h2>
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <input
+                type="text"
+                placeholder="Nombre"
+                class="w-full px-6 py-4 bg-white/5 rounded-xl text-white border border-white/10 focus:border-cyan-400 focus:outline-none transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                class="w-full px-6 py-4 bg-white/5 rounded-xl text-white border border-white/10 focus:border-cyan-400 focus:outline-none transition-colors"
+              />
             </div>
-
-            <div class="mt-2">
-              <span class="text-primary text-sm">
-                # Founder
-              </span>
-
-              <p class=" line-clamp-3">
-                Desarrollador de software y diseñador grafico, CEO de Zeew Space - un espacio para aprender
-              </p>
+            <textarea
+              placeholder="Tu visión"
+              rows="4"
+              class="w-full px-6 py-4 bg-white/5 rounded-xl text-white border border-white/10 focus:border-cyan-400 focus:outline-none transition-colors"
+            ></textarea>
+            <div class="text-center">
+              <button
+                type="submit"
+                class="px-12 py-4 neon-border rounded-xl glass hover:bg-white/10 transition-all duration-300"
+              >
+                <span class="text-white">Enviar Mensaje</span>
+              </button>
             </div>
-          </div>
-
-          <div class="team-card p-4 bg-[rgba(36,42,54,0.1)] border border-white/10 rounded-xl shadow-[0px_0px_20px_0px_rgba(86,73,166,0.25)]">
-            <div class="flex items-center gap-2">
-              <div class="rounded-full size-12 bg-white overflow-hidden">
-                <img 
-                  alt="avatar"
-                  src="user"
-                  class="size-full"
-                />
-              </div>
-
-              <div class="flex flex-col gap-0">
-                <h4 class="font-black"> DISPLAY NAME </h4>
-                <span class="text-sm opacity-50"> @username </span>
-              </div>
-            </div>
-
-            <div class="mt-2">
-              <span class="text-primary text-sm">
-                # Desarrollador
-              </span>
-
-              <p class=" line-clamp-3">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed maiores quia voluptatem veniam at ut odit, doloremque accusamus tenetur facilis? Minima tempora est, laudantium beatae magni quam itaque a eveniet.
-              </p>
-            </div>
-          </div>
-
-          <div class="team-card p-4 bg-[rgba(36,42,54,0.1)] border border-white/10 rounded-xl shadow-[0px_0px_20px_0px_rgba(86,73,166,0.25)]">
-            <div class="flex items-center gap-2">
-              <div class="rounded-full size-12 bg-white overflow-hidden">
-                <img 
-                  alt="avatar"
-                  src="user"
-                  class="size-full"
-                />
-              </div>
-
-              <div class="flex flex-col gap-0">
-                <h4 class="font-black"> DISPLAY NAME </h4>
-                <span class="text-sm opacity-50"> @username </span>
-              </div>
-            </div>
-
-            <div class="mt-2">
-              <span class="text-primary text-sm">
-                # Desarrollador
-              </span>
-
-              <p class=" line-clamp-3">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed maiores quia voluptatem veniam at ut odit, doloremque accusamus tenetur facilis? Minima tempora est, laudantium beatae magni quam itaque a eveniet.
-              </p>
-            </div>
-          </div>
-
-        </div> -->
-
-      <!-- </div> -->
-
-    <!-- </section> -->
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+  <Footer />
 </Layout>
-
-<style>
-  #header {
-    position: relative;
-    background-image: url("/pattern.png");
-    background-repeat: no-repeat;
-    background-size: auto 80%;
-    background-position: center;
-  }
-
-  #header::before {
-    content: "";
-    background: radial-gradient(
-      at right bottom,
-      rgba(173, 0, 255, 0.15),
-      rgba(0, 0, 0, 0) 80%
-    );
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-  }
-  #cotizar {
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: radial-gradient(
-      100% 100% at 0% 50.82%,
-      #1a5bd9 0%,
-      #287cdf 100%
-    );
-  }
-  #banner {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(22, 22, 22, 0.48) 0%,
-        rgba(33, 44, 71, 0.48) 100%
-      ),
-      url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")
-        0% 0% / 114.0625px 114.0625px repeat;
-  }
-  #IA {
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      white 30%,
-      white 70%,
-      transparent 100%
-    );
-  }
-
-  #services {
-    background: radial-gradient(49.93% 49.93% at 50% 50.07%, rgba(114, 90, 210, 0.15) 0%, rgba(114, 57, 158, 0.00) 100%);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  #us-box {
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: linear-gradient(
-      94deg,
-      rgba(39, 60, 113, 0.3) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    box-shadow: 0px 0px 40px 0px rgba(39, 62, 97, 0.25);
-  }
-
-  .team-card {
-    box-shadow: 0px 0px 20px 0px rgba(86, 73, 166, 0.25);
-  }
-</style>

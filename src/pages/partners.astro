@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const partners = [
+  {
+    category: "Tecnología",
+    companies: [
+      {
+        name: "Microsoft",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Microsoft_icon.svg",
+        description: "Partner oficial para soluciones cloud y desarrollo empresarial",
+        type: "Gold Partner",
+        since: "2020"
+      },
+      {
+        name: "AWS",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+        description: "Proveedor certificado de infraestructura cloud",
+        type: "Advanced Partner",
+        since: "2021"
+      },
+      {
+        name: "Google Cloud",
+        logo: "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg",
+        description: "Colaborador en soluciones de IA y machine learning",
+        type: "Premier Partner",
+        since: "2022"
+      }
+    ]
+  },
+  {
+    category: "Innovación",
+    companies: [
+      {
+        name: "NVIDIA",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",
+        description: "Colaboración en desarrollo de soluciones de IA y computación acelerada",
+        type: "Innovation Partner",
+        since: "2023"
+      },
+      {
+        name: "Intel",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Intel_logo_2023.svg",
+        description: "Aliado estratégico en tecnologías de edge computing",
+        type: "Technology Partner",
+        since: "2022"
+      },
+      {
+        name: "Meta",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
+        description: "Desarrollo conjunto de experiencias en realidad virtual",
+        type: "Metaverse Partner",
+        since: "2024"
+      }
+    ]
+  },
+  {
+    category: "Seguridad",
+    companies: [
+      {
+        name: "Cisco",
+        logo: "https://www.vectorlogo.zone/logos/cisco/cisco-icon.svg",
+        description: "Alianza en ciberseguridad y redes empresariales",
+        type: "Security Partner",
+        since: "2021"
+      },
+      {
+        name: "Fortinet",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fortinet_logo2.svg",
+        description: "Colaboración en soluciones de seguridad avanzada",
+        type: "Elite Partner",
+        since: "2023"
+      }
+    ]
+  }
+];
+
+const stats = [
+  { number: "50+", label: "Socios Globales" },
+  { number: "15+", label: "Años de Experiencia" },
+  { number: "100%", label: "Satisfacción" },
+  { number: "24/7", label: "Soporte Técnico" }
+];
+---
+
+<Layout title="Partners - Future Software">
+  <Navbar />
+  
+  <main class="relative min-h-screen bg-[#030014] cyber-grid pt-24">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+      <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-[150px]"></div>
+      <div class="absolute top-3/4 -right-1/4 w-96 h-96 bg-blue-500/30 rounded-full filter blur-[150px]"></div>
+    </div>
+
+    <!-- Header -->
+    <section class="relative container mx-auto px-4 py-16">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
+          Nuestros Partners
+        </h1>
+        <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+          Colaboramos con líderes globales para ofrecer soluciones tecnológicas de vanguardia que transforman el futuro digital.
+        </p>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="relative container mx-auto px-4 mb-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8" data-aos="fade-up">
+        {stats.map(stat => (
+          <div class="glass rounded-2xl p-8 text-center">
+            <h3 class="text-4xl font-bold text-cyan-400 mb-2">{stat.number}</h3>
+            <p class="text-gray-300">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Partners Grid -->
+    <section class="relative container mx-auto px-4 pb-32">
+      <div class="space-y-20">
+        {partners.map(category => (
+          <div class="space-y-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-white mb-8">Partners en {category.category}</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {category.companies.map(company => (
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition-all duration-300">
+                  <div class="flex items-center justify-between mb-6">
+                    <img 
+                      src={company.logo} 
+                      alt={company.name}
+                      class="h-12 w-auto"
+                    />
+                    <span class="px-4 py-1 text-sm glass rounded-full text-cyan-400">
+                      {company.type}
+                    </span>
+                  </div>
+                  <h3 class="text-xl font-semibold text-white mb-2">{company.name}</h3>
+                  <p class="text-gray-400 mb-4">{company.description}</p>
+                  <div class="flex items-center gap-2 text-gray-500">
+                    <span>Partner desde</span>
+                    <span class="text-cyan-400">{company.since}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto glass rounded-2xl p-12 text-center" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Interesado en ser nuestro partner?
+          </h2>
+          <p class="text-gray-400 text-lg mb-8">
+            Únete a nuestra red global de socios tecnológicos y creemos juntos el futuro digital.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6">
+            <a
+              href="/#contact"
+              class="px-8 py-4 neon-border rounded-xl glass hover:bg-white/10 transition-all duration-300"
+            >
+              <span class="text-white">Contactar</span>
+            </a>
+            <a
+              href="/portfolio"
+              class="px-8 py-4 border border-white/10 rounded-xl hover:border-cyan-400/50 hover:bg-white/5 transition-all duration-300"
+            >
+              <span class="text-white">Ver Proyectos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
