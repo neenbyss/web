@@ -1,26 +1,160 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: hsl(223, 12%, 11%);
+  --foreground: hsl(0, 0%, 100%);
+  --foreground-2: hsl(224, 51%, 87%);
+  --primary: hsl(248, 98%, 63%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(266, 100%, 64%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --default: hsl(230, 10%, 12%);
+  --default-primary: hsl(0, 0%, 100%);
+  --danger: hsl(0, 76%, 54%);
+  --danger-foreground: hsl(0, 0%, 100%);
+  --success: hsl(137, 79%, 58%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --content: hsl(230, 12%, 10%);
+  --content-1: hsl(228, 11%, 9%);
+  --border: hsl(224, 13%, 23%);
+  --ring: hsl(222, 12%, 16%);
+
+  --radius: 0.6rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-foreground-2: var(--foreground-2);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-default: var(--default);
+  --color-default-primary: var(--default-primary);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-content: var(--content);
+  --color-content-1: var(--content-1);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --ease-soft-spring: cubic-bezier(0.6, 0.06, 0, 1.22);
+
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-accordion-down: accordion-down 0.6s;
+  --animate-accordion-up: accordion-up 0.3s;
+
+  --animate-marquee: marquee var(--duration) linear infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-screen-2xl {
+  @apply mx-auto w-full max-w-screen-2xl px-3 sm:px-6;
+}
+
+@utility container-screen-xl {
+  @apply mx-auto w-full max-w-screen-xl px-3 sm:px-6;
+}
+
+@utility container-screen-lg {
+  @apply mx-auto w-full max-w-screen-lg px-3 sm:px-6;
+}
+
+@utility container-screen-md {
+  @apply mx-auto w-full max-w-screen-md px-3 sm:px-6;
+}
+
+@utility menu-animation {
+  @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 ease-soft-spring data-[state=open]:data-[side=bottom]:slide-in-from-top-3 data-[state=open]:data-[side=left]:slide-in-from-right-3 data-[state=open]:data-[side=right]:slide-in-from-left-3 data-[state=open]:data-[side=top]:slide-in-from-bottom-3 data-[state=closed]:data-[side=bottom]:slide-out-to-top-3 data-[state=closed]:data-[side=left]:slide-out-to-right-3 data-[state=closed]:data-[side=right]:slide-out-to-left-3 data-[state=closed]:data-[side=top]:slide-out-to-bottom-3 origin-top [animation-duration:.4s!important] data-[side=bottom]:origin-top data-[side=left]:origin-right data-[side=right]:origin-left data-[side=top]:origin-bottom;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground flex h-full min-h-svh flex-col text-sm;
+  }
+
+  main {
+    @apply grow;
+  }
+
+  svg {
+    @apply size-4.5;
+  }
+
+  strong {
+    @apply text-foreground font-medium;
+  }
+
+  p,
+  li,
+  span {
+    @apply text-foreground-2;
+  }
+
+  a {
+    @apply outline-none;
+  }
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 0s 0s,
+    color 0s 0s;
+  transition-delay: calc(infinity * 1s);
 }
