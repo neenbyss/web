@@ -10,82 +10,54 @@ import { Fade } from '@/components/ui/fade';
 
 const products = [
   {
-    title: 'Moonbeam',
-    link: 'https://gomoonbeam.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/moonbeam.png',
+    title: 'Aborigen Roleplay',
+    link: '/projects/aborigen-web',
+    thumbnail: '/projects/aborigen/img_cover.png',
   },
   {
-    title: 'Cursor',
-    link: 'https://cursor.so',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/cursor.png',
+    title: 'Asvitrax - Bot de Discord',
+    link: '/projects/asvitrax_bot',
+    thumbnail: '/projects/asvitrax/img_cover_asvitrax_bot.png',
   },
   {
-    title: 'Rogue',
-    link: 'https://userogue.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/rogue.png',
-  },
-
-  {
-    title: 'Editorially',
-    link: 'https://editorially.org',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/editorially.png',
+    title: 'Rediseño UI - CodeIQ Pause Menu',
+    link: '/projects/code_iq_pausemenu',
+    thumbnail: '/projects/codeiq_pausemenu/img_cover_cq_pausemenu.png',
   },
   {
-    title: 'Editrix AI',
-    link: 'https://editrix.ai',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/editrix.png',
+    title: 'Landing Page - Equitrans Andreu',
+    link: '/projects/equitransandreu',
+    thumbnail: '/projects/equitrans/img_cover_equitrans.png',
   },
   {
-    title: 'Pixel Perfect',
-    link: 'https://app.pixelperfect.quest',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/pixelperfect.png',
-  },
-
-  {
-    title: 'Algochurn',
-    link: 'https://algochurn.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/algochurn.png',
+    title: 'Diseño UI/UX - GENEX Consultoría',
+    link: '/projects/genex',
+    thumbnail: '/projects/genex/img_cover_cq_genex.png',
   },
   {
-    title: 'Aceternity UI',
-    link: 'https://ui.aceternity.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/aceternityui.png',
+    title: 'Diseño UI/UX para Hosting - Hennus',
+    link: '/projects/hennus_web',
+    thumbnail: '/projects/hennus/img_cover_hennus.png',
   },
   {
-    title: 'Tailwind Master Kit',
-    link: 'https://tailwindmasterkit.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png',
+    title: 'Rediseño de Panel Administrativo Resseller',
+    link: '/projects/hrcom_admin_panel',
+    thumbnail: '/projects/admin_panel_hrcom/panel_administrativo.png',
   },
   {
-    title: 'SmartBridge',
-    link: 'https://smartbridgetech.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/smartbridge.png',
+    title: 'Landing Page - Pactus Legis',
+    link: '/projects/pactus-legis',
+    thumbnail: '/projects/pactus-legis/img_cover.png',
   },
   {
-    title: 'Renderwork Studio',
-    link: 'https://renderwork.studio',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/renderwork.png',
-  },
-
-  {
-    title: 'Creme Digital',
-    link: 'https://cremedigital.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/cremedigital.png',
+    title: 'Panel de Cotizaciones - Singapur Ingeniería',
+    link: '/projects/singapur_panel',
+    thumbnail: '/projects/singapur_panel/img_cover_singapur_panel.png',
   },
   {
-    title: 'Golden Bells Academy',
-    link: 'https://goldenbellsacademy.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png',
-  },
-  {
-    title: 'Invoker Labs',
-    link: 'https://invoker.lol',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/invoker.png',
-  },
-  {
-    title: 'E Free Invoice',
-    link: 'https://efreeinvoice.com',
-    thumbnail: 'https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png',
+    title: 'Plataforma Educativa - Zeew Space',
+    link: '/projects/zeew',
+    thumbnail: '/projects/zeew/img_cover.png',
   },
 ];
 
@@ -186,7 +158,7 @@ const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className='group/product relative aspect-[3/2] w-[20rem] flex-shrink-0 overflow-hidden rounded-xl sm:w-[30rem]'
+      className='group/product relative aspect-[3/2] w-[20rem] max-w-full flex-shrink-0 overflow-hidden rounded-xl sm:w-[30rem]'
     >
       <Link href={product.link} className='block group-hover/product:shadow-2xl'>
         <img
@@ -198,7 +170,7 @@ const ProductCard = ({
         />
       </Link>
       <div className='bg-background pointer-events-none absolute inset-0 size-full opacity-0 transition group-hover/product:opacity-80' />
-      <h3 className='ease-soft-spring absolute bottom-8 left-4 max-w-full translate-y-10 truncate text-2xl leading-10 opacity-0 duration-300 group-hover/product:translate-y-0 group-hover/product:opacity-100 group-hover/product:delay-100'>
+      <h3 className='ease-soft-spring absolute bottom-8 left-4 max-w-full translate-y-10 text-2xl leading-10 opacity-0 duration-300 group-hover/product:translate-y-0 group-hover/product:opacity-100 group-hover/product:delay-100'>
         {product.title}
       </h3>
       {product.tag && (

@@ -26,6 +26,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { WebsiteIcon } from '@/icons/website';
 import { GithubIcon } from '@/icons/github';
 import { FigmaIcon } from '@/icons/figma';
+import { categories } from './categories';
 
 export function ProjectsSection() {
   const { category, search, setModeContent, mode_content, callbackProjects } = useProject();
@@ -49,6 +50,9 @@ export function ProjectsSection() {
 
   return (
     <>
+      <h2 className='text-primary text-3xl font-medium'>
+        {categories.find((n) => (category ? n.slug === category : n.slug === 'all'))?.label}
+      </h2>
       <div className='flex justify-between gap-2'>
         <span className='opacity-50'> {filter?.length ?? 0} Proyectos encontrados </span>
         {/** 

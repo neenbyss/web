@@ -67,7 +67,7 @@ const faqs = [
 
 export default function FAQS() {
   return (
-    <main className='container-screen-xl flex flex-col justify-between gap-4 space-y-6 px-2 pb-10 md:pt-15 lg:flex-row'>
+    <main className='container-screen-xl flex flex-col justify-between gap-4 space-y-6 pt-8 pb-8 lg:flex-row'>
       <h1 className='sr-only'> Preguntas Frecuentes </h1>
       <section className='w-full'>
         <AppBreadcrumb className='mb-3 bg-transparent px-0 py-0' />

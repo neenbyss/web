@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { notFound } from 'next/navigation';
 
 import { ProjectProvider } from '@/store/projects-store';
 import { Hero } from './section.hero';
@@ -39,9 +38,6 @@ export default async function ProjectsPage({ params }: Props) {
         <section className='container-screen-2xl flex flex-col gap-6 pt-10 pb-8 lg:grid lg:grid-cols-[0.28fr_1fr] xl:grid-cols-[0.25fr_1fr]'>
           <FilterSection />
           <div className='min-h-140'>
-            <h2 className='text-primary text-3xl font-medium'>
-              {categories.find((n) => n.slug === category)?.label}
-            </h2>
             <Suspense fallback={<span>Cargando...</span>}>
               <ProjectsSection />
             </Suspense>
