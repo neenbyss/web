@@ -29,13 +29,10 @@ export const metadata = createMetadata({
 export default async function ProjectsPage({ params }: Props) {
   const { category } = await params;
 
-  const categoryExists = categories.some((c) => c.slug === category);
-  if (!categoryExists) notFound();
-
   const projects = getAllProjects();
 
   return (
-    <ProjectProvider category={category} callbackProjects={projects}>
+    <ProjectProvider category={category ?? 'all'} callbackProjects={projects}>
       <main>
         <h1 className='sr-only'>Proyectos</h1>
         <Hero />
