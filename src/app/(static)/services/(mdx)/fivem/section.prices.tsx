@@ -6,6 +6,7 @@ import { ArrowRightIcon } from '@/icons/arrow-right';
 import { CheckTaskIcon } from '@/icons/check-task';
 import { cn } from '@/lib/utils';
 import { details } from 'motion/react-m';
+import Link from 'next/link';
 
 export default function PricingPlans() {
   // Planes de precios
@@ -54,6 +55,7 @@ export default function PricingPlans() {
                 </div>
 
                 <Button
+                  asChild
                   variant={
                     !pricing.custom
                       ? ['Bronce', 'Plata'].includes(pricing.name)
@@ -63,8 +65,10 @@ export default function PricingPlans() {
                   }
                   className='w-full'
                 >
-                  {pricing.custom ? 'Contáctanos' : 'Contratar Plan'}
-                  <ArrowRightIcon />
+                  <Link href={`/contact?service=${pricing.uid}`}>
+                    {pricing.custom ? 'Contáctanos' : 'Contratar Plan'}
+                    <ArrowRightIcon />
+                  </Link>
                 </Button>
 
                 <Separator className='my-4' />
@@ -95,6 +99,7 @@ export default function PricingPlans() {
 
 const pricingPlans = [
   {
+    uid: 'fivem_configuration_plan_bronce',
     name: 'Bronce',
     price: '$40.50',
     period: 'mes',
@@ -114,6 +119,7 @@ const pricingPlans = [
       'Servicio básico de mantenimiento para servidores con baja demanda de cambios o correcciones.',
   },
   {
+    uid: 'fivem_configuration_plan_plata',
     name: 'Plata',
     price: '$67',
     period: 'mes',
@@ -134,6 +140,7 @@ const pricingPlans = [
       'Ideal para servidores activos que requieren correcciones periódicas y contenido adicional básico.',
   },
   {
+    uid: 'fivem_configuration_plan_oro',
     name: 'Oro',
     price: '$108',
     period: 'mes',
@@ -155,6 +162,7 @@ const pricingPlans = [
       'Para servidores con alta actividad que necesitan soporte constante, mejoras de rendimiento y contenido frecuente.',
   },
   {
+    uid: 'fivem_configuration_plan_platino',
     name: 'Platino',
     price: '$162',
     period: 'mes',
@@ -175,6 +183,7 @@ const pricingPlans = [
       'Pensado para proyectos avanzados que necesitan un servidor completamente funcional y atención técnica prioritaria.',
   },
   {
+    uid: 'fivem_configuration_plan_diamante',
     name: 'Diamante',
     price: '$270',
     period: 'mes',
@@ -195,6 +204,7 @@ const pricingPlans = [
       'Solución integral para servidores de alto tráfico con soporte intensivo, personalización avanzada y atención total.',
   },
   {
+    uid: 'fivem_configuration_plan_personalizado',
     name: 'Personalizado',
     price: 'Personalizado',
     custom: true,

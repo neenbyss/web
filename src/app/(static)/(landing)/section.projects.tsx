@@ -7,6 +7,7 @@ import { useScroll, useTransform, useSpring, MotionValue } from 'motion/react';
 import * as m from 'motion/react-m';
 import { cn } from '@/lib/utils';
 import { Fade } from '@/components/ui/fade';
+import { Button } from '@/components/ui/button';
 
 const products = [
   {
@@ -15,10 +16,11 @@ const products = [
     thumbnail: '/projects/aborigen/img_cover.png',
   },
   {
-    title: 'Asvitrax - Bot de Discord',
-    link: '/projects/asvitrax_bot',
-    thumbnail: '/projects/asvitrax/img_cover_asvitrax_bot.png',
+    title: 'Plataforma Educativa - Zeew Space',
+    link: '/projects/zeew',
+    thumbnail: '/projects/zeew/img_cover.png',
   },
+
   {
     title: 'Rediseño UI - CodeIQ Pause Menu',
     link: '/projects/code_iq_pausemenu',
@@ -30,9 +32,9 @@ const products = [
     thumbnail: '/projects/equitrans/img_cover_equitrans.png',
   },
   {
-    title: 'Diseño UI/UX - GENEX Consultoría',
-    link: '/projects/genex',
-    thumbnail: '/projects/genex/img_cover_cq_genex.png',
+    title: 'Rediseño de Panel Administrativo Resseller',
+    link: '/projects/hrcom_admin_panel',
+    thumbnail: '/projects/admin_panel_hrcom/panel_administrativo.png',
   },
   {
     title: 'Diseño UI/UX para Hosting - Hennus',
@@ -40,9 +42,9 @@ const products = [
     thumbnail: '/projects/hennus/img_cover_hennus.png',
   },
   {
-    title: 'Rediseño de Panel Administrativo Resseller',
-    link: '/projects/hrcom_admin_panel',
-    thumbnail: '/projects/admin_panel_hrcom/panel_administrativo.png',
+    title: 'Diseño UI/UX - GENEX Consultoría',
+    link: '/projects/genex',
+    thumbnail: '/projects/genex/img_cover_genex.png',
   },
   {
     title: 'Landing Page - Pactus Legis',
@@ -55,9 +57,9 @@ const products = [
     thumbnail: '/projects/singapur_panel/img_cover_singapur_panel.png',
   },
   {
-    title: 'Plataforma Educativa - Zeew Space',
-    link: '/projects/zeew',
-    thumbnail: '/projects/zeew/img_cover.png',
+    title: 'Asvitrax - Bot de Discord',
+    link: '/projects/asvitrax_bot',
+    thumbnail: '/projects/asvitrax/img_cover_asvitrax_bot.png',
   },
 ];
 
@@ -133,6 +135,10 @@ const ProductsParallax = ({
           ))}
         </m.div>
       </m.div>
+
+      <Button asChild variant='outline' className='mx-auto w-fit'>
+        <Link href='/projects'>Saber Más</Link>
+      </Button>
     </div>
   );
 };

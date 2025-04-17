@@ -45,7 +45,20 @@ export const serviceCategories = [
   },
 ];
 
-export const serviceDetails = {
+type ServiceProps = {
+  title: string;
+  description: string;
+  icon: React.JSX.Element;
+  uid: string;
+  category?: string;
+  plans?: { uid: string; label: string }[];
+  cta?: {
+    label: string;
+    href: string;
+  };
+};
+
+export const serviceDetails: Record<string, ServiceProps[]> = {
   web_development: [
     {
       title: 'Landing Pages',
@@ -136,6 +149,36 @@ export const serviceDetails = {
         'Configuramos servidores de FiveM completamente optimizados y personalizados según la temática del rol (policíaco, urbano, realista, etc.). Instalamos recursos, configuramos permisos, bases de datos, scripts esenciales y ajustes clave para una experiencia fluida y escalable.',
       icon: <></>,
       uid: 'fivem_configuration',
+      plans: [
+        {
+          uid: 'fivem_configuration_plan_bronce',
+          label: 'Configuración para FiveM - Plan Bronce',
+        },
+        {
+          uid: 'fivem_configuration_plan_plata',
+          label: 'Configuración para FiveM - Plan Plata',
+        },
+        {
+          uid: 'fivem_configuration_plan_oro',
+          label: 'Configuración para FiveM - Plan Oro',
+        },
+        {
+          uid: 'fivem_configuration_plan_platino',
+          label: 'Configuración para FiveM - Plan Platino',
+        },
+        {
+          uid: 'fivem_configuration_plan_diamante',
+          label: 'Configuración para FiveM - Plan Diamante',
+        },
+        {
+          uid: 'fivem_configuration_plan_personalizado',
+          label: 'Configuración para FiveM - Plan Personalizado',
+        },
+      ],
+      cta: {
+        label: 'Ver planes de soporte',
+        href: '/services/fivem#planes-soporte',
+      },
     },
     {
       title: 'Desarrollo de Scripts de FiveM',
@@ -150,13 +193,6 @@ export const serviceDetails = {
         'Brindamos mantenimiento y soporte técnico para servidores de FiveM. Incluye resolución de errores, optimización de recursos, actualizaciones de scripts, y atención personalizada ante problemas técnicos en producción.',
       icon: <></>,
       uid: 'fivem_support',
-    },
-    {
-      title: 'Creación de Mapas y Assets',
-      description:
-        'Diseñamos mapas personalizados, interiores y assets únicos adaptados a la historia o ambientación del servidor. Utilizamos herramientas de modelado 3D y edición de mapas para dar vida a espacios únicos dentro del entorno GTA V.',
-      icon: <></>,
-      uid: 'fivem_maps_assets',
     },
   ],
 
@@ -282,7 +318,7 @@ export const serviceDetails = {
   ],
 };
 
-export const serviceDetailsFeatured = [
+export const serviceDetailsFeatured: ServiceProps[] = [
   {
     title: 'Landing Pages',
     description:
@@ -337,6 +373,36 @@ export const serviceDetailsFeatured = [
     icon: <></>,
     uid: 'fivem_configuration',
     category: 'fivem',
+    plans: [
+      {
+        uid: 'fivem_configuration_plan_bronce',
+        label: 'Configuración para FiveM - Plan Bronce',
+      },
+      {
+        uid: 'fivem_configuration_plan_plata',
+        label: 'Configuración para FiveM - Plan Plata',
+      },
+      {
+        uid: 'fivem_configuration_plan_oro',
+        label: 'Configuración para FiveM - Plan Oro',
+      },
+      {
+        uid: 'fivem_configuration_plan_platino',
+        label: 'Configuración para FiveM - Plan Platino',
+      },
+      {
+        uid: 'fivem_configuration_plan_diamante',
+        label: 'Configuración para FiveM - Plan Diamante',
+      },
+      {
+        uid: 'fivem_configuration_plan_personalizado',
+        label: 'Configuración para FiveM - Plan Personalizado',
+      },
+    ],
+    cta: {
+      label: 'Ver planes de soporte',
+      href: '/services/fivem#planes-soporte',
+    },
   },
   {
     title: 'Desarrollo de Scripts de FiveM',

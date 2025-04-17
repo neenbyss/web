@@ -100,6 +100,20 @@ export function Categories() {
                   </h3>
                   <p className='grow'>{service.description}</p>
 
+                  {service.plans && service.cta && (
+                    <div className='mt-2.5 flex flex-col'>
+                      {' '}
+                      <span>
+                        {' '}
+                        Este servicio Incluye planes.{' '}
+                        <Link href={service.cta?.href} className='text-primary hover:underline'>
+                          {' '}
+                          Ver Planes{' '}
+                        </Link>{' '}
+                      </span>{' '}
+                    </div>
+                  )}
+
                   <span className='ease-soft-spring mt-4 flex items-center gap-2 opacity-60 duration-500 group-hover:opacity-100'>
                     {' '}
                     Solicitar Servicio{' '}

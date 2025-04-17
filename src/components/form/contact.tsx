@@ -29,6 +29,9 @@ import { serviceCategories, serviceDetails } from '@/utils/data/services';
 import { sendContactEmail } from './contact.action';
 import { useServerAction } from '@/hooks/use-server-action';
 import { SendIcon } from '@/icons/send';
+import { toast } from '@/hooks/use-toast';
+import { CheckIcon } from '@/icons/check';
+import { XIcon } from '@/icons/x';
 
 type ContactValueProps = z.infer<typeof ContactSchema>;
 
@@ -42,14 +45,43 @@ export function ContactForm() {
   const service = path.get('service') ?? '';
   const message = path.get('message') ?? '';
 
-  const {
-    execute: submitEmail,
-    isPending,
-    message: errorMessage,
-    status,
-    isSuccess,
-    isError,
-  } = useServerAction(sendContactEmail);
+  const { execute: submitEmail, isPending } = useServerAction(sendContactEmail, {
+    onSuccess() {
+      toast({
+        className: 'bg-success/40 border-success',
+        title: (
+          <span className='text-foreground flex items-center gap-2 text-base font-medium'>
+            {' '}
+            <CheckIcon /> Solicitud Enviada{' '}
+          </span>
+        ) as unknown as string,
+        description: (
+          <span className='text-foreground flex items-center gap-2'>
+            <EmailIcon />
+            Tu solicitud fue enviada correctamente.
+          </span>
+        ),
+      });
+    },
+    onError() {
+      toast({
+        className: 'bg-danger/40 border-danger',
+        title: (
+          <span className='text-foreground flex items-center gap-2 text-base font-medium'>
+            {' '}
+            <XIcon /> Error Inesperado{' '}
+          </span>
+        ) as unknown as string,
+        description: (
+          <span className='text-foreground flex items-center gap-2'>
+            <EmailIcon />
+            No se pudo procesar tu solicitud, intenta más tarde o Contáctanos en nuestro Servidor De
+            Discord.
+          </span>
+        ),
+      });
+    },
+  });
 
   const form = useForm<ContactValueProps>({
     defaultValues: { names, email, phone, company, service, message },
@@ -70,7 +102,11 @@ export function ContactForm() {
           {category?.title}
         </span>
       ),
-      items: values.map((x) => ({ value: x.uid, label: x.title })),
+      items: values.flatMap((x) =>
+        x.plans
+          ? x.plans.map((y) => ({ value: y.uid, label: y.label }))
+          : [{ value: x.uid, label: x.title }],
+      ),
     };
   });
 

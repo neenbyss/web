@@ -36,6 +36,7 @@ import { MessageIcon } from '@/components/ui/message';
 import { FileIcon } from '@/icons/file';
 import { CodeIcon } from '@/icons/code';
 import { LaunchIcon } from '@/icons/launch';
+import { globalLinks } from '@/utils/data/global-links';
 
 const data = [
   {
@@ -630,7 +631,7 @@ function LazamientoYSoporte() {
                 {' '}
                 Soporte Por Email{' '}
               </span>
-              <p> team@neenbyss.com </p>
+              <a href={`mailto:${globalLinks.email.link}`}> {globalLinks.email.label} </a>
             </div>
           </div>
           <div className='my-2 flex gap-2'>
@@ -640,7 +641,11 @@ function LazamientoYSoporte() {
                 {' '}
                 Soporte Por Discord{' '}
               </span>
-              <a href='#' className='hover:text-primary underline'>
+              <a
+                href={globalLinks.discord.link}
+                target='_blank'
+                className='hover:text-primary underline'
+              >
                 {' '}
                 Enlace de Invitación{' '}
               </a>

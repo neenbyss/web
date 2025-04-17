@@ -2,7 +2,6 @@
 import { useRef } from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Separator } from '../ui/separator';
@@ -13,7 +12,6 @@ import { EmailIcon } from '@/icons/email';
 import { Socials } from '@/utils/data/socials';
 import { NeenbyssIcon } from '@/icons/neenbyss';
 import { CheckTaskIcon } from '@/icons/check-task';
-import { CalendarIcon } from '@/icons/calendar';
 
 import CIRCLES_FOOTER from '@/resources/svg/CIRCLES_FOOTER.svg';
 import FOOTER_VECTOR from '@/resources/svg/FOOTER_VECTOR.svg';
@@ -72,8 +70,8 @@ export function Footer() {
                 <CheckTaskIcon /> Sin Compromiso
               </li>
             </ul>
-            <Button>
-              Agenda tu consulta Gratis <CalendarIcon />
+            <Button asChild>
+              <Link href={'/contact'}>Consulta Sin Compromiso</Link>
             </Button>
           </div>
 

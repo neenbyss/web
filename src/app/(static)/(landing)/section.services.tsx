@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { serviceCategories, serviceDetails } from '@/utils/data/services';
 
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export function Services() {
   return (
@@ -24,8 +25,8 @@ export function Services() {
             necesidades de cada proyecto para impulsar el éxito de nuestros clientes.{' '}
           </Fade>
           <Fade as='p' direction='right' delay={0.6}>
-            <Button variant='outline' className='w-fit'>
-              Explorar más Servicios
+            <Button asChild variant='outline' className='w-fit'>
+              <Link href='/services'>Explorar más Servicios</Link>
             </Button>
           </Fade>
         </div>

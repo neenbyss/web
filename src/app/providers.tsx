@@ -7,6 +7,7 @@ import 'dayjs/locale/es';
 import { useEffect, useState } from 'react';
 
 import { NeenbyssIcon } from '@/icons/neenbyss';
+import { Toaster } from '@/components/ui/toaster';
 dayjs.locale('es');
 dayjs.extend(localizedFormat);
 
@@ -36,6 +37,7 @@ export function Providers({
         )}
       </AnimatePresence>
       <LazyMotion features={domAnimation}>{children}</LazyMotion>
+      <Toaster />
     </>
   );
 }

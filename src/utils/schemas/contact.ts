@@ -5,7 +5,10 @@ const indexedServices = Object.entries(serviceDetails).flatMap(([category, servi
   services.map((service) => ({ ...service, category })),
 );
 
-const enums = indexedServices.map((x) => x.uid);
+// Extendemos enums para incluir tanto los servicios como los planes
+const enums = indexedServices.flatMap((service) =>
+  service.plans ? [service.uid, ...service.plans.map((plan) => plan.uid)] : [service.uid],
+);
 
 export const ContactSchema = z.object({
   names: z.string().min(1, 'Se requieren tus Nombres Completos'),
