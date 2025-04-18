@@ -9,6 +9,7 @@ export function Services() {
 
   return (
     <section
+      id='services'
       className='border-y py-25'
       style={{ backgroundColor: `rgba(${categoryService.color}, .02)` }}
     >

@@ -69,7 +69,11 @@ export function Categories() {
               <SpotlightCard
                 key={i}
                 onClick={() => {
-                  route.push(`/contact?service=${service.uid}`);
+                  route.push(
+                    service.plans && service.cta
+                      ? `${service.cta.href}`
+                      : `/contact?service=${service.uid}`,
+                  );
                 }}
                 spotlightColor={`rgba(${color}, .4)`}
                 className={cn(

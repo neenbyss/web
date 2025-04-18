@@ -6,12 +6,16 @@ import { SearchIcon } from '@/icons/search';
 import { cn } from '@/lib/utils';
 import { useProject } from '@/store/projects-store';
 import { categories } from './categories';
-import { use } from 'react';
+import { use, useRef } from 'react';
 import { ProjectCategory } from '@/types/project';
 
 export function FilterSection() {
   const { category, setCategory, setSearch, search, callbackProjects } = useProject();
   const projects = use(callbackProjects);
+
+  const handleScroll = () => {
+    window.scrollTo({ top: 100, behavior: 'smooth' });
+  };
 
   return (
     <div>
@@ -33,7 +37,10 @@ export function FilterSection() {
               key={i}
               href={`/projects?category=${slug}`}
               scroll={false}
-              onClick={() => setCategory(slug)}
+              onClick={() => {
+                setCategory(slug);
+                handleScroll();
+              }}
               className={cn(
                 'group flex h-10 gap-3 rounded-lg pr-3 duration-300',
                 category === slug ? 'bg-primary/10' : 'hover:bg-default',
