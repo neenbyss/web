@@ -6,7 +6,7 @@ import { Faqs } from './section.faqs';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Desarrollo Web | Neenbyss',
+  title: 'Desarrollo Web',
   description:
     'Creamos sitios web profesionales, landing pages, tiendas online y paneles administrativos con tecnologías modernas como Next.js, Tailwind y más. Rápidos, seguros y adaptados a tu negocio.',
   openGraph: {

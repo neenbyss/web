@@ -3,7 +3,7 @@ import { Categories } from './section.categories';
 import { Hero } from './section.hero';
 
 export const metadata = createMetadata({
-  title: 'Servicios de Software Personalizado | Neenbyss',
+  title: 'Servicios de Software Personalizado',
   description:
     'Conoce todos nuestros servicios personalizados en desarrollo web, aplicaciones móviles, Discord, FiveM, diseño UI/UX y consultoría técnica. Creamos soluciones tecnológicas a la medida de tus necesidades.',
   openGraph: {

@@ -7,7 +7,7 @@ import { serviceCategories } from '@/utils/data/services';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Diseño UI/UX Profesional | Neenbyss',
+  title: 'Diseño UI/UX Profesional',
   description:
     'Creamos interfaces atractivas, intuitivas y funcionales para apps web, móviles y plataformas como FiveM. Mejora la experiencia de tus usuarios con un diseño que convierte.',
   openGraph: {

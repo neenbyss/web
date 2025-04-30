@@ -8,7 +8,7 @@ import Glossary from './section.glosario';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Servicios para Servidores de FiveM | Scripts, Soporte y Configuración - Neenbyss',
+  title: 'Servicios para Servidores de FiveM | Scripts, Soporte y Configuración',
   description:
     'Ofrecemos desarrollo de scripts personalizados, configuración avanzada de servidores y soporte técnico profesional para FiveM. Lleva tu servidor al siguiente nivel con soluciones hechas a medida.',
   openGraph: {
