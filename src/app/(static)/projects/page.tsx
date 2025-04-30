@@ -23,6 +23,24 @@ export const metadata = createMetadata({
   title: 'Proyectos',
   description:
     'Explorá nuestra colección de proyectos destacados que demuestran nuestra experiencia y capacidad para crear soluciones digitales innovadoras. Cada proyecto refleja nuestro compromiso con la excelencia y la satisfacción del cliente.',
+  keywords: [
+    'diseños web',
+    'diseño de interfaces',
+    'fivem',
+    'programadores para fivem',
+    'scripts para fivem',
+    'software a medida',
+    'sistemas personalizados',
+    'aplicaciones web',
+    'automatización empresarial',
+    'Neenbyss',
+  ],
+  openGraph: {
+    images: ['https://neenbyss.com/og_proyectos.png'],
+  },
+  twitter: {
+    images: ['https://neenbyss.com/og_proyectos.png'],
+  },
 });
 
 export default async function ProjectsPage({ params }: Props) {

@@ -3,6 +3,11 @@ import './globals.css';
 import { Outfit } from 'next/font/google';
 import { createMetadata } from '@/lib/metadata';
 import { Providers } from './providers';
+import { Viewport } from 'next';
+
+export const viewport: Viewport = {
+  themeColor: '#191B20',
+};
 
 export const metadata = createMetadata({
   title: {
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='es'>
       <body className={font.className + ' antialiased'}>
         <Providers>{children}</Providers>
       </body>

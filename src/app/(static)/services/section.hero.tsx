@@ -19,15 +19,16 @@ export function Hero() {
           Soluciones Tecnológicas <span className='text-primary'>Integrales</span>{' '}
         </h2>
         <p className='max-w-2xl'>
-          En <strong>Neenbyss</strong> ofrecemos un ecosistema completo de servicios digitales
+          En <strong>Neenbyss</strong> ofrecemos un ecosistema completo de{' '}
+          <strong>servicios digitales</strong>
           diseñados para transformar tu visión en realidad. Nuestro enfoque holístico combina
           tecnología de vanguardia con estrategia empresarial para crear soluciones que no solo
           resuelven problemas actuales, sino que preparan tu negocio para el futuro.
           <br />
           <br />
-          Cada servicio está respaldado por un equipo de expertos apasionados que aportan
-          conocimientos especializados y una mentalidad innovadora a cada proyecto, garantizando
-          resultados excepcionales que superan expectativas.
+          Cada servicio está respaldado por un equipo de expertos <strong>apasionados</strong> que
+          aportan conocimientos especializados y una mentalidad innovadora a cada proyecto,
+          garantizando resultados excepcionales que superan expectativas.
         </p>
 
         <Button asChild className='bg-background mt-6' variant='outline'>

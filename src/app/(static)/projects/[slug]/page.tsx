@@ -24,6 +24,14 @@ export async function generateMetadata(
     title: markdown?.meta.title,
     description: markdown?.meta.description,
     keywords: markdown?.meta.tags,
+    openGraph: {
+      url: `https://neenbyss.com/products/${slug}`,
+      images: markdown?.meta.cover ? markdown.meta.cover : [],
+    },
+    twitter: {
+      images: markdown?.meta.cover ? markdown.meta.cover : [],
+      card: 'summary_large_image',
+    },
   });
 }
 
