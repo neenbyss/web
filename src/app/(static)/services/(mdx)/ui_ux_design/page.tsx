@@ -47,14 +47,20 @@ export const metadata = createMetadata({
 export default function Page() {
   const color = serviceCategories.find((x) => x.uid === 'ui_ux_design')!.color;
   return (
-    <main>
-      <Hero />
-      <Intro {...{ color }} />
-      <Services />
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(uiUxStructuredData) }}
+      />
+      <main>
+        <Hero />
+        <Intro {...{ color }} />
+        <Services />
 
-      <Valores />
+        <Valores />
 
-      <Faqs />
-    </main>
+        <Faqs />
+      </main>
+    </>
   );
 }

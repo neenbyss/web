@@ -45,16 +45,22 @@ export const metadata = createMetadata({
 
 export default function Web_Development_Page() {
   return (
-    <main>
-      <Hero />
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webDevStructuredData) }}
+      />
+      <main>
+        <Hero />
 
-      <Services />
+        <Services />
 
-      <TabsSection />
+        <TabsSection />
 
-      <Valores />
+        <Valores />
 
-      <Faqs />
-    </main>
+        <Faqs />
+      </main>
+    </>
   );
 }
