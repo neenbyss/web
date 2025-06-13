@@ -3,30 +3,43 @@ import { TabsSection } from './section.tabs';
 import { Services } from './section.service';
 import { Valores } from './section.valores';
 import { Faqs } from './section.faqs';
-import { createMetadata } from '@/lib/metadata';
+import { createMetadata, generateStructuredData } from '@/lib/metadata';
+
+const webDevStructuredData = generateStructuredData('Service', {
+  name: 'Desarrollo Web Profesional',
+  description:
+    'Desarrollo de sitios web modernos, landing pages optimizadas, tiendas online y aplicaciones web con tecnologías de vanguardia.',
+  serviceType: 'Desarrollo de Software',
+  priceRange: '500 - 15000 MXN',
+});
 
 export const metadata = createMetadata({
-  title: 'Desarrollo Web',
+  title: 'Desarrollo Web Profesional | Landing Pages y Sitios Empresariales',
   description:
-    'Creamos sitios web profesionales, landing pages, tiendas online y paneles administrativos con tecnologías modernas como Next.js, Tailwind y más. Rápidos, seguros y adaptados a tu negocio.',
+    'Desarrollamos sitios web modernos, landing pages optimizadas, tiendas online y aplicaciones web con Next.js, React y tecnologías de vanguardia. SEO incluido.',
+  canonical: 'https://neenbyss.com/services/web-development',
   openGraph: {
     url: 'https://neenbyss.com/services/web-development',
     images: ['https://neenbyss.com/og_servicios_web.png'],
+    type: 'website',
   },
   twitter: {
     images: ['https://neenbyss.com/og_servicios_web.png'],
     card: 'summary_large_image',
   },
   keywords: [
-    'desarrollo web personalizado',
-    'landing pages a medida',
-    'sitios corporativos modernos',
-    'tiendas en línea',
-    'e-commerce profesional',
-    'paneles administrativos web',
-    'aplicaciones web',
-    'Next.js desarrollo',
-    'empresa de desarrollo web',
+    'desarrollo web profesional México',
+    'landing pages optimizadas',
+    'sitios web empresariales',
+    'tiendas online e-commerce',
+    'aplicaciones web modernas',
+    'desarrollo Next.js',
+    'sitios web responsivos',
+    'desarrollo web SEO',
+    'páginas web corporativas',
+    'desarrollo web a medida',
+    'programación web profesional',
+    'diseño web moderno',
   ],
 });
 

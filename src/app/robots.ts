@@ -6,9 +6,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/private/',
+        disallow: ['/admin/', '/api/', '/private/', '/_next/'],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: ['/admin/', '/private/'],
       },
     ],
-    sitemap: 'https://acme.com/sitemap.xml',
+    sitemap: 'https://neenbyss.com/sitemap.xml',
+    host: 'https://neenbyss.com',
   };
 }
