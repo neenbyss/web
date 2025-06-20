@@ -10,7 +10,7 @@ const structuredData = generateStructuredData('WebPage', {
 });
 
 export const metadata = createMetadata({
-  title: 'Servicios de Software Personalizado | Neenbyss',
+  title: 'Servicios de Software Personalizado',
   description:
     'Servicios integrales: desarrollo web profesional, configuración y reparación de servidores FiveM, diseño UI/UX y consultoría técnica. Soluciones tecnológicas a medida.',
   canonical: 'https://neenbyss.com/services',
