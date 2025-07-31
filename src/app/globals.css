@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
 
+@import './blog.css';
+
 :root {
   --background: hsl(223, 12%, 11%);
   --foreground: hsl(0, 0%, 100%);
@@ -140,7 +142,7 @@
   p,
   li,
   span {
-    @apply text-foreground-2;
+    @apply text-foreground-2 font-light;
   }
 
   a {

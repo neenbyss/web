@@ -39,14 +39,14 @@ const DialogContent = React.forwardRef<
       ref={ref}
       className={cn(
         'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg sm:rounded-lg',
-        'data-[state=closed]:zoom-out-[1.1] data-[state=open]:zoom-in-[1.02] data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-        'ease-in-out [animation-duration:.6s!important]',
+        'data-[state=closed]:zoom-out-[1.02] data-[state=open]:zoom-in-[1.02] data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+        'ease-in-out [animation-duration:.3s!important]',
         className,
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className='ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none'>
+      <DialogPrimitive.Close className='data-[state=open]:bg-foreground/5 data-[state=open]:text-muted-foreground absolute top-4 right-4 flex size-6.5 cursor-pointer items-center justify-center rounded-sm border opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none'>
         <XIcon className='h-4 w-4' />
         <span className='sr-only'>Close</span>
       </DialogPrimitive.Close>

@@ -68,12 +68,12 @@ const DropdownMenuSubContent: React.FC<
   />
 );
 
-const DropdownMenuContent: React.FC<React.ComponentProps<typeof DropdownMenuPrimitive.Content>> = ({
-  className,
-  sideOffset = 4,
-  ...props
-}) => (
-  <DropdownMenuPrimitive.Portal>
+const DropdownMenuContent: React.FC<
+  React.ComponentProps<typeof DropdownMenuPrimitive.Content> & {
+    container?: Element | DocumentFragment | null | undefined;
+  }
+> = ({ className, sideOffset = 4, container, ...props }) => (
+  <DropdownMenuPrimitive.Portal container={container}>
     <DropdownMenuPrimitive.Content
       sideOffset={sideOffset}
       className={cn(

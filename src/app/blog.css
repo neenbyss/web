@@ -1,0 +1,97 @@
+.blog h1 {
+  @apply mb-4 text-4xl font-medium;
+}
+
+.blog h2 {
+  @apply mt-8 mb-2 block text-2xl font-medium;
+}
+
+.blog h3 {
+  @apply my-1 mt-4 block text-lg font-medium;
+}
+
+.blog h4 {
+  @apply my-1 mt-2 block font-medium;
+}
+
+.blog h5,
+.blog h6 {
+  @apply my-1 block;
+}
+
+.blog p {
+  @apply py-1 leading-5 font-light;
+}
+
+.blog strong {
+  @apply text-foreground font-medium;
+}
+
+.blog ul {
+  @apply ms-4 block list-inside list-disc space-y-2;
+}
+
+.blog ol {
+  @apply ms-4 block list-inside list-decimal space-y-2;
+}
+
+.blog a {
+  @apply text-primary font-medium hover:underline;
+}
+
+.blog blockquote {
+  @apply border-ring bg-foreground/5 my-1.5 border-l-4 py-1.5 pl-4 font-light italic;
+}
+
+.blog code {
+  @apply bg-primary/30 px-2 py-0.5;
+}
+
+.blog pre {
+  @apply bg-foreground-2/5 overflow-auto p-4;
+}
+
+.blog pre code {
+  @apply !bg-transparent !px-0 !py-0;
+}
+
+.blog sup {
+  @apply px-2;
+}
+
+.blog table {
+  @apply bg-background w-full max-w-full overflow-hidden rounded-md;
+}
+
+.blog tbody {
+  @apply divide-border bg-background divide-y;
+}
+
+.blog tbody tr:nth-child(even) {
+  @apply bg-foreground/5;
+}
+
+.blog th {
+  @apply bg-primary/20 text-foreground px-4 py-2 text-start font-medium;
+}
+
+.blog td {
+  @apply text-foreground-2 px-4 py-2 text-sm whitespace-nowrap;
+}
+
+.blog hr {
+  @apply bg-border my-4 h-px w-full;
+}
+
+.blog img {
+  @apply my-2 h-auto w-full rounded-md;
+}
+
+.blog img[title] {
+  @apply h-auto w-full rounded-md;
+}
+
+.blog img[title]::before {
+  content: attr(title);
+  @apply border-foreground mb-4 block border-l-4 pl-2 text-lg;
+}

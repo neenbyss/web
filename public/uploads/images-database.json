@@ -1,0 +1,60 @@
+{
+  "images": [
+    {
+      "url": "/uploads/background-auth-web.png",
+      "name": "background-auth-web.png",
+      "width": 1920,
+      "height": 947,
+      "sizeKB": 2087,
+      "date": "2025-07-12T17:09:30.071Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/ad345cbc-e6d3-4282-8965-be1520a69462.jpg",
+      "name": "ad345cbc-e6d3-4282-8965-be1520a69462.jpg",
+      "width": 720,
+      "height": 705,
+      "sizeKB": 31,
+      "date": "2025-07-12T04:47:46.904Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/descarga.jpg",
+      "name": "descarga.jpg",
+      "width": 194,
+      "height": 259,
+      "sizeKB": 11,
+      "date": "2025-07-12T04:17:01.195Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/POST_WEB_NEENBYSS_1.png",
+      "name": "POST_WEB_NEENBYSS_1.png",
+      "width": 1080,
+      "height": 1080,
+      "sizeKB": 863,
+      "date": "2025-07-12T03:50:01.236Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/CONTÁCTANOS.png",
+      "name": "CONTÁCTANOS.png",
+      "width": 1920,
+      "height": 2015,
+      "sizeKB": 3406,
+      "date": "2025-07-12T03:49:28.846Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/POST_WEB_NEENBYSS.png",
+      "name": "POST_WEB_NEENBYSS.png",
+      "width": 1080,
+      "height": 1080,
+      "sizeKB": 863,
+      "date": "2025-07-12T03:47:38.936Z",
+      "metadata": {}
+    }
+  ],
+  "lastUpdated": "2025-07-12T17:09:30.072Z",
+  "totalImages": 6
+}
