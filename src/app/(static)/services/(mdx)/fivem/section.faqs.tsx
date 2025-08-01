@@ -36,9 +36,10 @@ export function Faqs() {
 
 const FAQs = [
   {
-    question: '¿Las actualizaciones diarias significan que recibiré un changelog todos los días?',
+    question:
+      '¿las actualizaciones semanales significa que recibire un changelog cada fin de semana?',
     answer:
-      'No necesariamente. Las actualizaciones indican que el trabajo avanza, pero los changelogs (registros detallados de cambios) solo se publican cuando hay avances significativos o tareas finalizadas. Dependiendo de la complejidad, estos pueden emitirse cada semana.',
+      'No necesariamente. Las actualizaciones indican que el trabajo avanza, pero los changelogs (registros detallados de cambios) solo se publican cuando hay avances significativos o tareas finalizadas. Dependiendo de la complejidad, estos pueden emitirse cada semana o diario.',
   },
   {
     question: '¿Si pago un plan más caro significa que todas mis tareas se harán en poco tiempo?',
@@ -71,8 +72,8 @@ const FAQs = [
       'No. Cada plan tiene un número de horas de trabajo semanal asignadas y un tiempo de respuesta estimado, lo que significa que las tareas se gestionan en función de la carga de trabajo y su complejidad. Si hay varias tareas pendientes, se seguirán los tiempos establecidos en el plan y el orden de prioridad.',
   },
   {
-    question: '¿Cuáles son los días y horarios de trabajo?',
+    question: '¿Cuáles es el horarios de trabajo?',
     answer:
-      'Trabajamos de lunes a viernes en un horario de 6:00 PM UTC a 1:00 AM UTC. Durante este tiempo, estamos disponibles para reuniones, consultas o colaboraciones. El tiempo de trabajo depende del plan contratado y varía diariamente. Esto no significa que estamos disponibles todo el tiempo o que todas las tareas se completarán en un solo día.',
+      'Trabajamos de lunes a sábados en un horario de 6:00 PM UTC a 1:00 AM UTC. Durante este tiempo, estamos disponibles para reuniones, consultas o colaboraciones. El tiempo de trabajo depende del plan contratado y varía diariamente. Esto no significa que estamos disponibles todo el tiempo o que todas las tareas se completarán en un solo día.',
   },
 ];
