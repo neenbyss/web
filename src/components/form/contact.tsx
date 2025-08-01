@@ -45,10 +45,14 @@ export function ContactForm() {
   const service = path.get('service') ?? '';
   const message = path.get('message') ?? '';
 
-  const { execute: submitEmail, isPending } = useServerAction(sendContactEmail, {
+  const {
+    execute: submitEmail,
+    isPending,
+    isSuccess,
+  } = useServerAction(sendContactEmail, {
     onSuccess() {
       toast({
-        className: 'bg-success/40 border-success',
+        className: 'bg-success/40 border-success backdrop-blur-sm',
         title: (
           <span className='text-foreground flex items-center gap-2 text-base font-medium'>
             {' '}
@@ -63,9 +67,9 @@ export function ContactForm() {
         ),
       });
     },
-    onError() {
+    onError({ message }) {
       toast({
-        className: 'bg-danger/40 border-danger',
+        className: 'bg-danger/40 border-danger backdrop-blur-sm',
         title: (
           <span className='text-foreground flex items-center gap-2 text-base font-medium'>
             {' '}
@@ -75,8 +79,7 @@ export function ContactForm() {
         description: (
           <span className='text-foreground flex items-center gap-2'>
             <EmailIcon />
-            No se pudo procesar tu solicitud, intenta más tarde o Contáctanos en nuestro Servidor De
-            Discord.
+            {message}
           </span>
         ),
       });

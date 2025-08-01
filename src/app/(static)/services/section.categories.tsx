@@ -71,7 +71,7 @@ export function Categories() {
                 onClick={() => {
                   route.push(
                     service.plans && service.cta
-                      ? `${service.cta.href}`
+                      ? `/service/${service.uid}`
                       : `/contact?service=${service.uid}`,
                   );
                 }}
