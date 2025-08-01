@@ -3,9 +3,11 @@ import { useState, useTransition } from 'react';
 
 type StatusType = 'idle' | 'success' | 'error';
 
+type ResultType = { status: StatusType; message: string };
+
 type Options = {
-  onSuccess?: () => void;
-  onError?: () => void;
+  onSuccess?: (data: ResultType) => void;
+  onError?: (data: ResultType) => void;
   onPending?: () => void;
 };
 
@@ -27,21 +29,26 @@ export function useServerAction<
         .then((result) => {
           const wasSuccess = result.success;
 
-          setStatus(wasSuccess ? 'success' : 'error');
-          setMessage(result.message);
+          const _status = wasSuccess ? 'success' : 'error';
+          const _msg = result.message;
+
+          setStatus(_status);
+          setMessage(_msg);
 
           if (wasSuccess) {
-            options?.onSuccess?.();
+            options?.onSuccess?.({ status: _status, message: _msg });
           } else {
-            options?.onError?.();
+            options?.onError?.({ status: _status, message: _msg });
           }
         })
         .catch((error) => {
           console.error('[useServerAction] Error:', error);
-          setStatus('error');
-          setMessage('Ha ocurrido un error inesperado.');
+          const _status = 'error';
+          const _msg = `Ha ocurrido un error inesperado. ${error}`;
+          setStatus(_status);
+          setMessage(`Ha ocurrido un error inesperado. ${error}`);
 
-          options?.onError?.();
+          options?.onError?.({ status: _status, message: _msg });
         });
     });
   };

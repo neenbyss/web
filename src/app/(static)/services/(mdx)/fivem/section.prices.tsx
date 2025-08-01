@@ -106,7 +106,7 @@ const pricingPlans = [
     discount3: '$108 por 3 meses (Ahorra 10%)',
     discount6: '$202 por 6 meses (Ahorra 15%)',
     features: [
-      'Disponibilidad diaria: hasta 2 horas (lunes a viernes)',
+      'Disponibilidad semanal: hasta 12 horas',
       'Máximo de 3 tareas diarias',
       'Tiempo de respuesta: 48 a 72 horas',
       'Mantenimiento básico y corrección de bugs menores',
@@ -127,7 +127,7 @@ const pricingPlans = [
     discount3: '$175 por 3 meses (Ahorra 13%)',
     discount6: '$324 por 6 meses (Ahorra 20%)',
     features: [
-      'Disponibilidad diaria: hasta 3 horas (lunes a viernes)',
+      'Disponibilidad diaria: hasta 18 horas',
       'Máximo de 4 tareas diarias',
       'Tiempo de respuesta: hasta 48 horas',
       'Corrección de bugs menores y medios',
@@ -148,7 +148,7 @@ const pricingPlans = [
     discount3: '$283 por 3 meses (Ahorra 12%)',
     discount6: '$513 por 6 meses (Ahorra 21%)',
     features: [
-      'Disponibilidad diaria: hasta 4 horas (lunes a viernes)',
+      'Disponibilidad diaria: hasta 24 horas',
       'Máximo de 5 tareas diarias',
       'Tiempo de respuesta: 24 a 48 horas',
       'Corrección de bugs medios',
@@ -170,7 +170,7 @@ const pricingPlans = [
     discount3: '$432 por 3 meses (Ahorra 11%)',
     discount6: '$783 por 6 meses (Ahorra 19%)',
     features: [
-      'Disponibilidad diaria: hasta 5 horas (lunes a viernes)',
+      'Disponibilidad diaria: hasta 30 horas',
       'Máximo de 6 tareas diarias',
       'Tiempo de respuesta: hasta 24 horas',
       'Corrección de bugs medios y complejos menore',
@@ -192,7 +192,7 @@ const pricingPlans = [
     discount3: '$675 por 3 meses (Ahorra 17%)',
     discount6: '$1215 por 6 meses (Ahorra 25%)',
     features: [
-      'Disponibilidad diaria: hasta 6 horas (lunes a viernes)',
+      'Disponibilidad diaria: hasta 36 horas semanal',
       'Máximo de 8 tareas diarias',
       'Tiempo de respuesta: hasta 24 horas',
       'Corrección de bugs medios y complejos',

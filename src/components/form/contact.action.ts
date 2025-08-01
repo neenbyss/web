@@ -3,16 +3,49 @@
 import nodemailer from 'nodemailer';
 import { ContactSchema } from '@/utils/schemas/contact';
 import { serviceDetails } from '@/utils/data/services';
+import { headers } from 'next/headers';
+import { isOnCooldown, setCooldown } from '@/lib/cooldown';
+
+async function getClientIP() {
+  const header = await headers();
+
+  const forwarded = header.get('x-forwarded-for');
+  if (!forwarded) return 'unknown';
+  return forwarded.split(',')[0].trim();
+}
 
 export async function sendContactEmail(data: any) {
   const parsed = ContactSchema.safeParse(data);
   if (!parsed.success) {
-    throw new Error('Datos Inválidos');
+    return { success: false, message: 'Datos Inválidos.' };
   }
+
+  const ip = await getClientIP();
+  const key = `cooldown:contact:${ip}`;
+
+  if (await isOnCooldown(key, 60)) {
+    return {
+      success: false,
+      message: 'Has enviado un mensaje recientemente. Intenta de nuevo en 1 minuto.',
+    };
+  }
+
+  await setCooldown(key, 60);
 
   const { names, email, phone, company, service: serviceUid, message } = parsed.data;
 
   const service = getServiceLabelByUid(serviceUid);
+
+  console.log(`
+        <h2>📬 Nuevo mensaje recibido</h2>
+        <p><strong>Nombre:</strong> ${names}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Teléfono:</strong> ${phone || 'No proporcionado'}</p>
+        <p><strong>Compañía:</strong> ${company || 'No proporcionado'}</p>
+        <p><strong>Servicio solicitado:</strong> ${service}</p>
+        <p><strong>Mensaje:</strong><br/>${message}</p>
+        <span><strong>CLIENT_IP:</strong> ${ip.toString()} </span>
+      `);
 
   try {
     const transporter = nodemailer.createTransport({
@@ -25,7 +58,7 @@ export async function sendContactEmail(data: any) {
       },
     });
 
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: `"Neenbyss Contacto" <team@neenbyss.com>`,
       to: 'team@neenbyss.com',
       replyTo: email,
@@ -38,6 +71,7 @@ export async function sendContactEmail(data: any) {
         <p><strong>Compañía:</strong> ${company || 'No proporcionado'}</p>
         <p><strong>Servicio solicitado:</strong> ${service}</p>
         <p><strong>Mensaje:</strong><br/>${message}</p>
+        <span><strong>CLIENT_IP:</strong> ${ip} </span>
       `,
     });
 
