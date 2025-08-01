@@ -191,7 +191,7 @@ const pricingPlans = [
     discount3: '$675 por 3 meses (Ahorra 17%)',
     discount6: '$1215 por 6 meses (Ahorra 25%)',
     features: [
-      'Disponibilidad semanal: hasta 36 horas semanal',
+      'Disponibilidad semanal: hasta 36 horas',
       'Máximo de 8 tareas diarias',
       'Tiempo de respuesta: hasta 24 horas',
       'Corrección de bugs medios y complejos',
