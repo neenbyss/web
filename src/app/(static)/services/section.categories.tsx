@@ -71,7 +71,7 @@ export function Categories() {
                 onClick={() => {
                   route.push(
                     service.plans && service.cta
-                      ? `/service/${service.uid}`
+                      ? `${service.cta.href}`
                       : `/contact?service=${service.uid}`,
                   );
                 }}
@@ -110,7 +110,11 @@ export function Categories() {
                       <span>
                         {' '}
                         Este servicio Incluye planes.{' '}
-                        <Link href={service.cta?.href} className='text-primary hover:underline'>
+                        <Link
+                          onClick={(e) => e.stopPropagation()}
+                          href={`${service.cta?.href}${service.cta.section}`}
+                          className='text-primary hover:underline'
+                        >
                           {' '}
                           Ver Planes{' '}
                         </Link>{' '}

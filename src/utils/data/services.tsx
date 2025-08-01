@@ -55,6 +55,7 @@ type ServiceProps = {
   cta?: {
     label: string;
     href: string;
+    section: string;
   };
 };
 
@@ -177,7 +178,8 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
       ],
       cta: {
         label: 'Ver planes de soporte',
-        href: '/services/fivem#plans',
+        href: '/services/fivem',
+        section: '#plans',
       },
     },
     {
@@ -401,7 +403,8 @@ export const serviceDetailsFeatured: ServiceProps[] = [
     ],
     cta: {
       label: 'Ver planes de soporte',
-      href: '/services/fivem#plans',
+      href: '/services/fivem',
+      section: '#plans',
     },
   },
   {
