@@ -106,7 +106,6 @@ const pricingPlans = [
     discount6: '$202 por 6 meses (Ahorra 15%)',
     features: [
       'Disponibilidad semanal: hasta 12 horas',
-      'Máximo de 3 tareas diarias',
       'Tiempo de respuesta: 48 a 72 horas',
       'Mantenimiento básico y corrección de bugs menores',
       'Ajustes de configuración simples',
@@ -127,7 +126,6 @@ const pricingPlans = [
     discount6: '$324 por 6 meses (Ahorra 20%)',
     features: [
       'Disponibilidad semanal: hasta 18 horas',
-      'Máximo de 4 tareas diarias',
       'Tiempo de respuesta: hasta 48 horas',
       'Corrección de bugs menores y medios',
       'Mantenimiento general y ajustes de configuración',
@@ -148,7 +146,6 @@ const pricingPlans = [
     discount6: '$513 por 6 meses (Ahorra 21%)',
     features: [
       'Disponibilidad semanal: hasta 24 horas',
-      'Máximo de 5 tareas diarias',
       'Tiempo de respuesta: 24 a 48 horas',
       'Corrección de bugs medios',
       'Integración de recursos open-source simples',
@@ -170,7 +167,6 @@ const pricingPlans = [
     discount6: '$783 por 6 meses (Ahorra 19%)',
     features: [
       'Disponibilidad semanal: hasta 30 horas',
-      'Máximo de 6 tareas diarias',
       'Tiempo de respuesta: hasta 24 horas',
       'Corrección de bugs medios y complejos menore',
       'Integración de recursos open-source',
@@ -192,7 +188,6 @@ const pricingPlans = [
     discount6: '$1215 por 6 meses (Ahorra 25%)',
     features: [
       'Disponibilidad semanal: hasta 36 horas',
-      'Máximo de 8 tareas diarias',
       'Tiempo de respuesta: hasta 24 horas',
       'Corrección de bugs medios y complejos',
       'Integración de recursos avanzados',
