@@ -4,6 +4,7 @@ import { Outfit } from 'next/font/google';
 import { createMetadata } from '@/lib/metadata';
 import { Providers } from './providers';
 import { Viewport } from 'next';
+import { GoogleAnalytics } from '@/components/layout/google-analytics';
 
 export const viewport: Viewport = {
   themeColor: '#191B20',
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={font.className + ' antialiased'}>
+        <GoogleAnalytics measurementId='G-PNEFE3E0PD' />
         <Providers>{children}</Providers>
       </body>
     </html>
