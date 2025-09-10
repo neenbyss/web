@@ -145,7 +145,11 @@ const TabsTrigger = ({
       data-state={activeTab === value ? 'active' : 'inactive'}
       data-orientation={orientation}
       onClick={() => setActiveTab(value)}
-      className={cn(tabStyles({ isSelected: activeTab === value, orientation }), className)}
+      className={cn(
+        tabStyles({ isSelected: activeTab === value, orientation }),
+        className,
+        'hover:brightness-80',
+      )}
       {...props}
     >
       {children}
