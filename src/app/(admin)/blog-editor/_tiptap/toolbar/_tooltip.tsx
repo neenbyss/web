@@ -32,7 +32,7 @@ export const TooltipBtn = ({
           {children}
         </Button>
       </TooltipTrigger>
-      <TooltipContent className='border px-2 py-1 text-xs'>
+      <TooltipContent className='border px-2 py-1 text-xs' side='bottom'>
         <span className='text-foreground flex flex-col items-center gap-0.5 text-center'>
           {content}{' '}
           {kbd && (

@@ -1,6 +1,42 @@
 {
   "images": [
     {
+      "url": "/uploads/3a77ee3a-92a7-47b6-85c0-a1fd7b19f81f_1.jpg",
+      "name": "3a77ee3a-92a7-47b6-85c0-a1fd7b19f81f_1.jpg",
+      "width": 1200,
+      "height": 1600,
+      "sizeKB": 394,
+      "date": "2025-09-15T01:06:47.101Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/image.png",
+      "name": "image.png",
+      "width": 720,
+      "height": 893,
+      "sizeKB": 132,
+      "date": "2025-09-14T04:52:23.184Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/Captura_de_pantalla_2025-09-11_110020.png",
+      "name": "Captura_de_pantalla_2025-09-11_110020.png",
+      "width": 402,
+      "height": 549,
+      "sizeKB": 513,
+      "date": "2025-09-14T04:52:06.197Z",
+      "metadata": {}
+    },
+    {
+      "url": "/uploads/3a77ee3a-92a7-47b6-85c0-a1fd7b19f81f.jpg",
+      "name": "3a77ee3a-92a7-47b6-85c0-a1fd7b19f81f.jpg",
+      "width": 1200,
+      "height": 1600,
+      "sizeKB": 394,
+      "date": "2025-09-10T20:16:14.443Z",
+      "metadata": {}
+    },
+    {
       "url": "/uploads/background-auth-web.png",
       "name": "background-auth-web.png",
       "width": 1920,
@@ -55,6 +91,6 @@
       "metadata": {}
     }
   ],
-  "lastUpdated": "2025-07-12T17:09:30.072Z",
-  "totalImages": 6
+  "lastUpdated": "2025-09-15T01:06:47.102Z",
+  "totalImages": 10
 }

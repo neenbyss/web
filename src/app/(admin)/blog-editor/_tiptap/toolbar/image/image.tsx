@@ -21,9 +21,14 @@ export function ImageMain() {
   const { isTab, setTab, activeImage } = useMedia();
   return (
     <Dialog>
-      <TooltipBtn asChild content='Imágen'>
+      <TooltipBtn
+        asChild
+        size='sm'
+        className='h-7 gap-1 pr-1.5 pl-1.5 font-light'
+        content='Insertar Imágen'
+      >
         <DialogTrigger>
-          <ImageIcon />
+          <ImageIcon /> Ins..
         </DialogTrigger>
       </TooltipBtn>
       <DialogContent className='flex max-h-[95vh] min-h-[95vh] max-w-[95%] flex-col gap-0 p-0'>

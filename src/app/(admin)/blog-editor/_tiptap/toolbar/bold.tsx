@@ -3,16 +3,14 @@ import { useEditor } from '../provider';
 import { TooltipBtn } from './_tooltip';
 
 export function Bold() {
-  const { editor } = useEditor();
+  const { editor, isBold, canBold } = useEditor();
 
   return (
     <TooltipBtn
-      onClick={() => {
-        editor?.chain().focus().toggleBold().run();
-      }}
+      onClick={() => editor?.chain().focus().toggleBold().run()}
       content='Negrita'
-      disabled={!editor?.can().chain().focus().toggleBold().run()}
-      isActive={editor?.isActive('bold')}
+      disabled={canBold}
+      isActive={isBold}
     >
       <BoldIcon />
     </TooltipBtn>

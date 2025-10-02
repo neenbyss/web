@@ -3,88 +3,70 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuSeparator,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useEditor } from '../provider';
 import { ChevronDownIcon } from '@/icons/chevron-down';
+import HeadingIcon from '../icons/heading';
 import { cn } from '@/lib/utils';
+import Heading1Icon from '../icons/heading1';
+import Heading2Icon from '../icons/heading2';
+import Heading3Icon from '../icons/heading3';
+import { JSX } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Button } from '@/components/ui/button';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
-const headings: { kbd?: string; level: Level; cn?: string }[] = [
+const headings: { lvl: Level; icon: JSX.Element }[] = [
   {
-    level: 1,
-    cn: 'text-xl font-medium',
+    lvl: 1,
+    icon: <Heading1Icon />,
   },
   {
-    level: 2,
-    cn: 'text-lg font-medium',
+    lvl: 2,
+    icon: <Heading2Icon />,
   },
   {
-    level: 3,
-    cn: 'text-base font-medium',
-  },
-  {
-    level: 4,
-  },
-  {
-    level: 5,
-  },
-  {
-    level: 6,
+    lvl: 3,
+    icon: <Heading3Icon />,
   },
 ];
 
 export function Headings() {
-  const { editor } = useEditor();
+  const { editor, isHeadingActive, canHeading, activeHeading } = useEditor();
 
   return (
-    <DropdownMenu>
+    <Popover>
       <TooltipBtn
         asChild
         size='xs'
-        className='bg-foreground/5 max-w-34 min-w-34 justify-start border px-3 text-sm'
+        className={cn('h-7 gap-px pr-0.5 pl-1.5', activeHeading && 'bg-primary/20')}
         content='Encabezados'
       >
-        <DropdownMenuTrigger>
-          {(() => {
-            if (editor.isActive('paragraph')) return 'Párrafo';
-            const activeHeading = headings.find(({ level }) =>
-              editor.isActive('heading', { level }),
-            );
-            if (activeHeading) return `Encabezado ${activeHeading.level}`;
-            return 'Texto';
-          })()}
-          <ChevronDownIcon className='ml-auto !size-3' />
-        </DropdownMenuTrigger>
+        <PopoverTrigger>
+          {activeHeading ? headings[activeHeading - 1].icon : <HeadingIcon />}
+          <ChevronDownIcon className='!size-3' />
+        </PopoverTrigger>
       </TooltipBtn>
-      <DropdownMenuContent>
-        <DropdownMenuCheckboxItem
-          disabled={!editor?.can().chain().focus().setParagraph().run()}
-          checked={editor.isActive('paragraph')}
-          onCheckedChange={() => {
-            editor?.chain().focus().setParagraph().run();
-          }}
-        >
-          Párrafo
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuSeparator />
-        {headings.map(({ level, cn: className }, i) => {
+      <PopoverContent onlyStartMenu className='flex flex-col gap-0.5'>
+        {headings.map(({ lvl: level }, i) => {
           return (
-            <DropdownMenuCheckboxItem
+            <Button
               key={i}
-              disabled={!editor?.can().chain().focus().toggleHeading({ level: level }).run()}
-              checked={editor.isActive('heading', { level })}
-              onCheckedChange={() => {
+              disabled={canHeading(level)}
+              onClick={() => {
                 editor?.chain().focus().toggleHeading({ level: level }).run();
               }}
-              className={cn(className)}
+              size='sm'
+              variant={isHeadingActive(level) ? 'primary' : 'light'}
+              className='h-7 justify-start rounded-sm px-2 font-light'
             >
               Encabezado {level}
-            </DropdownMenuCheckboxItem>
+            </Button>
           );
         })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </PopoverContent>
+    </Popover>
   );
 }

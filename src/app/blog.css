@@ -28,11 +28,11 @@
 }
 
 .blog ul {
-  @apply ms-4 block list-inside list-disc space-y-2;
+  @apply ml-4 list-outside list-disc pl-1.5;
 }
 
 .blog ol {
-  @apply ms-4 block list-inside list-decimal space-y-2;
+  @apply list-inside list-decimal space-y-2;
 }
 
 .blog a {
@@ -40,11 +40,11 @@
 }
 
 .blog blockquote {
-  @apply border-ring bg-foreground/5 my-1.5 border-l-4 py-1.5 pl-4 font-light italic;
+  @apply border-primary/80 my-1.5 border-l-4 py-0.5 pl-2.5 font-light italic;
 }
 
 .blog code {
-  @apply bg-primary/30 px-2 py-0.5;
+  @apply !bg-foreground/10 border-primary/60 rounded-sm border !px-1 !py-px;
 }
 
 .blog pre {

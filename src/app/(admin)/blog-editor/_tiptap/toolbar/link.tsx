@@ -7,6 +7,7 @@ import { LinkIcon } from '../icons/link';
 import { TooltipBtn } from './_tooltip';
 import { LinkBlock } from '../forms/link-block';
 import React, { ComponentProps, ReactNode, useState } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export function Link({
   children,
@@ -19,17 +20,17 @@ export function Link({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <DropdownMenu open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen}>
       <TooltipBtn asChild content={content ?? 'Crear Link'}>
-        <DropdownMenuTrigger>{children ?? <LinkIcon />}</DropdownMenuTrigger>
+        <PopoverTrigger>{children ?? <LinkIcon />}</PopoverTrigger>
       </TooltipBtn>
-      <DropdownMenuContent {...{ container }}>
+      <PopoverContent onlyStartMenu>
         <LinkBlock
           onSave={() => {
             setOpen(false);
           }}
         />
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </PopoverContent>
+    </Popover>
   );
 }

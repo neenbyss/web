@@ -6,6 +6,10 @@ import rehypeHighlight from 'rehype-highlight';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['next-mdx-remote'],
+  webpack(config: { resolve: { alias: { [x: string]: string } } }) {
+    config.resolve.alias['prosemirror-model'] = require.resolve('prosemirror-model');
+    return config;
+  },
 };
 const withMDX = createMDX({
   options: {

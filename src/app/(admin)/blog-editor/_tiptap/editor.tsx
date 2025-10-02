@@ -1,15 +1,13 @@
 'use client';
-import { EditorContent, Extension, useEditor } from '@tiptap/react';
+import { EditorContent, useEditor } from '@tiptap/react';
 import { EditorProvider } from './provider';
 import { Toolbar } from './toolbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { extensions } from './extensions';
-import { BubbleMenu } from './bubble';
-import { LinkBubbleMenu } from './bubble/link';
 
 export function Editor() {
   const initEditor = useEditor({
-    extensions: extensions as Extension[],
+    extensions: extensions,
     immediatelyRender: false,
   });
 
@@ -28,8 +26,6 @@ export function Editor() {
             className='bg-content blog h-full rounded-b-lg border-x border-b p-2 [&_>_div]:min-h-40 [&_div]:outline-none'
             editor={initEditor}
           />
-          <BubbleMenu />
-          <LinkBubbleMenu />
         </div>
       </EditorProvider>
       <div className='bg-content mt-8 p-4'>{initEditor.getHTML()}</div>

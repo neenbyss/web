@@ -11,68 +11,75 @@ import { AlignLeftIcon } from '../icons/align-left';
 import { AlignCenterIcon } from '../icons/align-center';
 import { AlignRightIcon } from '../icons/align-right';
 import { useEditor } from '../provider';
+import { cn } from '@/lib/utils';
+import { JSX } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-const AlignText = [
+const AlignText: {
+  label: string;
+  icon: JSX.Element;
+  type: 'left' | 'center' | 'right' | 'justify';
+}[] = [
   {
     label: 'Izquierda',
     type: 'left',
-    icon: AlignLeftIcon,
+    icon: <AlignLeftIcon />,
   },
   {
     label: 'Centro',
     type: 'center',
-    icon: AlignCenterIcon,
+    icon: <AlignCenterIcon />,
   },
   {
     label: 'Derecha',
     type: 'right',
-    icon: AlignRightIcon,
+    icon: <AlignRightIcon />,
   },
   {
     label: 'Justificar',
     type: 'justify',
-    icon: AlignJustifyIcon,
+    icon: <AlignJustifyIcon />,
   },
 ];
 
-export function Align({
-  container,
-}: {
-  container?: Element | DocumentFragment | null | undefined;
-}) {
-  const { editor } = useEditor();
+export function Align() {
+  const { editor, activeTextAlign, canTextAlign, isTextAlign } = useEditor();
 
   return (
-    <DropdownMenu>
+    <Popover>
       <TooltipBtn
         onClick={(e) => e.stopPropagation()}
         asChild
         size='xs'
-        className='bg-foreground/5 border'
-        content='Alinear'
+        className='h-7 gap-px pr-0.5 pl-1.5'
+        content='Alinear Texto'
       >
-        <DropdownMenuTrigger>
-          <AlignJustifyIcon />
+        <PopoverTrigger>
+          {activeTextAlign ? (
+            AlignText.find((x) => x.type === activeTextAlign)?.icon
+          ) : (
+            <AlignLeftIcon />
+          )}
           <ChevronDownIcon className='ml-0.5 size-3' />
-        </DropdownMenuTrigger>
+        </PopoverTrigger>
       </TooltipBtn>
       <TooltipProvider>
-        <DropdownMenuContent container={container} className='flex items-center gap-1'>
-          {AlignText.map(({ label, type, icon: Icon }) => (
+        <PopoverContent className='flex items-center gap-1' onlyStartMenu>
+          {AlignText.map(({ label, type, icon }) => (
             <TooltipBtn
               key={type}
               onClick={() => {
                 editor?.chain().focus().setTextAlign(type).run();
               }}
-              disabled={!editor?.can().chain().focus().setTextAlign(type).run()}
-              isActive={editor?.isActive({ textAlign: type })}
+              disabled={canTextAlign(type)}
+              isActive={isTextAlign(type)}
               content={label}
             >
-              <Icon />
+              {icon}
             </TooltipBtn>
           ))}
-        </DropdownMenuContent>
+        </PopoverContent>
       </TooltipProvider>
-    </DropdownMenu>
+    </Popover>
   );
 }

@@ -4,7 +4,7 @@ import { useEditor } from '../provider';
 import { TooltipBtn } from './_tooltip';
 
 export function UndoRendo() {
-  const { editor } = useEditor();
+  const { editor, canRedo, canUndo } = useEditor();
   return (
     <>
       <TooltipBtn
@@ -13,8 +13,7 @@ export function UndoRendo() {
         }}
         content={'Deshacer'}
         kbd='Ctrl + Z'
-        disabled={!editor?.can().chain().focus().undo().run()}
-        isActive={editor?.isActive('undo')}
+        disabled={canUndo}
       >
         <ArrowBackIcon />
       </TooltipBtn>
@@ -24,8 +23,7 @@ export function UndoRendo() {
         }}
         content={'Rehacer'}
         kbd='Ctrl + Y'
-        disabled={!editor?.can().chain().focus().redo().run()}
-        isActive={editor?.isActive('redo')}
+        disabled={canRedo}
       >
         <ArrowBackIcon className='scale-x-[-1]' />
       </TooltipBtn>

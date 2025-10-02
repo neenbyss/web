@@ -40,7 +40,6 @@ export function MediaFiles() {
           transition={{
             duration: 0.3,
           }}
-          initial='hidden'
           animate='show'
           exit='hidden'
         />
@@ -49,7 +48,7 @@ export function MediaFiles() {
         {activeImage && (
           <motion.div
             className={cn(
-              'bg-content absolute top-0 right-0 z-20 h-full max-h-full w-full max-w-full overflow-y-auto md:max-w-[90%] md:border-l',
+              'bg-content absolute top-0 right-0 z-20 h-full max-h-full w-full max-w-full overflow-y-auto md:max-w-[60%] md:border-l',
             )}
             variants={{
               hidden: {
@@ -186,21 +185,11 @@ const Details = () => {
           </div>
 
           <div className='flex flex-col gap-2 [&_>_label]:text-xs'>
-            <Textarea
-              label='Texto Alternativo'
-              value={activeImage.metadata.alt || ''}
-              onChange={(e) => updateMetadata('alt', e.target.value)}
-            />
             <Input
               type='text'
               label='Título'
               value={activeImage.metadata.title || ''}
               onChange={(e) => updateMetadata('title', e.target.value)}
-            />
-            <Textarea
-              label='Leyenda'
-              value={activeImage.metadata.caption || ''}
-              onChange={(e) => updateMetadata('caption', e.target.value)}
             />
             <Textarea
               label='Descripción'

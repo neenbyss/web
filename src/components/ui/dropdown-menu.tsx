@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const MenuItemVariants = cva(
-  'flex items-center relative gap-2 whitespace-nowrap cursor-pointer text-sm transition-colors disabled:pointer-events-none disabled:opacity-30 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0 active:scale-[.98] acitve:duration-[.05s] outline-none rounded-sm px-2 py-1.5',
+  'flex items-center relative gap-2 whitespace-nowrap cursor-pointer text-sm transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-30 data-[disabled]:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0 active:scale-[.98] acitve:duration-[.05s] outline-none rounded-sm px-2 py-1.5',
   {
     variants: {
       variant: {

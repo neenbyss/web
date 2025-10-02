@@ -11,19 +11,19 @@ import { Separator as HorizontalRule } from './separator';
 import { Blockquote } from './blockquote';
 import { Align } from './align';
 import { Link } from './link';
-import { OrderedList } from './ordered-list';
-import { BulletList } from './bullet-list';
 import { InsertImage } from './image';
+import { List } from './list';
 
 export function Toolbar() {
   return (
-    <div className='flex flex-wrap items-center gap-1'>
+    <div className='flex flex-wrap items-center gap-1.5'>
       <UndoRendo />
-      <Separator orientation='vertical' className='mx-2 h-6' />
+      <Separator orientation='vertical' className='h-6' />
 
       <Headings />
+      <List />
 
-      <Separator orientation='vertical' className='mx-2 h-6' />
+      <Separator orientation='vertical' className='h-6' />
 
       <Bold />
       <Italic />
@@ -31,22 +31,19 @@ export function Toolbar() {
       <StrikeThrough />
       <Align />
 
-      <Separator orientation='vertical' className='mx-2 h-6' />
+      <Separator orientation='vertical' className='h-6' />
 
-      <Link />
-      <InsertImage />
       <Blockquote />
       <Code />
       <HorizontalRule />
 
-      <Separator orientation='vertical' className='mx-2 h-6' />
-
-      <BulletList />
-      <OrderedList />
-
-      <Separator orientation='vertical' className='mx-2 h-6' />
+      <Separator orientation='vertical' className='h-6' />
+      <Link />
+      <InsertImage />
 
       <div className='ml-auto' />
+      <Separator orientation='vertical' className='h-6' />
+
       <Clear />
     </div>
   );

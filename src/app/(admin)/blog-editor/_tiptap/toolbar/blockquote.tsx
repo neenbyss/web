@@ -3,15 +3,15 @@ import { useEditor } from '../provider';
 import { TooltipBtn } from './_tooltip';
 
 export function Blockquote() {
-  const { editor } = useEditor();
+  const { editor, canBlockquote, isBlockquote } = useEditor();
   return (
     <TooltipBtn
       onClick={() => {
         editor?.chain().focus().toggleBlockquote().run();
       }}
-      content='Negrita'
-      disabled={!editor?.can().chain().focus().toggleBlockquote().run()}
-      isActive={editor?.isActive('blockquote')}
+      content='Citar en Bloque'
+      disabled={canBlockquote}
+      isActive={isBlockquote}
     >
       <BlockquoteIcon />
     </TooltipBtn>

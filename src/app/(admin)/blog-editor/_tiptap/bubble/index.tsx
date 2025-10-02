@@ -1,5 +1,5 @@
 import { useEditor } from '../provider';
-import { BubbleMenu as Menu } from '@tiptap/react';
+import { BubbleMenu as Menu } from '@tiptap/react/menus';
 import { Bold } from '../toolbar/bold';
 import { Italic } from '../toolbar/italic';
 import { Underline } from '../toolbar/underline';
@@ -12,7 +12,14 @@ export function BubbleMenu() {
   const { editor } = useEditor();
   const ref = useRef<HTMLDivElement>(null);
   return (
-    <Menu editor={editor} tippyOptions={{ duration: 100, appendTo: 'parent' }}>
+    <Menu
+      editor={editor}
+      options={{
+        placement: 'bottom',
+        offset: true,
+      }}
+      className='mt-2'
+    >
       <div ref={ref} className='bg-content flex items-center gap-1 rounded-lg border p-1.5 shadow'>
         <Bold />
         <Italic />
