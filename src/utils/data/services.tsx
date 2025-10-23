@@ -9,40 +9,55 @@ export const serviceCategories = [
   {
     title: 'Desarrollo Web',
     icon: <WebIcon />,
-    uid: 'web_development',
-    color: [93, 69, 253],
+    uid: 'website',
+    color: [126, 106, 255],
+    description:
+      'Webs rápidas y seguras que cargan en segundos y atraen clientes incluso mientras duermes',
+    href: true,
   },
   {
     title: 'Diseño UI/UX',
     icon: <DesignIcon />,
-    uid: 'ui_ux_design',
+    uid: 'ui-ux-design',
     color: [237, 37, 255],
+    description: 'Interfaces limpias y fluidas que guían al usuario a comprar sin fricciones',
+    href: true,
   },
   {
     title: 'FiveM',
     icon: <FiveMIcon />,
     uid: 'fivem',
     color: [255, 120, 37],
+    plans: true,
+    description:
+      'Servidores FiveM estables con sistemas únicos que mantienen a tu comunidad conectada más tiempo',
+    href: true,
   },
   {
     title: 'Discord',
     icon: <DiscordIcon />,
-    uid: 'discord_app',
+    uid: 'discord-apps',
     color: [114, 137, 218],
+    description:
+      'Bots y configuraciones que convierten tu servidor de Discord en una comunidad activa y ordenada',
   },
   {
     title: 'Mantenimiento & Consultoría',
     icon: <MaintenanceIcon />,
-    uid: 'maintenance_it',
+    uid: 'it',
     color: [66, 242, 227],
+    description:
+      'Prevención y soporte técnico que evitan caídas y mantienen tu negocio funcionando sin interrupciones',
   },
-
+  /** 
   {
     title: 'Aplicaciones Móviles',
     icon: <MobileIcon />,
-    uid: 'mobile_apps',
+    uid: 'mobile-apps',
     color: [155, 255, 78],
+    description: 'Apps ligeras y atractivas que tus clientes disfrutan usar en iOS y Android',
   },
+  */
 ];
 
 type ServiceProps = {
@@ -59,265 +74,166 @@ type ServiceProps = {
   };
 };
 
-export const serviceDetails: Record<string, ServiceProps[]> = {
-  web_development: [
+export const serviceDetails: Record<
+  string,
+  { uid: string; label: string; description: string; image: string }[]
+> = {
+  website: [
     {
-      title: 'Landing Pages',
-      description:
-        'Diseñamos y desarrollamos páginas de aterrizaje enfocadas en captar la atención del usuario desde el primer segundo. Utilizamos estrategias de conversión, estructura visual jerárquica, velocidad de carga optimizada y llamadas a la acción efectivas para lograr que el visitante tome decisiones rápidas, ya sea registrarse, comprar o contactar.',
-      icon: <></>,
-      uid: 'landing_pages',
+      uid: 'landing-pages',
+      label: 'Landing Pages',
+      description: 'Páginas diseñadas para convertir visitantes en clientes.',
+      image: '/images/services/landing-pages.webp',
     },
     {
-      title: 'Sitios Corporativos',
-      description:
-        'Creamos sitios institucionales completos que reflejan la identidad, valores y servicios de una empresa u organización. Incorporamos secciones como Nosotros, Servicios, Portafolio, Blog, Contacto, y más, adaptados al estilo de cada cliente. Todo con diseño responsive, SEO técnico y estándares de accesibilidad.',
-      icon: <></>,
-      uid: 'corporate_websites',
+      uid: 'sitios-corporativos',
+      label: 'Sitios Corporativos',
+      description: 'Presencia profesional en línea para tu empresa.',
+      image: '/images/services/sitios-corporativos.webp',
     },
     {
-      title: 'E-Commerce',
-      description:
-        'Desarrollamos tiendas online completas con panel de administración, pasarelas de pago seguras, control de inventario, sistemas de descuentos, métodos de envío, carrito de compras inteligente y gestión de pedidos. Ideal para productos físicos o digitales, escalables según el modelo de negocio.',
-      icon: <></>,
-      uid: 'e_commerce',
+      uid: 'ecommerce',
+      label: 'E-Commerce',
+      description: 'Tiendas online personalizadas y escalables.',
+      image: '/images/services/ecommerce.webp',
     },
     {
-      title: 'Dashboards & Paneles Administrativos',
-      description:
-        'Construimos paneles de administración y visualización de datos con enfoque en la eficiencia. Incluyen CRUDs personalizados, filtros avanzados, gráficos, exportación de datos y más. Adaptables a necesidades internas como manejo de usuarios, reportes financieros, registros y métricas en tiempo real.',
-      icon: <></>,
-      uid: 'dashboards',
+      uid: 'admin-panels',
+      label: 'Paneles Administrativos',
+      description: 'Control total de tu negocio con dashboards personalizados.',
+      image: '/images/services/admin-panels.webp',
     },
     {
-      title: 'Aplicaciones Web Progresivas (PWA)',
-      description:
-        'Desarrollamos aplicaciones web que funcionan offline, se instalan como apps en cualquier dispositivo y ofrecen una experiencia fluida y rápida. Ideales para productos digitales, herramientas internas o servicios que deben funcionar sin conexión o con conectividad limitada.',
-      icon: <></>,
-      uid: 'pwa_apps',
-    },
-    {
-      title: 'Integraciones API',
-      description:
-        'Conectamos tu sistema con otros servicios externos o internos para automatizar procesos, centralizar datos y mejorar el flujo de trabajo. Desde pasarelas de pago y CRMs hasta plataformas de envío, ERPs y soluciones a medida. Diseñamos integraciones robustas, seguras y escalables.',
-      icon: <></>,
-      uid: 'api_integrations',
+      uid: 'web-maintenance',
+      label: 'Mantenimiento de Páginas Web',
+      description: 'Actualizaciones, backups y soporte continuo.',
+      image: '/images/services/web-maintenance.webp',
     },
   ],
 
-  ui_ux_design: [
+  'ui-ux-design': [
     {
-      title: 'Diseño de Aplicaciones Web & Móviles',
-      description:
-        'Creamos interfaces intuitivas y visualmente atractivas para aplicaciones web y móviles. Nos enfocamos en la experiencia del usuario desde el primer clic, garantizando usabilidad, jerarquía visual clara, coherencia de marca y adaptabilidad a todo tipo de dispositivo.',
-      icon: <></>,
-      uid: 'web_mobile_design',
+      uid: 'diseno-web-movil',
+      label: 'Diseño Web & Móvil',
+      description: 'Interfaces modernas, intuitivas y funcionales.',
+      image: '/images/services/diseno-web-movil.webp',
     },
     {
-      title: 'Diseños UI/UX para Scripts de FiveM',
-      description:
-        'Diseñamos interfaces exclusivas para servidores y scripts de FiveM, optimizadas para facilitar la navegación, la interacción del jugador y la inmersión dentro del entorno roleplay. Nos adaptamos al estilo visual de cada servidor para ofrecer una experiencia coherente y funcional.',
-      icon: <></>,
-      uid: 'fivem_ui_ux',
+      uid: 'rediseño',
+      label: 'Rediseño de aplicaciones (Web & Móvil)',
+      description: 'Actualiza tu app para destacar frente a la competencia.',
+      image: '/images/services/rediseño.webp',
     },
     {
-      title: 'Prototipos Interactivos',
-      description:
-        'Diseñamos prototipos funcionales que permiten simular la navegación completa de una aplicación antes de su desarrollo. Estos prototipos ayudan a validar ideas, probar flujos de usuario y obtener retroalimentación temprana en el proceso de diseño.',
-      icon: <></>,
-      uid: 'interactive_prototypes',
-    },
-    {
-      title: 'Optimización de UX',
-      description:
-        'Analizamos productos digitales existentes para identificar fricciones y puntos de mejora en la experiencia del usuario. Rediseñamos flujos, mejoramos la arquitectura de información, jerarquía visual y simplificamos interacciones para maximizar la retención y conversión.',
-      icon: <></>,
-      uid: 'ux_optimization',
-    },
-    {
-      title: 'Wireframes & Mockups',
-      description:
-        'Elaboramos wireframes (bocetos estructurales) y mockups (versiones visuales detalladas) como parte del proceso previo al desarrollo. Esto permite definir con claridad la arquitectura, disposición y estilo de cada sección o pantalla.',
-      icon: <></>,
-      uid: 'wireframes_mockups',
+      uid: 'prototipos',
+      label: 'Prototipos Interactivos',
+      description: 'Simulaciones navegables para validar ideas.',
+      image: '/images/services/prototipos.webp',
     },
   ],
 
   fivem: [
     {
-      title: 'Configuración para FiveM',
-      description:
-        'Configuramos servidores de FiveM completamente optimizados y personalizados según la temática del rol (policíaco, urbano, realista, etc.). Instalamos recursos, configuramos permisos, bases de datos, scripts esenciales y ajustes clave para una experiencia fluida y escalable.',
-      icon: <></>,
-      uid: 'fivem_configuration',
-      plans: [
-        {
-          uid: 'fivem_configuration_plan_bronce',
-          label: 'Configuración para FiveM - Plan Bronce',
-        },
-        {
-          uid: 'fivem_configuration_plan_plata',
-          label: 'Configuración para FiveM - Plan Plata',
-        },
-        {
-          uid: 'fivem_configuration_plan_oro',
-          label: 'Configuración para FiveM - Plan Oro',
-        },
-        {
-          uid: 'fivem_configuration_plan_platino',
-          label: 'Configuración para FiveM - Plan Platino',
-        },
-        {
-          uid: 'fivem_configuration_plan_diamante',
-          label: 'Configuración para FiveM - Plan Diamante',
-        },
-        {
-          uid: 'fivem_configuration_plan_personalizado',
-          label: 'Configuración para FiveM - Plan Personalizado',
-        },
-      ],
-      cta: {
-        label: 'Ver planes de soporte',
-        href: '/services/fivem',
-        section: '#plans',
-      },
+      uid: 'setup-servidor',
+      label: 'Configuración desde Cero',
+      description: 'Instalación y configuración inicial de tu servidor RP.',
+      image: '/images/services/fivem-setup-inicial.webp',
     },
     {
-      title: 'Desarrollo de Scripts de FiveM',
-      description:
-        'Creamos scripts únicos y a medida para servidores de FiveM, desde sistemas de economía, inventario, trabajos, vehículos hasta mecánicas exclusivas. Nuestros scripts están pensados para optimizar el rendimiento del servidor y enriquecer la experiencia de los jugadores.',
-      icon: <></>,
-      uid: 'fivem_scripts',
+      uid: 'setup-produccion',
+      label: 'Ajuste para Producción',
+      description: 'Optimización y estructura para servidores estables.',
+      image: '/images/services/fivem-produccion.webp',
     },
     {
-      title: 'Soporte para FiveM',
-      description:
-        'Brindamos mantenimiento y soporte técnico para servidores de FiveM. Incluye resolución de errores, optimización de recursos, actualizaciones de scripts, y atención personalizada ante problemas técnicos en producción.',
-      icon: <></>,
-      uid: 'fivem_support',
+      uid: 'scripts',
+      label: 'Creación de Scripts',
+      description: 'Sistemas únicos adaptados a la temática de tu servidor.',
+      image: '/images/services/fivem-scripts.webp',
+    },
+    {
+      uid: 'optimizacion',
+      label: 'Optimización de Servidor',
+      description: 'Reduce el lag y mejora el rendimiento general.',
+      image: '/images/services/fivem-optimizacion.webp',
     },
   ],
 
-  maintenance_it: [
+  'discord-apps': [
     {
-      title: 'Mantenimiento Preventivo',
-      description:
-        'Realizamos revisiones periódicas de sitios y sistemas para garantizar su estabilidad, detectar posibles errores antes de que afecten al usuario final y extender la vida útil de las plataformas digitales.',
-      icon: <></>,
-      uid: 'preventive_maintenance',
+      uid: 'bots',
+      label: 'Bots Personalizados',
+      description: 'Automatiza tu comunidad con bots a medida.',
+      image: '/images/services/discord-bots.webp',
     },
     {
-      title: 'Actualización de Software',
-      description:
-        'Modernizamos tecnologías, frameworks, bibliotecas y dependencias utilizadas en tus sistemas. Aseguramos compatibilidad con versiones recientes, mejoras de seguridad y nuevos estándares web.',
-      icon: <></>,
-      uid: 'software_updates',
+      uid: 'servidores',
+      label: 'Organización de servidores',
+      description: 'Canales, roles y permisos bien estructurados.',
+      image: '/images/services/discord-servidores.webp',
     },
     {
-      title: 'Optimización de Performance',
-      description:
-        'Mejoramos la velocidad de carga, eficiencia del código, compresión de archivos y estructura general de los sitios para ofrecer una experiencia más rápida, aumentar el posicionamiento SEO y reducir la tasa de rebote.',
-      icon: <></>,
-      uid: 'performance_optimization',
-    },
-    {
-      title: 'Resolución de Errores (Bug Fixing)',
-      description:
-        'Identificamos, depuramos y corregimos errores funcionales, visuales o de compatibilidad en sitios web, aplicaciones y sistemas. Documentamos cada caso para prevenir futuras incidencias.',
-      icon: <></>,
-      uid: 'bug_fixing',
-    },
-    {
-      title: 'Backups & Seguridad',
-      description:
-        'Implementamos políticas de respaldo automáticas, almacenamiento seguro de información sensible, escaneos de seguridad, sistemas anti-hackeo y recuperación ante fallos o ataques.',
-      icon: <></>,
-      uid: 'backups_security',
-    },
-    {
-      title: 'Consultoría Técnica General',
-      description:
-        'Ofrecemos asesoramiento técnico personalizado en arquitectura de software, elección de tecnologías, escalabilidad de sistemas, soluciones a medida, automatización y mejoras operativas.',
-      icon: <></>,
-      uid: 'technical_consulting',
-    },
-    {
-      title: 'Auditoría de Código & Seguridad',
-      description:
-        'Revisamos código fuente, analizamos estándares de calidad, buscamos vulnerabilidades, y entregamos un informe detallado con recomendaciones prácticas para mejorar rendimiento y seguridad.',
-      icon: <></>,
-      uid: 'code_audit',
+      uid: 'tickets',
+      label: 'Administración de discord',
+      description: 'Sistemas de soporte, moderación y logs.',
+      image: '/images/services/discord-admin.webp',
     },
   ],
 
-  discord_app: [
+  it: [
     {
-      title: 'Bots de Discord',
-      description:
-        'Desarrollamos bots personalizados con comandos, automatizaciones, paneles de control y funciones avanzadas como verificación, gestión de rangos, reacciones, notificaciones automáticas y más. Ideales para comunidades, streamers o empresas.',
-      icon: <></>,
-      uid: 'discord_bots',
+      uid: 'mantenimiento',
+      label: 'Mantenimiento',
+      description: 'Prevención, soporte y resolución de fallos técnicos.',
+      image: '/images/services/it-mantenimiento.webp',
     },
     {
-      title: 'Configuración de Servidores',
-      description:
-        'Organizamos servidores de Discord de forma profesional: creación de canales, roles jerárquicos, sistemas de permisos, reglas, automatizaciones, categorías y estética visual que refleje tu comunidad o marca.',
-      icon: <></>,
-      uid: 'server_setup',
+      uid: 'consultoria',
+      label: 'Consultoría Técnica',
+      description: 'Asesoría especializada para decisiones tecnológicas.',
+      image: '/images/services/it-consultoria.webp',
     },
     {
-      title: 'Integraciones con APIs Externas',
-      description:
-        'Conectamos Discord con sistemas externos como Trello, Notion, bases de datos personalizadas, CRMs, plataformas educativas y más, para sincronizar datos y mejorar la productividad del servidor.',
-      icon: <></>,
-      uid: 'discord_api_integrations',
-    },
-    {
-      title: 'Sistemas de Verificación y Soporte',
-      description:
-        'Implementamos sistemas de verificación de usuarios mediante reacciones, preguntas, autenticación con bases de datos externas, y creación de sistemas de tickets para atención personalizada dentro de tu comunidad.',
-      icon: <></>,
-      uid: 'discord_verification_support',
+      uid: 'auditoria',
+      label: 'Auditoría de Código',
+      description: 'Revisión detallada para encontrar errores y malas prácticas.',
+      image: '/images/services/it-auditoria.webp',
     },
   ],
-
-  mobile_apps: [
+  /** 
+  'mobile-apps': [
     {
-      title: 'Aplicaciones Nativas',
-      description:
-        'Desarrollamos aplicaciones móviles optimizadas exclusivamente para Android o iOS. Aprovechamos al máximo las capacidades del sistema operativo como notificaciones, GPS, cámara, sensores y rendimiento, logrando una experiencia fluida y potente.',
-      icon: <></>,
-      uid: 'native_apps',
+      uid: 'nativas',
+      label: 'Apps Nativas',
+      description: 'Aplicaciones móviles optimizadas por plataforma (Android/iOS).',
+      image: '/images/services/mobile-nativas.webp',
     },
     {
-      title: 'Aplicaciones Híbridas',
-      description:
-        'Creamos apps multiplataforma con frameworks como React Native o Flutter, lo que permite reducir costos y tiempo de desarrollo sin perder calidad. Un solo código base que funciona perfectamente en Android y iOS.',
-      icon: <></>,
-      uid: 'hybrid_apps',
+      uid: 'multiplataforma',
+      label: 'Apps Multiplataforma',
+      description: 'Una sola base de código para todas las plataformas.',
+      image: '/images/services/mobile-cross.webp',
     },
     {
-      title: 'Integración de APIs',
-      description:
-        'Conectamos tu aplicación móvil con servicios externos para enviar o recibir datos en tiempo real: pagos, ubicación, notificaciones, CRMs, servicios propios o de terceros.',
-      icon: <></>,
-      uid: 'mobile_api_integration',
+      uid: 'integracion-api',
+      label: 'Integración de APIs',
+      description: 'Conecta tu app con servicios externos.',
+      image: '/images/services/mobile-api.webp',
     },
     {
-      title: 'UI/UX para Móviles',
-      description:
-        'Diseñamos interfaces centradas en la experiencia móvil: navegación simple, botones accesibles, legibilidad clara, interacción con gestos y adaptación a múltiples resoluciones.',
-      icon: <></>,
-      uid: 'mobile_ui_ux',
+      uid: 'ux-movil',
+      label: 'UX para Móviles',
+      description: 'Experiencias optimizadas para pantallas pequeñas.',
+      image: '/images/services/mobile-ux.webp',
     },
     {
-      title: 'Soporte y Actualización',
-      description:
-        'Mantenemos tus aplicaciones móviles actualizadas, libres de errores y adaptadas a las nuevas versiones del sistema operativo, resolviendo bugs, mejorando compatibilidad y agregando funcionalidades.',
-      icon: <></>,
-      uid: 'mobile_support',
+      uid: 'soporte',
+      label: 'Soporte & Actualizaciones',
+      description: 'Mantenimiento y nuevas versiones bajo demanda.',
+      image: '/images/services/mobile-soporte.webp',
     },
   ],
+  */
 };
 
 export const serviceDetailsFeatured: ServiceProps[] = [

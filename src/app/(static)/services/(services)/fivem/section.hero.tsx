@@ -3,24 +3,25 @@ import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
 import SERVICES_CIRCLES from '@/resources/svg/SERVICES_CIRCLES.svg';
 import SERVICES_VECTOR from '@/resources/svg/SERVICES_VECTOR.svg';
 import React from 'react';
-import { FiveMIcon } from '@/icons/fivem';
 
 export function Hero() {
   return (
     <>
-      <h1 className='sr-only'> Servicios Profesionales para Servidores FiveM </h1>
+      <h1 className='sr-only'> Desarrollo Web </h1>
       <section className='relative overflow-clip border-b'>
         <div className='container-screen-2xl relative z-10 py-5 sm:py-15'>
           <AppBreadcrumb className='mb-4 bg-transparent px-0 py-0' />
 
-          <h2 className='mb-8 max-w-3xl text-2xl font-medium sm:text-7xl'>
-            Servicios Profesionales para Servidores FiveM
+          <h2 className='mb-6 max-w-3xl text-2xl font-medium sm:text-6xl'>
+            Servicio de Desarrollo y Configuración para Servidores FiveM
           </h2>
-          <p className='max-w-2xl text-lg'>
-            Nuestro equipo de expertos resuelve problemas técnicos, adapta scripts personalizados y
-            mejora radicalmente la experiencia visual de tu servidor.
+          <p className='max-w-2xl'>
+            Si buscas crear un servidor de FiveM único, atractivo y optimizado, estás en el lugar
+            indicado. En Neenbyss, ofrecemos soluciones integrales en desarrollo, configuración y
+            soporte para que tu servidor destaque y atraiga jugadores comprometidos. Nuestro equipo
+            de expertos resuelve problemas técnicos, adapta scripts personalizados y mejora
+            radicalmente la experiencia visual de tu servidor.
           </p>
-          <FiveMIcon className='pointer-events-none absolute top-30 right-0 size-40 opacity-20 lg:opacity-100' />
         </div>
 
         <img

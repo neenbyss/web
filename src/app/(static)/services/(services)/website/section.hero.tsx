@@ -3,24 +3,24 @@ import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
 import SERVICES_CIRCLES from '@/resources/svg/SERVICES_CIRCLES.svg';
 import SERVICES_VECTOR from '@/resources/svg/SERVICES_VECTOR.svg';
 import React from 'react';
-import { FiveMIcon } from '@/icons/fivem';
 
 export function Hero() {
   return (
     <>
-      <h1 className='sr-only'> Servicios Profesionales para Servidores FiveM </h1>
+      <h1 className='sr-only'> Desarrollo Web </h1>
       <section className='relative overflow-clip border-b'>
         <div className='container-screen-2xl relative z-10 py-5 sm:py-15'>
           <AppBreadcrumb className='mb-4 bg-transparent px-0 py-0' />
 
-          <h2 className='mb-8 max-w-3xl text-2xl font-medium sm:text-7xl'>
-            Servicios Profesionales para Servidores FiveM
+          <h2 className='mb-6 max-w-3xl text-2xl font-medium sm:text-6xl'>
+            Servicio de Desarrollo Web Personalizado: Diseño y Funcionalidad a tu Medida
           </h2>
-          <p className='max-w-2xl text-lg'>
-            Nuestro equipo de expertos resuelve problemas técnicos, adapta scripts personalizados y
-            mejora radicalmente la experiencia visual de tu servidor.
+          <p className='max-w-2xl'>
+            En Neenbyss, entendemos que cada negocio es único y requiere una presencia en línea que
+            refleje su identidad y objetivos. Por ello, ofrecemos servicios integrales de desarrollo
+            web, abarcando desde el diseño visual hasta la funcionalidad técnica, adaptándonos a tus
+            necesidades específicas.
           </p>
-          <FiveMIcon className='pointer-events-none absolute top-30 right-0 size-40 opacity-20 lg:opacity-100' />
         </div>
 
         <img

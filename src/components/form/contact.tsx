@@ -24,7 +24,7 @@ import { UserIcon } from '@/icons/user';
 import { ContactSchema } from '@/utils/schemas/contact';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { serviceCategories, serviceDetails } from '@/utils/data/services';
+import { serviceDetails, serviceCategories } from '@/utils/data/services';
 
 import { sendContactEmail } from './contact.action';
 import { useServerAction } from '@/hooks/use-server-action';
@@ -105,11 +105,7 @@ export function ContactForm() {
           {category?.title}
         </span>
       ),
-      items: values.flatMap((x) =>
-        x.plans
-          ? x.plans.map((y) => ({ value: y.uid, label: y.label }))
-          : [{ value: x.uid, label: x.title }],
-      ),
+      items: values.flatMap((x) => ({ label: x.label, value: x.uid })),
     };
   });
 

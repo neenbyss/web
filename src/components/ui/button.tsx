@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 //import { LoaderCircleIcon } from '@/icons/loader-circle-icon';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer text-sm font-medium transition disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0 active:scale-[.98] acitve:duration-[.05s] outline-none',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer text-sm font-medium transition disabled:pointer-events-none disabled:opacity-30 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:shrink-0 active:scale-[.98] acitve:duration-[.05s] outline-none',
   {
     variants: {
       variant: {

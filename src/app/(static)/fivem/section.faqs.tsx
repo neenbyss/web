@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { QuestionIcon } from '@/icons/question';
+import Link from 'next/link';
 
 export function Faqs() {
   return (
@@ -33,6 +34,15 @@ export function Faqs() {
           );
         })}
       </Accordion>
+
+      <p className='mt-6 text-center opacity-60'>
+        Consulta nuestros{' '}
+        <Link href='/terms-fivem' className='text-primary hover:underline'>
+          {' '}
+          Términos y Condiciones De Fivem{' '}
+        </Link>{' '}
+        para más información
+      </p>
     </section>
   );
 }

@@ -7,6 +7,8 @@ import { ArrowRightIcon } from '@/icons/arrow-right';
 
 import SERVICES_CIRCLES from '@/resources/svg/SERVICES_CIRCLES.svg';
 import SERVICES_VECTOR from '@/resources/svg/SERVICES_VECTOR.svg';
+import { CheckIcon } from '@/icons/check';
+import { CheckTaskIcon } from '@/icons/check-task';
 
 export function Hero() {
   return (
@@ -14,26 +16,28 @@ export function Hero() {
       <div className='container-screen-2xl relative z-10 py-5 sm:py-10'>
         <AppBreadcrumb className='mb-4 bg-transparent px-0 py-0' />
 
-        <h2 className='mb-4 max-w-2xl text-3xl font-medium sm:text-6xl'>
-          {' '}
-          Soluciones Tecnológicas <span className='text-primary'>Integrales</span>{' '}
+        <h2 className='mb-8 max-w-4xl text-3xl font-medium capitalize sm:text-6xl'>
+          Servicios de <span className='text-primary'>tecnología</span> y programación avanzada
         </h2>
-        <p className='max-w-2xl'>
-          En <strong>Neenbyss</strong> ofrecemos un ecosistema completo de{' '}
-          <strong>servicios digitales</strong>
-          diseñados para transformar tu visión en realidad. Nuestro enfoque holístico combina
-          tecnología de vanguardia con estrategia empresarial para crear soluciones que no solo
-          resuelven problemas actuales, sino que preparan tu negocio para el futuro.
-          <br />
-          <br />
-          Cada servicio está respaldado por un equipo de expertos <strong>apasionados</strong> que
-          aportan conocimientos especializados y una mentalidad innovadora a cada proyecto,
-          garantizando resultados excepcionales que superan expectativas.
+        <p className='max-w-lg text-balance'>
+          Desarrollamos sistemas y aplicaciones diseñados para optimizar procesos, reducir costos y
+          potenciar tus resultados.
         </p>
 
-        <Button asChild className='bg-background mt-6' variant='outline'>
+        <div className='mt-8 mb-6 flex items-center gap-2'>
+          <span className='flex items-center gap-2'>
+            <CheckTaskIcon className='text-primary' />
+            Entrega Garantizada
+          </span>
+          <span className='flex items-center gap-2'>
+            <CheckTaskIcon className='text-primary' />
+            Soporte 24/7
+          </span>
+        </div>
+
+        <Button asChild className='bg-background' variant='outline'>
           <Link href='/projects'>
-            Ver Proyectos Realizados <ArrowRightIcon />
+            Nuestros Proyectos <ArrowRightIcon />
           </Link>
         </Button>
       </div>

@@ -1,6 +1,8 @@
 'use client';
 import * as React from 'react';
-import Link, { useLinkStatus } from 'next/link';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import { usePathname } from 'next/navigation';
 
 import { motion } from 'motion/react';
@@ -94,12 +96,14 @@ export default function Header() {
               </nav>
             </DrawerContent>
           </Drawer>
-          <Link
-            href='/'
-            className='text-foreground mr-1.5 flex items-center gap-2 text-xl font-bold transition hover:opacity-80 md:text-2xl'
-          >
-            <NeenbyssIcon className='size-6 md:size-8' />
-            NEENBYSS
+          <Link href='/' className='transition hover:opacity-80 md:text-2xl'>
+            <Image
+              alt='Neenbyss'
+              src='/nb-isotipo.png'
+              width={800}
+              height={800}
+              className='w-40 object-contain'
+            />
           </Link>
           {Navigation.map((props, i) => (
             <Link

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 import { NeenbyssIcon } from '@/icons/neenbyss';
 import { Toaster } from '@/components/ui/toaster';
+import Image from 'next/image';
 dayjs.locale('es');
 dayjs.extend(localizedFormat);
 
@@ -32,7 +33,13 @@ export function Providers({
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <NeenbyssIcon className='size-20 animate-pulse' />
+            <Image
+              alt='Neenbyss'
+              src='/nb-icon.png'
+              width={250}
+              height={250}
+              className='size-30 animate-pulse object-contain'
+            />
           </motion.div>
         )}
       </AnimatePresence>
