@@ -6,6 +6,15 @@ import rehypeHighlight from 'rehype-highlight';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['next-mdx-remote'],
+  async redirects() {
+    return [
+      {
+        source: '/discord',
+        destination: 'https://discord.com/invite/w8fem9RDr4',
+        permanent: true,
+      },
+    ];
+  },
 };
 const withMDX = createMDX({
   options: {
