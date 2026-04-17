@@ -33,9 +33,9 @@ const fivemStructuredData = generateStructuredData('Service', {
 });
 
 export const metadata = createMetadata({
-  title: 'Configuración y Reparación Servidores FiveM | Expertos en FiveM',
+  title: 'Programador FiveM | Desarrollo, Configuración y Reparación de Servidores',
   description:
-    'Configuramos tu servidor FiveM desde cero o reparamos el que tienes. Scripts personalizados, mapeo, ropa custom y mantenimiento. ¿Tu servidor crashea? Te ayudamos.',
+    '¿Buscas programadores FiveM? Creamos, configuramos y reparamos servidores FiveM. Scripts personalizados para ESX y QBCore, diseño de interfaces, soporte técnico y mantenimiento continuo. Consulta gratis.',
   canonical: 'https://neenbyss.com/services/fivem',
   openGraph: {
     url: 'https://neenbyss.com/services/fivem',
@@ -47,18 +47,38 @@ export const metadata = createMetadata({
     card: 'summary_large_image',
   },
   keywords: [
+    'programador fivem',
+    'programadores fivem',
+    'programador de fivem',
+    'desarrollador fivem',
+    'desarrolladores fivem',
+    'fivem server developer',
+    'crear servidor fivem',
     'configurar servidor fivem',
     'reparar servidor fivem',
+    'reparacion de servidores fivem',
+    'reparacion servidor fivem',
     'servidor fivem crashea',
+    'soporte fivem',
+    'fivem soporte',
+    'soporte tecnico fivem',
     'ayuda servidor fivem',
     'mantenimiento servidor fivem',
     'scripts fivem personalizados',
-    'crear servidor fivem desde cero',
+    'scripts fivem custom',
+    'desarrollo scripts fivem',
+    'scripts qbcore',
+    'scripts esx',
     'desarrollador fivem profesional',
+    'contratar programador fivem',
     'mapear servidor fivem',
     'ropa personalizada fivem',
-    'soporte técnico fivem',
-    'programador fivem México',
+    'pack de ropa fivem',
+    'programador fivem mexico',
+    'programador fivem españa',
+    'programador fivem chile',
+    'desarrollador fivem latinoamerica',
+    'pause menu fivem',
   ],
 });
 
