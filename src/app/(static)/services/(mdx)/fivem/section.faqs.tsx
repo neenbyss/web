@@ -83,6 +83,21 @@ const FAQs = [
       'Ofrecemos planes mensuales desde $40.50 USD hasta $270 USD según las horas de trabajo y la prioridad de respuesta que necesites. También manejamos planes personalizados para servidores grandes. Cada plan incluye mantenimiento, corrección de bugs y ajustes. Los scripts grandes o con diseño complejo pueden tener costo adicional.',
   },
   {
+    question: '¿Cuánto cuesta crear un servidor FiveM desde cero?',
+    answer:
+      'El precio depende de la temática y los sistemas que necesites. Un servidor básico con framework ESX o QBCore, recursos esenciales y configuración estándar suele partir desde $270 USD (plan Diamante). Servidores con scripts personalizados, interfaces NUI a medida o mecánicas únicas requieren presupuesto personalizado. Contáctanos con tus requisitos y te pasamos una cotización sin compromiso.',
+  },
+  {
+    question: '¿Puedo crear un servidor FiveM gratis?',
+    answer:
+      'FiveM permite hostear un servidor local de forma gratuita, pero montar un servidor público estable, con scripts custom, base de datos, antidetect, recursos optimizados y soporte requiere conocimientos técnicos y tiempo. Si quieres evitar errores comunes (crashes, pérdida de datos, conflictos entre scripts), conviene contratar a un programador FiveM con experiencia.',
+  },
+  {
+    question: '¿Tienen Discord para contactarlos?',
+    answer:
+      'Sí, puedes contactarnos por Discord, correo o el formulario de contacto de la web. Dentro de Discord coordinamos directamente en un canal privado con tu equipo durante el desarrollo y mantenimiento del servidor.',
+  },
+  {
     question: '¿Cómo priorizan las tareas y cómo veo el avance?',
     answer:
       'Gestionamos todas las tareas en Trello con prioridades (Baja, Media, Alta) y cuatro estados: Tareas, En proceso, Testeando y Terminado. Tú ves el progreso en tiempo real. Publicamos changelogs semanales (habitualmente los viernes) cuando hay avances significativos.',
