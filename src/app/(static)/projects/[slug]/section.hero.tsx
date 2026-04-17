@@ -31,7 +31,7 @@ export function Hero({ meta }: { meta: ProjectMetadata }) {
         <div className='container-screen-xl relative z-10 py-5 sm:py-12'>
           <AppBreadcrumb className='mb-6 bg-transparent px-0 py-0' />
 
-          <h2 className='mb-4 text-3xl font-medium text-balance sm:text-6xl'> {title} </h2>
+          <h1 className='mb-4 text-3xl font-medium text-balance sm:text-6xl'> {title} </h1>
           <p className='sr-only'> {description} </p>
 
           {date && (
