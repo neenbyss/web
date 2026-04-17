@@ -10,10 +10,12 @@ export function Intro() {
   return (
     <section className='container-screen-2xl py-20'>
       <h2 className='text-foreground mb-4 block text-xl font-medium sm:text-4xl'>
-        ¿Qué Ofrecemos?
+        ¿Qué Ofrecemos para tu Servidor FiveM?
       </h2>
       <p className='max-w-2xl'>
-        Comprendiendo la diferencia entre interfaz de usuario (UI) y experiencia de usuario (UX)
+        Servicios integrales para servidores FiveM: desde la configuración desde cero y desarrollo
+        de scripts personalizados hasta la reparación de servidores rotos y el soporte técnico
+        continuo que tu comunidad necesita.
       </p>
 
       <div className='mt-12 grid gap-6 lg:grid-cols-3'>

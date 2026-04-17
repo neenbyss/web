@@ -14,10 +14,12 @@ export default function PricingPlans() {
     <section id='plans' className='bg-content py-20'>
       <div className='container-screen-xl'>
         <h2 className='text-foreground mb-4 block text-xl font-medium sm:text-4xl'>
-          ¿Qué Ofrecemos?
+          Planes de Mantenimiento y Soporte para Servidores FiveM
         </h2>
         <p className='max-w-2xl'>
-          Comprendiendo la diferencia entre interfaz de usuario (UI) y experiencia de usuario (UX)
+          Elige un plan mensual con horas de trabajo garantizadas, tiempos de respuesta definidos y
+          mantenimiento continuo. Ideal para servidores en producción que necesitan un desarrollador
+          FiveM dedicado sin contratar a tiempo completo.
         </p>
         <div className='mt-12 grid gap-4 md:grid-cols-3'>
           {pricingPlans.map((pricing, i) => {
