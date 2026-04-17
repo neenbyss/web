@@ -9,7 +9,9 @@ import { Products } from './section.products';
 export default function Home() {
   return (
     <main>
-      <h1 className='sr-only'> Neenbyss </h1>
+      <h1 className='sr-only'>
+        Neenbyss - Desarrollo de Software, Servidores FiveM y Diseño UI/UX
+      </h1>
       <Hero />
       <Products />
       <section className='to-content-1 bg-gradient-to-b from-transparent'>
