@@ -150,7 +150,16 @@ export function generateStructuredData(type: 'Service' | 'Organization' | 'WebPa
           name: 'Neenbyss',
           url: 'https://neenbyss.com',
         },
-        areaServed: 'México',
+        areaServed: [
+          { '@type': 'Country', name: 'España' },
+          { '@type': 'Country', name: 'México' },
+          { '@type': 'Country', name: 'Chile' },
+          { '@type': 'Country', name: 'Perú' },
+          { '@type': 'Country', name: 'Colombia' },
+          { '@type': 'Country', name: 'Argentina' },
+          { '@type': 'Place', name: 'Latinoamérica' },
+        ],
+        availableLanguage: ['Spanish', 'es-MX', 'es-ES'],
         serviceType: data.serviceType,
         offers: {
           '@type': 'Offer',
