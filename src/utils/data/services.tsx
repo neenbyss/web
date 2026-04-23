@@ -194,6 +194,48 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
       uid: 'fivem_scripts',
     },
     {
+      title: 'Packs de Ropa & EUP para FiveM',
+      description:
+        'Edición de ropa y creación de packs personalizados para tu servidor FiveM: civiles, trabajos y uniformes para policía, EMS y bomberos (EUP). Todos los packs son stream-ready, sin marcas reales, compatibles con ESX y QBCore, y optimizados para no afectar el rendimiento del servidor ni saturar el streaming.',
+      icon: <></>,
+      uid: 'fivem_clothing_packs',
+    },
+    {
+      title: 'MLO & Mapeo para FiveM',
+      description:
+        'Diseño de MLO (Map Loader Object) e interiores personalizados para tu servidor FiveM: comisarías, hospitales, negocios, clubes y shells habitables. Mapeado con Codewalker y optimización de streaming para mantener rendimiento estable incluso en servidores con alto número de jugadores.',
+      icon: <></>,
+      uid: 'fivem_mlo_mapping',
+    },
+    {
+      title: 'Vehículos Custom para FiveM',
+      description:
+        'Packs de vehículos y addon-cars para FiveM con handling ajustado, liveries personalizadas (policía, taxis, empresas), tuning y modelos custom integrados a tu servidor. Configuración de spawn, categorías y precios adaptados a tu framework (ESX Legacy o QBCore).',
+      icon: <></>,
+      uid: 'fivem_custom_vehicles',
+    },
+    {
+      title: 'Interfaces NUI & HUD para FiveM',
+      description:
+        'Diseño y desarrollo de interfaces NUI para FiveM: pause menu, HUD, teléfono, inventario, menús de trabajo, paneles de admin y tiendas. Implementamos con HTML/CSS/JS, React o Vue sobre la capa NUI del cliente, con animaciones fluidas y estética acorde a la temática roleplay de tu servidor.',
+      icon: <></>,
+      uid: 'fivem_nui_ui',
+    },
+    {
+      title: 'Migración ESX ↔ QBCore',
+      description:
+        'Migraciones completas entre frameworks ESX y QBCore: conversión de scripts abiertos, adaptación de base de datos, permisos, economía y vehículos. Usamos un bridge propio que permite mantener compatibilidad con ambos frameworks sin duplicar código, ideal para servidores que quieren cambiar de framework sin perder jugadores ni datos.',
+      icon: <></>,
+      uid: 'fivem_esx_qbcore_migration',
+    },
+    {
+      title: 'Optimización & Antidetect FiveM',
+      description:
+        'Auditoría de rendimiento y optimización de servidores FiveM: reducción de tiempos de tick, limpieza de recursos redundantes, diagnóstico de scripts mal optimizados y configuración de antidetect/antihack para proteger tu servidor de cheats comunes. Ideal para servidores con caídas de FPS, lag o desconexiones recurrentes.',
+      icon: <></>,
+      uid: 'fivem_optimization',
+    },
+    {
       title: 'Soporte para FiveM',
       description:
         'Brindamos mantenimiento y soporte técnico para servidores de FiveM. Incluye resolución de errores, optimización de recursos, actualizaciones de scripts, y atención personalizada ante problemas técnicos en producción.',
