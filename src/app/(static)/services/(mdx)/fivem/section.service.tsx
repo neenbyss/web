@@ -25,9 +25,11 @@ export function Services() {
         </h2>
         <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3'>
           {serviceDetails[service].map((service, i) => {
+            const href = service.href ?? `/contact?service=${service.uid}`;
+            const ctaLabel = service.href ? 'Ver detalles' : 'Solicitar';
             return (
               <Link
-                href={`/contact?service=${service.uid}`}
+                href={href}
                 key={i}
                 className='group flex flex-col overflow-clip border-b pb-8 sm:border-none sm:pb-0'
               >
@@ -40,7 +42,7 @@ export function Services() {
                 <div className='flex sm:justify-end'>
                   <span className='ease-soft-spring flex w-fit items-center gap-2 pt-8 opacity-50 duration-700 group-hover:translate-x-0 group-hover:opacity-100 sm:-translate-x-5 sm:opacity-0'>
                     {' '}
-                    Solicitar <ArrowRightIcon />{' '}
+                    {ctaLabel} <ArrowRightIcon />{' '}
                   </span>
                 </div>
               </Link>

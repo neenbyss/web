@@ -55,6 +55,10 @@ type ServiceProps = {
   icon: React.JSX.Element;
   uid: string;
   category?: string;
+  // Si está presente, las tarjetas de servicio enlazan aquí en vez de
+  // llevar directo al formulario de contacto. Lo usamos para apuntar a
+  // sub-landings dedicadas (p. ej. /services/fivem/ropa).
+  href?: string;
   plans?: { uid: string; label: string }[];
   cta?: {
     label: string;
@@ -192,6 +196,7 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Creamos scripts únicos y a medida para servidores de FiveM, desde sistemas de economía, inventario, trabajos, vehículos hasta mecánicas exclusivas. Nuestros scripts están pensados para optimizar el rendimiento del servidor y enriquecer la experiencia de los jugadores.',
       icon: <></>,
       uid: 'fivem_scripts',
+      href: '/services/fivem/scripts',
     },
     {
       title: 'Packs de Ropa & EUP para FiveM',
@@ -199,6 +204,7 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Edición de ropa y creación de packs personalizados para tu servidor FiveM: civiles, trabajos y uniformes para policía, EMS y bomberos (EUP). Todos los packs son stream-ready, sin marcas reales, compatibles con ESX y QBCore, y optimizados para no afectar el rendimiento del servidor ni saturar el streaming.',
       icon: <></>,
       uid: 'fivem_clothing_packs',
+      href: '/services/fivem/ropa',
     },
     {
       title: 'MLO & Mapeo para FiveM',
@@ -465,6 +471,7 @@ export const serviceDetailsFeatured: ServiceProps[] = [
     icon: <></>,
     uid: 'fivem_scripts',
     category: 'fivem',
+    href: '/services/fivem/scripts',
   },
   {
     title: 'Soporte para FiveM',
