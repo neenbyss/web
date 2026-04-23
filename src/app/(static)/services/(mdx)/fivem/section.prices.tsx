@@ -50,10 +50,7 @@ export default function PricingPlans() {
                   {!pricing.custom && <span className='text-sm font-light opacity-40'> /mes </span>}
                 </span>
 
-                <div className='my-4 flex flex-col gap-2'>
-                  <span className='text-xs opacity-50'>{pricing.discount3}</span>
-                  <span className='text-xs opacity-50'>{pricing.discount6}</span>
-                </div>
+                <div className='my-4'></div>
 
                 <Button
                   asChild
@@ -102,10 +99,8 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_bronce',
     name: 'Bronce',
-    price: '$52.65',
+    price: '$68.45',
     period: 'mes',
-    discount3: '$140.40 por 3 meses (Ahorra 10%)',
-    discount6: '$262.60 por 6 meses (Ahorra 15%)',
     features: [
       'Disponibilidad semanal: hasta 12 horas',
       'Tiempo de respuesta: 48 a 72 horas',
@@ -122,10 +117,8 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_plata',
     name: 'Plata',
-    price: '$87.10',
+    price: '$113.23',
     period: 'mes',
-    discount3: '$227.50 por 3 meses (Ahorra 13%)',
-    discount6: '$421.20 por 6 meses (Ahorra 20%)',
     features: [
       'Disponibilidad semanal: hasta 18 horas',
       'Tiempo de respuesta: hasta 48 horas',
@@ -142,10 +135,8 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_oro',
     name: 'Oro',
-    price: '$140.40',
+    price: '$182.52',
     period: 'mes',
-    discount3: '$367.90 por 3 meses (Ahorra 12%)',
-    discount6: '$666.90 por 6 meses (Ahorra 21%)',
     features: [
       'Disponibilidad semanal: hasta 24 horas',
       'Tiempo de respuesta: 24 a 48 horas',
@@ -163,10 +154,8 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_platino',
     name: 'Platino',
-    price: '$210.60',
+    price: '$273.78',
     period: 'mes',
-    discount3: '$561.60 por 3 meses (Ahorra 11%)',
-    discount6: '$1017.90 por 6 meses (Ahorra 19%)',
     features: [
       'Disponibilidad semanal: hasta 30 horas',
       'Tiempo de respuesta: hasta 24 horas',
@@ -184,10 +173,8 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_diamante',
     name: 'Diamante',
-    price: '$351',
+    price: '$456.30',
     period: 'mes',
-    discount3: '$877.50 por 3 meses (Ahorra 17%)',
-    discount6: '$1579.50 por 6 meses (Ahorra 25%)',
     features: [
       'Disponibilidad semanal: hasta 36 horas',
       'Tiempo de respuesta: hasta 24 horas',
@@ -207,8 +194,6 @@ const pricingPlans = [
     name: 'Personalizado',
     price: 'Personalizado',
     custom: true,
-    discount3: 'Diseñado para proyectos con requerimientos fuera de los planes tradicionales.',
-    discount6: 'Escalable y ajustado a tus prioridades y presupuesto disponible.',
     note: 'Contáctanos para construir un plan completamente adaptado a las necesidades específicas de tu servidor.',
     color: [99, 102, 241], // Indigo brillante
     description:
