@@ -21,7 +21,7 @@ export default function PricingPlans() {
           mantenimiento continuo. Ideal para servidores en producción que necesitan un desarrollador
           FiveM dedicado sin contratar a tiempo completo.
         </p>
-        <div className='mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
           {pricingPlans.map((pricing, i) => {
             return (
               <SpotlightCard
@@ -57,7 +57,7 @@ export default function PricingPlans() {
                   variant={
                     pricing.custom
                       ? 'default'
-                      : pricing.name === 'Mantenimiento'
+                      : ['Básico', 'Mantenimiento'].includes(pricing.name)
                         ? 'outline'
                         : 'primary'
                   }
@@ -97,6 +97,26 @@ export default function PricingPlans() {
 
 const pricingPlans = [
   {
+    uid: 'fivem_configuration_plan_basico',
+    name: 'Básico',
+    price: '$89',
+    period: 'mes',
+    features: [
+      'Bolsa de 4 horas/mes',
+      'Tiempo de respuesta: 48-72 horas',
+      'Revisión mensual de estabilidad',
+      'Bugfixes menores (máximo 2h por ticket)',
+      'Instalación de 1 script open-source simple al mes',
+      'Ajustes puntuales de items, jobs o coordenadas',
+      'Soporte por Discord',
+    ],
+    note: 'Plan mínimo para servidores pequeños. Las horas no se acumulan entre meses. Tareas que superen las 2 horas, creación de scripts nuevos, migraciones, MLO y packs de ropa se cotizan aparte.',
+    recommended: false,
+    color: [100, 116, 139], // Slate
+    description:
+      'Bolsa mínima de horas para servidores pequeños que necesitan atención puntual sin un retainer completo.',
+  },
+  {
     uid: 'fivem_configuration_plan_mantenimiento',
     name: 'Mantenimiento',
     price: '$199',
@@ -106,15 +126,15 @@ const pricingPlans = [
       'Tiempo de respuesta: 24-48 horas',
       'Revisión semanal de estabilidad y logs',
       'Resolución de bugs menores y medios',
-      'Hasta 2 scripts open-source añadidos al mes',
-      'Mapeado ligero y ajustes de items, jobs y economía',
+      'Instalación y configuración de scripts open-source (hasta 2/mes)',
+      'Ajustes de items, jobs, coordenadas y economía',
       'Gestión de tareas en Trello con prioridades',
     ],
-    note: 'Retainer pensado para servidores ya en producción. No cubre configuración desde cero, migraciones completas, MLO grandes ni packs de ropa custom.',
+    note: 'Retainer para servidores ya en producción. La creación de scripts desde cero, MLO grandes, packs de ropa custom, migraciones completas y armado desde cero se cotizan aparte como proyecto.',
     recommended: false,
     color: [156, 163, 175], // Gris
     description:
-      'Programador de cabecera para servidores FiveM ya abiertos que necesitan mantenimiento continuo, bugfixes y ajustes puntuales.',
+      'Programador de cabecera para servidores en producción que necesitan bugfixes, configuración y ajustes continuos.',
   },
   {
     uid: 'fivem_configuration_plan_desarrollo',
@@ -124,17 +144,17 @@ const pricingPlans = [
     features: [
       'Disponibilidad semanal: 18-22 horas',
       'Tiempo de respuesta: hasta 24 horas',
-      'Hasta 2 scripts medios personalizados al mes',
-      'Integración de NUI (HUD, menús simples)',
+      'Revisión semanal y corrección de bugs medios',
+      'Instalación y ajuste de scripts open-source complejos',
       'Compatibilidad entre scripts (bridge ESX ↔ QBCore)',
-      'Mapeado mediano y balanceado activo de economía',
-      'Revisión completa semanal con changelog',
+      'Personalización visual de interfaces ya instaladas',
+      'Balanceado activo de economía, items y jobs',
     ],
-    note: 'Ideal para servidores con roadmap activo. MLOs grandes y packs de ropa / EUP custom se cotizan aparte.',
+    note: 'Enfocado en integración y ajuste continuo. La creación de scripts nuevos a medida, MLOs grandes y packs de ropa custom se cotizan aparte con presupuesto fijo por proyecto.',
     recommended: true,
     color: [93, 69, 253], // Primary
     description:
-      'Mantenimiento más desarrollo continuo de nuevas mecánicas para servidores que están creciendo y sumando funcionalidades mes a mes.',
+      'Mantenimiento ampliado con más horas para integraciones, personalización visual y balanceo continuo de servidores en crecimiento.',
   },
   {
     uid: 'fivem_configuration_plan_integral',
@@ -144,17 +164,17 @@ const pricingPlans = [
     features: [
       'Disponibilidad semanal: 28-36 horas',
       'Tiempo de respuesta: <12h crítico, <24h normal',
-      'Desarrollo de scripts complejos con NUI propia',
       'Configuración de VPS, hardening y anticheat',
-      'Integración de packs de ropa y vehículos',
-      'Ajuste de interfaces y branding (logos, colores)',
-      'Reunión semanal de alineación',
+      'Instalación de packs de ropa y vehículos',
+      'Ajuste de interfaces y branding (colores, logos, HUD existentes)',
+      'Adaptación entre scripts y resolución de conflictos',
+      'Asesoría continua de arquitectura y estabilidad',
     ],
-    note: 'Para servidores de alto tráfico o proyectos armando el servidor por fases a lo largo de varios meses. El armado completo a plazo fijo va como Plan Personalizado.',
+    note: 'Soporte intensivo, infraestructura y armado por fases. El desarrollo de scripts nuevos a medida, MLO completos y proyectos llave en mano se cotizan como Plan Personalizado o proyecto aparte.',
     recommended: false,
     color: [253, 224, 71], // Dorado
     description:
-      'Soporte intensivo y armado por fases para servidores grandes o proyectos que están construyendo su servidor a lo largo de varios meses.',
+      'Soporte intensivo, configuración de infraestructura y armado por fases para servidores grandes o en proceso de escalado.',
   },
   {
     uid: 'fivem_configuration_plan_personalizado',
@@ -164,15 +184,15 @@ const pricingPlans = [
     note: 'Contáctanos para construir un plan completamente adaptado a las necesidades específicas de tu servidor.',
     color: [99, 102, 241], // Indigo
     description:
-      '¿Tienes requisitos únicos? Armado desde cero a plazo fijo, SLAs especiales o combinaciones fuera de los planes estándar.',
+      'Armado desde cero a plazo fijo, desarrollo de scripts a medida, SLAs especiales o combinaciones fuera de los planes mensuales.',
     features: [
       'Definición de horas ajustadas a tu proyecto',
+      'Desarrollo de scripts a medida con scope cerrado',
       'Soporte en horarios y canales preferenciales',
       'Cronograma y presupuesto a medida',
       'Integración de funcionalidades específicas solicitadas',
       'Mantenimiento, desarrollo u optimización total según requerimientos',
-      'Revisión técnica y asesoría mensual incluida',
-      'Escalable según evolucione tu proyecto',
+      'Escalable según evolucione el proyecto',
     ],
   },
 ];

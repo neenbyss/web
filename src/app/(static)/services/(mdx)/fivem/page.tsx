@@ -12,7 +12,7 @@ const fivemStructuredData = generateStructuredData('Service', {
   description:
     'Catálogo completo de servicios profesionales para FiveM: configuración desde cero, reparación de servidores, desarrollo de scripts en Lua, packs de ropa y EUP, MLO y mapeo, vehículos custom, interfaces NUI, migración ESX↔QBCore y optimización de rendimiento.',
   serviceType: 'Desarrollo, Configuración y Mantenimiento de Servidores FiveM',
-  priceRange: '199 - 2000 USD',
+  priceRange: '89 - 2000 USD',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios FiveM',
@@ -21,7 +21,7 @@ const fivemStructuredData = generateStructuredData('Service', {
         '@type': 'Offer',
         name: 'Planes Mensuales FiveM',
         description:
-          'Planes mensuales con horas garantizadas y tiempos de respuesta definidos. Cuatro niveles: Mantenimiento ($199), Desarrollo ($349), Integral ($599) y Personalizado.',
+          'Planes mensuales con horas garantizadas y tiempos de respuesta definidos. Cinco niveles: Básico ($89), Mantenimiento ($199), Desarrollo ($349), Integral ($599) y Personalizado.',
         url: 'https://neenbyss.com/services/fivem#plans',
       },
       {

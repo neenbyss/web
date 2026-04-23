@@ -155,10 +155,14 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
     {
       title: 'Planes Mensuales FiveM',
       description:
-        'Contrata un programador FiveM dedicado mediante planes mensuales con horas garantizadas y tiempos de respuesta definidos, sin necesidad de un contrato full-time. Cuatro niveles según la etapa de tu servidor: Mantenimiento, Desarrollo, Integral o Personalizado.',
+        'Contrata un programador FiveM dedicado mediante planes mensuales con horas garantizadas y tiempos de respuesta definidos, sin necesidad de un contrato full-time. Cinco niveles según la etapa de tu servidor: Básico, Mantenimiento, Desarrollo, Integral y Personalizado.',
       icon: <></>,
       uid: 'fivem_configuration',
       plans: [
+        {
+          uid: 'fivem_configuration_plan_basico',
+          label: 'FiveM - Plan Básico',
+        },
         {
           uid: 'fivem_configuration_plan_mantenimiento',
           label: 'FiveM - Plan Mantenimiento',
@@ -420,11 +424,15 @@ export const serviceDetailsFeatured: ServiceProps[] = [
   {
     title: 'Planes Mensuales FiveM',
     description:
-      'Programador FiveM dedicado mediante planes mensuales con horas garantizadas: Mantenimiento, Desarrollo, Integral o Personalizado según la etapa de tu servidor.',
+      'Programador FiveM dedicado mediante planes mensuales con horas garantizadas: Básico, Mantenimiento, Desarrollo, Integral o Personalizado según la etapa de tu servidor.',
     icon: <></>,
     uid: 'fivem_configuration',
     category: 'fivem',
     plans: [
+      {
+        uid: 'fivem_configuration_plan_basico',
+        label: 'FiveM - Plan Básico',
+      },
       {
         uid: 'fivem_configuration_plan_mantenimiento',
         label: 'FiveM - Plan Mantenimiento',

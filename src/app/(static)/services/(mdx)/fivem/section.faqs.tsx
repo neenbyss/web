@@ -80,7 +80,7 @@ const FAQs = [
   {
     question: '¿Cuánto cuesta contratar un programador FiveM?',
     answer:
-      'Ofrecemos planes mensuales desde $199 USD (Mantenimiento) hasta $599 USD (Integral) según las horas de trabajo y la prioridad de respuesta que necesites, más un Plan Personalizado para proyectos fuera del estándar. Cada plan incluye revisión semanal, corrección de bugs y ajustes. Los scripts grandes o con diseño complejo pueden tener costo adicional.',
+      'Ofrecemos planes mensuales desde $89 USD (Básico) hasta $599 USD (Integral), más un Plan Personalizado para proyectos fuera del estándar. Los planes mensuales cubren mantenimiento, instalación de scripts open-source, ajustes y adaptaciones. La creación de scripts nuevos a medida, MLO completos y packs de ropa custom se cotizan como proyecto aparte.',
   },
   {
     question: '¿Cuánto cuesta crear un servidor FiveM desde cero?',
