@@ -153,39 +153,31 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
 
   fivem: [
     {
-      title: 'Configuración para FiveM',
+      title: 'Planes Mensuales FiveM',
       description:
-        'Configuramos servidores de FiveM completamente optimizados y personalizados según la temática del rol (policíaco, urbano, realista, etc.). Instalamos recursos, configuramos permisos, bases de datos, scripts esenciales y ajustes clave para una experiencia fluida y escalable.',
+        'Contrata un programador FiveM dedicado mediante planes mensuales con horas garantizadas y tiempos de respuesta definidos, sin necesidad de un contrato full-time. Cuatro niveles según la etapa de tu servidor: Mantenimiento, Desarrollo, Integral o Personalizado.',
       icon: <></>,
       uid: 'fivem_configuration',
       plans: [
         {
-          uid: 'fivem_configuration_plan_bronce',
-          label: 'Configuración para FiveM - Plan Bronce',
+          uid: 'fivem_configuration_plan_mantenimiento',
+          label: 'FiveM - Plan Mantenimiento',
         },
         {
-          uid: 'fivem_configuration_plan_plata',
-          label: 'Configuración para FiveM - Plan Plata',
+          uid: 'fivem_configuration_plan_desarrollo',
+          label: 'FiveM - Plan Desarrollo',
         },
         {
-          uid: 'fivem_configuration_plan_oro',
-          label: 'Configuración para FiveM - Plan Oro',
-        },
-        {
-          uid: 'fivem_configuration_plan_platino',
-          label: 'Configuración para FiveM - Plan Platino',
-        },
-        {
-          uid: 'fivem_configuration_plan_diamante',
-          label: 'Configuración para FiveM - Plan Diamante',
+          uid: 'fivem_configuration_plan_integral',
+          label: 'FiveM - Plan Integral',
         },
         {
           uid: 'fivem_configuration_plan_personalizado',
-          label: 'Configuración para FiveM - Plan Personalizado',
+          label: 'FiveM - Plan Personalizado',
         },
       ],
       cta: {
-        label: 'Ver planes de soporte',
+        label: 'Ver planes',
         href: '/services/fivem',
         section: '#plans',
       },
@@ -426,40 +418,32 @@ export const serviceDetailsFeatured: ServiceProps[] = [
     category: 'ui_ux_design',
   },
   {
-    title: 'Configuración para FiveM',
+    title: 'Planes Mensuales FiveM',
     description:
-      'Desarrollo de servidores exclusivos para FiveM con sistemas únicos y personalizados para experiencias únicas.',
+      'Programador FiveM dedicado mediante planes mensuales con horas garantizadas: Mantenimiento, Desarrollo, Integral o Personalizado según la etapa de tu servidor.',
     icon: <></>,
     uid: 'fivem_configuration',
     category: 'fivem',
     plans: [
       {
-        uid: 'fivem_configuration_plan_bronce',
-        label: 'Configuración para FiveM - Plan Bronce',
+        uid: 'fivem_configuration_plan_mantenimiento',
+        label: 'FiveM - Plan Mantenimiento',
       },
       {
-        uid: 'fivem_configuration_plan_plata',
-        label: 'Configuración para FiveM - Plan Plata',
+        uid: 'fivem_configuration_plan_desarrollo',
+        label: 'FiveM - Plan Desarrollo',
       },
       {
-        uid: 'fivem_configuration_plan_oro',
-        label: 'Configuración para FiveM - Plan Oro',
-      },
-      {
-        uid: 'fivem_configuration_plan_platino',
-        label: 'Configuración para FiveM - Plan Platino',
-      },
-      {
-        uid: 'fivem_configuration_plan_diamante',
-        label: 'Configuración para FiveM - Plan Diamante',
+        uid: 'fivem_configuration_plan_integral',
+        label: 'FiveM - Plan Integral',
       },
       {
         uid: 'fivem_configuration_plan_personalizado',
-        label: 'Configuración para FiveM - Plan Personalizado',
+        label: 'FiveM - Plan Personalizado',
       },
     ],
     cta: {
-      label: 'Ver planes de soporte',
+      label: 'Ver planes',
       href: '/services/fivem',
       section: '#plans',
     },

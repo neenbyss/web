@@ -12,16 +12,16 @@ const fivemStructuredData = generateStructuredData('Service', {
   description:
     'Catálogo completo de servicios profesionales para FiveM: configuración desde cero, reparación de servidores, desarrollo de scripts en Lua, packs de ropa y EUP, MLO y mapeo, vehículos custom, interfaces NUI, migración ESX↔QBCore y optimización de rendimiento.',
   serviceType: 'Desarrollo, Configuración y Mantenimiento de Servidores FiveM',
-  priceRange: '74 - 2000 USD',
+  priceRange: '199 - 2000 USD',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios FiveM',
     itemListElement: [
       {
         '@type': 'Offer',
-        name: 'Configuración para FiveM',
+        name: 'Planes Mensuales FiveM',
         description:
-          'Configuración completa de servidor FiveM desde cero con planes mensuales de soporte (Bronce, Plata, Oro, Platino, Diamante o personalizado).',
+          'Planes mensuales con horas garantizadas y tiempos de respuesta definidos. Cuatro niveles: Mantenimiento ($199), Desarrollo ($349), Integral ($599) y Personalizado.',
         url: 'https://neenbyss.com/services/fivem#plans',
       },
       {
@@ -67,13 +67,6 @@ const fivemStructuredData = generateStructuredData('Service', {
         name: 'Optimización & Antidetect FiveM',
         description:
           'Auditoría de rendimiento, reducción de ticks, limpieza de recursos y configuración de antidetect/antihack para servidores con lag o crashes recurrentes.',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Soporte y Mantenimiento FiveM',
-        description:
-          'Soporte técnico continuo para servidores FiveM en producción: resolución de errores, actualizaciones, optimización y atención prioritaria.',
-        url: 'https://neenbyss.com/services/fivem#plans',
       },
     ],
   },

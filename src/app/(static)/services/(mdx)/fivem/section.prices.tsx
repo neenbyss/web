@@ -21,7 +21,7 @@ export default function PricingPlans() {
           mantenimiento continuo. Ideal para servidores en producción que necesitan un desarrollador
           FiveM dedicado sin contratar a tiempo completo.
         </p>
-        <div className='mt-12 grid gap-4 md:grid-cols-3'>
+        <div className='mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
           {pricingPlans.map((pricing, i) => {
             return (
               <SpotlightCard
@@ -55,11 +55,11 @@ export default function PricingPlans() {
                 <Button
                   asChild
                   variant={
-                    !pricing.custom
-                      ? ['Bronce', 'Plata'].includes(pricing.name)
+                    pricing.custom
+                      ? 'default'
+                      : pricing.name === 'Mantenimiento'
                         ? 'outline'
                         : 'primary'
-                      : 'default'
                   }
                   className='w-full'
                 >
@@ -97,97 +97,64 @@ export default function PricingPlans() {
 
 const pricingPlans = [
   {
-    uid: 'fivem_configuration_plan_bronce',
-    name: 'Bronce',
-    price: '$74',
+    uid: 'fivem_configuration_plan_mantenimiento',
+    name: 'Mantenimiento',
+    price: '$199',
     period: 'mes',
     features: [
-      'Disponibilidad semanal: hasta 12 horas',
-      'Tiempo de respuesta: 48 a 72 horas',
-      'Mantenimiento básico y corrección de bugs menores',
-      'Ajustes de configuración simples',
-      'Optimización ligera si es necesario',
+      'Disponibilidad semanal: 10-12 horas',
+      'Tiempo de respuesta: 24-48 horas',
+      'Revisión semanal de estabilidad y logs',
+      'Resolución de bugs menores y medios',
+      'Hasta 2 scripts open-source añadidos al mes',
+      'Mapeado ligero y ajustes de items, jobs y economía',
+      'Gestión de tareas en Trello con prioridades',
     ],
-    note: 'Este plan es ideal para mantenimientos básicos y ajustes menores.',
+    note: 'Retainer pensado para servidores ya en producción. No cubre configuración desde cero, migraciones completas, MLO grandes ni packs de ropa custom.',
     recommended: false,
-    color: [183, 129, 64], // Ámbar oscuro
+    color: [156, 163, 175], // Gris
     description:
-      'Servicio básico de mantenimiento para servidores con baja demanda de cambios o correcciones.',
+      'Programador de cabecera para servidores FiveM ya abiertos que necesitan mantenimiento continuo, bugfixes y ajustes puntuales.',
   },
   {
-    uid: 'fivem_configuration_plan_plata',
-    name: 'Plata',
-    price: '$122',
+    uid: 'fivem_configuration_plan_desarrollo',
+    name: 'Desarrollo',
+    price: '$349',
     period: 'mes',
     features: [
-      'Disponibilidad semanal: hasta 18 horas',
-      'Tiempo de respuesta: hasta 48 horas',
-      'Corrección de bugs menores y medios',
-      'Mantenimiento general y ajustes de configuración',
-      'Revisión de logs básica',
+      'Disponibilidad semanal: 18-22 horas',
+      'Tiempo de respuesta: hasta 24 horas',
+      'Hasta 2 scripts medios personalizados al mes',
+      'Integración de NUI (HUD, menús simples)',
+      'Compatibilidad entre scripts (bridge ESX ↔ QBCore)',
+      'Mapeado mediano y balanceado activo de economía',
+      'Revisión completa semanal con changelog',
     ],
-    note: 'Las correcciones y agregados deben ser de complejidad media-baja.',
-    recommended: false,
-    color: [156, 163, 175], // Gris plata
-    description:
-      'Ideal para servidores activos que requieren correcciones periódicas y contenido adicional básico.',
-  },
-  {
-    uid: 'fivem_configuration_plan_oro',
-    name: 'Oro',
-    price: '$196',
-    period: 'mes',
-    features: [
-      'Disponibilidad semanal: hasta 24 horas',
-      'Tiempo de respuesta: 24 a 48 horas',
-      'Corrección de bugs medios',
-      'Integración de recursos open-source simples',
-      'Revisión semanal de estabilidad',
-      'Optimización avanzada del servidor',
-    ],
-    note: 'La reparación ilimitada se basa en horas disponibles dentro del plan.',
+    note: 'Ideal para servidores con roadmap activo. MLOs grandes y packs de ropa / EUP custom se cotizan aparte.',
     recommended: true,
-    color: [253, 224, 71], // Amarillo dorado
+    color: [93, 69, 253], // Primary
     description:
-      'Para servidores con alta actividad que necesitan soporte constante, mejoras de rendimiento y contenido frecuente.',
+      'Mantenimiento más desarrollo continuo de nuevas mecánicas para servidores que están creciendo y sumando funcionalidades mes a mes.',
   },
   {
-    uid: 'fivem_configuration_plan_platino',
-    name: 'Platino',
-    price: '$294',
+    uid: 'fivem_configuration_plan_integral',
+    name: 'Integral',
+    price: '$599',
     period: 'mes',
     features: [
-      'Disponibilidad semanal: hasta 30 horas',
-      'Tiempo de respuesta: hasta 24 horas',
-      'Corrección de bugs medios y complejos menore',
-      'Integración de recursos open-source',
-      'Incluye hasta 1 script sencillo',
-      'Revisión completa semanal',
+      'Disponibilidad semanal: 28-36 horas',
+      'Tiempo de respuesta: <12h crítico, <24h normal',
+      'Desarrollo de scripts complejos con NUI propia',
+      'Configuración de VPS, hardening y anticheat',
+      'Integración de packs de ropa y vehículos',
+      'Ajuste de interfaces y branding (logos, colores)',
+      'Reunión semanal de alineación',
     ],
-    note: 'El mantenimiento del servidor es continuo, pero el desarrollo de nuevas funciones sigue los tiempos del plan.',
+    note: 'Para servidores de alto tráfico o proyectos armando el servidor por fases a lo largo de varios meses. El armado completo a plazo fijo va como Plan Personalizado.',
     recommended: false,
-    color: [71, 85, 105], // Slate oscuro
+    color: [253, 224, 71], // Dorado
     description:
-      'Pensado para proyectos avanzados que necesitan un servidor completamente funcional y atención técnica prioritaria.',
-  },
-  {
-    uid: 'fivem_configuration_plan_diamante',
-    name: 'Diamante',
-    price: '$489',
-    period: 'mes',
-    features: [
-      'Disponibilidad semanal: hasta 36 horas',
-      'Tiempo de respuesta: hasta 24 horas',
-      'Corrección de bugs medios y complejos',
-      'Integración de recursos avanzados',
-      'Incluye hasta 2 scripts pequeños',
-      'Asesoría en compatibilidad y estabilidad',
-    ],
-    note: 'La gestión integral incluye supervisión y ajustes constantes, pero no desarrollo de nuevas funcionalidades fuera del plan.',
-    recommended: false,
-    color: [59, 130, 246], // Azul brillante
-    description:
-      'Solución integral para servidores de alto tráfico con soporte intensivo, personalización avanzada y atención total.',
+      'Soporte intensivo y armado por fases para servidores grandes o proyectos que están construyendo su servidor a lo largo de varios meses.',
   },
   {
     uid: 'fivem_configuration_plan_personalizado',
@@ -195,16 +162,17 @@ const pricingPlans = [
     price: 'Personalizado',
     custom: true,
     note: 'Contáctanos para construir un plan completamente adaptado a las necesidades específicas de tu servidor.',
-    color: [99, 102, 241], // Indigo brillante
+    color: [99, 102, 241], // Indigo
     description:
-      '¿Tienes requisitos únicos? Este plan está diseñado para adaptarse completamente a lo que tu proyecto necesita.',
+      '¿Tienes requisitos únicos? Armado desde cero a plazo fijo, SLAs especiales o combinaciones fuera de los planes estándar.',
     features: [
-      'Definición de horas de trabajo ajustadas a tu proyecto',
+      'Definición de horas ajustadas a tu proyecto',
       'Soporte en horarios y canales preferenciales',
-      'Actualizaciones según cronograma personalizado',
+      'Cronograma y presupuesto a medida',
       'Integración de funcionalidades específicas solicitadas',
-      'Mantenimiento, desarrollo u optimización total según tus requerimientos',
+      'Mantenimiento, desarrollo u optimización total según requerimientos',
       'Revisión técnica y asesoría mensual incluida',
+      'Escalable según evolucione tu proyecto',
     ],
   },
 ];
