@@ -1,4 +1,6 @@
 import { ArrowRightIcon } from '@/icons/arrow-right';
+import { CheckTaskIcon } from '@/icons/check-task';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { serviceCategories, serviceDetails } from '@/utils/data/services';
 import Link from 'next/link';
 
@@ -16,35 +18,38 @@ export function Services() {
       <div className='container-screen-2xl'>
         <h2
           className='mb-10 flex items-center gap-4 text-xl font-medium capitalize sm:mb-20 md:text-4xl [&_svg]:size-6 md:[&_svg]:size-10'
-          style={{
-            color: `rgba(${categoryService.color})`,
-          }}
+          style={{ color: `rgba(${categoryService.color})` }}
         >
-          {' '}
-          {categoryService.icon} Servicios de {categoryService.title}{' '}
+          {categoryService.icon} Servicios de {categoryService.title}
         </h2>
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3'>
-          {serviceDetails[service].map((service, i) => {
-            const href = service.href ?? `/contact?service=${service.uid}`;
-            const ctaLabel = service.href ? 'Ver detalles' : 'Solicitar';
+        <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
+          {serviceDetails[service].map((item, i) => {
+            const href = item.href ?? `/contact?service=${item.uid}`;
+            const ctaLabel = item.href ? 'Ver detalles' : 'Solicitar';
             return (
-              <Link
-                href={href}
-                key={i}
-                className='group flex flex-col overflow-clip border-b pb-8 sm:border-none sm:pb-0'
-              >
-                <h3 className='group-hover:text-primary mb-1.5 text-base font-medium duration-300 sm:text-2xl'>
-                  {' '}
-                  {service.title}{' '}
-                </h3>
-                <p> {service.description} </p>
-
-                <div className='flex sm:justify-end'>
-                  <span className='ease-soft-spring flex w-fit items-center gap-2 pt-8 opacity-50 duration-700 group-hover:translate-x-0 group-hover:opacity-100 sm:-translate-x-5 sm:opacity-0'>
-                    {' '}
-                    {ctaLabel} <ArrowRightIcon />{' '}
-                  </span>
-                </div>
+              <Link key={i} href={href} className='group block h-full'>
+                <Card className='flex h-full flex-col border-2 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg'>
+                  <CardHeader>
+                    <div
+                      className='mb-4 flex size-8 items-center justify-center rounded-lg md:size-12'
+                      style={{
+                        backgroundColor: `rgba(${categoryService.color.join(',')}, 0.15)`,
+                        color: `rgb(${categoryService.color.join(',')})`,
+                      }}
+                    >
+                      <CheckTaskIcon className='size-5' />
+                    </div>
+                    <CardTitle className='group-hover:text-primary text-base transition-colors duration-300 sm:text-xl'>
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className='flex grow flex-col'>
+                    <p className='text-muted-foreground grow'>{item.description}</p>
+                    <span className='text-primary/70 group-hover:text-primary mt-6 flex items-center gap-2 text-sm transition-colors'>
+                      {ctaLabel} <ArrowRightIcon className='size-4' />
+                    </span>
+                  </CardContent>
+                </Card>
               </Link>
             );
           })}
