@@ -80,12 +80,12 @@ const FAQs = [
   {
     question: '¿Cuánto cuesta contratar un programador FiveM?',
     answer:
-      'Ofrecemos planes mensuales desde $68.45 USD hasta $456.30 USD según las horas de trabajo y la prioridad de respuesta que necesites. También manejamos planes personalizados para servidores grandes. Cada plan incluye mantenimiento, corrección de bugs y ajustes. Los scripts grandes o con diseño complejo pueden tener costo adicional.',
+      'Ofrecemos planes mensuales desde $74 USD hasta $489 USD según las horas de trabajo y la prioridad de respuesta que necesites. También manejamos planes personalizados para servidores grandes. Cada plan incluye mantenimiento, corrección de bugs y ajustes. Los scripts grandes o con diseño complejo pueden tener costo adicional.',
   },
   {
     question: '¿Cuánto cuesta crear un servidor FiveM desde cero?',
     answer:
-      'El precio depende de la temática y los sistemas que necesites. Un servidor básico con framework ESX o QBCore, recursos esenciales y configuración estándar suele partir desde $456.30 USD (plan Diamante). Servidores con scripts personalizados, interfaces NUI a medida o mecánicas únicas requieren presupuesto personalizado. Contáctanos con tus requisitos y te pasamos una cotización sin compromiso.',
+      'El precio depende de la temática y los sistemas que necesites. Un servidor básico con framework ESX o QBCore, recursos esenciales y configuración estándar suele partir desde $489 USD (plan Diamante). Servidores con scripts personalizados, interfaces NUI a medida o mecánicas únicas requieren presupuesto personalizado. Contáctanos con tus requisitos y te pasamos una cotización sin compromiso.',
   },
   {
     question: '¿Puedo crear un servidor FiveM gratis?',

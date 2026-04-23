@@ -99,7 +99,7 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_bronce',
     name: 'Bronce',
-    price: '$68.45',
+    price: '$74',
     period: 'mes',
     features: [
       'Disponibilidad semanal: hasta 12 horas',
@@ -117,7 +117,7 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_plata',
     name: 'Plata',
-    price: '$113.23',
+    price: '$122',
     period: 'mes',
     features: [
       'Disponibilidad semanal: hasta 18 horas',
@@ -135,7 +135,7 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_oro',
     name: 'Oro',
-    price: '$182.52',
+    price: '$196',
     period: 'mes',
     features: [
       'Disponibilidad semanal: hasta 24 horas',
@@ -154,7 +154,7 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_platino',
     name: 'Platino',
-    price: '$273.78',
+    price: '$294',
     period: 'mes',
     features: [
       'Disponibilidad semanal: hasta 30 horas',
@@ -173,7 +173,7 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_diamante',
     name: 'Diamante',
-    price: '$456.30',
+    price: '$489',
     period: 'mes',
     features: [
       'Disponibilidad semanal: hasta 36 horas',

@@ -12,7 +12,7 @@ const fivemStructuredData = generateStructuredData('Service', {
   description:
     'Catálogo completo de servicios profesionales para FiveM: configuración desde cero, reparación de servidores, desarrollo de scripts en Lua, packs de ropa y EUP, MLO y mapeo, vehículos custom, interfaces NUI, migración ESX↔QBCore y optimización de rendimiento.',
   serviceType: 'Desarrollo, Configuración y Mantenimiento de Servidores FiveM',
-  priceRange: '68 - 2000 USD',
+  priceRange: '74 - 2000 USD',
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios FiveM',
