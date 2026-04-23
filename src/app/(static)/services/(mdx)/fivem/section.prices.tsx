@@ -102,10 +102,10 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_bronce',
     name: 'Bronce',
-    price: '$40.50',
+    price: '$52.65',
     period: 'mes',
-    discount3: '$108 por 3 meses (Ahorra 10%)',
-    discount6: '$202 por 6 meses (Ahorra 15%)',
+    discount3: '$140.40 por 3 meses (Ahorra 10%)',
+    discount6: '$262.60 por 6 meses (Ahorra 15%)',
     features: [
       'Disponibilidad semanal: hasta 12 horas',
       'Tiempo de respuesta: 48 a 72 horas',
@@ -122,10 +122,10 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_plata',
     name: 'Plata',
-    price: '$67',
+    price: '$87.10',
     period: 'mes',
-    discount3: '$175 por 3 meses (Ahorra 13%)',
-    discount6: '$324 por 6 meses (Ahorra 20%)',
+    discount3: '$227.50 por 3 meses (Ahorra 13%)',
+    discount6: '$421.20 por 6 meses (Ahorra 20%)',
     features: [
       'Disponibilidad semanal: hasta 18 horas',
       'Tiempo de respuesta: hasta 48 horas',
@@ -142,10 +142,10 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_oro',
     name: 'Oro',
-    price: '$108',
+    price: '$140.40',
     period: 'mes',
-    discount3: '$283 por 3 meses (Ahorra 12%)',
-    discount6: '$513 por 6 meses (Ahorra 21%)',
+    discount3: '$367.90 por 3 meses (Ahorra 12%)',
+    discount6: '$666.90 por 6 meses (Ahorra 21%)',
     features: [
       'Disponibilidad semanal: hasta 24 horas',
       'Tiempo de respuesta: 24 a 48 horas',
@@ -163,10 +163,10 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_platino',
     name: 'Platino',
-    price: '$162',
+    price: '$210.60',
     period: 'mes',
-    discount3: '$432 por 3 meses (Ahorra 11%)',
-    discount6: '$783 por 6 meses (Ahorra 19%)',
+    discount3: '$561.60 por 3 meses (Ahorra 11%)',
+    discount6: '$1017.90 por 6 meses (Ahorra 19%)',
     features: [
       'Disponibilidad semanal: hasta 30 horas',
       'Tiempo de respuesta: hasta 24 horas',
@@ -184,10 +184,10 @@ const pricingPlans = [
   {
     uid: 'fivem_configuration_plan_diamante',
     name: 'Diamante',
-    price: '$270',
+    price: '$351',
     period: 'mes',
-    discount3: '$675 por 3 meses (Ahorra 17%)',
-    discount6: '$1215 por 6 meses (Ahorra 25%)',
+    discount3: '$877.50 por 3 meses (Ahorra 17%)',
+    discount6: '$1579.50 por 6 meses (Ahorra 25%)',
     features: [
       'Disponibilidad semanal: hasta 36 horas',
       'Tiempo de respuesta: hasta 24 horas',
