@@ -34,9 +34,6 @@ export default function Home() {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
       />
-      <h1 className='sr-only'>
-        Neenbyss - Desarrollo de Software, Servidores FiveM y Diseño UI/UX
-      </h1>
       <Hero />
       <Products />
       <section className='to-content-1 bg-gradient-to-b from-transparent'>

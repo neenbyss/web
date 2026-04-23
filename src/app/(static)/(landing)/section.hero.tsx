@@ -66,22 +66,21 @@ export function Hero() {
           </Fade>
 
           <Fade
-            as='h2'
+            as='h1'
             delay={0.2}
             scroll={false}
             className='mb-6 text-4xl font-medium text-pretty capitalize sm:text-7xl'
           >
-            Compromiso Total con el Desarrollo de <span className='text-primary'> Software </span> a{' '}
-            <span className='text-secondary'>Tu Medida</span>
+            Desarrollo de <span className='text-primary'>Software</span>,{' '}
+            <span className='text-secondary'>Scripts FiveM</span> y UI/UX a Tu Medida
           </Fade>
 
           <Fade as='p' delay={0.4} scroll={false} className='max-w-xl'>
-            Comprometidos a <strong>desarrollar</strong> tu proyecto con una{' '}
-            <strong>visión de crecimiento</strong>.
+            <strong>Programadores FiveM</strong>, desarrolladores web y diseñadores UI/UX.
             <br />
-            Diseñamos software a medida que se adapta a tus necesidades actuales y{' '}
-            <strong>evoluciona contigo</strong>, garantizando que siempre estés un paso adelante en
-            tecnología e innovación.
+            Creamos <strong>scripts personalizados</strong> para servidores FiveM (ESX y QBCore),
+            packs de ropa, interfaces NUI y software a medida que{' '}
+            <strong>evoluciona contigo</strong>.
           </Fade>
 
           <div className='[&_span]:text-foreground mt-4 grid max-w-lg grid-cols-2 gap-2 [&_span]:text-xs [&_span]:font-medium sm:[&_span]:text-sm'>
