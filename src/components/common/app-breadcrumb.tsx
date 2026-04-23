@@ -32,6 +32,7 @@ const breadcrumbNameMap: Record<string, string> = {
   projects: 'Proyectos',
   contact: 'Contáctanos',
   services: 'Servicios',
+  ropa: 'Packs de Ropa',
   ...ServicesNameMap,
 };
 

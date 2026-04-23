@@ -8,6 +8,7 @@ const staticRoutes = [
   { url: `${baseUrl}/`, priority: 1.0, changeFrequency: 'weekly' as const },
   { url: `${baseUrl}/services/`, priority: 0.9, changeFrequency: 'weekly' as const },
   { url: `${baseUrl}/services/fivem/`, priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: `${baseUrl}/services/fivem/ropa/`, priority: 0.75, changeFrequency: 'monthly' as const },
   {
     url: `${baseUrl}/services/web-development/`,
     priority: 0.8,
