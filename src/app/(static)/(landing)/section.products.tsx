@@ -57,7 +57,9 @@ const customSoftwareCategories = [
   { name: 'Landing Pages', icon: <></> },
   { name: 'E-commerce', icon: <></> },
   { name: 'Diseños UI/UX', icon: <></> },
-  { name: 'Aplicaciones Móviles', icon: <></> },
+  // Oculto del marketing público porque las apps móviles ya no forman parte
+  // de la oferta de servicios de Neenbyss. Preservado por si se reactiva.
+  // { name: 'Aplicaciones Móviles', icon: <></> },
   { name: 'Aplicaciones Web Progresivas (PWA)', icon: <></> },
   { name: 'Dashboards y Paneles Administrativos', icon: <></> },
   { name: 'Portales Web Empresariales', icon: <></> },

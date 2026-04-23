@@ -30,13 +30,17 @@ export const serviceCategories = [
     uid: 'discord_app',
     color: [114, 137, 218],
   },
+];
+
+// Categorías retiradas del catálogo público. Se preservan aquí para poder
+// reactivarlas en el futuro sin tener que reescribir copy ni iconos.
+export const hiddenServiceCategories = [
   {
     title: 'Mantenimiento & Consultoría',
     icon: <MaintenanceIcon />,
     uid: 'maintenance_it',
     color: [66, 242, 227],
   },
-
   {
     title: 'Aplicaciones Móviles',
     icon: <MobileIcon />,
@@ -198,6 +202,42 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
     },
   ],
 
+  discord_app: [
+    {
+      title: 'Bots de Discord',
+      description:
+        'Desarrollamos bots personalizados con comandos, automatizaciones, paneles de control y funciones avanzadas como verificación, gestión de rangos, reacciones, notificaciones automáticas y más. Ideales para comunidades, streamers o empresas.',
+      icon: <></>,
+      uid: 'discord_bots',
+    },
+    {
+      title: 'Configuración de Servidores',
+      description:
+        'Organizamos servidores de Discord de forma profesional: creación de canales, roles jerárquicos, sistemas de permisos, reglas, automatizaciones, categorías y estética visual que refleje tu comunidad o marca.',
+      icon: <></>,
+      uid: 'server_setup',
+    },
+    {
+      title: 'Integraciones con APIs Externas',
+      description:
+        'Conectamos Discord con sistemas externos como Trello, Notion, bases de datos personalizadas, CRMs, plataformas educativas y más, para sincronizar datos y mejorar la productividad del servidor.',
+      icon: <></>,
+      uid: 'discord_api_integrations',
+    },
+    {
+      title: 'Sistemas de Verificación y Soporte',
+      description:
+        'Implementamos sistemas de verificación de usuarios mediante reacciones, preguntas, autenticación con bases de datos externas, y creación de sistemas de tickets para atención personalizada dentro de tu comunidad.',
+      icon: <></>,
+      uid: 'discord_verification_support',
+    },
+  ],
+};
+
+// Servicios retirados del catálogo público pero preservados para poder
+// reactivarlos en el futuro. No se enlazan desde `serviceCategories`, por
+// lo que no aparecen en el home ni en /services ni en el dropdown de contacto.
+export const hiddenServiceDetails: Record<string, ServiceProps[]> = {
   maintenance_it: [
     {
       title: 'Mantenimiento Preventivo',
@@ -247,37 +287,6 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Revisamos código fuente, analizamos estándares de calidad, buscamos vulnerabilidades, y entregamos un informe detallado con recomendaciones prácticas para mejorar rendimiento y seguridad.',
       icon: <></>,
       uid: 'code_audit',
-    },
-  ],
-
-  discord_app: [
-    {
-      title: 'Bots de Discord',
-      description:
-        'Desarrollamos bots personalizados con comandos, automatizaciones, paneles de control y funciones avanzadas como verificación, gestión de rangos, reacciones, notificaciones automáticas y más. Ideales para comunidades, streamers o empresas.',
-      icon: <></>,
-      uid: 'discord_bots',
-    },
-    {
-      title: 'Configuración de Servidores',
-      description:
-        'Organizamos servidores de Discord de forma profesional: creación de canales, roles jerárquicos, sistemas de permisos, reglas, automatizaciones, categorías y estética visual que refleje tu comunidad o marca.',
-      icon: <></>,
-      uid: 'server_setup',
-    },
-    {
-      title: 'Integraciones con APIs Externas',
-      description:
-        'Conectamos Discord con sistemas externos como Trello, Notion, bases de datos personalizadas, CRMs, plataformas educativas y más, para sincronizar datos y mejorar la productividad del servidor.',
-      icon: <></>,
-      uid: 'discord_api_integrations',
-    },
-    {
-      title: 'Sistemas de Verificación y Soporte',
-      description:
-        'Implementamos sistemas de verificación de usuarios mediante reacciones, preguntas, autenticación con bases de datos externas, y creación de sistemas de tickets para atención personalizada dentro de tu comunidad.',
-      icon: <></>,
-      uid: 'discord_verification_support',
     },
   ],
 

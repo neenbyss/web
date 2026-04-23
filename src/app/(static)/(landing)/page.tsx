@@ -24,6 +24,10 @@ const organizationStructuredData = generateStructuredData('Organization', {
     'React',
     'Next.js',
     'Lua',
+    'Discord',
+    'Bots de Discord',
+    'Discord.js',
+    'Automatización de servidores Discord',
   ],
 });
 
