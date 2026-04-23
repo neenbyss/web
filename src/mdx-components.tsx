@@ -72,18 +72,20 @@ export const Components: MDXComponents = {
     <td className='text-foreground-2 px-4 py-2 text-sm whitespace-nowrap' {...props} />
   ),
   hr: () => <div className='bg-border my-4 h-px w-full' />,
-  img: (props) =>
-    props.title ? (
+  img: ({ alt, title, ...rest }) => {
+    // Prioridad: alt explícito del autor > title del MDX > alt vacío (decorativo).
+    // El default anterior ('IMAGE') acababa indexado por Google como texto alt
+    // de todas las imágenes sin alt, contaminando Google Images.
+    const resolvedAlt = alt ?? title ?? '';
+    return title ? (
       <>
-        <span className='border-foreground mb-4 block border-l-4 pl-2 text-lg'>
-          {' '}
-          {props.title}{' '}
-        </span>
-        <img alt='IMAGE' sizes='100vw' className='h-auto w-full rounded-md' {...props} />
+        <span className='border-foreground mb-4 block border-l-4 pl-2 text-lg'>{title}</span>
+        <img alt={resolvedAlt} sizes='100vw' className='h-auto w-full rounded-md' {...rest} />
       </>
     ) : (
-      <img alt='IMAGE' sizes='100vw' className='my-2 h-auto w-full rounded-md' {...props} />
-    ),
+      <img alt={resolvedAlt} sizes='100vw' className='my-2 h-auto w-full rounded-md' {...rest} />
+    );
+  },
 };
 export function useMDXComponents(components?: MDXComponents): MDXComponents {
   return { ...Components, ...components };
