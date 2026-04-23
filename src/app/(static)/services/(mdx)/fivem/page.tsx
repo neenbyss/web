@@ -8,28 +8,75 @@ import Glossary from './section.glosario';
 import { createMetadata, generateStructuredData } from '@/lib/metadata';
 
 const fivemStructuredData = generateStructuredData('Service', {
-  name: 'Configuración y Reparación de Servidores FiveM',
+  name: 'Servicios de Desarrollo y Configuración para FiveM',
   description:
-    'Servicio profesional de configuración desde cero, reparación de servidores rotos, desarrollo de scripts personalizados y mantenimiento continuo para FiveM.',
-  serviceType: 'Configuración de Servidores de Gaming',
-  priceRange: '500 - 5000 MXN',
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'Configuración desde Cero',
-      description: 'Configuración completa de servidor FiveM para principiantes',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Reparación de Servidores',
-      description: 'Rescate y reparación de servidores FiveM con problemas',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Scripts Personalizados',
-      description: 'Desarrollo de scripts únicos para tu servidor FiveM',
-    },
-  ],
+    'Catálogo completo de servicios profesionales para FiveM: configuración desde cero, reparación de servidores, desarrollo de scripts en Lua, packs de ropa y EUP, MLO y mapeo, vehículos custom, interfaces NUI, migración ESX↔QBCore y optimización de rendimiento.',
+  serviceType: 'Desarrollo, Configuración y Mantenimiento de Servidores FiveM',
+  priceRange: '40 - 2000 USD',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios FiveM',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Configuración para FiveM',
+        description:
+          'Configuración completa de servidor FiveM desde cero con planes mensuales de soporte (Bronce, Plata, Oro, Platino, Diamante o personalizado).',
+        url: 'https://neenbyss.com/services/fivem#plans',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Desarrollo de Scripts FiveM',
+        description:
+          'Scripts FiveM a medida en Lua para economía, inventario, trabajos, vehículos, policial, EMS y mecánicas únicas. Compatible con ESX Legacy y QBCore.',
+        url: 'https://neenbyss.com/services/fivem/scripts',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Packs de Ropa & EUP para FiveM',
+        description:
+          'Edición de ropa y creación de packs personalizados: civiles, trabajos, uniformes EUP (policía, EMS, bomberos). Stream-ready, sin marcas reales.',
+        url: 'https://neenbyss.com/services/fivem/ropa',
+      },
+      {
+        '@type': 'Offer',
+        name: 'MLO & Mapeo para FiveM',
+        description:
+          'Diseño de MLO (Map Loader Object) e interiores personalizados: comisarías, hospitales, negocios y shells habitables. Mapeado con Codewalker.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Vehículos Custom para FiveM',
+        description:
+          'Packs de vehículos y addon-cars con handling ajustado, liveries personalizadas, tuning y modelos custom integrados al servidor.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Interfaces NUI & HUD para FiveM',
+        description:
+          'Diseño y desarrollo de NUI para FiveM: pause menu, HUD, phone, inventario, menús de trabajo y paneles de admin con HTML/CSS/JS, React o Vue.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Migración ESX ↔ QBCore',
+        description:
+          'Migración completa entre frameworks con bridge propio: conversión de scripts, base de datos, permisos, economía y vehículos sin duplicar código.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Optimización & Antidetect FiveM',
+        description:
+          'Auditoría de rendimiento, reducción de ticks, limpieza de recursos y configuración de antidetect/antihack para servidores con lag o crashes recurrentes.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Soporte y Mantenimiento FiveM',
+        description:
+          'Soporte técnico continuo para servidores FiveM en producción: resolución de errores, actualizaciones, optimización y atención prioritaria.',
+        url: 'https://neenbyss.com/services/fivem#plans',
+      },
+    ],
+  },
 });
 
 export const metadata = createMetadata({
