@@ -30,8 +30,7 @@ export default function PricingPlans() {
                   pricing.recommended
                     ? 'to-primary/20 from-secondary/20 border-primary border-2 bg-gradient-to-t'
                     : 'bg-background',
-                  pricing.custom && 'bg-foreground/[.05]',
-
+                  pricing.custom && 'bg-foreground/[.05] md:col-span-2 lg:col-span-3',
                   'relative flex flex-col p-6',
                 )}
                 spotlightColor={`rgba(${pricing.color}, .2)`}
@@ -57,25 +56,30 @@ export default function PricingPlans() {
                   variant={
                     pricing.custom
                       ? 'default'
-                      : ['Básico', 'Mantenimiento'].includes(pricing.name)
+                      : pricing.name === 'Mantenimiento'
                         ? 'outline'
                         : 'primary'
                   }
-                  className='w-full'
+                  className={cn('w-full', pricing.custom && 'lg:w-fit lg:px-8')}
                 >
                   <Link href={`/contact?service=${pricing.uid}`}>
-                    {pricing.custom ? 'Contáctanos' : 'Contratar Plan'}
+                    {pricing.custom ? 'Cotizar mi Proyecto' : 'Contratar Plan'}
                     <ArrowRightIcon />
                   </Link>
                 </Button>
 
                 <Separator className='my-4' />
 
-                <ul className='flex grow flex-col gap-4'>
+                <ul
+                  className={cn(
+                    'flex grow flex-col gap-4',
+                    pricing.custom && 'sm:grid sm:grid-cols-2 sm:gap-3 lg:grid-cols-3',
+                  )}
+                >
                   {pricing.features?.map((x, j) => {
                     return (
                       <li key={`${i}-${j}`} className='flex items-center gap-2'>
-                        <CheckTaskIcon className='text-primary' /> {x}
+                        <CheckTaskIcon className='text-primary shrink-0' /> {x}
                       </li>
                     );
                   })}
@@ -96,26 +100,6 @@ export default function PricingPlans() {
 }
 
 const pricingPlans = [
-  {
-    uid: 'fivem_configuration_plan_basico',
-    name: 'Básico',
-    price: '$89',
-    period: 'mes',
-    features: [
-      'Bolsa de 4 horas/mes',
-      'Tiempo de respuesta: 48-72 horas',
-      'Revisión mensual de estabilidad',
-      'Bugfixes menores (máximo 2h por ticket)',
-      'Instalación de 1 script open-source simple al mes',
-      'Ajustes puntuales de items, jobs o coordenadas',
-      'Soporte por Discord',
-    ],
-    note: 'Plan mínimo para servidores pequeños. Las horas no se acumulan entre meses. Tareas que superen las 2 horas, creación de scripts nuevos, migraciones, MLO y packs de ropa se cotizan aparte.',
-    recommended: false,
-    color: [100, 116, 139], // Slate
-    description:
-      'Bolsa mínima de horas para servidores pequeños que necesitan atención puntual sin un retainer completo.',
-  },
   {
     uid: 'fivem_configuration_plan_mantenimiento',
     name: 'Mantenimiento',
