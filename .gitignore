@@ -42,3 +42,7 @@ next-env.d.ts
 
 # local tooling (not part of the shipped site)
 /tools/
+.agents
+.claude
+CLAUDE.md
+skills-lock.json
