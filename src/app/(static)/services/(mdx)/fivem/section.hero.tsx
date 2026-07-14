@@ -7,20 +7,19 @@ import React from 'react';
 export function Hero() {
   return (
     <>
-      <h1 className='sr-only'> Desarrollo Web </h1>
       <section className='relative overflow-clip border-b'>
         <div className='container-screen-2xl relative z-10 py-5 sm:py-15'>
           <AppBreadcrumb className='mb-4 bg-transparent px-0 py-0' />
 
-          <h2 className='mb-6 max-w-3xl text-2xl font-medium sm:text-6xl'>
-            Servicio de Desarrollo y Configuración para Servidores FiveM
-          </h2>
+          <h1 className='mb-6 max-w-3xl text-2xl font-medium sm:text-6xl'>
+            Programadores FiveM: Desarrollo, Configuración y Reparación de Servidores
+          </h1>
           <p className='max-w-2xl'>
-            Si buscas crear un servidor de FiveM único, atractivo y optimizado, estás en el lugar
-            indicado. En Neenbyss, ofrecemos soluciones integrales en desarrollo, configuración y
-            soporte para que tu servidor destaque y atraiga jugadores comprometidos. Nuestro equipo
-            de expertos resuelve problemas técnicos, adapta scripts personalizados y mejora
-            radicalmente la experiencia visual de tu servidor.
+            ¿Buscas un <strong>programador FiveM</strong> de confianza? En Neenbyss creamos,
+            configuramos y reparamos servidores FiveM desde cero. Desarrollo de{' '}
+            <strong>scripts personalizados</strong> para ESX y QBCore, rediseño de interfaces,
+            optimización de rendimiento y <strong>soporte técnico continuo</strong> para que tu
+            servidor de rol funcione estable y atraiga jugadores comprometidos.
           </p>
         </div>
 

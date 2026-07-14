@@ -10,10 +10,12 @@ export function Intro() {
   return (
     <section className='container-screen-2xl py-20'>
       <h2 className='text-foreground mb-4 block text-xl font-medium sm:text-4xl'>
-        ¿Qué Ofrecemos?
+        ¿Qué Ofrecemos para tu Servidor FiveM?
       </h2>
       <p className='max-w-2xl'>
-        Comprendiendo la diferencia entre interfaz de usuario (UI) y experiencia de usuario (UX)
+        Servicios integrales para servidores FiveM: scripts en Lua a medida, packs de ropa y EUP,
+        MLO e interiores, vehículos custom, interfaces NUI, migración ESX ↔ QBCore, optimización y
+        soporte técnico continuo para tu comunidad.
       </p>
 
       <div className='mt-12 grid gap-6 lg:grid-cols-3'>
@@ -47,20 +49,20 @@ export function Intro() {
 const introServiceCards = [
   {
     icon: FileZipIcon,
-    title: 'Desarrollo y Configuración Integral',
+    title: 'Scripts & Mecánicas a Medida',
     description:
-      'Creamos y personalizamos scripts desde cero, adaptamos sistemas existentes (ESX, QBcore y más) y garantizamos la compatibilidad y rendimiento óptimo del servidor.',
+      'Desarrollamos scripts FiveM personalizados en Lua para ESX y QBCore: economía, inventario, trabajos, vehículos, policial, EMS, MDT y cualquier mecánica única. Código propio, optimizado y con NUI integrada cuando la mecánica lo requiere.',
   },
   {
     icon: DesignIcon,
-    title: 'Rediseño Exclusivo de Interfaces',
+    title: 'Packs de Ropa, MLO y Vehículos Custom',
     description:
-      'Renovamos completamente la apariencia de tu servidor con diseños únicos, funcionales y atractivos que mejoran la experiencia de usuario y mantienen a los jugadores comprometidos.',
+      'Contenido visual que hace único a tu servidor: packs de ropa y EUP stream-ready, MLO e interiores con Codewalker, vehículos custom con handling y liveries, e interfaces NUI a medida (pause menu, HUD, phone, inventario).',
   },
   {
     icon: WrenchIcon,
-    title: 'Soporte Continuo y Personalizado',
+    title: 'Configuración, Migración y Soporte',
     description:
-      'Ofrecemos soporte técnico especializado adaptado a tus objetivos específicos, con optimización del rendimiento y mantenimiento constante para tu servidor.',
+      'Configuramos tu servidor FiveM desde cero, migramos entre ESX y QBCore con bridge propio, optimizamos rendimiento y antidetect, y ofrecemos planes mensuales de soporte con horas garantizadas y tiempos de respuesta definidos.',
   },
 ];

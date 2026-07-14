@@ -70,9 +70,11 @@ export function Categories() {
                 key={i}
                 onClick={() => {
                   route.push(
-                    service.plans && service.cta
-                      ? `${service.cta.href}`
-                      : `/contact?service=${service.uid}`,
+                    service.href
+                      ? service.href
+                      : service.plans && service.cta
+                        ? `${service.cta.href}`
+                        : `/contact?service=${service.uid}`,
                   );
                 }}
                 spotlightColor={`rgba(${color}, .4)`}
@@ -124,7 +126,7 @@ export function Categories() {
 
                   <span className='ease-soft-spring mt-4 flex items-center gap-2 opacity-60 duration-500 group-hover:opacity-100'>
                     {' '}
-                    Solicitar Servicio{' '}
+                    {service.href ? 'Ver detalles' : 'Solicitar Servicio'}{' '}
                     <ArrowRightIcon className='ease-soft-spring size-6 shrink-0 duration-500 group-hover:translate-x-1' />{' '}
                   </span>
                 </div>

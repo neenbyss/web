@@ -24,8 +24,9 @@ export async function generateMetadata(
     title: markdown?.meta.title,
     description: markdown?.meta.description,
     keywords: markdown?.meta.tags,
+    canonical: `https://neenbyss.com/projects/${slug}`,
     openGraph: {
-      url: `https://neenbyss.com/products/${slug}`,
+      url: `https://neenbyss.com/projects/${slug}`,
       images: markdown?.meta.cover ? markdown.meta.cover : [],
     },
     twitter: {

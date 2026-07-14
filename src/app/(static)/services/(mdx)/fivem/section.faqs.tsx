@@ -6,11 +6,28 @@ import {
 } from '@/components/ui/accordion';
 
 export function Faqs() {
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer,
+      },
+    })),
+  };
+
   return (
     <section className='container-screen-lg py-25'>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <h2 className='mb-10 text-xl font-medium sm:mb-20 sm:text-center sm:text-4xl'>
         {' '}
-        Preguntas Frecuentes{' '}
+        Preguntas Frecuentes sobre Nuestros Servicios FiveM{' '}
       </h2>
 
       <Accordion type='single' collapsible className='flex flex-col gap-4'>
@@ -36,44 +53,68 @@ export function Faqs() {
 
 const FAQs = [
   {
-    question:
-      '¿las actualizaciones semanales significa que recibire un changelog cada fin de semana?',
+    question: '¿Son programadores FiveM profesionales? ¿Qué experiencia tienen?',
     answer:
-      'No necesariamente. Las actualizaciones indican que el trabajo avanza, pero los changelogs (registros detallados de cambios) solo se publican cuando hay avances significativos o tareas finalizadas. Dependiendo de la complejidad, estos pueden emitirse cada semana o diario.',
+      'Sí. En Neenbyss somos un equipo de desarrolladores especializados en FiveM con experiencia en frameworks ESX y QBCore, desarrollo de scripts en Lua, diseño de interfaces NUI (HTML/CSS/JS, React, Vue) y arquitectura de servidores RP. Trabajamos con servidores de España, México, Chile, Perú, Colombia y el resto de Latinoamérica.',
   },
   {
-    question: '¿Si pago un plan más caro significa que todas mis tareas se harán en poco tiempo?',
+    question: '¿Pueden reparar un servidor FiveM que crashea o no arranca?',
     answer:
-      'No. El costo del plan no reduce la complejidad de las tareas ni garantiza que todo se complete en pocas horas. Algunas tareas pueden parecer simples desde fuera, pero a nivel técnico pueden requerir más tiempo debido a su complejidad. No trabajamos 24/7 ni podemos hacer todo de golpe solo porque un cliente pagó un plan premium. El tiempo de desarrollo depende de la dificultad de la tarea, la cantidad de trabajo pendiente, y las horas asignadas según el plan contratado.',
+      'Sí, ofrecemos servicio de reparación de servidores FiveM. Diagnosticamos crashes, errores de scripts, conflictos entre recursos, problemas de rendimiento y de base de datos. Trabajamos tanto con servidores en ESX como en QBCore, y también en migraciones entre frameworks. Si tu servidor tiene problemas, contáctanos para un diagnóstico.',
   },
   {
-    question: '¿Cómo priorizan las tareas y cómo sé en qué están trabajando?',
+    question: '¿Pueden crear un servidor FiveM desde cero?',
     answer:
-      'Utilizamos Trello para gestionar todas las tareas. Cada tarea se etiqueta según su prioridad: Baja (ajustes menores y tareas simples), Media (cambios funcionales que requieren análisis), y Alta (problemas críticos o cambios complejos). Además de las etiquetas, usamos cuatro secciones en Trello: Tareas (pendientes), En proceso (trabajando activamente), Testeando (implementadas y en revisión), y Terminado (solo el cliente puede mover la tarea aquí si considera que está completamente lista).',
+      'Sí. Configuramos servidores FiveM completos según la temática que elijas (policial, urbano, realista, survival, etc.): instalación de recursos base, base de datos, permisos, frameworks ESX o QBCore, scripts esenciales, economía, trabajos, vehículos, interfaces personalizadas y optimización. Entregamos un servidor listo para abrir a la comunidad.',
   },
   {
-    question: '¿Qué sucede si una tarea toma más tiempo en completarse?',
+    question: '¿Desarrollan scripts FiveM personalizados?',
     answer:
-      'Si una tarea es compleja y requiere varios días de trabajo, es posible que el changelog no se publique hasta que haya avances significativos. A veces, agrupamos changelogs en un solo informe para mostrar los avances de forma más organizada.',
+      'Sí. Creamos scripts a medida en Lua con NUI personalizada para cualquier mecánica: sistemas de economía, inventarios, trabajos, negocios, vehículos, interfaces (pause menu, HUD, phone), minijuegos, y cualquier funcionalidad única que imagines. Todos los scripts están optimizados para no afectar el rendimiento del servidor.',
   },
   {
-    question: '¿Qué pasa si hay tareas que simplemente no se pueden hacer?',
+    question: '¿Trabajan con ESX y QBCore?',
     answer:
-      'No todo es posible. Existen limitaciones técnicas fuera de nuestro control, como código encriptado u ofuscado (no se pueden hacer modificaciones si el código está protegido), archivos compilados o cerrados (no se pueden editar sin acceso al código fuente), e incompatibilidad con el servidor o framework (algunas modificaciones pueden ser inviables por restricciones del sistema). Si una tarea no se puede hacer, te lo notificaremos y explicaremos las razones técnicas.',
+      'Sí, trabajamos con ambos frameworks, y también hacemos conversiones ESX ↔ QBCore de scripts abiertos cuando es viable. Usamos un sistema de bridge propio que permite que nuestros scripts funcionen en ambos frameworks sin duplicar código.',
   },
   {
-    question: '¿Cómo se reflejan los avances si no hay changelogs frecuentes?',
+    question: '¿Cuánto cuesta contratar un programador FiveM?',
     answer:
-      'Aunque los changelogs no sean diarios, puedes ver el progreso en Trello, donde cada tarea se actualiza conforme avanza.Normalmente hay changelogs cada viernes para avances significativos.',
+      'Ofrecemos planes mensuales desde $199 USD (Mantenimiento) hasta $599 USD (Integral), más un Plan Personalizado para proyectos fuera del estándar. Los planes mensuales cubren mantenimiento, instalación de scripts open-source, ajustes y adaptaciones. La creación de scripts nuevos a medida, MLO completos y packs de ropa custom se cotizan como proyecto aparte.',
   },
   {
-    question: '¿Las tareas se completan inmediatamente después de pagar un plan?',
+    question: '¿Cuánto cuesta crear un servidor FiveM desde cero?',
     answer:
-      'No. Cada plan tiene un número de horas de trabajo semanal asignadas y un tiempo de respuesta estimado, lo que significa que las tareas se gestionan en función de la carga de trabajo y su complejidad. Si hay varias tareas pendientes, se seguirán los tiempos establecidos en el plan y el orden de prioridad.',
+      'El precio depende de la temática y los sistemas que necesites. Un armado por fases (varios meses) encaja en el Plan Integral de $599 USD/mes, y un armado a plazo fijo (un único proyecto de 4-12 semanas) se cotiza como Plan Personalizado. Contáctanos con tus requisitos y te pasamos una cotización sin compromiso.',
   },
   {
-    question: '¿Cuáles es el horarios de trabajo?',
+    question: '¿Puedo crear un servidor FiveM gratis?',
     answer:
-      'Trabajamos de lunes a sábados en un horario de 6:00 PM UTC a 1:00 AM UTC. Durante este tiempo, estamos disponibles para reuniones, consultas o colaboraciones. El tiempo de trabajo depende del plan contratado y varía diariamente. Esto no significa que estamos disponibles todo el tiempo o que todas las tareas se completarán en un solo día.',
+      'FiveM permite hostear un servidor local de forma gratuita, pero montar un servidor público estable, con scripts custom, base de datos, antidetect, recursos optimizados y soporte requiere conocimientos técnicos y tiempo. Si quieres evitar errores comunes (crashes, pérdida de datos, conflictos entre scripts), conviene contratar a un programador FiveM con experiencia.',
+  },
+  {
+    question: '¿Tienen Discord para contactarlos?',
+    answer:
+      'Sí, puedes contactarnos por Discord, correo o el formulario de contacto de la web. Dentro de Discord coordinamos directamente en un canal privado con tu equipo durante el desarrollo y mantenimiento del servidor.',
+  },
+  {
+    question: '¿Cómo priorizan las tareas y cómo veo el avance?',
+    answer:
+      'Gestionamos todas las tareas en Trello con prioridades (Baja, Media, Alta) y cuatro estados: Tareas, En proceso, Testeando y Terminado. Tú ves el progreso en tiempo real. Publicamos changelogs semanales (habitualmente los viernes) cuando hay avances significativos.',
+  },
+  {
+    question: '¿Cuál es el horario de trabajo y tiempo de respuesta?',
+    answer:
+      'Trabajamos de lunes a sábado de 6:00 PM a 1:00 AM UTC para reuniones y desarrollo. El tiempo de respuesta depende del plan: desde 24h en planes Oro/Platino/Diamante hasta 48-72h en el plan Bronce. Para urgencias críticas en producción, los planes superiores tienen prioridad.',
+  },
+  {
+    question: '¿Qué no pueden hacer?',
+    answer:
+      'No modificamos código encriptado u ofuscado (escrow), ni archivos compilados sin código fuente. Tampoco realizamos modificaciones que violen los términos de uso de CFX/FiveM o de los autores de scripts pagos. Si una tarea no es viable, te lo explicamos con los motivos técnicos antes de comenzar.',
+  },
+  {
+    question: '¿Ofrecen diseño de interfaces para scripts FiveM (UI/UX)?',
+    answer:
+      'Sí. Diseñamos y rediseñamos interfaces NUI para scripts FiveM: pause menu, HUD, phone, inventarios, paneles de admin, menús de trabajos, etc. Hemos colaborado con empresas como CodeIQ en el rediseño de su Pause Menu. Puedes ver ejemplos en nuestra sección de proyectos.',
   },
 ];

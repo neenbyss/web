@@ -30,13 +30,17 @@ export const serviceCategories = [
     uid: 'discord_app',
     color: [114, 137, 218],
   },
+];
+
+// Categorías retiradas del catálogo público. Se preservan aquí para poder
+// reactivarlas en el futuro sin tener que reescribir copy ni iconos.
+export const hiddenServiceCategories = [
   {
     title: 'Mantenimiento & Consultoría',
     icon: <MaintenanceIcon />,
     uid: 'maintenance_it',
     color: [66, 242, 227],
   },
-
   {
     title: 'Aplicaciones Móviles',
     icon: <MobileIcon />,
@@ -51,6 +55,10 @@ type ServiceProps = {
   icon: React.JSX.Element;
   uid: string;
   category?: string;
+  // Si está presente, las tarjetas de servicio enlazan aquí en vez de
+  // llevar directo al formulario de contacto. Lo usamos para apuntar a
+  // sub-landings dedicadas (p. ej. /services/fivem/ropa).
+  href?: string;
   plans?: { uid: string; label: string }[];
   cta?: {
     label: string;
@@ -145,39 +153,31 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
 
   fivem: [
     {
-      title: 'Configuración para FiveM',
+      title: 'Planes Mensuales FiveM',
       description:
-        'Configuramos servidores de FiveM completamente optimizados y personalizados según la temática del rol (policíaco, urbano, realista, etc.). Instalamos recursos, configuramos permisos, bases de datos, scripts esenciales y ajustes clave para una experiencia fluida y escalable.',
+        'Contrata un programador FiveM dedicado mediante planes mensuales con horas garantizadas y tiempos de respuesta definidos, sin necesidad de un contrato full-time. Cuatro niveles según la etapa de tu servidor: Mantenimiento, Desarrollo, Integral y Personalizado.',
       icon: <></>,
       uid: 'fivem_configuration',
       plans: [
         {
-          uid: 'fivem_configuration_plan_bronce',
-          label: 'Configuración para FiveM - Plan Bronce',
+          uid: 'fivem_configuration_plan_mantenimiento',
+          label: 'FiveM - Plan Mantenimiento',
         },
         {
-          uid: 'fivem_configuration_plan_plata',
-          label: 'Configuración para FiveM - Plan Plata',
+          uid: 'fivem_configuration_plan_desarrollo',
+          label: 'FiveM - Plan Desarrollo',
         },
         {
-          uid: 'fivem_configuration_plan_oro',
-          label: 'Configuración para FiveM - Plan Oro',
-        },
-        {
-          uid: 'fivem_configuration_plan_platino',
-          label: 'Configuración para FiveM - Plan Platino',
-        },
-        {
-          uid: 'fivem_configuration_plan_diamante',
-          label: 'Configuración para FiveM - Plan Diamante',
+          uid: 'fivem_configuration_plan_integral',
+          label: 'FiveM - Plan Integral',
         },
         {
           uid: 'fivem_configuration_plan_personalizado',
-          label: 'Configuración para FiveM - Plan Personalizado',
+          label: 'FiveM - Plan Personalizado',
         },
       ],
       cta: {
-        label: 'Ver planes de soporte',
+        label: 'Ver planes',
         href: '/services/fivem',
         section: '#plans',
       },
@@ -188,6 +188,50 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Creamos scripts únicos y a medida para servidores de FiveM, desde sistemas de economía, inventario, trabajos, vehículos hasta mecánicas exclusivas. Nuestros scripts están pensados para optimizar el rendimiento del servidor y enriquecer la experiencia de los jugadores.',
       icon: <></>,
       uid: 'fivem_scripts',
+      href: '/services/fivem/scripts',
+    },
+    {
+      title: 'Packs de Ropa & EUP para FiveM',
+      description:
+        'Edición de ropa y creación de packs personalizados para tu servidor FiveM: civiles, trabajos y uniformes para policía, EMS y bomberos (EUP). Todos los packs son stream-ready, sin marcas reales, compatibles con ESX y QBCore, y optimizados para no afectar el rendimiento del servidor ni saturar el streaming.',
+      icon: <></>,
+      uid: 'fivem_clothing_packs',
+      href: '/services/fivem/ropa',
+    },
+    {
+      title: 'MLO & Mapeo para FiveM',
+      description:
+        'Diseño de MLO (Map Loader Object) e interiores personalizados para tu servidor FiveM: comisarías, hospitales, negocios, clubes y shells habitables. Mapeado con Codewalker y optimización de streaming para mantener rendimiento estable incluso en servidores con alto número de jugadores.',
+      icon: <></>,
+      uid: 'fivem_mlo_mapping',
+    },
+    {
+      title: 'Vehículos Custom para FiveM',
+      description:
+        'Packs de vehículos y addon-cars para FiveM con handling ajustado, liveries personalizadas (policía, taxis, empresas), tuning y modelos custom integrados a tu servidor. Configuración de spawn, categorías y precios adaptados a tu framework (ESX Legacy o QBCore).',
+      icon: <></>,
+      uid: 'fivem_custom_vehicles',
+    },
+    {
+      title: 'Interfaces NUI & HUD para FiveM',
+      description:
+        'Diseño y desarrollo de interfaces NUI para FiveM: pause menu, HUD, teléfono, inventario, menús de trabajo, paneles de admin y tiendas. Implementamos con HTML/CSS/JS, React o Vue sobre la capa NUI del cliente, con animaciones fluidas y estética acorde a la temática roleplay de tu servidor.',
+      icon: <></>,
+      uid: 'fivem_nui_ui',
+    },
+    {
+      title: 'Migración ESX ↔ QBCore',
+      description:
+        'Migraciones completas entre frameworks ESX y QBCore: conversión de scripts abiertos, adaptación de base de datos, permisos, economía y vehículos. Usamos un bridge propio que permite mantener compatibilidad con ambos frameworks sin duplicar código, ideal para servidores que quieren cambiar de framework sin perder jugadores ni datos.',
+      icon: <></>,
+      uid: 'fivem_esx_qbcore_migration',
+    },
+    {
+      title: 'Optimización & Antidetect FiveM',
+      description:
+        'Auditoría de rendimiento y optimización de servidores FiveM: reducción de tiempos de tick, limpieza de recursos redundantes, diagnóstico de scripts mal optimizados y configuración de antidetect/antihack para proteger tu servidor de cheats comunes. Ideal para servidores con caídas de FPS, lag o desconexiones recurrentes.',
+      icon: <></>,
+      uid: 'fivem_optimization',
     },
     {
       title: 'Soporte para FiveM',
@@ -198,6 +242,42 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
     },
   ],
 
+  discord_app: [
+    {
+      title: 'Bots de Discord',
+      description:
+        'Desarrollamos bots personalizados con comandos, automatizaciones, paneles de control y funciones avanzadas como verificación, gestión de rangos, reacciones, notificaciones automáticas y más. Ideales para comunidades, streamers o empresas.',
+      icon: <></>,
+      uid: 'discord_bots',
+    },
+    {
+      title: 'Configuración de Servidores',
+      description:
+        'Organizamos servidores de Discord de forma profesional: creación de canales, roles jerárquicos, sistemas de permisos, reglas, automatizaciones, categorías y estética visual que refleje tu comunidad o marca.',
+      icon: <></>,
+      uid: 'server_setup',
+    },
+    {
+      title: 'Integraciones con APIs Externas',
+      description:
+        'Conectamos Discord con sistemas externos como Trello, Notion, bases de datos personalizadas, CRMs, plataformas educativas y más, para sincronizar datos y mejorar la productividad del servidor.',
+      icon: <></>,
+      uid: 'discord_api_integrations',
+    },
+    {
+      title: 'Sistemas de Verificación y Soporte',
+      description:
+        'Implementamos sistemas de verificación de usuarios mediante reacciones, preguntas, autenticación con bases de datos externas, y creación de sistemas de tickets para atención personalizada dentro de tu comunidad.',
+      icon: <></>,
+      uid: 'discord_verification_support',
+    },
+  ],
+};
+
+// Servicios retirados del catálogo público pero preservados para poder
+// reactivarlos en el futuro. No se enlazan desde `serviceCategories`, por
+// lo que no aparecen en el home ni en /services ni en el dropdown de contacto.
+export const hiddenServiceDetails: Record<string, ServiceProps[]> = {
   maintenance_it: [
     {
       title: 'Mantenimiento Preventivo',
@@ -247,37 +327,6 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Revisamos código fuente, analizamos estándares de calidad, buscamos vulnerabilidades, y entregamos un informe detallado con recomendaciones prácticas para mejorar rendimiento y seguridad.',
       icon: <></>,
       uid: 'code_audit',
-    },
-  ],
-
-  discord_app: [
-    {
-      title: 'Bots de Discord',
-      description:
-        'Desarrollamos bots personalizados con comandos, automatizaciones, paneles de control y funciones avanzadas como verificación, gestión de rangos, reacciones, notificaciones automáticas y más. Ideales para comunidades, streamers o empresas.',
-      icon: <></>,
-      uid: 'discord_bots',
-    },
-    {
-      title: 'Configuración de Servidores',
-      description:
-        'Organizamos servidores de Discord de forma profesional: creación de canales, roles jerárquicos, sistemas de permisos, reglas, automatizaciones, categorías y estética visual que refleje tu comunidad o marca.',
-      icon: <></>,
-      uid: 'server_setup',
-    },
-    {
-      title: 'Integraciones con APIs Externas',
-      description:
-        'Conectamos Discord con sistemas externos como Trello, Notion, bases de datos personalizadas, CRMs, plataformas educativas y más, para sincronizar datos y mejorar la productividad del servidor.',
-      icon: <></>,
-      uid: 'discord_api_integrations',
-    },
-    {
-      title: 'Sistemas de Verificación y Soporte',
-      description:
-        'Implementamos sistemas de verificación de usuarios mediante reacciones, preguntas, autenticación con bases de datos externas, y creación de sistemas de tickets para atención personalizada dentro de tu comunidad.',
-      icon: <></>,
-      uid: 'discord_verification_support',
     },
   ],
 
@@ -369,40 +418,32 @@ export const serviceDetailsFeatured: ServiceProps[] = [
     category: 'ui_ux_design',
   },
   {
-    title: 'Configuración para FiveM',
+    title: 'Planes Mensuales FiveM',
     description:
-      'Desarrollo de servidores exclusivos para FiveM con sistemas únicos y personalizados para experiencias únicas.',
+      'Programador FiveM dedicado mediante planes mensuales con horas garantizadas: Mantenimiento, Desarrollo, Integral o Personalizado según la etapa de tu servidor.',
     icon: <></>,
     uid: 'fivem_configuration',
     category: 'fivem',
     plans: [
       {
-        uid: 'fivem_configuration_plan_bronce',
-        label: 'Configuración para FiveM - Plan Bronce',
+        uid: 'fivem_configuration_plan_mantenimiento',
+        label: 'FiveM - Plan Mantenimiento',
       },
       {
-        uid: 'fivem_configuration_plan_plata',
-        label: 'Configuración para FiveM - Plan Plata',
+        uid: 'fivem_configuration_plan_desarrollo',
+        label: 'FiveM - Plan Desarrollo',
       },
       {
-        uid: 'fivem_configuration_plan_oro',
-        label: 'Configuración para FiveM - Plan Oro',
-      },
-      {
-        uid: 'fivem_configuration_plan_platino',
-        label: 'Configuración para FiveM - Plan Platino',
-      },
-      {
-        uid: 'fivem_configuration_plan_diamante',
-        label: 'Configuración para FiveM - Plan Diamante',
+        uid: 'fivem_configuration_plan_integral',
+        label: 'FiveM - Plan Integral',
       },
       {
         uid: 'fivem_configuration_plan_personalizado',
-        label: 'Configuración para FiveM - Plan Personalizado',
+        label: 'FiveM - Plan Personalizado',
       },
     ],
     cta: {
-      label: 'Ver planes de soporte',
+      label: 'Ver planes',
       href: '/services/fivem',
       section: '#plans',
     },
@@ -414,6 +455,7 @@ export const serviceDetailsFeatured: ServiceProps[] = [
     icon: <></>,
     uid: 'fivem_scripts',
     category: 'fivem',
+    href: '/services/fivem/scripts',
   },
   {
     title: 'Soporte para FiveM',
