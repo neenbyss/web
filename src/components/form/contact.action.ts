@@ -1,6 +1,5 @@
 'use server';
 
-import nodemailer from 'nodemailer';
 import { ContactSchema } from '@/utils/schemas/contact';
 import { serviceDetails } from '@/utils/data/services';
 import { headers } from 'next/headers';
@@ -36,46 +35,8 @@ export async function sendContactEmail(data: any) {
 
   const service = getServiceLabelByUid(serviceUid);
 
-  console.log(`
-        <h2>📬 Nuevo mensaje recibido</h2>
-        <p><strong>Nombre:</strong> ${names}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Teléfono:</strong> ${phone || 'No proporcionado'}</p>
-        <p><strong>Compañía:</strong> ${company || 'No proporcionado'}</p>
-        <p><strong>Servicio solicitado:</strong> ${service}</p>
-        <p><strong>Mensaje:</strong><br/>${message}</p>
-        <span><strong>CLIENT_IP:</strong> ${ip.toString()} </span>
-      `);
-
   try {
-    const transporter = nodemailer.createTransport({
-      host: 'mail.neenbyss.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.Email,
-        pass: process.env.MAIL_PASSWORD || '',
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"Neenbyss Contacto" <team@neenbyss.com>`,
-      to: 'team@neenbyss.com',
-      replyTo: email,
-      subject: `📨 Nuevo mensaje de contacto desde Neenbyss | ${email}`,
-      html: `
-        <h2>📬 Nuevo mensaje recibido</h2>
-        <p><strong>Nombre:</strong> ${names}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Teléfono:</strong> ${phone || 'No proporcionado'}</p>
-        <p><strong>Compañía:</strong> ${company || 'No proporcionado'}</p>
-        <p><strong>Servicio solicitado:</strong> ${service}</p>
-        <p><strong>Mensaje:</strong><br/>${message}</p>
-        <span><strong>CLIENT_IP:</strong> ${ip} </span>
-      `,
-    });
-
-    // ✅ Enviar alerta a Discord como embed si se envió el correo correctamente
+    // ✅ Enviar mensaje de contacto a Discord como embed
     await fetch(process.env.DISCORD_WEBHOOK_URL!, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -90,47 +51,21 @@ export async function sendContactEmail(data: any) {
               { name: '📧 Email', value: email },
               { name: '📞 Teléfono', value: phone || 'No proporcionado' },
               { name: '🏢 Compañía', value: company || 'No proporcionado' },
-              { name: '🛠 Servicio', value: service },
+              { name: '🛠 Servicio', value: service || 'No especificado' },
               { name: '📝 Mensaje', value: message || 'Sin mensaje' },
+              { name: '🌐 IP', value: ip },
             ],
-            footer: {
-              text: 'Correo enviado correctamente',
-            },
             timestamp: new Date().toISOString(),
           },
         ],
       }),
     });
 
-    return { success: true, message: 'Correo enviado con éxito.' };
+    return { success: true, message: 'Mensaje enviado con éxito.' };
   } catch (error) {
-    console.error('[Error al enviar correo]', error);
+    console.error('[Error al enviar mensaje a Discord]', error);
 
-    // ❌ Enviar alerta a Discord como embed de error
-    await fetch(process.env.DISCORD_WEBHOOK_URL!, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: '🚨 Error Neenbyss',
-        embeds: [
-          {
-            title: '❌ Error al enviar mensaje de contacto',
-            color: 0xe74c3c, // rojo
-            description: `Ocurrió un error al enviar el correo.`,
-            fields: [
-              { name: 'Nombre', value: data.names || '—', inline: true },
-              { name: 'Email', value: data.email || '—', inline: true },
-            ],
-            footer: {
-              text: 'Fallo en el envío del correo',
-            },
-            timestamp: new Date().toISOString(),
-          },
-        ],
-      }),
-    });
-
-    return { success: false, message: 'Error al enviar el correo.' };
+    return { success: false, message: 'Error al enviar el mensaje.' };
   }
 }
 
