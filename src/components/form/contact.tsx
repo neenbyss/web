@@ -32,11 +32,14 @@ import { SendIcon } from '@/icons/send';
 import { toast } from '@/hooks/use-toast';
 import { CheckIcon } from '@/icons/check';
 import { XIcon } from '@/icons/x';
+import { DiscordInviteDialog } from '../dialog/discord-invite';
 
 type ContactValueProps = z.infer<typeof ContactSchema>;
 
 export function ContactForm() {
   const [isChecked, setChecked] = useState(false);
+  const [discordDialogOpen, setDiscordDialogOpen] = useState(false);
+  const [discordDialogVariant, setDiscordDialogVariant] = useState<'success' | 'error'>('success');
   const path = useSearchParams();
   const email = path.get('email') ?? '';
   const names = path.get('names') ?? '';
@@ -66,6 +69,8 @@ export function ContactForm() {
           </span>
         ),
       });
+      setDiscordDialogVariant('success');
+      setDiscordDialogOpen(true);
     },
     onError({ message }) {
       toast({
@@ -83,6 +88,8 @@ export function ContactForm() {
           </span>
         ),
       });
+      setDiscordDialogVariant('error');
+      setDiscordDialogOpen(true);
     },
   });
 
@@ -114,94 +121,102 @@ export function ContactForm() {
   });
 
   return (
-    <FormProvider {...form}>
-      <form
-        noValidate
-        className='mt-6 flex grid-cols-2 flex-col gap-4 sm:grid'
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <Input
-          type='name'
-          name='names'
-          label='Nombres Completos'
-          required
-          startContent={<UserIcon />}
-          placeholder='Nombres Completos'
-        />
-        <Input
-          type='email'
-          name='email'
-          label='Dirección E-mail'
-          required
-          startContent={<EmailIcon />}
-          placeholder='nombre@email.com'
-        />
-        <Input
-          type='phone'
-          name='phone'
-          label='Teléfono de Contacto'
-          startContent={<PhoneIcon />}
-          placeholder='Teléfono de contacto'
-        />
-        <Input
-          type='name'
-          name='company'
-          label='Nombre de la Compañía'
-          startContent={<BusinessIcon />}
-          placeholder='Nombre de la compañía'
-        />
+    <>
+      <FormProvider {...form}>
+        <form
+          noValidate
+          className='mt-6 flex grid-cols-2 flex-col gap-4 sm:grid'
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <Input
+            type='name'
+            name='names'
+            label='Nombres Completos'
+            required
+            startContent={<UserIcon />}
+            placeholder='Nombres Completos'
+          />
+          <Input
+            type='email'
+            name='email'
+            label='Dirección E-mail'
+            required
+            startContent={<EmailIcon />}
+            placeholder='nombre@email.com'
+          />
+          <Input
+            type='phone'
+            name='phone'
+            label='Teléfono de Contacto'
+            startContent={<PhoneIcon />}
+            placeholder='Teléfono de contacto'
+          />
+          <Input
+            type='name'
+            name='company'
+            label='Nombre de la Compañía'
+            startContent={<BusinessIcon />}
+            placeholder='Nombre de la compañía'
+          />
 
-        <Select
-          required
-          name='service'
-          startContent={<ServiceIcon className='!text-foreground' />}
-          label='Servicio de interés'
-          placeholder='Selecciona un servicio'
-          wrapperClassName='col-span-2'
-          itemsGroup={services}
-        />
+          <Select
+            required
+            name='service'
+            startContent={<ServiceIcon className='!text-foreground' />}
+            label='Servicio de interés'
+            placeholder='Selecciona un servicio'
+            wrapperClassName='col-span-2'
+            itemsGroup={services}
+          />
 
-        <Textarea
-          name='message'
-          label='Mensaje'
-          startContent={<MessageIcon />}
-          required
-          placeholder='Mensaje más detallado del servicio'
-          classNames={{
-            container: 'col-span-2',
-          }}
-        />
+          <Textarea
+            name='message'
+            label='Mensaje'
+            startContent={<MessageIcon />}
+            required
+            placeholder='Mensaje más detallado del servicio'
+            classNames={{
+              container: 'col-span-2',
+            }}
+          />
 
-        <label className='col-span-2 flex cursor-pointer gap-2 select-none'>
-          <Checkbox onCheckedChange={(v) => setChecked(v as boolean)} />
-          <span>
-            Aceptar nuestros términos y condiciones de Neenbyss
-            <span className='text-foreground-2/50 mt-1 block text-xs'>
-              Acepto los{' '}
-              <Link href='/terms' className='text-primary underline'>
-                Términos y Condiciones
-              </Link>
-              , la{' '}
-              <Link href='/privacy' className='text-primary underline'>
-                Política de Privacidad
-              </Link>{' '}
-              y autorizo el tratamiento de mis datos personales conforme a la normativa aplicable.
+          <label className='col-span-2 flex cursor-pointer gap-2 select-none'>
+            <Checkbox onCheckedChange={(v) => setChecked(v as boolean)} />
+            <span>
+              Aceptar nuestros términos y condiciones de Neenbyss
+              <span className='text-foreground-2/50 mt-1 block text-xs'>
+                Acepto los{' '}
+                <Link href='/terms' className='text-primary underline'>
+                  Términos y Condiciones
+                </Link>
+                , la{' '}
+                <Link href='/privacy' className='text-primary underline'>
+                  Política de Privacidad
+                </Link>{' '}
+                y autorizo el tratamiento de mis datos personales conforme a la normativa aplicable.
+              </span>
             </span>
-          </span>
-        </label>
+          </label>
 
-        <div className='col-span-2 mt-2 flex justify-end gap-2'>
-          <Button
-            disabled={!isChecked || isPending}
-            loading={isPending}
-            type='submit'
-            className='w-full'
-          >
-            Enviar Mensaje
-            <SendIcon />
-          </Button>
-        </div>
-      </form>
-    </FormProvider>
+          <div className='col-span-2 mt-2 flex justify-end gap-2'>
+            <Button
+              disabled={!isChecked || isPending}
+              loading={isPending}
+              type='submit'
+              className='w-full'
+            >
+              Enviar Mensaje
+              <SendIcon />
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+
+      <DiscordInviteDialog
+        open={discordDialogOpen}
+        onOpenChange={setDiscordDialogOpen}
+        variant={discordDialogVariant}
+      />
+    </>
   );
 }
