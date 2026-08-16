@@ -1,0 +1,17 @@
+-- ===============================
+-- nb-boilerplate TABLES
+-- Run this file once to create the required tables.
+-- Safe to run multiple times (uses IF NOT EXISTS).
+--
+-- RENAME this file to match your resource name.
+-- Replace 'nb_example' with your actual table name.
+-- ===============================
+
+-- CREATE TABLE IF NOT EXISTS `nb_example` (
+--   `id` INT AUTO_INCREMENT PRIMARY KEY,
+--   `name` VARCHAR(50) NOT NULL,
+--   `label` VARCHAR(100) NOT NULL,
+--   `active` TINYINT(1) NOT NULL DEFAULT 1,
+--   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   KEY `idx_example_name` (`name`)
+-- ) ENGINE=InnoDB;

@@ -1,0 +1,153 @@
+// Prisma schema — CMS de Neenbyss Studios
+// Provider: Prisma Postgres (PostgreSQL)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ────────────────────────────────────────────────────────────
+// Better Auth
+// ────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions Session[]
+  accounts Account[]
+  posts    Post[]
+  projects Project[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verification")
+}
+
+// ────────────────────────────────────────────────────────────
+// CMS
+// ────────────────────────────────────────────────────────────
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Post {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  excerpt     String?
+  coverImage  String?
+  contentJson Json          @default("{}")
+  contentMdx  String        @default("")
+  contentHtml String        @default("")
+  status      ContentStatus @default(DRAFT)
+  readingTime Int           @default(0)
+  authorId    String?
+  author      User?         @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  tags        Tag[]         @relation("PostTags")
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  summary     String?
+  coverImage  String?
+  contentJson Json          @default("{}")
+  contentMdx  String        @default("")
+  contentHtml String        @default("")
+  status      ContentStatus @default(DRAFT)
+  featured    Boolean       @default(false)
+  order       Int           @default(0)
+  liveUrl     String?
+  repoUrl     String?
+  techStack   String[]      @default([])
+  authorId    String?
+  author      User?         @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  tags        Tag[]         @relation("ProjectTags")
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, featured, order])
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  slug     String    @unique
+  posts    Post[]    @relation("PostTags")
+  projects Project[] @relation("ProjectTags")
+
+  @@map("tag")
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  url       String
+  filename  String
+  mime      String
+  size      Int
+  createdAt DateTime @default(now())
+
+  @@map("media")
+}

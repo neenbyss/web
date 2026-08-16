@@ -1,0 +1,199 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   UI / COMPORTAMIENTO DEL EDITOR — decoraciones y overlays que NO son parte del
+   contenido: selección, banda tipo Windows, placeholder, slash command, drag
+   handle, redimensionado de tablas, etc. El "chrome" del editor (toolbar,
+   contenedores…) se personaliza con Tailwind en los propios componentes; aquí
+   solo va lo que ProseMirror/JS necesita en CSS.
+   ───────────────────────────────────────────────────────────────────────── */
+@reference "../../../app/globals.css";
+
+/* Raíz de ProseMirror: ocupa el alto disponible y sin outline al enfocar. */
+.ProseMirror {
+  @apply h-full! grow;
+}
+.ProseMirror:focus {
+  @apply outline-none shadow-none;
+}
+.ProseMirror.resize-cursor {
+  cursor: col-resize;
+}
+
+/* ── Selección estilizada (decoraciones de StyledSelection) ── */
+/* Selección que persiste cuando el editor pierde el foco (bubble/toolbar/menú). */
+.tiptap .selection-persist {
+  @apply rounded-[0.2em] bg-primary/20;
+}
+/* Nodo genérico seleccionado: caja translúcida rellena, SIN borde. Los node
+   views propios (imagen, embed, archivo, separador — con `data-type`) estilizan
+   su propia selección, así que se excluyen. */
+.tiptap .ProseMirror-selectednode:not([data-type]) {
+  @apply rounded-md bg-primary/15 outline-none transition-colors duration-150;
+}
+/* Rectángulo translúcido por bloque (selección multi-bloque / marquee). */
+.tiptap .editor-block-selected {
+  @apply rounded-md bg-primary/10 transition-colors duration-150 ease-out;
+}
+
+/* ── Tablas: selección de celda y asa de redimensionar (solo edición) ── */
+/* Las celdas seleccionadas NO llevan fondo (el usuario lo pidió): solo el borde
+   ÚNICO alrededor de todo el rango, que dibuja TableControls con
+   `.editor-table-selection`. La celda con el cursor tampoco se rellena; su borde
+   lo pinta también ese overlay. `.active-cell` la mantiene la extensión pero sin
+   decoración visual propia. */
+.tiptap .column-resize-handle {
+  @apply pointer-events-none absolute top-0 -right-0.5 bottom-0 z-10 w-1 bg-primary/60;
+}
+
+/* ── Grip de columna/fila (estilo Notion) ──
+   Por defecto: una LÍNEA con borde (aspecto "cortado"). Al pasar el ratón por
+   encima del grip se transforma en una PASTILLA con icono de arrastre; y cuando
+   el dropdown está abierto (aria-expanded) pasa a color primario. */
+/* z-50: POR ENCIMA del borde de selección (`.editor-table-selection`, z-40) para
+   que el ring del color del fondo tape el borde y dé el efecto de que lo "corta". */
+.editor-table-grip {
+  @apply fixed z-50 flex cursor-grab items-center justify-center border-0 bg-transparent p-0;
+}
+.editor-table-grip:active {
+  @apply cursor-grabbing;
+}
+/* Línea CORTA centrada (tamaño del botón) que se apoya sobre el borde de la
+   tabla; el `box-shadow` del color del FONDO hace de relieve y "corta" la línea
+   del borde justo donde está el grip. */
+.editor-table-grip-line {
+  @apply rounded-full bg-muted-foreground/50 transition-colors;
+  box-shadow: 0 0 0 3px var(--color-background);
+}
+.editor-table-grip:hover .editor-table-grip-line {
+  @apply bg-muted-foreground/70;
+}
+.editor-table-grip[data-kind="col"] .editor-table-grip-line {
+  @apply h-1 w-5;
+}
+.editor-table-grip[data-kind="row"] .editor-table-grip-line {
+  @apply h-5 w-1;
+}
+/* Pastilla con grip: oculta por defecto, aparece al hover o con el menú abierto.
+   Lleva el mismo ring del color del FONDO que la línea → también "parte" el borde. */
+.editor-table-grip-dots {
+  @apply hidden items-center justify-center rounded-md border border-border bg-popover text-muted-foreground transition-colors;
+  box-shadow: 0 0 0 3px var(--color-background);
+}
+.editor-table-grip-dots svg {
+  @apply size-2.5;
+}
+.editor-table-grip[data-kind="col"] .editor-table-grip-dots {
+  @apply h-[13px] w-6;
+}
+.editor-table-grip[data-kind="row"] .editor-table-grip-dots {
+  @apply h-6 w-[13px];
+}
+.editor-table-grip:hover .editor-table-grip-line,
+.editor-table-grip[aria-expanded="true"] .editor-table-grip-line {
+  @apply hidden;
+}
+.editor-table-grip:hover .editor-table-grip-dots,
+.editor-table-grip[aria-expanded="true"] .editor-table-grip-dots {
+  @apply flex;
+}
+.editor-table-grip:hover .editor-table-grip-dots {
+  @apply border-primary/40 text-foreground;
+}
+/* Menú abierto → primario (clic). */
+.editor-table-grip[aria-expanded="true"] .editor-table-grip-dots {
+  @apply border-primary bg-primary text-primary-foreground;
+}
+
+/* Botón de herramientas de celda(s): MISMO diseño que el grip de columna/fila
+   (línea sobre el borde → pastilla con grip al hover), solo que en el color de la
+   celda seleccionada (primario). Sin fondo cuando es línea. */
+.editor-table-grip--tools .editor-table-grip-line {
+  @apply bg-primary;
+}
+.editor-table-grip--tools .editor-table-grip-dots {
+  @apply border-primary text-primary;
+}
+.editor-table-grip--tools:hover .editor-table-grip-dots {
+  @apply border-primary text-primary;
+}
+
+/* Contorno de una selección de varias celdas (montado en <body>). Sutil (borde
+   tenue): el relleno azul translúcido lo dan las celdas (`.selectedCell`), como
+   en Notion — nada de recuadro brillante. */
+.editor-table-selection {
+  @apply pointer-events-none fixed z-40 rounded-[2px] border border-primary/80;
+}
+/* SIMULACIÓN (tipo Notion) de selección de columna/fila con celdas combinadas:
+   dibujamos SOLO la franja de esa columna/fila (sin fondo, borde un poco más
+   marcado) para que no se derrame a la vecina por la celda combinada. */
+.editor-table-selection.is-fill {
+  @apply border-primary;
+}
+/* Línea de destino al reordenar columnas/filas arrastrando el grip. */
+.editor-table-drop {
+  @apply pointer-events-none fixed z-40 rounded-full bg-primary;
+}
+/* Origen "seleccionado" mientras se reordena (columna/fila levantada). */
+.editor-table-drag-source {
+  @apply pointer-events-none fixed z-40 bg-primary/10;
+}
+/* Fantasma que se DESLIZA con el puntero (simula el movimiento de la col/fila). */
+.editor-table-drag-ghost {
+  @apply pointer-events-none fixed z-50 rounded-[2px] border-2 border-primary bg-primary/20 shadow-lg;
+}
+
+/* ── Placeholder por bloque ── */
+.tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  @apply pointer-events-none float-left h-0 text-muted-foreground/70;
+}
+
+/* ── Banda de selección tipo Windows (marquee) ──
+   Rectángulo translúcido que se dibuja al arrastrar desde el margen del editor.
+   Se monta en <body> (position: fixed). */
+.editor-marquee {
+  @apply pointer-events-none fixed z-50 rounded-[3px] border border-primary/40 bg-primary/15;
+}
+/* Overlay de feedback en vivo por bloque durante el arrastre de la banda
+   (se monta en <body> porque PM revierte clases en su propio DOM). Sin fade
+   para evitar parpadeos del bloque del borde al mantener la selección. */
+.editor-block-overlay {
+  @apply pointer-events-none fixed z-40 rounded-md bg-primary/10;
+}
+
+/* ── Slash command (decoración acoplada a la Suggestion) ── */
+.ProseMirror .slash-active {
+  @apply rounded bg-primary/10 px-0.5 text-primary;
+}
+.ProseMirror .slash-empty::after {
+  content: attr(data-decoration-content);
+  @apply ml-1 text-muted-foreground opacity-60;
+}
+
+/* ── Drag handle tipo Notion (portal de la extensión; solo al hacer hover) ── */
+.editor-drag-handle {
+  @apply z-20 flex items-center gap-0.5;
+}
+.editor-drag-handle .dh-btn {
+  @apply flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors;
+}
+.editor-drag-handle .dh-btn:hover {
+  @apply bg-muted text-foreground;
+}
+.editor-drag-handle .dh-grip {
+  @apply cursor-grab active:cursor-grabbing;
+}
+
+/* Deslizamiento suave del handle entre bloques (siempre que esté montado). */
+[data-dragging] {
+  transition:
+    top 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 140ms ease;
+}
+/* SOLO mientras se arrastra de verdad (data-dragging="true") lo forzamos
+   visible, para que no desaparezca al alejar el handle de su bloque. En reposo
+   (data-dragging="false") la extensión controla la visibilidad: se muestra sobre
+   el contenido y se oculta en los márgenes (donde funciona el marquee). */
+[data-dragging="true"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

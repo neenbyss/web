@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <transition name="fade">
+            <div class="app-shell" v-if="store.visible">
+
+                <!-- ============================================ -->
+                <!-- YOUR UI LAYOUT HERE                          -->
+                <!-- Replace this example with your components    -->
+                <!-- ============================================ -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i class="icon-box"></i>
+                            <span>NB Boilerplate</span>
+                        </div>
+                        <button class="btn btn-ghost btn-sm" @click="close">
+                            <i class="icon-x"></i>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <example-list></example-list>
+                    </div>
+                </div>
+
+            </div>
+        </transition>
+
+        <!-- Always-present components -->
+        <toast-container></toast-container>
+        <confirm-modal></confirm-modal>
+    </div>
+
+    <!-- Vue 3 CDN (no build tools needed) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <!-- NUI Bridge (load first - provides NUI.post, NUI.onMessage) -->
+    <script src="js/nui.js"></script>
+
+    <!-- State Management (load second - provides Store, StoreActions) -->
+    <script src="js/store.js"></script>
+
+    <!-- Reusable Components (load third) -->
+    <script src="js/components/toast.js"></script>
+    <script src="js/components/confirm-modal.js"></script>
+
+    <!-- Your Components -->
+    <script src="js/components/example-list.js"></script>
+
+    <!-- App Init (load last - mounts Vue app + message router) -->
+    <script src="js/app.js"></script>
+</body>
+</html>

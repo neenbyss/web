@@ -1,0 +1,221 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   CONTENIDO DEL EDITOR (.tiptap) — tipografía estilo blog, PORTABLE.
+   Esto estiliza lo que está DENTRO del editor / el contenido editado. Es el
+   mismo CSS que puedes importar donde renderices el contenido publicado
+   (blog, portfolio, etc.): basta con envolver el HTML en un contenedor `.tiptap`.
+
+   Usa `@reference` para resolver `@apply` y los tokens del tema (colores,
+   fuentes…) sin duplicar el output de Tailwind. Si mueves el editor a otro
+   proyecto, apunta este `@reference` a tu CSS raíz (el que tiene `@theme`).
+   ───────────────────────────────────────────────────────────────────────── */
+@reference "../../../app/globals.css";
+
+.tiptap {
+  @apply text-[1.05rem] leading-[1.75] text-foreground;
+  text-rendering: optimizeLegibility;
+
+  /* Ancho de lectura de los bloques. El editor (`.tiptap`) ocupa TODO el ancho
+     para que la banda de selección (marquee) y los clics se detecten también
+     en los márgenes laterales; los bloques se centran con este máximo.
+     `--editor-pad-x` = aire lateral del editor (antes `px-20` en el layout): vive
+     aquí para ser PORTABLE y para que la tabla pueda "romperlo" y su scroll llegue
+     al borde del contenedor. Cambia estos dos valores para adaptar el editor a
+     cualquier ancho/dimensión de contenedor. */
+  --editor-measure: 48rem;
+  --editor-pad-x: 5rem;
+  padding-inline: var(--editor-pad-x);
+  & > * {
+    max-width: var(--editor-measure);
+    @apply mx-auto;
+  }
+
+  /* Ritmo vertical: sin margen extra arriba del primer bloque / abajo del último */
+  & > :first-child { @apply mt-0; }
+  & > :last-child { @apply mb-0; }
+
+  /* ── Encabezados ── */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight text-foreground;
+    text-wrap: balance;
+  }
+  h1 { @apply mt-9 mb-4 text-[2.5rem] leading-[1.12]; }
+  h2 { @apply mt-8 mb-3 text-[2rem] leading-[1.18]; }
+  h3 { @apply mt-7 mb-2 text-[1.5rem] leading-tight; }
+  h4 { @apply mt-6 mb-2 text-[1.25rem]; }
+  h5 { @apply mt-5 mb-1 text-lg; }
+  h6 { @apply mt-5 mb-1 text-sm font-semibold tracking-wider text-muted-foreground uppercase; }
+
+  /* ── Párrafo y texto ── */
+  p { @apply my-4 text-foreground; }
+  a {
+    @apply font-medium text-primary underline decoration-primary/40 underline-offset-2 transition-colors hover:decoration-primary;
+  }
+  strong { @apply font-semibold text-foreground; }
+  em { @apply italic; }
+  s, del { @apply text-muted-foreground; }
+
+  /* Apariencia de la selección de texto (también aplica al contenido publicado). */
+  ::selection { @apply bg-primary/25; }
+
+  /* ── Listas ── */
+  ul:not([data-type="taskList"]) {
+    @apply my-4 list-disc space-y-1.5 pl-6 marker:text-muted-foreground;
+    ul { @apply my-1.5 list-[circle]; }
+  }
+  ol {
+    @apply my-4 list-decimal space-y-1.5 pl-6 marker:text-muted-foreground;
+    ol { @apply my-1.5 list-[lower-alpha]; }
+  }
+  li {
+    @apply pl-1 text-foreground;
+    p { @apply my-0! inline; }
+    > ul, > ol { @apply mt-1.5; }
+  }
+
+  /* ── Lista de tareas ── */
+  ul[data-type="taskList"] {
+    @apply my-4 list-none space-y-2 pl-0;
+    li {
+      @apply flex items-start gap-2.5;
+      label {
+        @apply flex cursor-pointer items-center pt-1 select-none;
+        input[type="checkbox"] {
+          @apply size-4 cursor-pointer rounded border-border accent-primary focus-visible:ring-2 focus-visible:ring-ring/50;
+        }
+      }
+      > div { @apply flex-1; }
+      &[data-checked="true"] { @apply text-muted-foreground line-through; }
+    }
+  }
+
+  /* ── Cita ── */
+  blockquote {
+    @apply my-6 border-l-4 border-border pl-5 text-foreground/80 italic;
+    p { @apply my-0; }
+  }
+
+  /* ── Código ── */
+  :not(pre) > code {
+    @apply rounded-md border border-border bg-muted px-1.5 py-0.5 font-mono text-[0.85em] font-medium text-foreground;
+  }
+  pre {
+    @apply my-5 overflow-x-auto rounded-lg border border-border bg-muted/50 p-4 font-mono text-[0.9em] leading-relaxed;
+    code {
+      @apply border-0 bg-transparent p-0 font-medium text-foreground;
+    }
+  }
+
+  /* ── Separador ── */
+  hr {
+    @apply my-8 h-px border-0 bg-border;
+  }
+
+  /* ── Imagen (figura) ── */
+  figure[data-type="image-block"] {
+    @apply my-6;
+    img { @apply w-full rounded-lg; }
+    figcaption { @apply mt-2 text-center text-sm text-muted-foreground; }
+  }
+
+  /* ── Embed ── */
+  div[data-type="embed"] {
+    @apply my-6;
+    iframe { @apply aspect-video w-full rounded-lg; }
+  }
+
+  /* ── Archivo ── */
+  a.file-block {
+    @apply my-4 inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-foreground no-underline transition-colors hover:bg-muted;
+  }
+
+  /* ── Tablas (estilo tipo Notion, limpio) ── */
+  /* El wrapper ROMPE el ancho de lectura Y el aire lateral del editor
+     (`--editor-pad-x`) para ocupar TODO el ancho del CONTENEDOR: así el scroll
+     horizontal llega de borde a borde (tipo Notion) y NO desplaza el resto del
+     contenido. Todo con variables → se adapta a cualquier ancho máximo/dimensión.
+     La tabla ARRANCA alineada con la columna de lectura (padding-left = aire +
+     medio-gutter): en scroll 0 su borde izq coincide con el texto y al desplazar
+     se desliza. `padding-bottom` deja sitio para el botón "+ fila" ENTRE la tabla
+     y la barra de scroll (la barra queda debajo del todo). */
+  .tableWrapper {
+    @apply mt-5 mb-2 overflow-x-auto;
+    max-width: none;
+    width: calc(100% + 2 * var(--editor-pad-x));
+    margin-inline: calc(-1 * var(--editor-pad-x));
+    padding-left: calc(var(--editor-pad-x) + max(0px, (100% - var(--editor-measure)) / 2));
+    /* Hueco a la derecha para que el botón "+ columna" sea visible cuando la tabla
+       llega al borde (al hacer scroll hasta el final queda sitio para el botón). */
+    padding-right: 2.5rem;
+    /* Sitio para el botón "+ fila" ENTRE la tabla y la barra de scroll: debe caber
+       el botón (~13px) + la barra clásica de Windows (~17px) + aire. */
+    padding-bottom: 2.5rem;
+  }
+  table {
+    /* border-collapse forma la rejilla con los bordes de las celdas; NADA de
+       overflow-hidden ni border en la tabla (recortaba/duplicaba bordes).
+       SIN `w-full`: la tabla mide la suma de sus columnas (px). El resize es
+       COLUMNA A COLUMNA sin auto-reparto; las tablas nuevas nacen con `colwidth`
+       (ver insert-table.ts) para llenar el ancho de lectura. */
+    @apply table-fixed border-collapse text-[0.95em];
+  }
+  td,
+  th {
+    @apply relative min-w-24 border border-border px-3 py-1.5 align-top text-foreground;
+  }
+  /* Cabecera: acento sutil automático. Un color de fondo explícito (menú de
+     color de la celda) lo sobreescribe porque va inline. */
+  th {
+    @apply bg-muted/50 text-left font-semibold;
+  }
+  td > p,
+  th > p {
+    @apply my-0 leading-relaxed;
+  }
+}
+
+/* ── Paleta de colores del contenido (menú de color del editor) ──
+   El contenido guarda `color: var(--editor-color-…)` inline, así que estas
+   variables deben existir también al renderizar el contenido publicado. */
+:root {
+  --editor-color-gray: #787774;
+  --editor-color-brown: #9f6b53;
+  --editor-color-orange: #d9730d;
+  --editor-color-yellow: #cb912f;
+  --editor-color-green: #448361;
+  --editor-color-blue: #337ea9;
+  --editor-color-purple: #9065b0;
+  --editor-color-pink: #c14c8a;
+  --editor-color-red: #d44c47;
+
+  --editor-bg-gray: #f1f1ef;
+  --editor-bg-brown: #f4eeee;
+  --editor-bg-orange: #faebdd;
+  --editor-bg-yellow: #fbf3db;
+  --editor-bg-green: #edf3ec;
+  --editor-bg-blue: #e7f3f8;
+  --editor-bg-purple: #f6f3f9;
+  --editor-bg-pink: #faf1f5;
+  --editor-bg-red: #ffc0c3;
+}
+
+.dark {
+  --editor-color-gray: #9b9b9b;
+  --editor-color-brown: #ba856f;
+  --editor-color-orange: #ffa344;
+  --editor-color-yellow: #ffdc49;
+  --editor-color-green: #4dab9a;
+  --editor-color-blue: #529cca;
+  --editor-color-purple: #9a6dd7;
+  --editor-color-pink: #e255a1;
+  --editor-color-red: #ff5044;
+
+  --editor-bg-gray: #2f2f2f;
+  --editor-bg-brown: #4a3228;
+  --editor-bg-orange: #5c3b23;
+  --editor-bg-yellow: #564327;
+  --editor-bg-green: #243d30;
+  --editor-bg-blue: #143a4e;
+  --editor-bg-purple: #3c2d49;
+  --editor-bg-pink: #4e2c3c;
+  --editor-bg-red: #522e2a;
+}

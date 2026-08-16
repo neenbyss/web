@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const m=require\\('better-auth/next-js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const m=require\\('better-auth/adapters/prisma'\\); console.log\\(Object.keys\\(m\\)\\)\")"
+    ]
+  }
+}
