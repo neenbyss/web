@@ -4,9 +4,12 @@ import { notFound } from "next/navigation"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
 
-import { Mdx } from "@/lib/mdx/compile"
-import { getPublishedPostBySlug } from "@/server/posts/queries"
+import { RichContent } from "@/lib/content/render"
+import { api } from "@/trpc/server"
 import { Badge } from "@/components/ui/badge"
+
+/** `post.bySlug` lanza NOT_FOUND; aquí un null es más cómodo. */
+const getPost = (slug: string) => api.post.bySlug({ slug }).catch(() => null)
 
 export async function generateMetadata({
   params,
@@ -14,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPublishedPostBySlug(slug)
+  const post = await getPost(slug)
   if (!post) return {}
   return {
     title: post.title,
@@ -29,7 +32,7 @@ export default async function PostPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getPublishedPostBySlug(slug)
+  const post = await getPost(slug)
   if (!post) notFound()
 
   return (
@@ -71,9 +74,7 @@ export default async function PostPage({
           </div>
         )}
 
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <Mdx source={post.contentMdx} />
-        </div>
+        <RichContent html={post.contentHtml} />
       </article>
     </main>
   )

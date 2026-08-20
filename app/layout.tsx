@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono, Gelasio } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { TRPCReactProvider } from "@/trpc/client"
 
 import { cn } from "@/lib/utils"
 
@@ -46,11 +47,13 @@ export default function WebsiteLayout({
       )}
     >
       <body>
-        <ThemeProvider>
-          <TooltipProvider delay={700}>
-            {children}
-          </TooltipProvider>
-        </ThemeProvider>
+        <TRPCReactProvider>
+          <ThemeProvider>
+            <TooltipProvider delay={700}>
+              {children}
+            </TooltipProvider>
+          </ThemeProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   )

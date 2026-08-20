@@ -1,17 +1,23 @@
 "use client"
 
 import * as React from "react"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
-import type { UploadCategory } from "@/lib/upload/config"
-import type { UploadMetadata } from "@/lib/upload/types"
+import type { UploadCategory } from "@/lib/upload/categories"
+import type { UploadMetadata, UploadPostResponse } from "@/lib/upload/types"
 import type { UploadMetadataUpdate } from "@/lib/validations/upload"
+import { useTRPC } from "@/trpc/client"
 
-const API = "/api/uploads"
+/** Subida del binario: fuera de tRPC para poder reportar progreso (XHR). */
+const UPLOAD_ENDPOINT = "/api/uploads"
 
 export interface UseUploadsOptions {
   category?: UploadCategory
+  /** Lista precargada en el servidor: evita el parpadeo inicial. */
   initialItems?: UploadMetadata[]
   folderId?: string | null
+  /** Pon `false` para no cargar hasta que haga falta (p.ej. diálogo cerrado). */
+  enabled?: boolean
 }
 
 export interface UseUploadsReturn {
@@ -27,91 +33,142 @@ export interface UseUploadsReturn {
   clearError: () => void
 }
 
-interface ApiError {
-  error?: string
-}
-
-function buildQuery(opts: UseUploadsOptions): string {
-  const params = new URLSearchParams()
-  if (opts.category) params.set("category", opts.category)
-  const qs = params.toString()
-  return qs ? `?${qs}` : ""
-}
-
-/** Cliente del recurso /api/uploads con estado, progreso y manejo de errores. */
+/**
+ * Estado de la biblioteca de archivos.
+ *
+ * Lectura y escritura de metadata van por tRPC (caché compartida entre todos
+ * los componentes que monten el hook con los mismos filtros); solo el POST del
+ * binario usa XHR, porque es la única forma de tener barra de progreso.
+ */
 export function useUploads(options: UseUploadsOptions = {}): UseUploadsReturn {
-  const { category, initialItems, folderId } = options
+  const { category, initialItems, folderId, enabled = true } = options
 
-  const [items, setItems] = React.useState<UploadMetadata[]>(initialItems ?? [])
-  const [isLoading, setIsLoading] = React.useState(false)
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
+
+  const input = React.useMemo(() => (category ? { category } : {}), [category])
+  const queryKey = React.useMemo(
+    () => trpc.upload.list.queryKey(input),
+    [trpc, input]
+  )
+
+  const list = useQuery(
+    trpc.upload.list.queryOptions(input, { enabled, initialData: initialItems })
+  )
+
   const [uploading, setUploading] = React.useState(false)
   const [progress, setProgress] = React.useState(0)
-  const [error, setError] = React.useState<string | null>(null)
+  const [localError, setLocalError] = React.useState<string | null>(null)
 
-  const clearError = React.useCallback(() => setError(null), [])
+  const clearError = React.useCallback(() => setLocalError(null), [])
 
+  // Identidad estable: `UploadsList` la usa como dependencia de su intervalo de
+  // polling, y un `refresh` nuevo en cada render lo recrearía sin parar.
   const refresh = React.useCallback(async () => {
-    setIsLoading(true)
-    setError(null)
-    try {
-      const res = await fetch(`${API}${buildQuery({ category })}`, { cache: "no-store" })
-      const json = await res.json()
-      if (!res.ok || !json.ok) {
-        setError((json as ApiError).error ?? "No se pudo cargar la lista.")
-        return
-      }
-      setItems(json.data as UploadMetadata[])
-    } catch {
-      setError("Error de red al cargar los archivos.")
-    } finally {
-      setIsLoading(false)
-    }
-  }, [category])
+    await queryClient.refetchQueries({ queryKey })
+  }, [queryClient, queryKey])
 
-  // Sube UN archivo con progreso propio (0..1) reportado vía callback.
+  /** Escribe la lista en caché sin esperar a un refetch. */
+  const writeList = React.useCallback(
+    (fn: (prev: UploadMetadata[]) => UploadMetadata[]) => {
+      queryClient.setQueryData(queryKey, (prev) => fn(prev ?? []))
+    },
+    [queryClient, queryKey]
+  )
+
+  const updateMutation = useMutation(
+    trpc.upload.update.mutationOptions({
+      onSuccess: (updated) => {
+        writeList((prev) => prev.map((p) => (p.id === updated.id ? updated : p)))
+      },
+      onError: (e) => setLocalError(e.message || "No se pudo guardar."),
+    })
+  )
+
+  const removeMutation = useMutation(
+    trpc.upload.remove.mutationOptions({
+      onSuccess: ({ id }) => {
+        writeList((prev) => prev.filter((p) => p.id !== id))
+      },
+      onError: (e) => setLocalError(e.message || "No se pudo eliminar."),
+    })
+  )
+
+  // `mutateAsync` sí es estable entre renders; el objeto de mutación no.
+  const { mutateAsync: updateAsync } = updateMutation
+  const { mutateAsync: removeAsync } = removeMutation
+
+  const update = React.useCallback(
+    async (id: string, data: UploadMetadataUpdate) => {
+      setLocalError(null)
+      try {
+        return await updateAsync({ id, data })
+      } catch {
+        return null // el mensaje ya quedó en `error` vía onError
+      }
+    },
+    [updateAsync]
+  )
+
+  const remove = React.useCallback(
+    async (id: string) => {
+      setLocalError(null)
+      try {
+        await removeAsync({ id })
+        return true
+      } catch {
+        return false
+      }
+    },
+    [removeAsync]
+  )
+
+  // Sube UN archivo reportando su fracción de progreso (0..1).
   const uploadOne = React.useCallback(
-    (file: File, onFraction: (f: number) => void) =>
+    (file: File, onFraction: (fraction: number) => void) =>
       new Promise<{ saved?: UploadMetadata; error?: string }>((resolve) => {
         const form = new FormData()
         form.append("file", file)
         if (folderId) form.append("folderId", folderId)
 
         const xhr = new XMLHttpRequest()
-        xhr.open("POST", API)
+        xhr.open("POST", UPLOAD_ENDPOINT)
 
         xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) onFraction(e.loaded / e.total)
         }
 
         xhr.onload = () => {
-          let json: { ok?: boolean; data?: UploadMetadata[]; error?: string } = {}
+          let body: UploadPostResponse | null = null
           try {
-            json = JSON.parse(xhr.responseText)
+            body = JSON.parse(xhr.responseText) as UploadPostResponse
           } catch {
             /* respuesta no JSON */
           }
-          if (xhr.status >= 200 && xhr.status < 300 && json.ok && json.data?.[0]) {
-            resolve({ saved: json.data[0] })
+          if (xhr.status >= 200 && xhr.status < 300 && body?.ok && body.data[0]) {
+            resolve({ saved: body.data[0] })
           } else {
-            resolve({ error: json.error ?? `Error al subir "${file.name}" (${xhr.status}).` })
+            const message =
+              body && !body.ok ? body.error : `Error al subir "${file.name}" (${xhr.status}).`
+            resolve({ error: message })
           }
         }
 
         xhr.onerror = () => resolve({ error: `Error de red al subir "${file.name}".` })
         xhr.send(form)
       }),
-    [folderId],
+    [folderId]
   )
 
-  // Sube los archivos de uno en uno: memoria acotada en el servidor,
-  // progreso agregado y tolerancia a fallos (un archivo no aborta el resto).
+  // De uno en uno: memoria acotada en el servidor, progreso agregado y
+  // tolerancia a fallos (un archivo con error no aborta el resto del lote).
   const upload = React.useCallback(
     async (files: File[]): Promise<UploadMetadata[]> => {
       if (files.length === 0) return []
 
       setUploading(true)
       setProgress(0)
-      setError(null)
+      setLocalError(null)
 
       const total = files.length
       const saved: UploadMetadata[] = []
@@ -124,7 +181,7 @@ export function useUploads(options: UseUploadsOptions = {}): UseUploadsReturn {
 
         if (result.saved) {
           const item = result.saved
-          setItems((prev) => (prev.some((p) => p.id === item.id) ? prev : [item, ...prev]))
+          writeList((prev) => (prev.some((p) => p.id === item.id) ? prev : [item, ...prev]))
           saved.push(item)
         } else if (result.error) {
           errors.push(result.error)
@@ -133,60 +190,31 @@ export function useUploads(options: UseUploadsOptions = {}): UseUploadsReturn {
       }
 
       setUploading(false)
+
+      if (saved.length > 0) {
+        // Sincroniza cualquier otra vista de la biblioteca (otras categorías,
+        // otros filtros) con lo que acaba de entrar.
+        void queryClient.invalidateQueries({ queryKey: trpc.upload.pathKey() })
+      }
+
       if (errors.length > 0) {
-        setError(
+        setLocalError(
           errors.length === total
             ? errors[0]
-            : `${saved.length} subido(s), ${errors.length} con error: ${errors[0]}`,
+            : `${saved.length} subido(s), ${errors.length} con error: ${errors[0]}`
         )
       }
+
       return saved
     },
-    [uploadOne],
+    [uploadOne, writeList, queryClient, trpc]
   )
 
-  const remove = React.useCallback(async (id: string) => {
-    setError(null)
-    try {
-      const res = await fetch(`${API}/${id}`, { method: "DELETE" })
-      const json = await res.json()
-      if (!res.ok || !json.ok) {
-        setError((json as ApiError).error ?? "No se pudo eliminar.")
-        return false
-      }
-      setItems((prev) => prev.filter((p) => p.id !== id))
-      return true
-    } catch {
-      setError("Error de red al eliminar.")
-      return false
-    }
-  }, [])
-
-  const update = React.useCallback(async (id: string, data: UploadMetadataUpdate) => {
-    setError(null)
-    try {
-      const res = await fetch(`${API}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      const json = await res.json()
-      if (!res.ok || !json.ok) {
-        setError((json as ApiError).error ?? "No se pudo guardar.")
-        return null
-      }
-      const updated = json.data as UploadMetadata
-      setItems((prev) => prev.map((p) => (p.id === id ? updated : p)))
-      return updated
-    } catch {
-      setError("Error de red al guardar.")
-      return null
-    }
-  }, [])
+  const error = localError ?? (list.error ? list.error.message : null)
 
   return {
-    items,
-    isLoading,
+    items: list.data ?? [],
+    isLoading: list.isFetching,
     uploading,
     progress,
     error,

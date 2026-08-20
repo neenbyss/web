@@ -3,10 +3,13 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react"
 
-import { Mdx } from "@/lib/mdx/compile"
-import { getPublishedProjectBySlug } from "@/server/projects/queries"
+import { RichContent } from "@/lib/content/render"
+import { api } from "@/trpc/server"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+
+/** `project.bySlug` lanza NOT_FOUND; aquí un null es más cómodo. */
+const getProject = (slug: string) => api.project.bySlug({ slug }).catch(() => null)
 
 export async function generateMetadata({
   params,
@@ -14,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const project = await getPublishedProjectBySlug(slug)
+  const project = await getProject(slug)
   if (!project) return {}
   return {
     title: project.title,
@@ -29,7 +32,7 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const project = await getPublishedProjectBySlug(slug)
+  const project = await getProject(slug)
   if (!project) notFound()
 
   return (
@@ -92,9 +95,7 @@ export default async function ProjectPage({
           </div>
         )}
 
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <Mdx source={project.contentMdx} />
-        </div>
+        <RichContent html={project.contentHtml} />
       </article>
     </main>
   )

@@ -5,9 +5,14 @@ import { redirect } from "next/navigation"
 
 import { auth } from "@/lib/auth"
 
-/** Devuelve la sesión actual o null. */
-export async function getSession() {
-  return auth.api.getSession({ headers: await headers() })
+/**
+ * Devuelve la sesión actual o null.
+ *
+ * Acepta unas cabeceras explícitas (contexto tRPC / route handlers, donde ya
+ * tenemos el `Request`); si se omiten, las toma de `next/headers`.
+ */
+export async function getSession(reqHeaders?: Headers) {
+  return auth.api.getSession({ headers: reqHeaders ?? (await headers()) })
 }
 
 /**

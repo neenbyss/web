@@ -1,5 +1,5 @@
-import { listUploads } from "@/lib/upload/storage"
 import { CATEGORY_META } from "@/lib/upload/categories"
+import { api } from "@/trpc/server"
 import { UploadsDemo, UploadsDialog, UploadsPanel } from "@/components/uploads"
 
 export const metadata = {
@@ -10,11 +10,11 @@ export const metadata = {
 export const dynamic = "force-dynamic"
 
 export default async function UploadsTestPage() {
-  // SSR: precarga las listas por categoría (sin flash en el cliente).
+  // SSR vía el caller de tRPC: mismos procedimientos que usa el cliente, sin HTTP.
   const [images, videos, files] = await Promise.all([
-    listUploads({ category: "image" }),
-    listUploads({ category: "video" }),
-    listUploads({ category: "file" }),
+    api.upload.list({ category: "image" }),
+    api.upload.list({ category: "video" }),
+    api.upload.list({ category: "file" }),
   ])
 
   return (
@@ -23,7 +23,7 @@ export default async function UploadsTestPage() {
         <h1 className="heading-3">Gestor de uploads</h1>
         <p className="text-sm text-muted-foreground">
           Demo del componente <code>Dropzone</code> customizable y del panel de gestión
-          conectado a la API (<code>/api/uploads</code>). Soporta clic, arrastrar y pegar.
+          conectado a tRPC (router <code>upload</code>). Soporta clic, arrastrar y pegar.
         </p>
       </header>
 

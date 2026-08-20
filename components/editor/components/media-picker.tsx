@@ -47,18 +47,17 @@ export function MediaPicker({
   onSelect,
 }: MediaPickerProps) {
   const meta = category ? CATEGORY_META[category] : null
-  const { items, isLoading, uploading, progress, error, upload, refresh } = useUploads({ category })
+  // `enabled: open` evita cargar la biblioteca mientras el diálogo está cerrado.
+  const { items, isLoading, uploading, progress, error, upload } = useUploads({
+    category,
+    enabled: open,
+  })
 
   const [tab, setTab] = React.useState("library")
   const [search, setSearch] = React.useState("")
   const [format, setFormat] = React.useState("")
   const [sort, setSort] = React.useState<SortField>("date")
   const [clientError, setClientError] = React.useState<string | null>(null)
-
-  // Carga la biblioteca al abrir.
-  React.useEffect(() => {
-    if (open) void refresh()
-  }, [open, refresh])
 
   const formats = React.useMemo(
     () => Array.from(new Set(items.map((i) => i.mime))).sort(),

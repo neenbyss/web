@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { IconAlertTriangle } from "@tabler/icons-react"
 
 import { formatBytes } from "@/lib/upload/categories"
 import type { UploadMetadata } from "@/lib/upload/types"
-import type { UploadMetadataUpdate } from "@/lib/validations/upload"
+import { useTRPC } from "@/trpc/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -28,95 +29,80 @@ interface Values {
 
 const EMPTY: Values = { title: "", alt: "", description: "", figcaption: "", tags: "" }
 
+function toValues(meta: UploadMetadata): Values {
+  return {
+    title: meta.title,
+    alt: meta.alt,
+    description: meta.description,
+    figcaption: meta.figcaption,
+    tags: meta.tags.join(", "),
+  }
+}
+
 export interface UploadMetaDialogProps {
   uploadId: string | null
   open: boolean
   onOpenChange: (open: boolean) => void
-  /** Se llama con la metadata actualizada tras guardar en la API. */
+  /** Se llama con la metadata actualizada tras guardar. */
   onSaved?: (updated: UploadMetadata) => void
 }
 
 /**
- * Edita los metadatos SEO del archivo subido (persisten en su metadata.json vía
- * PATCH /api/uploads/:id). Carga los valores actuales al abrir.
+ * Edita los metadatos SEO del archivo subido (`upload.byId` / `upload.update`).
+ * Persisten en su `metadata.json` y se reutilizan en cada inserción.
  */
 export function UploadMetaDialog({ uploadId, open, onOpenChange, onSaved }: UploadMetaDialogProps) {
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
+
+  const metaQuery = useQuery(
+    trpc.upload.byId.queryOptions(
+      { id: uploadId ?? "" },
+      { enabled: open && Boolean(uploadId) }
+    )
+  )
+  const meta = metaQuery.data ?? null
+  const loading = metaQuery.isFetching
+
+  // Rellena el formulario cuando llega (o cambia) la metadata del archivo.
+  // Ajuste en render en vez de efecto: sin renders en cascada.
   const [values, setValues] = React.useState<Values>(EMPTY)
-  const [meta, setMeta] = React.useState<UploadMetadata | null>(null)
-  const [loading, setLoading] = React.useState(false)
-  const [saving, setSaving] = React.useState(false)
-  const [error, setError] = React.useState<string | null>(null)
+  const stamp = meta ? `${meta.id}:${meta.updatedAt}` : null
+  const [syncedFrom, setSyncedFrom] = React.useState<string | null>(stamp)
+  if (stamp !== syncedFrom) {
+    setSyncedFrom(stamp)
+    setValues(meta ? toValues(meta) : EMPTY)
+  }
 
-  React.useEffect(() => {
-    if (!open || !uploadId) return
-    let active = true
+  const save = useMutation(
+    trpc.upload.update.mutationOptions({
+      onSuccess: (updated) => {
+        // Refresca cualquier lista de la biblioteca que esté montada.
+        void queryClient.invalidateQueries({ queryKey: trpc.upload.pathKey() })
+        onSaved?.(updated)
+        onOpenChange(false)
+      },
+    })
+  )
 
-    const load = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const res = await fetch(`/api/uploads/${uploadId}`, { cache: "no-store" })
-        const json = await res.json()
-        if (!active) return
-        if (json.ok) {
-          const m = json.data as UploadMetadata
-          setMeta(m)
-          setValues({
-            title: m.title,
-            alt: m.alt,
-            description: m.description,
-            figcaption: m.figcaption,
-            tags: m.tags.join(", "),
-          })
-        } else {
-          setError(json.error ?? "No se pudo cargar la metadata.")
-        }
-      } catch {
-        if (active) setError("Error de red al cargar la metadata.")
-      } finally {
-        if (active) setLoading(false)
-      }
-    }
-
-    void load()
-    return () => {
-      active = false
-    }
-  }, [open, uploadId])
+  const error = save.error?.message ?? metaQuery.error?.message ?? null
 
   const set = (key: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setValues((v) => ({ ...v, [key]: e.target.value }))
 
-  async function handleSave(e: React.FormEvent) {
+  function handleSave(e: React.FormEvent) {
     e.preventDefault()
     if (!uploadId) return
-    setSaving(true)
-    setError(null)
-    const body: UploadMetadataUpdate = {
-      title: values.title,
-      alt: values.alt,
-      description: values.description,
-      figcaption: values.figcaption,
-      tags: values.tags.split(",").map((t) => t.trim()).filter(Boolean),
-    }
-    try {
-      const res = await fetch(`/api/uploads/${uploadId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
-      const json = await res.json()
-      if (!res.ok || !json.ok) {
-        setError(json.error ?? "No se pudo guardar.")
-        return
-      }
-      onSaved?.(json.data as UploadMetadata)
-      onOpenChange(false)
-    } catch {
-      setError("Error de red al guardar.")
-    } finally {
-      setSaving(false)
-    }
+    save.mutate({
+      id: uploadId,
+      data: {
+        title: values.title,
+        alt: values.alt,
+        description: values.description,
+        figcaption: values.figcaption,
+        tags: values.tags.split(",").map((t) => t.trim()).filter(Boolean),
+      },
+    })
   }
 
   return (
@@ -206,11 +192,11 @@ export function UploadMetaDialog({ uploadId, open, onOpenChange, onSaved }: Uplo
             )}
 
             <div className="flex justify-end gap-2 pt-1">
-              <Button type="button" variant="ghost" size="xs" onClick={() => onOpenChange(false)} disabled={saving}>
+              <Button type="button" variant="ghost" size="xs" onClick={() => onOpenChange(false)} disabled={save.isPending}>
                 Cancelar
               </Button>
-              <Button type="submit" size="xs" disabled={saving || loading}>
-                {saving ? "Guardando…" : "Guardar"}
+              <Button type="submit" size="xs" disabled={save.isPending || loading}>
+                {save.isPending ? "Guardando…" : "Guardar"}
               </Button>
             </div>
           </form>

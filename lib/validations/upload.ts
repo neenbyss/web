@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 import { UPLOAD_CATEGORIES } from "@/lib/upload/categories"
+import { idSchema } from "@/lib/validations/common"
 
 /** Campos de metadata SEO editables desde el gestor. */
 export const uploadMetadataUpdateSchema = z.object({
@@ -14,7 +15,14 @@ export const uploadMetadataUpdateSchema = z.object({
 
 export type UploadMetadataUpdate = z.infer<typeof uploadMetadataUpdateSchema>
 
-/** Parámetros de consulta admitidos por el GET de listado. */
+/** Entrada de `upload.update`: qué archivo y qué campos cambian. */
+export const uploadUpdateInputSchema = idSchema.extend({
+  data: uploadMetadataUpdateSchema,
+})
+
+export type UploadUpdateInput = z.infer<typeof uploadUpdateInputSchema>
+
+/** Filtros y orden admitidos por `upload.list`. */
 export const uploadListQuerySchema = z.object({
   category: z.enum(UPLOAD_CATEGORIES).optional(),
   search: z.string().max(120).optional(),
@@ -23,3 +31,10 @@ export const uploadListQuerySchema = z.object({
 })
 
 export type UploadListQuery = z.infer<typeof uploadListQuerySchema>
+
+/** Metadata que acompaña a un POST multipart de subida. */
+export const uploadCreateFieldsSchema = z.object({
+  folderId: z.string().max(120).nullable().optional(),
+})
+
+export type UploadCreateFields = z.infer<typeof uploadCreateFieldsSchema>

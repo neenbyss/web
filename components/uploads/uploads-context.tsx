@@ -23,6 +23,8 @@ export interface UploadsProviderProps {
   category?: UploadCategory
   initialItems?: UploadMetadata[]
   folderId?: string | null
+  /** Pon `false` para no cargar la biblioteca hasta que sea visible. */
+  enabled?: boolean
   children: React.ReactNode
 }
 
@@ -31,9 +33,10 @@ export function UploadsProvider({
   category,
   initialItems,
   folderId,
+  enabled,
   children,
 }: UploadsProviderProps) {
-  const uploads = useUploads({ category, initialItems, folderId })
+  const uploads = useUploads({ category, initialItems, folderId, enabled })
   const value = React.useMemo(() => ({ ...uploads, category }), [uploads, category])
   return <UploadsContext.Provider value={value}>{children}</UploadsContext.Provider>
 }

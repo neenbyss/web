@@ -31,3 +31,17 @@ export interface UploadMetadata {
   createdAt: string
   updatedAt: string
 }
+
+/** Error de un archivo concreto dentro de un lote de subida. */
+export interface UploadFileError {
+  file: string
+  error: string
+}
+
+/**
+ * Respuesta de `POST /api/uploads` (único endpoint fuera de tRPC: necesita
+ * multipart y progreso de subida). Contrato compartido por route y cliente.
+ */
+export type UploadPostResponse =
+  | { ok: true; data: UploadMetadata[]; errors: UploadFileError[] }
+  | { ok: false; error: string; errors?: UploadFileError[] }
