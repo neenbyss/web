@@ -35,6 +35,7 @@ const breadcrumbNameMap: Record<string, string> = {
   ropa: 'Packs de Ropa',
   'reparar-optimizar': 'Reparar y Optimizar',
   'crear-servidor': 'Crear Servidor',
+  'nui-ui': 'NUI y UI',
   ...ServicesNameMap,
 };
 

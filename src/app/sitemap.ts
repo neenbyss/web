@@ -21,6 +21,11 @@ const staticRoutes = [
     priority: 0.75,
     changeFrequency: 'monthly' as const,
   },
+  {
+    url: `${baseUrl}/services/fivem/nui-ui/`,
+    priority: 0.75,
+    changeFrequency: 'monthly' as const,
+  },
   { url: `${baseUrl}/services/fivem/ropa/`, priority: 0.75, changeFrequency: 'monthly' as const },
   {
     url: `${baseUrl}/services/fivem/scripts/`,
