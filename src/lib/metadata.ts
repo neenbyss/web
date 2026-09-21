@@ -29,21 +29,11 @@ export function createMetadata(override: CreateMetadataOptions): Metadata {
 
     keywords: override.keywords ?? [
       'programador fivem',
-      'programadores fivem',
-      'desarrollador fivem',
       'scripts fivem personalizados',
       'configuración servidor fivem',
-      'reparación servidor fivem',
-      'soporte fivem',
-      'scripts qbcore',
-      'scripts esx',
-      'pause menu fivem',
       'desarrollo web profesional',
       'diseño ui/ux profesional',
       'software a medida',
-      'Neenbyss desarrolladores',
-      'automatización empresarial',
-      'aplicaciones web',
     ],
 
     verification: {
@@ -107,12 +97,11 @@ export function createMetadata(override: CreateMetadataOptions): Metadata {
     referrer: 'origin-when-cross-origin',
 
     icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: '32x32' },
-        { url: '/icon.png', sizes: '192x192', type: 'image/png' },
-        { url: '/icon-dark.png', sizes: '192x192', media: '(prefers-color-scheme: dark)' },
-      ],
-      apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+      // Solo se referencia favicon.ico porque es el único asset de icono que
+      // existe en el proyecto (src/app/favicon.ico). TODO(propietario):
+      // entregar icon.png (192x192), icon-dark.png y apple-icon.png (180x180)
+      // si se quieren iconos PWA/Apple dedicados.
+      icon: [{ url: '/favicon.ico', sizes: '32x32' }],
       shortcut: '/favicon.ico',
     },
   };
@@ -130,7 +119,9 @@ export function generateStructuredData(type: 'Service' | 'Organization' | 'WebPa
         ...baseStructure,
         name: 'Neenbyss',
         url: 'https://neenbyss.com',
-        logo: 'https://neenbyss.com/logo.png',
+        // TODO(propietario): logo.png no existe en public/. Se usa og.png
+        // como imagen de marca provisional; entregar un logo cuadrado real.
+        logo: 'https://neenbyss.com/og.png',
         description:
           'Especialistas en desarrollo de software personalizado, configuración de servidores FiveM y diseño UI/UX profesional.',
         address: {

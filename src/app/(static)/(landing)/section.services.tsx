@@ -32,11 +32,7 @@ export function Services() {
         </div>
 
         <div className='mt-12'>
-          <Tabs
-            defaultValue={serviceCategories[0].uid}
-            className='flex-col lg:flex-row'
-            orientation={'vertical'}
-          >
+          <Tabs defaultValue='fivem' className='flex-col lg:flex-row' orientation={'vertical'}>
             <ScrollArea className='min-w-80'>
               <TabsList className='flex-row border-b border-l-0 lg:flex-col lg:border-b-0 lg:border-l'>
                 {serviceCategories.map((category, i) => (

@@ -1,4 +1,5 @@
 import { Hero } from './section.hero';
+import { Situations } from './section.situations';
 import { Projects } from './section.projects';
 import { Valores } from './section.valores';
 import { Services } from './section.services';
@@ -39,13 +40,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
       />
       <Hero />
-      <Products />
+      <Situations />
+      <Services />
       <section className='to-content-1 bg-gradient-to-b from-transparent'>
         <Valores />
         <Projects />
       </section>
-      <Services />
       <Timeline />
+      <Products />
       <Contact />
     </main>
   );

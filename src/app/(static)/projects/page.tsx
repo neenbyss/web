@@ -23,6 +23,7 @@ export const metadata = createMetadata({
   title: 'Proyectos',
   description:
     'Explorá nuestra colección de proyectos destacados que demuestran nuestra experiencia y capacidad para crear soluciones digitales innovadoras. Cada proyecto refleja nuestro compromiso con la excelencia y la satisfacción del cliente.',
+  canonical: 'https://neenbyss.com/projects',
   keywords: [
     'diseños web',
     'diseño de interfaces',
@@ -51,7 +52,6 @@ export default async function ProjectsPage({ params }: Props) {
   return (
     <ProjectProvider category={category ?? 'all'} callbackProjects={projects}>
       <main>
-        <h1 className='sr-only'>Proyectos</h1>
         <Hero />
         <section className='container-screen-2xl flex flex-col gap-6 pt-10 pb-8 lg:grid lg:grid-cols-[0.28fr_1fr] xl:grid-cols-[0.25fr_1fr]'>
           <FilterSection />

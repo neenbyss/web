@@ -47,7 +47,6 @@ export default function Services() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main>
-        <h1 className='sr-only'> Services </h1>
         <Hero />
         <Categories />
       </main>

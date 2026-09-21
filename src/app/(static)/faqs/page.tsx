@@ -1,12 +1,8 @@
 import Link from 'next/link';
 import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
 import { createMetadata } from '@/lib/metadata';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { TrackedAccordion } from '@/components/tracked-accordion';
 import { QuestionIcon } from '@/icons/question';
 
 export const metadata = createMetadata({
@@ -46,7 +42,7 @@ const generalFaqs = [
   {
     question: '¿Ofrecen servicios de mantenimiento y soporte?',
     answer:
-      'Sí. Para servidores FiveM contamos con planes mensuales (Bronce, Plata, Oro, Platino, Diamante y personalizados) con horas garantizadas y tiempos de respuesta definidos. Para webs y aplicaciones ofrecemos mantenimiento por bloques de horas o proyectos puntuales.',
+      'Sí. Para servidores FiveM contamos con planes mensuales (Mantenimiento, Desarrollo, Integral y Personalizado) con horas garantizadas y tiempos de respuesta definidos. Para webs y aplicaciones ofrecemos mantenimiento por bloques de horas o proyectos puntuales.',
   },
   {
     question: '¿Qué tecnologías utilizan?',
@@ -66,7 +62,7 @@ const generalFaqs = [
   {
     question: '¿Cuál es la política de precios?',
     answer:
-      'Variamos según complejidad. Webs y software a medida: cotización por proyecto. Scripts FiveM: desde 50 USD (sencillos) hasta 2000 USD (complejos). Packs de ropa FiveM: desde 30 USD. Planes mensuales FiveM: desde 40.50 USD/mes. Siempre cotizamos sin compromiso tras revisar el brief.',
+      'Variamos según complejidad. Webs y software a medida: cotización por proyecto. Scripts FiveM: desde 50 USD (sencillos) hasta 2000 USD (complejos). Packs de ropa FiveM: desde 30 USD. Planes mensuales FiveM: desde $199 USD/mes. Siempre cotizamos sin compromiso tras revisar el brief.',
   },
   {
     question: '¿Tienen experiencia con transformación digital?',
@@ -171,7 +167,7 @@ export default function FAQS() {
 
         <section className='min-h-160 w-full'>
           <h2 className='mb-4 text-xl font-medium sm:text-2xl'>Generales</h2>
-          <Accordion type='single' collapsible>
+          <TrackedAccordion collapsible location='faqs_general'>
             {generalFaqs.map((x, i) => (
               <AccordionItem
                 key={i}
@@ -186,10 +182,10 @@ export default function FAQS() {
                 <AccordionContent> {x.answer} </AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+          </TrackedAccordion>
 
           <h2 className='mt-12 mb-4 text-xl font-medium sm:text-2xl'>FiveM</h2>
-          <Accordion type='single' collapsible>
+          <TrackedAccordion collapsible location='faqs_fivem'>
             {fivemFaqs.map((x, i) => (
               <AccordionItem
                 key={i}
@@ -204,7 +200,7 @@ export default function FAQS() {
                 <AccordionContent> {x.answer} </AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+          </TrackedAccordion>
         </section>
       </main>
     </>

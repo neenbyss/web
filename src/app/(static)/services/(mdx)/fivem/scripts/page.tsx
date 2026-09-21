@@ -1,12 +1,8 @@
 import Link from 'next/link';
 
 import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { TrackedAccordion } from '@/components/tracked-accordion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -158,9 +154,9 @@ const included = [
 ];
 
 export const metadata = createMetadata({
-  title: 'Scripts FiveM Personalizados | Desarrollo a Medida en Lua, ESX y QBCore',
+  title: 'Scripts FiveM personalizados en Lua, ESX y QBCore',
   description:
-    'Desarrollo de scripts FiveM a medida: economía, inventario, trabajos, vehículos, policial, EMS y mecánicas únicas. Código propio en Lua, compatible con ESX y QBCore, optimizado y con NUI incluida. Cotiza sin compromiso.',
+    'Desarrollo de scripts FiveM a medida para economía, inventario, trabajos, vehículos, EMS, policía y mecánicas únicas. Código propio, NUI y soporte post-entrega.',
   canonical: 'https://neenbyss.com/services/fivem/scripts',
   openGraph: {
     url: 'https://neenbyss.com/services/fivem/scripts',
@@ -172,44 +168,16 @@ export const metadata = createMetadata({
     card: 'summary_large_image',
   },
   keywords: [
-    'scripts fivem',
     'scripts fivem personalizados',
-    'scripts fivem custom',
-    'scripts fivem a medida',
-    'desarrollo de scripts fivem',
-    'desarrollo scripts fivem',
-    'programador scripts fivem',
-    'programador de scripts fivem',
-    'crear script fivem',
-    'crear scripts fivem',
-    'script fivem custom',
-    'scripts qbcore',
-    'scripts qbcore personalizados',
-    'scripts qb fivem',
+    'desarrollo scripts fivem lua',
     'scripts esx',
-    'scripts esx personalizados',
-    'scripts esx legacy',
-    'scripts qbox',
-    'scripts fivem lua',
-    'scripts fivem ox_lib',
-    'scripts economia fivem',
-    'scripts inventario fivem',
-    'scripts trabajos fivem',
-    'scripts vehiculos fivem',
-    'scripts policia fivem',
-    'scripts ems fivem',
-    'scripts mdt fivem',
-    'scripts negocios fivem',
+    'scripts qbcore',
+    'script economia fivem',
+    'script inventario fivem',
+    'script trabajos fivem',
+    'script mdt fivem',
     'scripts roleplay fivem',
-    'scripts rp fivem',
-    'script hud fivem',
-    'script phone fivem',
-    'scripts fivem mexico',
-    'scripts fivem españa',
-    'scripts fivem argentina',
-    'scripts fivem chile',
-    'scripts fivem colombia',
-    'scripts fivem latinoamerica',
+    'programador fivem',
   ],
 });
 
@@ -272,12 +240,14 @@ export default function FiveMScriptsPage() {
           </div>
 
           <img
-            alt='SERVICES_CIRCLES'
+            alt=''
+            aria-hidden='true'
             src={SERVICES_CIRCLES.src}
             className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
           />
           <img
-            alt='SERVICES_VECTOR'
+            alt=''
+            aria-hidden='true'
             src={SERVICES_VECTOR.src}
             className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
           />
@@ -354,7 +324,7 @@ export default function FiveMScriptsPage() {
             Preguntas Frecuentes sobre Desarrollo de Scripts FiveM
           </h2>
 
-          <Accordion type='single' collapsible className='flex flex-col gap-4'>
+          <TrackedAccordion collapsible className='flex flex-col gap-4' location='fivem_scripts'>
             {FAQs.map(({ question, answer }, i) => (
               <AccordionItem
                 className='bg-primary/20 data-[state=open]:bg-primary/60 rounded-lg border-b-0 duration-300'
@@ -367,7 +337,7 @@ export default function FiveMScriptsPage() {
                 <AccordionContent className='px-6 py-4 text-base'>{answer}</AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+          </TrackedAccordion>
         </section>
 
         <section className='bg-content-1 border-t py-20'>

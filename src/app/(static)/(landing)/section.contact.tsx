@@ -34,6 +34,8 @@ export function Contact() {
               delay={0.8}
               href={globalLinks.email.link}
               target='_blank'
+              data-event='click_email'
+              data-location='home_contact'
               className='bg-content hover:bg-content-1 hover:border-primary flex items-center gap-3 rounded-lg border p-3.5 transition-colors'
             >
               <div className='bg-primary/10 flex size-10 items-center justify-center rounded-lg'>
@@ -61,9 +63,15 @@ export function Contact() {
               Redes Sociales{' '}
             </Fade>
             <div className='mt-3 flex flex-wrap gap-2'>
-              {Socials.map(({ href, icon }, i) => (
+              {Socials.map(({ href, icon, label }, i) => (
                 <Button key={i} asChild size='sm' variant='flat' className='size-8 hover:scale-105'>
-                  <Fade as='a' delay={i * 0.05 + 0.4} href={href} target='_blank'>
+                  <Fade
+                    as='a'
+                    delay={i * 0.05 + 0.4}
+                    href={href}
+                    target='_blank'
+                    aria-label={label}
+                  >
                     {icon}
                   </Fade>
                 </Button>
@@ -79,7 +87,12 @@ export function Contact() {
               atención rápida y eficiente.{' '}
             </p>
             <Button asChild variant='outline' className='bg-background w-full'>
-              <a href={globalLinks.discord.link} target='_blank'>
+              <a
+                href={globalLinks.discord.link}
+                target='_blank'
+                data-event='click_discord'
+                data-location='home_contact'
+              >
                 Unirse Ahora <DiscordIcon />
               </a>
             </Button>
@@ -91,7 +104,9 @@ export function Contact() {
           delay={0.8}
           className='bg-content h-fit w-full rounded-lg border p-5 lg:max-w-2xl'
         >
-          <h2 className='text-2xl font-medium'> Envíanos Un Mensaje </h2>
+          <h2 className='text-2xl font-medium'>
+            Cuéntanos qué necesitas y te diremos el siguiente paso
+          </h2>
           <Suspense>
             <ContactForm />
           </Suspense>

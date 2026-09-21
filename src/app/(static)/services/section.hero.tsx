@@ -14,10 +14,10 @@ export function Hero() {
       <div className='container-screen-2xl relative z-10 py-5 sm:py-10'>
         <AppBreadcrumb className='mb-4 bg-transparent px-0 py-0' />
 
-        <h2 className='mb-4 max-w-2xl text-3xl font-medium sm:text-6xl'>
+        <h1 className='mb-4 max-w-2xl text-3xl font-medium sm:text-6xl'>
           {' '}
           Soluciones Tecnológicas <span className='text-primary'>Integrales</span>{' '}
-        </h2>
+        </h1>
         <p className='max-w-2xl'>
           En <strong>Neenbyss</strong> ofrecemos un ecosistema completo de{' '}
           <strong>servicios digitales</strong>
@@ -39,12 +39,14 @@ export function Hero() {
       </div>
 
       <img
-        alt='SERVICES_CIRCLES'
+        alt=''
+        aria-hidden='true'
         src={SERVICES_CIRCLES.src}
         className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
       />
       <img
-        alt='SERVICES_VECTOR'
+        alt=''
+        aria-hidden='true'
         src={SERVICES_VECTOR.src}
         className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
       />

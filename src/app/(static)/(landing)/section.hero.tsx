@@ -19,12 +19,14 @@ export function Hero() {
   return (
     <section className='relative overflow-hidden border-b'>
       <m.img
-        alt='CIRCLES'
+        alt=''
+        aria-hidden='true'
         src={HERO_CIRCLES_GROUP.src}
         className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
       />
       <m.img
-        alt='VECTOR'
+        alt=''
+        aria-hidden='true'
         src={HERO_VECTOR_BG.src}
         className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
         initial={{
@@ -69,24 +71,24 @@ export function Hero() {
             as='h1'
             delay={0.2}
             scroll={false}
-            className='mb-6 text-4xl font-medium text-pretty capitalize sm:text-7xl'
+            className='mb-6 text-4xl font-medium text-pretty sm:text-7xl'
           >
-            Desarrollo de <span className='text-primary'>Software</span>,{' '}
-            <span className='text-secondary'>Scripts FiveM</span> y UI/UX a Tu Medida
+            Servidor FiveM <span className='text-primary'>estable y único</span>, listo para{' '}
+            <span className='text-secondary'>crecer</span>
           </Fade>
 
           <Fade as='p' delay={0.4} scroll={false} className='max-w-xl'>
-            <strong>Programadores FiveM</strong>, desarrolladores web y diseñadores UI/UX.
+            Creamos <strong>scripts a medida</strong>, reparamos errores, optimizamos el rendimiento
+            y diseñamos interfaces para servidores <strong>ESX y QBCore</strong>.
             <br />
-            Creamos <strong>scripts personalizados</strong> para servidores FiveM (ESX y QBCore),
-            packs de ropa, interfaces NUI y software a medida que{' '}
-            <strong>evoluciona contigo</strong>.
+            Cuéntanos qué necesitas y recibe una orientación clara sobre alcance, plazo y siguiente
+            paso.
           </Fade>
 
           <div className='[&_span]:text-foreground mt-4 grid max-w-lg grid-cols-2 gap-2 [&_span]:text-xs [&_span]:font-medium sm:[&_span]:text-sm'>
             <Fade as='span' delay={0.4} scroll={false} className='flex items-center gap-2'>
               {' '}
-              <CheckTaskIcon /> Soporte 24/7{' '}
+              <CheckTaskIcon /> Soporte según tu plan{' '}
             </Fade>
             <Fade as='span' delay={0.8} scroll={false} className='flex items-center gap-2'>
               {' '}
@@ -94,7 +96,7 @@ export function Hero() {
             </Fade>
             <Fade as='span' delay={0.6} scroll={false} className='flex items-center gap-2'>
               {' '}
-              <CheckTaskIcon /> Resultados Garantizado{' '}
+              <CheckTaskIcon /> Proceso claro y entregables definidos{' '}
             </Fade>
             <Fade as='span' delay={1} scroll={false} className='flex items-center gap-2'>
               {' '}
@@ -102,15 +104,19 @@ export function Hero() {
             </Fade>
           </div>
 
-          <Fade delay={0.4} scroll={false} className='mt-8 flex items-center gap-2 sm:mt-4'>
+          <Fade
+            delay={0.4}
+            scroll={false}
+            className='mt-8 flex flex-wrap items-center gap-2 sm:mt-4'
+          >
             <Button
               asChild
               size='xl'
               variant='none'
               className='from-primary to-secondary group h-10 rounded-lg bg-gradient-to-r px-4 text-sm shadow-[0_0_30px_rgb(93,69,253,.5)] hover:opacity-80 sm:h-12 sm:px-8 sm:text-base'
             >
-              <Link href='/contact'>
-                Consulta Gratis
+              <Link href='/contact?service=fivem_configuration'>
+                Cotizar mi proyecto
                 <ArrowRightIcon className='size-6 duration-300 group-hover:pl-2' />
               </Link>
             </Button>
@@ -120,11 +126,11 @@ export function Hero() {
               variant='outline'
               className='h-10 rounded-lg px-3.5 text-sm opacity-70 sm:h-12 sm:px-5 sm:text-base'
             >
-              <Link href='/projects'>Nuestros Proyectos</Link>
+              <Link href='/services/fivem'>Tengo un error o problema de rendimiento</Link>
             </Button>
           </Fade>
 
-          <div className='mt-4 flex items-center gap-4'>
+          <div className='mt-4 flex flex-wrap items-center gap-x-4 gap-y-2'>
             <Fade
               as={'span'}
               delay={0.4}
@@ -135,7 +141,7 @@ export function Hero() {
               <div className='bg-success flex size-1.5 shrink-0 items-center justify-center rounded-full'>
                 <div className='bg-success/50 size-2 shrink-0 animate-ping rounded-full' />
               </div>
-              Respuesta en menos de 24h
+              Respuesta inicial en menos de 24 horas
             </Fade>
 
             <Fade
@@ -149,6 +155,19 @@ export function Hero() {
             <Fade as={'span'} scroll={false} delay={0.6} direction='up'>
               {' '}
               Sin compromiso{' '}
+            </Fade>
+
+            <Fade
+              as={'span'}
+              direction='up'
+              delay={0.6}
+              scroll={false}
+              className='bg-foreground size-1 rounded-full'
+            />
+
+            <Fade as={'span'} scroll={false} delay={0.8} direction='up'>
+              {' '}
+              Alcance y siguiente paso claros{' '}
             </Fade>
           </div>
         </div>

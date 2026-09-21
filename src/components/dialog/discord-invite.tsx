@@ -12,6 +12,8 @@ import {
 } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { DiscordIcon } from '@/icons/discord';
+import { CalendarIcon } from '@/icons/calendar';
+import { EmailIcon } from '@/icons/email';
 import { CheckIcon } from '@/icons/check';
 import { XIcon } from '@/icons/x';
 import { globalLinks } from '@/utils/data/global-links';
@@ -27,15 +29,15 @@ interface DiscordInviteDialogProps {
 const content = {
   success: {
     icon: <CheckIcon />,
-    title: 'Tu mensaje fue enviado',
+    title: 'Recibimos tu solicitud',
     description:
-      'En breve te responderemos. Pero si quieres apresurar la conversación, únete a nuestro Discord: ahí respondemos mucho más rápido.',
+      'Te responderemos inicialmente en menos de 24 horas. Si tu caso es urgente, puedes continuar por Discord o agendar una llamada.',
   },
   error: {
     icon: <XIcon />,
     title: 'No pudimos enviar tu mensaje',
     description:
-      'Ocurrió un error al enviar tu mensaje. Para no perder tiempo, únete a nuestro Discord y hablemos directamente: respondemos mucho más rápido.',
+      'No pudimos procesar tu solicitud en este momento. Para no perder tiempo, continúa por Discord, agenda una llamada o escríbenos por email.',
   },
 } as const;
 
@@ -64,15 +66,41 @@ export function DiscordInviteDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <DialogFooter className='mt-2 gap-2 sm:justify-center'>
+        <DialogFooter className='mt-2 flex-col gap-2 sm:justify-center'>
+          <div className='flex flex-col gap-2 sm:flex-row sm:justify-center'>
+            <Button asChild>
+              <Link
+                href={globalLinks.discord.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                data-event='click_discord'
+                data-location='post_submit'
+              >
+                <DiscordIcon />
+                Discord
+              </Link>
+            </Button>
+            <Button asChild variant='outline'>
+              <a
+                href={globalLinks.meeting.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                data-event='click_agenda'
+                data-location='post_submit'
+              >
+                <CalendarIcon />
+                Agendar llamada
+              </a>
+            </Button>
+            <Button asChild variant='outline'>
+              <a href={globalLinks.email.link} data-event='click_email' data-location='post_submit'>
+                <EmailIcon />
+                Email
+              </a>
+            </Button>
+          </div>
           <Button variant='flat' onClick={() => onOpenChange(false)}>
-            Ahora no
-          </Button>
-          <Button asChild>
-            <Link href={globalLinks.discord.link} target='_blank' rel='noopener noreferrer'>
-              <DiscordIcon />
-              Unirme al Discord
-            </Link>
+            Cerrar
           </Button>
         </DialogFooter>
       </DialogContent>

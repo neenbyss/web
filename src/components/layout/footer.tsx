@@ -76,12 +76,14 @@ export function Footer() {
           </div>
 
           <img
-            alt='circles_footer'
+            alt=''
+            aria-hidden='true'
             src={CIRCLES_FOOTER.src}
             className='pointer-events-none absolute -bottom-40 left-1/2 -translate-x-[calc((1/2*100%))] scale-200 md:-bottom-60 md:scale-125'
           />
           <img
-            alt='vector_footer'
+            alt=''
+            aria-hidden='true'
             src={FOOTER_VECTOR.src}
             className='pointer-events-none absolute left-1/2 scale-200 sm:-translate-x-[calc((1/2*100%-20rem))] md:-top-30 md:scale-100'
           />
@@ -137,7 +139,7 @@ export function Footer() {
                 </span>
 
                 <nav className='flex flex-wrap justify-center gap-2 sm:justify-start [&_svg]:size-5'>
-                  {Socials.map(({ href, icon }, i) => (
+                  {Socials.map(({ href, icon, label }, i) => (
                     <Button
                       key={i}
                       asChild
@@ -145,7 +147,7 @@ export function Footer() {
                       variant='flat'
                       className='size-8 hover:scale-105'
                     >
-                      <a href={href} target='_blank'>
+                      <a href={href} target='_blank' aria-label={label}>
                         {icon}
                       </a>
                     </Button>
@@ -164,11 +166,23 @@ export function Footer() {
                     ref={input_email}
                     endContent={<EmailIcon />}
                     placeholder='tucorreo@gmail.com'
+                    aria-label='Tu correo electrónico'
                     className='h-10'
                   />
                   <Button
                     onClick={() => {
-                      route.push(`/contact?email=${input_email.current?.value}`);
+                      // El email viaja por sessionStorage (misma pestaña), no
+                      // por query string: así nunca queda expuesto en la URL
+                      // ni llega a herramientas de medición.
+                      const value = input_email.current?.value?.trim() ?? '';
+                      if (value) {
+                        try {
+                          sessionStorage.setItem('contact_email', value);
+                        } catch {
+                          // sessionStorage no disponible: se continúa sin prellenado.
+                        }
+                      }
+                      route.push('/contact');
                     }}
                   >
                     Enviar

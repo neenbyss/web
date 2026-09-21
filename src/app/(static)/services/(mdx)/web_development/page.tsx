@@ -17,9 +17,9 @@ export const metadata = createMetadata({
   title: 'Desarrollo Web Profesional | Landing Pages y Sitios Empresariales',
   description:
     'Desarrollamos sitios web modernos, landing pages optimizadas, tiendas online y aplicaciones web con Next.js, React y tecnologías de vanguardia. SEO incluido.',
-  canonical: 'https://neenbyss.com/services/web-development',
+  canonical: 'https://neenbyss.com/services/web_development',
   openGraph: {
-    url: 'https://neenbyss.com/services/web-development',
+    url: 'https://neenbyss.com/services/web_development',
     images: ['https://neenbyss.com/og_servicios_web.png'],
     type: 'website',
   },
