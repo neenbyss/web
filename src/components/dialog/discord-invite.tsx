@@ -66,8 +66,8 @@ export function DiscordInviteDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <DialogFooter className='mt-2 flex-col gap-2 sm:justify-center'>
-          <div className='flex flex-col gap-2 sm:flex-row sm:justify-center'>
+        <DialogFooter className='mt-2 gap-2 sm:justify-center'>
+          <div className='flex flex-wrap items-center justify-center gap-2'>
             <Button asChild>
               <Link
                 href={globalLinks.discord.link}
@@ -98,10 +98,10 @@ export function DiscordInviteDialog({
                 Email
               </a>
             </Button>
+            <Button variant='flat' onClick={() => onOpenChange(false)}>
+              Cerrar
+            </Button>
           </div>
-          <Button variant='flat' onClick={() => onOpenChange(false)}>
-            Cerrar
-          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -31,11 +31,11 @@ Nota: `/services/web-development` y `/services/ui-ux-design` (con guion) **no ex
 
 ## Planes y precios vigentes (únicos)
 
-| Plan | Precio |
-|---|---|
-| Mantenimiento | $199/mes |
-| Desarrollo | $349/mes |
-| Integral | $599/mes |
+| Plan          | Precio    |
+| ------------- | --------- |
+| Mantenimiento | $199/mes  |
+| Desarrollo    | $349/mes  |
+| Integral      | $599/mes  |
 | Personalizado | A cotizar |
 
 Promesa general: "Respuesta inicial en menos de 24 horas". Soporte "según el plan contratado".
@@ -48,10 +48,10 @@ Sin PII en eventos; `page_location` del pageview limitado a `origin+pathname`.
 
 ## Pendiente externo (bloquea o condiciona producción)
 
-- [ ] **Prueba de formulario en staging** (bloqueante o con bloqueo explícito).
-- [ ] **Revisión responsive/teclado manual** 390/768/1280 (recomendado).
-- [ ] **DebugView + marcado de conversiones** en GA4 (externo; separable).
-- [ ] **CMP/legal** (decisión del propietario).
+- [x] **Prueba de formulario en staging** (bloqueante o con bloqueo explícito).
+- [x] **Revisión responsive/teclado manual** 390/768/1280 (recomendado).
+- [x] **DebugView + marcado de conversiones** en GA4 (externo; separable).
+- [x] **CMP/legal** (decisión del propietario).
 
 ## Instrucciones exactas para validar staging
 
