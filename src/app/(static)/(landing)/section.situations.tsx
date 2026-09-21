@@ -18,7 +18,7 @@ const situations = [
     description:
       'Diagnosticamos crashes, errores de scripts e incompatibilidades, y optimizamos el rendimiento sin improvisar sobre tu servidor en producción.',
     cta: 'Pedir diagnóstico',
-    href: '/contact?service=fivem_support',
+    href: '/services/fivem/reparar-optimizar',
   },
   {
     title: 'Quiero una mecánica, sistema o diseño propio',
