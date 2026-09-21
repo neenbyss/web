@@ -11,7 +11,7 @@ const situations = [
     description:
       'Te ayudamos a pasar de la idea a un servidor jugable: base, configuración inicial, sistemas esenciales y pruebas antes de abrir a tu comunidad.',
     cta: 'Cotizar armado',
-    href: '/contact?service=fivem_configuration_plan_personalizado',
+    href: '/services/fivem/crear-servidor',
   },
   {
     title: 'Mi servidor tiene errores o lag',
