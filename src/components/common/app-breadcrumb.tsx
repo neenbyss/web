@@ -32,6 +32,7 @@ const breadcrumbNameMap: Record<string, string> = {
   projects: 'Proyectos',
   contact: 'Contáctanos',
   services: 'Servicios',
+  minecraft: 'Minecraft',
   ropa: 'Packs de Ropa',
   'reparar-optimizar': 'Reparar y Optimizar',
   'crear-servidor': 'Crear Servidor',

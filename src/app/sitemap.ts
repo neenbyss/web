@@ -26,6 +26,7 @@ const staticRoutes = [
     priority: 0.75,
     changeFrequency: 'monthly' as const,
   },
+  { url: `${baseUrl}/services/minecraft/`, priority: 0.7, changeFrequency: 'weekly' as const },
   { url: `${baseUrl}/services/fivem/ropa/`, priority: 0.75, changeFrequency: 'monthly' as const },
   {
     url: `${baseUrl}/services/fivem/scripts/`,
