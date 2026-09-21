@@ -239,6 +239,7 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
         'Brindamos mantenimiento y soporte técnico para servidores de FiveM. Incluye resolución de errores, optimización de recursos, actualizaciones de scripts, y atención personalizada ante problemas técnicos en producción.',
       icon: <></>,
       uid: 'fivem_support',
+      href: '/services/fivem/reparar-optimizar',
     },
   ],
 
