@@ -4,6 +4,7 @@ import { FiveMIcon } from '@/icons/fivem';
 import { MaintenanceIcon } from '@/icons/maintenance';
 import { MobileIcon } from '@/icons/mobile';
 import { WebIcon } from '@/icons/web';
+import { CodeIcon } from '@/icons/code';
 
 export const serviceCategories = [
   {
@@ -29,6 +30,12 @@ export const serviceCategories = [
     icon: <DiscordIcon />,
     uid: 'discord_app',
     color: [114, 137, 218],
+  },
+  {
+    title: 'Minecraft',
+    icon: <CodeIcon />,
+    uid: 'minecraft',
+    color: [92, 184, 92],
   },
 ];
 
@@ -240,6 +247,16 @@ export const serviceDetails: Record<string, ServiceProps[]> = {
       icon: <></>,
       uid: 'fivem_support',
       href: '/services/fivem/reparar-optimizar',
+    },
+  ],
+
+  minecraft: [
+    {
+      title: 'Diagnóstico y desarrollo Minecraft',
+      description:
+        'Evaluamos si conviene configurar una solución existente, extenderla o desarrollar un plugin o mod a medida para tu servidor Minecraft, cuidando compatibilidad y mantenimiento.',
+      icon: <></>,
+      uid: 'minecraft_plugin_consulting',
     },
   ],
 
