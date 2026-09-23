@@ -8,15 +8,46 @@ import { isOnCooldown, setCooldown } from '@/lib/cooldown';
 async function getClientIP() {
   const header = await headers();
 
+  // Preferimos la IP real cuando el proxy la provee; si no, la primera de la
+  // cadena x-forwarded-for. Suficiente para un cooldown anti-spam (no es un
+  // control de seguridad estricto).
+  const realIp = header.get('x-real-ip');
+  if (realIp) return realIp.trim();
   const forwarded = header.get('x-forwarded-for');
   if (!forwarded) return 'unknown';
   return forwarded.split(',')[0].trim();
 }
 
+const frameworkLabels: Record<string, string> = {
+  esx: 'ESX',
+  qbcore: 'QBCore',
+  qbox: 'Qbox',
+  otro: 'Otro',
+  no_se: 'No lo sé',
+};
+
+const projectStatusLabels: Record<string, string> = {
+  nuevo: 'Servidor nuevo',
+  operativo: 'Servidor operativo',
+  con_errores: 'Con errores o lag',
+  migracion: 'Migración',
+};
+
 export async function sendContactEmail(data: any) {
   const parsed = ContactSchema.safeParse(data);
   if (!parsed.success) {
     return { success: false, message: 'Datos Inválidos.' };
+  }
+
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (!webhookUrl) {
+    // Sin webhook no hay canal de entrega: mensaje accionable, sin tecnicismos.
+    console.error('[Contacto] DISCORD_WEBHOOK_URL no configurada; solicitud no entregada.');
+    return {
+      success: false,
+      message:
+        'No pudimos procesar tu solicitud en este momento. Escríbenos a team@neenbyss.com o por Discord y te atendemos.',
+    };
   }
 
   const ip = await getClientIP();
@@ -31,13 +62,26 @@ export async function sendContactEmail(data: any) {
 
   await setCooldown(key, 60);
 
-  const { names, email, phone, company, service: serviceUid, message } = parsed.data;
+  const {
+    names,
+    email,
+    phone,
+    company,
+    service: serviceUid,
+    message,
+    framework,
+    project_status,
+    deadline,
+    slots,
+    evidence_link,
+    budget,
+  } = parsed.data;
 
   const service = getServiceLabelByUid(serviceUid);
 
   try {
     // ✅ Enviar mensaje de contacto a Discord como embed
-    await fetch(process.env.DISCORD_WEBHOOK_URL!, {
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -52,6 +96,21 @@ export async function sendContactEmail(data: any) {
               { name: '📞 Teléfono', value: phone || 'No proporcionado' },
               { name: '🏢 Compañía', value: company || 'No proporcionado' },
               { name: '🛠 Servicio', value: service || 'No especificado' },
+              ...(framework
+                ? [{ name: '🧩 Framework', value: frameworkLabels[framework] ?? framework }]
+                : []),
+              ...(project_status
+                ? [
+                    {
+                      name: '📌 Estado',
+                      value: projectStatusLabels[project_status] ?? project_status,
+                    },
+                  ]
+                : []),
+              ...(deadline ? [{ name: '📅 Fecha objetivo', value: deadline }] : []),
+              ...(slots ? [{ name: '👥 Jugadores/slots', value: slots }] : []),
+              ...(evidence_link ? [{ name: '🔗 Evidencia', value: evidence_link }] : []),
+              ...(budget ? [{ name: '💰 Presupuesto orientativo', value: budget }] : []),
               { name: '📝 Mensaje', value: message || 'Sin mensaje' },
               { name: '🌐 IP', value: ip },
             ],
@@ -61,11 +120,24 @@ export async function sendContactEmail(data: any) {
       }),
     });
 
+    if (!response.ok) {
+      console.error('[Error al enviar mensaje a Discord]', response.status);
+      return {
+        success: false,
+        message:
+          'No pudimos procesar tu solicitud en este momento. Escríbenos a team@neenbyss.com o por Discord y te atendemos.',
+      };
+    }
+
     return { success: true, message: 'Mensaje enviado con éxito.' };
   } catch (error) {
     console.error('[Error al enviar mensaje a Discord]', error);
 
-    return { success: false, message: 'Error al enviar el mensaje.' };
+    return {
+      success: false,
+      message:
+        'No pudimos procesar tu solicitud en este momento. Escríbenos a team@neenbyss.com o por Discord y te atendemos.',
+    };
   }
 }
 

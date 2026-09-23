@@ -60,7 +60,12 @@ export default function PricingPlans() {
                         className='w-full sm:w-fit sm:px-8'
                         size='lg'
                       >
-                        <Link href={`/contact?service=${pricing.uid}`}>
+                        <Link
+                          href={`/contact?service=${pricing.uid}`}
+                          data-event='plan_click'
+                          data-plan-uid={pricing.uid}
+                          data-location='fivem_plans'
+                        >
                           Cotizar mi Proyecto
                           <ArrowRightIcon />
                         </Link>
@@ -103,7 +108,12 @@ export default function PricingPlans() {
                       variant={pricing.name === 'Mantenimiento' ? 'outline' : 'primary'}
                       className='w-full'
                     >
-                      <Link href={`/contact?service=${pricing.uid}`}>
+                      <Link
+                        href={`/contact?service=${pricing.uid}`}
+                        data-event='plan_click'
+                        data-plan-uid={pricing.uid}
+                        data-location='fivem_plans'
+                      >
                         Contratar Plan
                         <ArrowRightIcon />
                       </Link>

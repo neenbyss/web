@@ -381,7 +381,7 @@ function Ejecucion() {
               </h4>
             </div>
             <Image
-              alt='TASK'
+              alt='Ilustración del diseño de interfaces de la fase de ejecución'
               src={VISUAL_SVG.src}
               className='aspect-video w-full'
               width={200}
@@ -403,7 +403,7 @@ function Ejecucion() {
             </div>
             <div className='flex w-full flex-1 flex-col items-start justify-between'>
               <Image
-                alt='TASK'
+                alt='Ilustración del desarrollo funcional de la fase de ejecución'
                 src={TASK_SVG.src}
                 className='aspect-video w-full'
                 width={200}
@@ -573,7 +573,7 @@ function LazamientoYSoporte() {
     mantenimientoContinuo: [
       'Actualizaciones de seguridad automáticas',
       'Copias de seguridad diarias',
-      'Monitorización 24/7',
+      'Monitorización continua',
       'Optimización de rendimiento mensual',
     ],
   };

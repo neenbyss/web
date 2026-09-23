@@ -18,9 +18,9 @@ export const metadata = createMetadata({
   title: 'Diseño UI/UX Profesional | Interfaces y Experiencia de Usuario',
   description:
     'Diseñamos interfaces atractivas e intuitivas para apps web, móviles y FiveM. Mejoramos la experiencia de usuario con diseños que convierten y retienen.',
-  canonical: 'https://neenbyss.com/services/ui-ux-design',
+  canonical: 'https://neenbyss.com/services/ui_ux_design',
   openGraph: {
-    url: 'https://neenbyss.com/services/ui-ux-design',
+    url: 'https://neenbyss.com/services/ui_ux_design',
     images: ['https://neenbyss.com/og_servicios_design.png'],
     type: 'website',
   },

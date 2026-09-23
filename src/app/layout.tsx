@@ -12,11 +12,11 @@ export const viewport: Viewport = {
 
 export const metadata = createMetadata({
   title: {
-    default: 'Neenbyss - Arquitectos digitales',
-    template: '%s | Neenbyss - Arquitectos digitales',
+    default: 'Programador FiveM y desarrollo a medida | Neenbyss',
+    template: '%s | Neenbyss',
   },
   description:
-    'Diseñamos software a medida que se adapta a tus necesidades actuales y evoluciona contigo, garantizando que siempre estés un paso adelante en tecnología e innovación.',
+    'Scripts FiveM a medida, reparación y optimización para ESX y QBCore, ropa/EUP y NUI. Webs y UI que convierten. Cotiza sin compromiso, respuesta en menos de 24 h.',
 });
 
 const font = Outfit({

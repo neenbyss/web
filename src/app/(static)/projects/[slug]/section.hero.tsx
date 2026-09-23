@@ -93,7 +93,8 @@ export function Hero({ meta }: { meta: ProjectMetadata }) {
       </div>
 
       <img
-        alt='VECTOR'
+        alt=''
+        aria-hidden='true'
         src={HERO_VECTOR_BG.src}
         className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
       />

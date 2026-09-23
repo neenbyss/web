@@ -15,20 +15,19 @@ import { globalLinks } from '@/utils/data/global-links';
 import { Suspense } from 'react';
 
 export const metadata = createMetadata({
-  title: 'Contáctanos',
+  title: 'Cotiza tu proyecto FiveM o web',
   description:
-    'Conéctate con nuestro equipo y ten por garantizado un soporte especializado en ofrecer soluciones personalizadas',
+    'Cuéntanos tu objetivo, framework y urgencia. Recibe orientación sobre alcance, plazo y siguiente paso. Respuesta inicial en menos de 24 horas.',
+  canonical: 'https://neenbyss.com/contact',
 });
 export default function ContactPage() {
   return (
     <main className='relative overflow-clip'>
-      <h1 className='sr-only'> Contáctanos </h1>
-
       <div className='container-screen-xl relative z-10 flex flex-col gap-8 pt-10 pb-24 lg:flex-row'>
         <div>
           <AppBreadcrumb className='mb-3 bg-transparent px-0 py-0' />
 
-          <h2 className='mb-4 text-5xl font-medium capitalize'>Consulta con Nuestro Equipo</h2>
+          <h1 className='mb-4 text-5xl font-medium capitalize'>Consulta con Nuestro Equipo</h1>
           <p className='mb-6 max-w-sm'>
             <span className='text-primary font-medium'>
               {' '}
@@ -43,7 +42,13 @@ export default function ContactPage() {
           </p>
 
           <div className='grid grid-cols-1 gap-2 sm:grid-cols-2'>
-            <a href={globalLinks.email.link} target='_blank' className='group'>
+            <a
+              href={globalLinks.email.link}
+              target='_blank'
+              className='group'
+              data-event='click_email'
+              data-location='contact'
+            >
               <SpotlightCard
                 className='border-primary bg-primary/20 border p-4'
                 spotlightColor='rgba(93, 69, 253, .4)'
@@ -55,10 +60,18 @@ export default function ContactPage() {
                   Correo Empresarial
                 </span>
                 <span className='-my-2 block'>{globalLinks.email.label}</span>
-                <p className='text-foreground/40 pt-2 text-xs'>Respuesta en menos de 24-48 horas</p>
+                <p className='text-foreground/40 pt-2 text-xs'>
+                  Respuesta inicial en menos de 24 horas
+                </p>
               </SpotlightCard>
             </a>
-            <a href={globalLinks.discord.link} target='_blank' className='group'>
+            <a
+              href={globalLinks.discord.link}
+              target='_blank'
+              className='group'
+              data-event='click_discord'
+              data-location='contact'
+            >
               <SpotlightCard
                 className='border-secondary bg-secondary/20 border p-4'
                 spotlightColor='rgba(151, 71, 255, .4)'
@@ -79,7 +92,7 @@ export default function ContactPage() {
             <h3 className='text-primary mb-2 text-lg font-medium'> Nuestras Redes Sociales </h3>
 
             <div className='flex flex-wrap gap-2'>
-              {Socials.map(({ href, icon }, i) => (
+              {Socials.map(({ href, icon, label }, i) => (
                 <Button
                   key={i}
                   asChild
@@ -87,7 +100,7 @@ export default function ContactPage() {
                   variant='flat'
                   className='border-primary border hover:scale-105'
                 >
-                  <a href={href} target='_blank'>
+                  <a href={href} target='_blank' aria-label={label}>
                     {icon}
                   </a>
                 </Button>
@@ -99,11 +112,16 @@ export default function ContactPage() {
             <h3 className='mb-1.5 text-base font-medium'> ¿Necesitas Agendar Una reunión? </h3>
             <p className='pb-3'>
               {' '}
-              Programa una llamada con uno de nuestros especialistas y obtén respuestas inmediatas a
-              tus consultas.{' '}
+              Programa una llamada con uno de nuestros especialistas y obtén respuestas claras a tus
+              consultas.{' '}
             </p>
             <Button asChild className='w-full'>
-              <a href={globalLinks.meeting.link} target='_blank'>
+              <a
+                href={globalLinks.meeting.link}
+                target='_blank'
+                data-event='click_agenda'
+                data-location='contact'
+              >
                 Agenda Una Reunión <CalendarIcon />{' '}
               </a>
             </Button>
@@ -111,7 +129,9 @@ export default function ContactPage() {
         </div>
         <div className='w-full lg:max-w-2xl'>
           <div className='bg-content h-fit w-full rounded-lg border p-5'>
-            <h2 className='text-2xl font-medium'> Envíanos Un Mensaje </h2>
+            <h2 className='text-2xl font-medium'>
+              Cuéntanos qué necesitas y te diremos el siguiente paso
+            </h2>
             <Suspense>
               <ContactForm />
             </Suspense>
@@ -126,12 +146,14 @@ export default function ContactPage() {
         </div>
       </div>
       <img
-        alt='CIRCLES'
+        alt=''
+        aria-hidden='true'
         src={HERO_CIRCLES_GROUP.src}
         className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
       />
       <img
-        alt='VECTOR'
+        alt=''
+        aria-hidden='true'
         src={HERO_VECTOR_BG.src}
         className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
       />

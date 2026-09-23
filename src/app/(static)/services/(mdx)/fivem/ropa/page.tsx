@@ -1,12 +1,8 @@
 import Link from 'next/link';
 
 import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { TrackedAccordion } from '@/components/tracked-accordion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -141,51 +137,32 @@ const included = [
 ];
 
 export const metadata = createMetadata({
-  title: 'Packs de Ropa & EUP para FiveM | Edición de Ropa Personalizada',
+  title: 'Packs de ropa y EUP para FiveM',
   description:
-    'Creamos packs de ropa para servidores FiveM: civiles, trabajos y uniformes EUP (policía, EMS, bomberos). Stream-ready, sin marcas reales, compatibles con ESX y QBCore. Edición de ropa profesional optimizada.',
+    'Packs de ropa y EUP personalizados para FiveM, policía, EMS, bomberos y civiles. Assets stream-ready, compatibles con ESX y QBCore.',
   canonical: 'https://neenbyss.com/services/fivem/ropa',
   openGraph: {
     url: 'https://neenbyss.com/services/fivem/ropa',
-    images: ['https://neenbyss.com/og_servicios_fivem.png'],
+    // TODO(propietario): crear una OG específica de ropa/EUP. Se usa la
+    // genérica de servicios para no reutilizar la de scripts.
+    images: ['https://neenbyss.com/og_servicios.png'],
     type: 'website',
   },
   twitter: {
-    images: ['https://neenbyss.com/og_servicios_fivem.png'],
+    images: ['https://neenbyss.com/og_servicios.png'],
     card: 'summary_large_image',
   },
   keywords: [
     'pack de ropa fivem',
     'packs de ropa fivem',
-    'edición de ropa fivem',
-    'editar ropa fivem',
     'ropa personalizada fivem',
-    'ropa custom fivem',
+    'pack eup fivem',
+    'eup policia fivem',
+    'uniformes ems fivem',
+    'ropa stream ready fivem',
     'ropa fivem esx',
     'ropa fivem qbcore',
-    'ropa stream ready fivem',
-    'pack eup fivem',
-    'eup fivem',
-    'eup policia fivem',
-    'uniforme policia fivem',
-    'uniformes policia fivem',
-    'uniformes ems fivem',
-    'uniformes bomberos fivem',
-    'ropa civil fivem',
-    'ropa trabajos fivem',
-    'pack ropa policia fivem',
-    'pack ropa civiles fivem',
-    'ropa mp male fivem',
-    'ropa mp female fivem',
-    'programador fivem ropa',
-    'desarrollador ropa fivem',
-    'diseñador ropa fivem',
-    'ropa sin marcas fivem',
-    'pack ropa roleplay fivem',
     'vestuario fivem',
-    'ropa fivem españa',
-    'ropa fivem mexico',
-    'ropa fivem latinoamerica',
   ],
 });
 
@@ -248,12 +225,14 @@ export default function FiveMRopaPage() {
           </div>
 
           <img
-            alt='SERVICES_CIRCLES'
+            alt=''
+            aria-hidden='true'
             src={SERVICES_CIRCLES.src}
             className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
           />
           <img
-            alt='SERVICES_VECTOR'
+            alt=''
+            aria-hidden='true'
             src={SERVICES_VECTOR.src}
             className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
           />
@@ -320,7 +299,7 @@ export default function FiveMRopaPage() {
             Preguntas Frecuentes sobre Packs de Ropa y EUP para FiveM
           </h2>
 
-          <Accordion type='single' collapsible className='flex flex-col gap-4'>
+          <TrackedAccordion collapsible className='flex flex-col gap-4' location='fivem_ropa'>
             {FAQs.map(({ question, answer }, i) => (
               <AccordionItem
                 className='bg-primary/20 data-[state=open]:bg-primary/60 rounded-lg border-b-0 duration-300'
@@ -333,7 +312,7 @@ export default function FiveMRopaPage() {
                 <AccordionContent className='px-6 py-4 text-base'>{answer}</AccordionContent>
               </AccordionItem>
             ))}
-          </Accordion>
+          </TrackedAccordion>
         </section>
 
         <section className='bg-content-1 border-t py-20'>

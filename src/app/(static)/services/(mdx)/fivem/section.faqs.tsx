@@ -1,9 +1,5 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { TrackedAccordion } from '@/components/tracked-accordion';
 
 export function Faqs() {
   const faqStructuredData = {
@@ -30,7 +26,7 @@ export function Faqs() {
         Preguntas Frecuentes sobre Nuestros Servicios FiveM{' '}
       </h2>
 
-      <Accordion type='single' collapsible className='flex flex-col gap-4'>
+      <TrackedAccordion collapsible className='flex flex-col gap-4' location='fivem_hub'>
         {FAQs.map(({ question, answer }, i) => {
           return (
             <AccordionItem
@@ -46,7 +42,7 @@ export function Faqs() {
             </AccordionItem>
           );
         })}
-      </Accordion>
+      </TrackedAccordion>
     </section>
   );
 }
@@ -105,7 +101,7 @@ const FAQs = [
   {
     question: '¿Cuál es el horario de trabajo y tiempo de respuesta?',
     answer:
-      'Trabajamos de lunes a sábado de 6:00 PM a 1:00 AM UTC para reuniones y desarrollo. El tiempo de respuesta depende del plan: desde 24h en planes Oro/Platino/Diamante hasta 48-72h en el plan Bronce. Para urgencias críticas en producción, los planes superiores tienen prioridad.',
+      'Trabajamos de lunes a sábado de 6:00 PM a 1:00 AM UTC para reuniones y desarrollo. El tiempo de respuesta depende del plan contratado: cada plan mensual (Mantenimiento, Desarrollo, Integral) tiene tiempos de respuesta definidos. Para urgencias críticas en producción, los planes superiores tienen prioridad.',
   },
   {
     question: '¿Qué no pueden hacer?',

@@ -1,9 +1,12 @@
 import { getAllProjects } from '@/lib/get-projects';
+import { getAllMDX } from '@/utils/mdx';
 import type { MetadataRoute } from 'next';
 
 const baseUrl = 'https://neenbyss.com';
 
-// URLs estáticas con prioridades y frecuencias optimizadas
+// URLs estáticas con prioridades y frecuencias optimizadas.
+// NOTA: las rutas usan los slugs reales del App Router (web_development y
+// ui_ux_design con guion bajo). No usar guiones: esas URLs no existen.
 const staticRoutes = [
   { url: `${baseUrl}/`, priority: 1.0, changeFrequency: 'weekly' as const },
   { url: `${baseUrl}/services/`, priority: 0.9, changeFrequency: 'weekly' as const },
@@ -15,12 +18,14 @@ const staticRoutes = [
     changeFrequency: 'monthly' as const,
   },
   {
-    url: `${baseUrl}/services/web-development/`,
+    url: `${baseUrl}/services/web_development/`,
     priority: 0.8,
     changeFrequency: 'weekly' as const,
   },
-  { url: `${baseUrl}/services/ui-ux-design/`, priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: `${baseUrl}/services/ui_ux_design/`, priority: 0.8, changeFrequency: 'weekly' as const },
   { url: `${baseUrl}/projects/`, priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: `${baseUrl}/blog/`, priority: 0.5, changeFrequency: 'weekly' as const },
+  { url: `${baseUrl}/faqs/`, priority: 0.5, changeFrequency: 'monthly' as const },
   { url: `${baseUrl}/contact/`, priority: 0.6, changeFrequency: 'monthly' as const },
   { url: `${baseUrl}/privacy/`, priority: 0.3, changeFrequency: 'yearly' as const },
   { url: `${baseUrl}/terms/`, priority: 0.3, changeFrequency: 'yearly' as const },
@@ -29,11 +34,10 @@ const staticRoutes = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date().toISOString();
-
+  // Sin lastModified: no hay fechas de modificación confiables por página y
+  // una fecha dinámica produciría una falsa actualización constante.
   const staticPages = staticRoutes.map((route) => ({
     url: route.url,
-    lastModified: now,
     priority: route.priority,
     changeFrequency: route.changeFrequency,
   }));
@@ -42,10 +46,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const projectPages = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: now,
     priority: 0.6,
     changeFrequency: 'monthly' as const,
   }));
 
-  return [...staticPages, ...projectPages];
+  const { data: posts } = await getAllMDX<{ slug: string }>('src/app/(static)/blog/(content)');
+
+  const postPages = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    priority: 0.5,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  return [...staticPages, ...projectPages, ...postPages];
 }

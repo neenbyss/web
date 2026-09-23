@@ -16,16 +16,16 @@ const products = [
     thumbnail: '/projects/aborigen/img_cover.png',
   },
   {
+    title: 'Rediseño UI - CodeIQ Pause Menu',
+    link: '/projects/code_iq_pausemenu',
+    thumbnail: '/projects/codeiq_pausemenu/img_cover_cq_pausemenu.png',
+  },
+  {
     title: 'Plataforma Educativa - Zeew Space',
     link: '/projects/zeew',
     thumbnail: '/projects/zeew/img_cover.png',
   },
 
-  {
-    title: 'Rediseño UI - CodeIQ Pause Menu',
-    link: '/projects/code_iq_pausemenu',
-    thumbnail: '/projects/codeiq_pausemenu/img_cover_cq_pausemenu.png',
-  },
   {
     title: 'Landing Page - Equitrans Andreu',
     link: '/projects/equitransandreu',

@@ -52,7 +52,12 @@ export default function Header() {
         <motion.nav layout layoutRoot className='flex h-full items-center gap-4.5 overflow-clip'>
           <Drawer>
             <DrawerTrigger asChild>
-              <Button size='icon_sm' variant='outline' className='lg:hidden'>
+              <Button
+                size='icon_sm'
+                variant='outline'
+                className='lg:hidden'
+                aria-label='Abrir menú'
+              >
                 <MenuIcon />
               </Button>
             </DrawerTrigger>
@@ -131,7 +136,13 @@ export default function Header() {
 
         <div className='flex items-center gap-2'>
           <Button asChild variant='outline' size='icon' className='hidden sm:inline-flex'>
-            <a href={globalLinks.discord.link} target='_blank'>
+            <a
+              href={globalLinks.discord.link}
+              target='_blank'
+              aria-label='Servidor de Discord de Neenbyss'
+              data-event='click_discord'
+              data-location='header'
+            >
               <DiscordIcon />
             </a>
           </Button>

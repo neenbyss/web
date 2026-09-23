@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { Hero } from './section.hero';
 
 export const metadata = createMetadata({
-  title: 'Blog de Desarrollo FiveM & Fullstack | Neenbyss',
+  title: 'Blog de Desarrollo FiveM & Fullstack',
   description:
     'Tutoriales, guías de optimización y consejos sobre desarrollo de servidores FiveM y tecnologías web modernas.',
+  canonical: 'https://neenbyss.com/blog',
   keywords: ['FiveM', 'Programación FiveM', 'Tutoriales FiveM', 'Optimización FiveM'],
 });
 

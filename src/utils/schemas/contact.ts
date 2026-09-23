@@ -19,7 +19,7 @@ export const ContactSchema = z.object({
       message: 'El nombre parece inválido o contiene caracteres no permitidos',
     })
     .refine((val) => !containsSpam(val), {
-      message: 'El mensaje contiene contenido inapropiado',
+      message: 'Revisa el contenido del mensaje e intenta nuevamente',
     }),
   email: z
     .string()
@@ -30,7 +30,7 @@ export const ContactSchema = z.object({
     .string()
     .optional()
     .refine((val) => (val ? !containsSpam(val) : true), {
-      message: 'El mensaje contiene contenido inapropiado',
+      message: 'Revisa el contenido del mensaje e intenta nuevamente',
     }),
   service: z
     .string()
@@ -45,8 +45,21 @@ export const ContactSchema = z.object({
       message: 'El mensaje parece demasiado corto o irrelevante',
     })
     .refine((val) => !containsSpam(val), {
-      message: 'El mensaje contiene contenido inapropiado',
+      message: 'Revisa el contenido del mensaje e intenta nuevamente',
     }),
+  // Contexto opcional del brief (Fase 1). Solo se muestra para servicios FiveM.
+  framework: z.enum(['esx', 'qbcore', 'qbox', 'otro', 'no_se']).optional(),
+  project_status: z.enum(['nuevo', 'operativo', 'con_errores', 'migracion']).optional(),
+  deadline: z.string().max(100, 'Este campo es demasiado largo').optional(),
+  slots: z.string().max(20, 'Este campo es demasiado largo').optional(),
+  evidence_link: z
+    .string()
+    .max(500, 'Este enlace es demasiado largo')
+    .refine((val) => !val || /^https?:\/\/.+\..+/.test(val), {
+      message: 'El enlace debe empezar por http:// o https://',
+    })
+    .optional(),
+  budget: z.string().max(100, 'Este campo es demasiado largo').optional(),
 });
 
 const badWords = [

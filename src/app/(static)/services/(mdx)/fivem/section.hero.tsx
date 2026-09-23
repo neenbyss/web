@@ -24,12 +24,14 @@ export function Hero() {
         </div>
 
         <img
-          alt='SERVICES_CIRCLES'
+          alt=''
+          aria-hidden='true'
           src={SERVICES_CIRCLES.src}
           className='pointer-events-none absolute -top-20 -right-50 sm:-top-80 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)-50rem)]'
         />
         <img
-          alt='SERVICES_VECTOR'
+          alt=''
+          aria-hidden='true'
           src={SERVICES_VECTOR.src}
           className='pointer-events-none absolute -top-5 left-0 sm:-top-60 sm:left-1/2 sm:-translate-x-[calc((1/2*100%)--30rem)]'
         />
