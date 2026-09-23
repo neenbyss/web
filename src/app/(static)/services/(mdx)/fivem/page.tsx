@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Hero } from './section.hero';
 import { Services } from './section.service';
 import { Valores } from './section.valores';
@@ -6,6 +8,33 @@ import { Intro } from './section.intro';
 import PricingPlans from './section.prices';
 import Glossary from './section.glosario';
 import { createMetadata, generateStructuredData } from '@/lib/metadata';
+
+const guides = [
+  {
+    href: '/blog/configurar-extender-desarrollar-script-fivem',
+    title: 'Configurar, extender o desarrollar un script: cómo elegir',
+  },
+  {
+    href: '/blog/porque-tu-servidor-de-fivem-va-lento-errores-programacion',
+    title: 'Por qué tu servidor va lento: 5 errores comunes',
+  },
+  {
+    href: '/blog/que-necesitas-crear-servidor-fivem-desde-cero',
+    title: 'Qué necesitas para crear un servidor desde cero',
+  },
+  {
+    href: '/blog/scripts-esenciales-servidor-fivem-lista-completa',
+    title: '10 scripts esenciales para tu servidor',
+  },
+  {
+    href: '/blog/redisenar-interfaz-servidor-fivem-nui',
+    title: 'Rediseñar la interfaz de tu servidor: por dónde empezar',
+  },
+  {
+    href: '/blog/contratar-programador-fivem-costos-tiempos',
+    title: 'Qué esperar al contratar un programador FiveM',
+  },
+];
 
 const fivemStructuredData = generateStructuredData('Service', {
   name: 'Servicios de Desarrollo y Configuración para FiveM',
@@ -152,6 +181,24 @@ export default function FiveM_Page() {
         <Valores />
         <PricingPlans />
         <Glossary />
+        <section className='container-screen-2xl py-20'>
+          <h2 className='mb-4 text-xl font-medium sm:text-4xl'>Guías para tu servidor FiveM</h2>
+          <p className='max-w-2xl'>
+            Decisiones, diagnósticos y planificación explicados sin jerga innecesaria.
+          </p>
+          <ul className='mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+            {guides.map(({ href, title }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className='bg-content hover:border-primary block h-full rounded-2xl border p-5 transition-colors'
+                >
+                  {title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
         <Faqs />
       </main>
     </>

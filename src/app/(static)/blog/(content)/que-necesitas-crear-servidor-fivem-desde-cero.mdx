@@ -1,0 +1,63 @@
+---
+title: "Qué necesitas para crear un servidor FiveM desde cero"
+description: "Planificación inicial para abrir un servidor FiveM: idea, framework, hosting, base de datos, recursos, UI, pruebas y qué dejar para después."
+date: "2026-09-21"
+tags: ["FiveM", "Servidor FiveM", "Guía FiveM", "Crear Servidor"]
+cover: ["/og.png"]
+---
+
+
+
+Abrir un servidor no es instalar 50 recursos y publicar la IP. Es un proyecto con decisiones técnicas que conviene tomar en orden. Esta guía cubre la planificación inicial.
+
+## Idea y tipo de roleplay
+
+Define primero qué experiencia ofreces: serio, semi-serio, PvP, economía agresiva o relajada. Todo lo demás (framework, recursos, UI) se decide a partir de esto.
+
+## Elección inicial de framework
+
+ESX, QBCore o Qbox: ninguno es mejor en abstracto. Depende de los recursos que quieras usar, tu equipo y tu objetivo. Si ya tienes scripts comprados, el framework lo decide la compatibilidad con ellos. Puedes leer nuestra guía de [scripts esenciales](/blog/scripts-esenciales-servidor-fivem-lista-completa) para dimensionar la base.
+
+## Hosting y VPS
+
+Necesitas dónde correr el servidor antes de configurar nada serio: un VPS u hosting con recursos acordes a tus slots objetivo. El hosting no viene incluido en un servicio de configuración salvo acuerdo expreso.
+
+## Base de datos
+
+Tu servidor necesita una base de datos conectada (habitualmente MySQL/MariaDB vía oxmysql o similar) para jugadores, inventario, economía y vehículos. Define su estructura desde el inicio: migrarla después duele.
+
+## Recursos y licencias
+
+Haz inventario de lo que ya posees: scripts comprados, suscripciones, assets. Distingue recursos abiertos (configurables y extendibles) de recursos escrow (uso limitado a lo permitido). Las licencias las adquiere quien usará el servidor.
+
+## Sistemas base: jobs, economía, inventario y permisos
+
+Son el esqueleto jugable: cómo se gana dinero, dónde se guarda, quién puede hacer qué. Sin esto definido, cada sistema posterior se construye sobre arena.
+
+## UI y branding
+
+Pause menu, HUD, teléfono e inventario comunican la identidad del servidor. No tiene que ser perfecto el día uno, pero sí coherente: diez estilos distintos gritan "plantilla".
+
+## Pruebas y documentación
+
+Prueba el flujo completo (entrar, trabajar, comprar, guardar, salir) antes de abrir. Documenta qué se instaló, con qué configuración y qué se cambió: tu yo del futuro te lo agradecerá.
+
+## Qué dejar para una segunda fase
+
+Mecánicas secundarias, eventos especiales, sistemas complejos a medida. Abrir con una base sólida y crecer gana a abrir tarde con todo a medias.
+
+## Errores comunes
+
+- Instalar decenas de recursos antes de definir la idea.
+- Mezclar frameworks o versiones incompatibles.
+- No documentar nada de la configuración.
+- Probar directamente en producción con jugadores dentro.
+
+## Conclusión
+
+Idea, framework, hosting, base de datos, sistemas base, UI y pruebas: en ese orden. Lo demás es segunda fase.
+
+---
+
+**¿Tienes la idea y quieres convertirla en servidor?**
+Te ayudamos con el armado completo, documentado y probado. [Cotiza tu servidor](/contact?service=fivem_configuration_plan_personalizado) o revisa el servicio de [creación de servidores](/services/fivem/crear-servidor). Para dimensionar la base, consulta la [lista de scripts esenciales](/blog/scripts-esenciales-servidor-fivem-lista-completa).

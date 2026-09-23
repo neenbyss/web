@@ -1,0 +1,49 @@
+---
+title: "Rediseñar la interfaz de tu servidor FiveM: por dónde empezar"
+description: "Qué implica rediseñar pause menu, HUD, teléfono o inventario en FiveM: estilos, integración NUI, escrow y alcance de un rediseño visual."
+date: "2026-09-21"
+tags: ["FiveM", "NUI", "Diseño UI", "Guía FiveM"]
+cover: ["/og.png"]
+---
+
+
+
+Tu servidor funciona, pero se ve como todos los demás: cada script trae su propio estilo y el conjunto no tiene identidad. Rediseñar la NUI es el cambio visual de mayor impacto. Así se aborda.
+
+## Qué significa rediseñar una NUI
+
+No es solo cambiar colores: es definir dirección visual (paleta, tipografía, componentes), reorganizar pantallas confusas y conectar todo con los eventos del recurso. Un buen rediseño se nota en la primera sesión de juego.
+
+## Ajustar estilos frente a rediseñar
+
+- **Ajustar estilos** sirve cuando la estructura funciona: logo, colores, tipografía y detalles.
+- **Rediseñar** hace falta cuando la interfaz confunde: nueva distribución y jerarquía sobre el mismo recurso.
+- **Crear nueva** cuando nada existente sirve: diseño completo conectado a tus eventos.
+
+## La integración es la mitad del trabajo
+
+Una interfaz bonita que no responde a los callbacks del script no sirve. Antes de diseñar hay que revisar qué eventos expone el recurso y qué estados necesita (carga, error, vacío, confirmación).
+
+## El límite del escrow
+
+Si el recurso es escrow, su código no se puede modificar fuera de lo permitido. En ese caso las opciones son: ajustes de configuración permitidos, o una interfaz nueva sobre código propio. Verifícalo antes de pagar un rediseño.
+
+## Qué pedir en una cotización
+
+Capturas actuales, script y framework, si hay acceso al código, resoluciones objetivo, tu branding y la lista de pantallas. Con eso, el alcance deja de ser una adivinanza.
+
+## Errores comunes
+
+- Rediseñar sin acceso al código ni a los eventos del recurso.
+- Pedir "igual que tal servidor" sin considerar licencias ni compatibilidad.
+- Olvidar los estados de error y carga (solo diseñan el caso feliz).
+- No probar en distintas resoluciones.
+
+## Conclusión
+
+Define si ajustas, rediseñas o creas; verifica eventos y escrow; cotiza con alcance. En ese orden el rediseño sale bien a la primera.
+
+---
+
+**¿Quieres que tu servidor se vea realmente propio?**
+Diseñamos pause menus, HUD e inventarios integrados con tus recursos. [Cotiza tu interfaz](/contact?service=fivem_nui_ui) o revisa nuestro [diseño NUI](/services/fivem/nui-ui). Si tu caso incluye decidir entre adaptar o programar, lee [cómo elegir entre configurar, extender o desarrollar](/blog/configurar-extender-desarrollar-script-fivem).
