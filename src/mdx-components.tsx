@@ -14,7 +14,15 @@ export const Components: MDXComponents = {
   ol: (props) => <ol {...props} className='ms-4 block list-inside list-decimal space-y-2' />,
   li: (props) => <li {...props} />,
   a: (props) => (
-    <a className='text-primary font-medium hover:underline' target='_blank' {...props} />
+    // Los enlaces internos del MDX se abren en pestaña nueva por
+    // comportamiento histórico: se conserva. `rel` es inocuo en enlaces
+    // internos y protege los externos.
+    <a
+      className='text-primary font-medium hover:underline'
+      target='_blank'
+      rel='noopener noreferrer'
+      {...props}
+    />
   ),
   blockquote: (props) => (
     <blockquote
@@ -76,14 +84,29 @@ export const Components: MDXComponents = {
     // Prioridad: alt explícito del autor > title del MDX > alt vacío (decorativo).
     // El default anterior ('IMAGE') acababa indexado por Google como texto alt
     // de todas las imágenes sin alt, contaminando Google Images.
+    // Las imágenes del cuerpo van debajo del pliegue: lazy + async.
     const resolvedAlt = alt ?? title ?? '';
     return title ? (
       <>
         <span className='border-foreground mb-4 block border-l-4 pl-2 text-lg'>{title}</span>
-        <img alt={resolvedAlt} sizes='100vw' className='h-auto w-full rounded-md' {...rest} />
+        <img
+          alt={resolvedAlt}
+          sizes='100vw'
+          loading='lazy'
+          decoding='async'
+          className='h-auto w-full rounded-md'
+          {...rest}
+        />
       </>
     ) : (
-      <img alt={resolvedAlt} sizes='100vw' className='my-2 h-auto w-full rounded-md' {...rest} />
+      <img
+        alt={resolvedAlt}
+        sizes='100vw'
+        loading='lazy'
+        decoding='async'
+        className='my-2 h-auto w-full rounded-md'
+        {...rest}
+      />
     );
   },
 };

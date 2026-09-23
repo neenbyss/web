@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import Link, { useLinkStatus } from 'next/link';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { motion } from 'motion/react';
@@ -63,7 +63,7 @@ export default function Header() {
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader className='sr-only'>
-                <DrawerTitle> Navigations </DrawerTitle>
+                <DrawerTitle> Navegación </DrawerTitle>
               </DrawerHeader>
               <nav className='flex flex-col gap-1 p-4'>
                 {Navigation.map(({ href, label, external }, i) => (
@@ -84,12 +84,14 @@ export default function Header() {
                   className='flex items-center gap-2 px-2 py-2 text-lg font-medium text-nowrap'
                   href={globalLinks.discord.link}
                   target='_blank'
+                  rel='noopener noreferrer'
                 >
                   {' '}
                   <DiscordIcon className='size-6' /> Servidor de Discord
                 </a>
                 <a
                   target='_blank'
+                  rel='noopener noreferrer'
                   className='flex items-center gap-2 px-2 py-2 text-lg font-medium text-nowrap'
                   href={globalLinks.client_area.link}
                 >
@@ -139,6 +141,7 @@ export default function Header() {
             <a
               href={globalLinks.discord.link}
               target='_blank'
+              rel='noopener noreferrer'
               aria-label='Servidor de Discord de Neenbyss'
               data-event='click_discord'
               data-location='header'
@@ -147,7 +150,7 @@ export default function Header() {
             </a>
           </Button>
           <Button asChild variant='none' className='hover:bg-ring hidden border sm:inline-flex'>
-            <a href={globalLinks.client_area.link} target='_blank'>
+            <a href={globalLinks.client_area.link} target='_blank' rel='noopener noreferrer'>
               Área de Clientes
               <UserIcon />
             </a>

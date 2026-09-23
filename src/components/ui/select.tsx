@@ -34,42 +34,55 @@ const SelectTrigger: React.FC<
   required,
   children,
   ...props
-}) => (
-  <div className={cn('w-full', wrapperClassName)}>
-    {label && (
-      <label className='mb-1.5 block w-full max-w-full overflow-hidden'>
-        {' '}
-        <span className='text-foreground truncate'>{label}</span>
-        {required && <span className='text-danger'> * </span>}
-      </label>
-    )}
-    <SelectPrimitive.Trigger
-      className={cn(
-        '[&_span]:text-foreground rounded-md transition-all duration-150 disabled:opacity-50 [&_span]:block [&_span]:w-full [&_span]:text-start [&>span]:line-clamp-1',
-        'bg-default hover:bg-default/80 data-[placeholder]:[&_span]:text-foreground/50 w-full max-w-full p-3',
-        'flex items-center gap-2',
-        'outline-ring outline-1',
-        'focus:bg-default focus:ring-primary/50 focus:ring-2 focus:outline-none',
-        'data-[error=true]:!outline-danger/20 data-[error=true]:data-[focus=true]:!outline-danger [&_*]:data-[error=true]:!text-danger',
-        className,
+}) => {
+  // El trigger de Radix es un <button>: htmlFor no aplica. Se asocia el
+  // rótulo visible mediante aria-labelledby y el error con aria-describedby.
+  const autoId = React.useId();
+  const labelId = label ? `select-label-${autoId}` : undefined;
+  const errorId = errorMessage ? `select-error-${autoId}` : undefined;
+  return (
+    <div className={cn('w-full', wrapperClassName)}>
+      {label && (
+        <label id={labelId} className='mb-1.5 block w-full max-w-full overflow-hidden'>
+          {' '}
+          <span className='text-foreground truncate'>{label}</span>
+          {required && <span className='text-danger'> * </span>}
+        </label>
       )}
-      data-error={Boolean(errorMessage)}
-      {...props}
-    >
-      {startContent}
-      {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className='size-4 opacity-60' />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-    {errorMessage && (
-      <span className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'>
-        {' '}
-        <AlertIcon className='size-3.5' /> {errorMessage}{' '}
-      </span>
-    )}
-  </div>
-);
+      <SelectPrimitive.Trigger
+        className={cn(
+          '[&_span]:text-foreground rounded-md transition-all duration-150 disabled:opacity-50 [&_span]:block [&_span]:w-full [&_span]:text-start [&>span]:line-clamp-1',
+          'bg-default hover:bg-default/80 data-[placeholder]:[&_span]:text-foreground/50 w-full max-w-full p-3',
+          'flex items-center gap-2',
+          'outline-ring outline-1',
+          'focus:bg-default focus:ring-primary/50 focus:ring-2 focus:outline-none',
+          'data-[error=true]:!outline-danger/20 data-[error=true]:data-[focus=true]:!outline-danger [&_*]:data-[error=true]:!text-danger',
+          className,
+        )}
+        data-error={Boolean(errorMessage)}
+        {...props}
+        aria-labelledby={labelId}
+        aria-describedby={errorId}
+        aria-invalid={Boolean(errorMessage)}
+      >
+        {startContent}
+        {children}
+        <SelectPrimitive.Icon asChild>
+          <ChevronDownIcon className='size-4 opacity-60' />
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+      {errorMessage && (
+        <span
+          id={errorId}
+          className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'
+        >
+          {' '}
+          <AlertIcon className='size-3.5' /> {errorMessage}{' '}
+        </span>
+      )}
+    </div>
+  );
+};
 
 const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,

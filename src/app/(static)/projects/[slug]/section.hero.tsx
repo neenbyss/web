@@ -59,7 +59,7 @@ export function Hero({ meta }: { meta: ProjectMetadata }) {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button asChild variant='outline' size='icon'>
-                      <a href={repository} target='_blank'>
+                      <a href={repository} target='_blank' rel='noopener noreferrer'>
                         <GithubIcon />
                       </a>
                     </Button>
@@ -71,7 +71,7 @@ export function Hero({ meta }: { meta: ProjectMetadata }) {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button asChild variant='outline' size='icon'>
-                      <a href={figma_url} target='_blank'>
+                      <a href={figma_url} target='_blank' rel='noopener noreferrer'>
                         <FigmaIcon />
                       </a>
                     </Button>
@@ -81,7 +81,7 @@ export function Hero({ meta }: { meta: ProjectMetadata }) {
               )}
               {project_url && (
                 <Button asChild variant='outline'>
-                  <Link href={project_url} target='_blank'>
+                  <Link href={project_url} target='_blank' rel='noopener noreferrer'>
                     Demostración
                     <ExternalIcon className='size-4 shrink-0' />
                   </Link>
