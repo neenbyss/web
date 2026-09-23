@@ -607,6 +607,10 @@ export default function MinecraftPage() {
                 <Link href='/projects'>Ver proyectos</Link>
               </Button>
             </div>
+            <p className='text-foreground-2/70 mx-auto mt-4 max-w-xl text-sm'>
+              Para evaluar tu caso, indica qué necesitas, tu versión del juego y si ya probaste
+              alguna solución parecida.
+            </p>
             <nav
               aria-label='Servicios relacionados'
               className='mt-10 flex flex-wrap justify-center gap-2'

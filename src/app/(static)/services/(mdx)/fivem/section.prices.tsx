@@ -11,7 +11,7 @@ export default function PricingPlans() {
   // Planes de precios
 
   return (
-    <section id='plans' className='bg-content py-20'>
+    <section id='plans' className='bg-content scroll-mt-20 py-20'>
       <div className='container-screen-xl'>
         <h2 className='text-foreground mb-4 block text-xl font-medium sm:text-4xl'>
           Planes de Mantenimiento y Soporte para Servidores FiveM
