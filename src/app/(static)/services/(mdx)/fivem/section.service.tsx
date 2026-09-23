@@ -50,6 +50,33 @@ export function Services() {
               </CardContent>
             </Card>
           </Link>
+          <Link href='/services/fivem/nui-ui' className='group block h-full'>
+            <Card className='flex h-full flex-col border-2 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg'>
+              <CardHeader>
+                <div
+                  className='mb-4 flex size-8 items-center justify-center rounded-lg md:size-12'
+                  style={{
+                    backgroundColor: `rgba(${categoryService.color.join(',')}, 0.15)`,
+                    color: `rgb(${categoryService.color.join(',')})`,
+                  }}
+                >
+                  <CheckTaskIcon className='size-5' />
+                </div>
+                <CardTitle className='group-hover:text-primary text-base transition-colors duration-300 sm:text-xl'>
+                  Diseño NUI/HUD para FiveM
+                </CardTitle>
+              </CardHeader>
+              <CardContent className='flex grow flex-col'>
+                <p className='text-muted-foreground grow'>
+                  Pause menu, HUD, teléfono e inventarios con la identidad de tu servidor,
+                  integrados con tus recursos.
+                </p>
+                <span className='text-primary/70 group-hover:text-primary mt-6 flex items-center gap-2 text-sm transition-colors'>
+                  Ver detalles <ArrowRightIcon className='size-4' />
+                </span>
+              </CardContent>
+            </Card>
+          </Link>
           {serviceDetails[service].map((item, i) => {
             const href = item.href ?? `/contact?service=${item.uid}`;
             const ctaLabel = item.href ? 'Ver detalles' : 'Solicitar';
