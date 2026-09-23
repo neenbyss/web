@@ -6,7 +6,6 @@ export const ProgressBar = () => {
   const barRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    console.log(pending);
     const bar = barRef.current;
 
     if (!bar) return;

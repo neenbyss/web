@@ -1,5 +1,5 @@
 'use client';
-import { AnimatePresence, LazyMotion, domAnimation, motion } from 'motion/react';
+import { AnimatePresence, LazyMotion, MotionConfig, domAnimation, motion } from 'motion/react';
 
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
@@ -25,7 +25,10 @@ export function Providers({
     }, 10);
   }, []);
   return (
-    <>
+    // reducedMotion="user": respeta prefers-reduced-motion del SO en todas
+    // las animaciones de motion (Fade, header, splash). El CSS ya lo cubre
+    // en globals.css para marquee/transiciones.
+    <MotionConfig reducedMotion='user'>
       <AnimatePresence>
         {isLoaded && (
           <motion.div
@@ -40,6 +43,6 @@ export function Providers({
       <LazyMotion features={domAnimation}>{children}</LazyMotion>
       <Toaster />
       <AnalyticsTracker />
-    </>
+    </MotionConfig>
   );
 }

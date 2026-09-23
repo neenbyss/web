@@ -42,11 +42,14 @@ export function useServerAction<
           }
         })
         .catch((error) => {
+          // El detalle técnico queda solo en el log del servidor/consola:
+          // al usuario se le muestra un mensaje neutral y accionable, sin
+          // exponer el error crudo (puede contener rutas, URLs o PII).
           console.error('[useServerAction] Error:', error);
           const _status = 'error';
-          const _msg = `Ha ocurrido un error inesperado. ${error}`;
+          const _msg = 'Ha ocurrido un error inesperado. Intenta de nuevo en unos minutos.';
           setStatus(_status);
-          setMessage(`Ha ocurrido un error inesperado. ${error}`);
+          setMessage(_msg);
 
           options?.onError?.({ status: _status, message: _msg });
         });

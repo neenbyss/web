@@ -644,6 +644,7 @@ function LazamientoYSoporte() {
               <a
                 href={globalLinks.discord.link}
                 target='_blank'
+                rel='noopener noreferrer'
                 className='hover:text-primary underline'
               >
                 {' '}

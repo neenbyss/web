@@ -100,6 +100,7 @@ export function ContactForm() {
   const { trackEvent } = useAnalytics();
   const startedRef = useRef(false);
   const preselectedRef = useRef(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<ContactValueProps>({
     defaultValues: {
@@ -207,6 +208,16 @@ export function ContactForm() {
     submitEmail(values);
   };
 
+  // Tras un submit inválido, mueve el foco al primer campo con error
+  // para que teclado y lector de pantalla lo encuentren de inmediato.
+  const onInvalid = () => {
+    requestAnimationFrame(() => {
+      formRef.current
+        ?.querySelector<HTMLElement>('[aria-invalid="true"]')
+        ?.focus({ preventScroll: false });
+    });
+  };
+
   const services = Object.entries(serviceDetails).map(([key, values]) => {
     const category = serviceCategories.find((x) => x.uid === key);
     return {
@@ -235,15 +246,17 @@ export function ContactForm() {
       <FormProvider {...form}>
         <form
           noValidate
+          ref={formRef}
           className='mt-6 flex grid-cols-2 flex-col gap-4 sm:grid'
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmit, onInvalid)}
           onFocus={handleFirstInteraction}
         >
           <Input
-            type='name'
+            type='text'
             name='names'
             label='Nombres Completos'
             required
+            autoComplete='name'
             startContent={<UserIcon />}
             placeholder='Nombres Completos'
           />
@@ -252,20 +265,23 @@ export function ContactForm() {
             name='email'
             label='Dirección E-mail'
             required
+            autoComplete='email'
             startContent={<EmailIcon />}
             placeholder='nombre@email.com'
           />
           <Input
-            type='phone'
+            type='tel'
             name='phone'
             label='Teléfono de Contacto'
+            autoComplete='tel'
             startContent={<PhoneIcon />}
             placeholder='Teléfono de contacto (opcional)'
           />
           <Input
-            type='name'
+            type='text'
             name='company'
             label='Nombre de la Compañía'
+            autoComplete='organization'
             startContent={<BusinessIcon />}
             placeholder='Nombre de la compañía (opcional)'
           />
@@ -302,20 +318,20 @@ export function ContactForm() {
                 itemsGroup={projectStatusOptions}
               />
               <Input
-                type='name'
+                type='text'
                 name='deadline'
                 label='Fecha objetivo (opcional)'
                 placeholder='Beta, apertura, evento…'
               />
               <Input
-                type='name'
+                type='text'
                 name='slots'
                 label='Jugadores o slots (opcional)'
                 placeholder='Ej. 64 slots'
               />
               <div className='col-span-2'>
                 <Input
-                  type='name'
+                  type='text'
                   name='evidence_link'
                   label='Enlace a logs o capturas (opcional)'
                   placeholder='https://…'
@@ -323,7 +339,7 @@ export function ContactForm() {
               </div>
               <div className='col-span-2'>
                 <Input
-                  type='name'
+                  type='text'
                   name='budget'
                   label='Presupuesto orientativo (opcional)'
                   placeholder='Rango que quieres respetar'

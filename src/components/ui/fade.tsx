@@ -21,6 +21,9 @@ type FadeProps<T extends MotionComponent> = {
   blur?: number | string;
   exitBlur?: number | string;
   as?: T;
+  // `rel` se usa con as="a" (enlaces externos con target _blank). El Omit de
+  // abajo lo elimina del tipo inferido, así que se declara explícito.
+  rel?: string;
   viewport?: {
     root?: RefObject<Element | null>;
     once?: boolean;
