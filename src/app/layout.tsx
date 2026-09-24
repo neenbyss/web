@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={font.className + ' antialiased'}>
-        <GoogleAnalytics measurementId='G-PNEFE3E0PD' />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''} />
         <Providers>{children}</Providers>
       </body>
     </html>

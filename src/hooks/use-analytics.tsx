@@ -11,6 +11,8 @@ declare global {
   }
 }
 
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export const useAnalytics = () => {
   const trackEvent = (eventName: string, parameters?: { [key: string]: any }) => {
     if (typeof window !== 'undefined' && window.gtag) {
@@ -21,8 +23,8 @@ export const useAnalytics = () => {
   };
 
   const trackPageView = (url: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('config', 'G-PNEFE3E0PD', {
+    if (typeof window !== 'undefined' && window.gtag && measurementId) {
+      window.gtag('config', measurementId, {
         page_path: url,
       });
     }

@@ -6,6 +6,10 @@ interface GoogleAnalyticsProps {
   measurementId: string;
 }
 export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
+  // No measurement ID (env var unset/empty) → render nothing so gtag never loads.
+  if (!measurementId) {
+    return null;
+  }
   return (
     <>
       <Script
