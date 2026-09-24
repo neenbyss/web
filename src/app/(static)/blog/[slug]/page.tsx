@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getMDX, getAllMDX } from '@/utils/mdx';
 import { createMetadata } from '@/lib/metadata';
+import { AppBreadcrumb } from '@/components/common/app-breadcrumb';
 
 type BlogMeta = {
   title: string;
@@ -51,8 +52,32 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // BlogPosting solo con datos del frontmatter: sin fechas inventadas,
+  // sin autor personal (organización), sin métricas.
+  const cover = markdown.meta.cover ?? [];
+  const tags = Array.isArray(markdown.meta.tags) ? markdown.meta.tags : [];
+  const blogPosting = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: markdown.meta.title,
+    description: markdown.meta.description,
+    ...(markdown.meta.date ? { datePublished: markdown.meta.date } : {}),
+    author: {
+      '@type': 'Organization',
+      name: 'Neenbyss',
+      url: 'https://neenbyss.com',
+    },
+    ...(cover.length > 0 ? { image: cover } : {}),
+    ...(tags.length > 0 ? { keywords: tags.join(', ') } : {}),
+  };
+
   return (
     <main className='container-screen-lg py-12'>
+      <AppBreadcrumb className='mx-auto mb-6 max-w-3xl bg-transparent px-0 py-0' />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPosting) }}
+      />
       <article className='mx-auto max-w-3xl'>
         <header className='mb-8'>
           <h1 className='mb-4 text-4xl font-bold'>{markdown.meta.title}</h1>
