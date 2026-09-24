@@ -10,6 +10,7 @@ import { NeenbyssIcon } from '@/icons/neenbyss';
 import { Toaster } from '@/components/ui/toaster';
 import { AnalyticsTracker } from '@/components/analytics-tracker';
 import { PageViewTracker } from '@/components/page-view-tracker';
+import { ScrollDepthTracker } from '@/components/scroll-depth-tracker';
 dayjs.locale('es');
 dayjs.extend(localizedFormat);
 
@@ -45,6 +46,7 @@ export function Providers({
       <Toaster />
       <AnalyticsTracker />
       <PageViewTracker />
+      <ScrollDepthTracker />
     </MotionConfig>
   );
 }
