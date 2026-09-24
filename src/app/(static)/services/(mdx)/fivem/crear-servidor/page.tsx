@@ -578,6 +578,10 @@ export default function FiveMSetupPage() {
                 <Link href='/services/fivem'>Ver servicios FiveM</Link>
               </Button>
             </div>
+            <p className='text-foreground-2/70 mx-auto mt-4 max-w-xl text-sm'>
+              Para orientarte mejor, cuéntanos tu idea, si ya elegiste framework y cuántos jugadores
+              esperas.
+            </p>
             <nav
               aria-label='Servicios relacionados'
               className='mt-10 flex flex-wrap justify-center gap-2'

@@ -478,6 +478,10 @@ export default function FiveMRepairPage() {
                 <Link href='/services/fivem'>Ver servicios FiveM</Link>
               </Button>
             </div>
+            <p className='text-foreground-2/70 mx-auto mt-4 max-w-xl text-sm'>
+              Para orientarte más rápido, incluye qué error ves, cuándo empezó y tu framework (ESX,
+              QBCore o Qbox).
+            </p>
             <nav
               aria-label='Servicios relacionados'
               className='mt-10 flex flex-wrap justify-center gap-2'

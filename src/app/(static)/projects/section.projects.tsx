@@ -175,7 +175,7 @@ export function ProjectsSection() {
                         )}
 
                         <Button asChild variant='outline' size='xs' className='group'>
-                          <Link href={href}>
+                          <Link href={href} aria-label={`Ver proyecto ${title}`}>
                             Saber Más
                             <ArrowRightIcon className='size-4 shrink-0 duration-300 group-hover:ml-1' />
                           </Link>

@@ -549,6 +549,10 @@ export default function FiveMNuiPage() {
                 <Link href='/services/fivem'>Ver servicios FiveM</Link>
               </Button>
             </div>
+            <p className='text-foreground-2/70 mx-auto mt-4 max-w-xl text-sm'>
+              Para orientarte mejor, indica qué interfaz quieres renovar y si ya tienes diseño o
+              referencias.
+            </p>
             <nav
               aria-label='Servicios relacionados'
               className='mt-10 flex flex-wrap justify-center gap-2'

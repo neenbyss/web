@@ -360,6 +360,10 @@ export default function FiveMScriptsPage() {
                 <Link href='/services/fivem'>Explorar otros servicios FiveM</Link>
               </Button>
             </div>
+            <p className='text-foreground-2/70 mx-auto mt-4 max-w-xl text-sm'>
+              Para cotizar más rápido, describe qué debe hacer el sistema y en qué framework corre
+              tu servidor (ESX, QBCore o Qbox).
+            </p>
           </div>
         </section>
       </main>
