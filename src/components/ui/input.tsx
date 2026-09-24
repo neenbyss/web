@@ -31,6 +31,13 @@ export const Input = ({
 
   const [length, setLength] = React.useState(props.value?.toString().length);
 
+  // ID estable por instancia (sin colisiones entre campos ni re-renders):
+  // asocia label ↔ control y error ↔ control para lectores de pantalla.
+  const autoId = React.useId();
+  const inputId = props.id ?? `field-${autoId}`;
+  const errorId = `${inputId}-error`;
+  const describedBy = errorMessage ? errorId : undefined;
+
   const handleLength = React.useCallback((value: number) => {
     setLength(value);
   }, []);
@@ -82,7 +89,10 @@ export const Input = ({
       )}
     >
       {label && (
-        <label className='mb-1.5 flex w-full max-w-full items-end justify-between gap-3'>
+        <label
+          htmlFor={inputId}
+          className='mb-1.5 flex w-full max-w-full items-end justify-between gap-3'
+        >
           {' '}
           <span className='flex max-w-full gap-1 overflow-hidden'>
             <span className='text-foreground truncate'>{label}</span>
@@ -126,11 +136,17 @@ export const Input = ({
           onChange={handleChange}
           data-error={Boolean(errorMessage)}
           {...props}
+          id={inputId}
+          aria-invalid={Boolean(errorMessage)}
+          aria-describedby={describedBy}
         />
         {endContent}
       </div>
       {errorMessage && (
-        <span className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'>
+        <span
+          id={errorId}
+          className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'
+        >
           {' '}
           <AlertIcon className='size-3.5' /> {errorMessage}{' '}
         </span>

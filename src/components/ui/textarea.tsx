@@ -28,6 +28,13 @@ export const Textarea: React.FC<TextareaProps> = ({
   const [focused, setFocused] = React.useState(false);
   const [length, setLength] = React.useState(props.value?.toString().length);
 
+  // ID estable por instancia (sin colisiones entre campos ni re-renders):
+  // asocia label ↔ control y error ↔ control para lectores de pantalla.
+  const autoId = React.useId();
+  const textareaId = props.id ?? `field-${autoId}`;
+  const errorId = `${textareaId}-error`;
+  const describedBy = errorMessage ? errorId : undefined;
+
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
   const resizeTextArea = () => {
@@ -89,7 +96,10 @@ export const Textarea: React.FC<TextareaProps> = ({
       )}
     >
       {label && (
-        <label className='mb-1 flex w-full max-w-full items-end justify-between gap-3 overflow-hidden'>
+        <label
+          htmlFor={textareaId}
+          className='mb-1 flex w-full max-w-full items-end justify-between gap-3 overflow-hidden'
+        >
           {' '}
           <span className='flex max-w-full gap-1 overflow-hidden'>
             <span className='text-foreground truncate'>{label}</span>
@@ -134,10 +144,16 @@ export const Textarea: React.FC<TextareaProps> = ({
           onChange={handleChange}
           data-error={Boolean(errorMessage)}
           {...props}
+          id={textareaId}
+          aria-invalid={Boolean(errorMessage)}
+          aria-describedby={describedBy}
         />
       </div>
       {errorMessage && (
-        <span className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'>
+        <span
+          id={errorId}
+          className='text-danger mt-1.5 flex items-center gap-1.5 text-xs font-normal'
+        >
           {' '}
           <AlertIcon className='size-3.5' /> {errorMessage}{' '}
         </span>

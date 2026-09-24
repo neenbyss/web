@@ -34,6 +34,7 @@ export function Contact() {
               delay={0.8}
               href={globalLinks.email.link}
               target='_blank'
+              rel='noopener noreferrer'
               data-event='click_email'
               data-location='home_contact'
               className='bg-content hover:bg-content-1 hover:border-primary flex items-center gap-3 rounded-lg border p-3.5 transition-colors'
@@ -70,6 +71,7 @@ export function Contact() {
                     delay={i * 0.05 + 0.4}
                     href={href}
                     target='_blank'
+                    rel='noopener noreferrer'
                     aria-label={label}
                   >
                     {icon}
@@ -90,6 +92,7 @@ export function Contact() {
               <a
                 href={globalLinks.discord.link}
                 target='_blank'
+                rel='noopener noreferrer'
                 data-event='click_discord'
                 data-location='home_contact'
               >

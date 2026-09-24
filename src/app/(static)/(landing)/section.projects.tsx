@@ -171,6 +171,8 @@ const ProductCard = ({
           src={product.thumbnail}
           height='600'
           width='600'
+          loading='lazy'
+          decoding='async'
           className='absolute inset-0 h-full w-full object-cover object-left-top'
           alt={product.title}
         />

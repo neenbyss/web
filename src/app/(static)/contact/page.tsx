@@ -45,6 +45,7 @@ export default function ContactPage() {
             <a
               href={globalLinks.email.link}
               target='_blank'
+              rel='noopener noreferrer'
               className='group'
               data-event='click_email'
               data-location='contact'
@@ -68,6 +69,7 @@ export default function ContactPage() {
             <a
               href={globalLinks.discord.link}
               target='_blank'
+              rel='noopener noreferrer'
               className='group'
               data-event='click_discord'
               data-location='contact'
@@ -100,7 +102,7 @@ export default function ContactPage() {
                   variant='flat'
                   className='border-primary border hover:scale-105'
                 >
-                  <a href={href} target='_blank' aria-label={label}>
+                  <a href={href} target='_blank' rel='noopener noreferrer' aria-label={label}>
                     {icon}
                   </a>
                 </Button>
@@ -119,6 +121,7 @@ export default function ContactPage() {
               <a
                 href={globalLinks.meeting.link}
                 target='_blank'
+                rel='noopener noreferrer'
                 data-event='click_agenda'
                 data-location='contact'
               >

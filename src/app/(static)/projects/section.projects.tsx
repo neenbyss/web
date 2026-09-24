@@ -98,10 +98,12 @@ export function ProjectsSection() {
                 >
                   <Link href={href} className='border-b duration-300 hover:brightness-75'>
                     <img
-                      alt={title + '_image'}
+                      alt={title}
                       src={cover[0]}
                       width={400}
                       height={400}
+                      loading='lazy'
+                      decoding='async'
                       className='aspect-video w-full object-cover object-top'
                     />
                   </Link>
@@ -133,7 +135,7 @@ export function ProjectsSection() {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Button asChild variant='outline' size='icon_sm'>
-                                <a href={repository} target='_blank'>
+                                <a href={repository} target='_blank' rel='noopener noreferrer'>
                                   <GithubIcon className='size-4' />
                                 </a>
                               </Button>
@@ -148,7 +150,7 @@ export function ProjectsSection() {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Button asChild variant='outline' size='icon_sm'>
-                                <a href={figma_url} target='_blank'>
+                                <a href={figma_url} target='_blank' rel='noopener noreferrer'>
                                   <FigmaIcon className='size-4' />
                                 </a>
                               </Button>
@@ -163,7 +165,7 @@ export function ProjectsSection() {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Button asChild variant='outline' size='icon_sm'>
-                                <a href={project_url} target='_blank'>
+                                <a href={project_url} target='_blank' rel='noopener noreferrer'>
                                   <WebsiteIcon className='size-4' />
                                 </a>
                               </Button>

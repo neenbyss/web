@@ -19,6 +19,7 @@ import FOOTER_VECTOR from '@/resources/svg/FOOTER_VECTOR.svg';
 const Navigation = [
   {
     title: 'Compañía',
+    navLabel: 'Navegación de la compañía',
     links: [
       { href: '/', label: 'Inicio' },
       { href: '/services', label: 'Servicios' },
@@ -28,6 +29,7 @@ const Navigation = [
   },
   {
     title: 'Políticas',
+    navLabel: 'Navegación legal',
     links: [
       { href: '/terms', label: 'Términos y Condiciones' },
       { href: '/privacy', label: 'Políticas de Privacidad' },
@@ -111,9 +113,10 @@ export function Footer() {
           </div>
 
           <div className='flex w-full flex-wrap justify-between gap-4 lg:flex-nowrap lg:justify-end xl:gap-10'>
-            {Navigation.map(({ title, links }, i) => (
+            {Navigation.map(({ title, navLabel, links }, i) => (
               <nav
                 key={i}
+                aria-label={navLabel}
                 className='w-full space-y-2 text-center sm:max-w-[260px] sm:text-start [&_a]:block [&_a]:text-sm'
               >
                 <span className='text-foreground mb-3 block font-medium'> {title} </span>
@@ -138,7 +141,10 @@ export function Footer() {
                   Redes Sociales{' '}
                 </span>
 
-                <nav className='flex flex-wrap justify-center gap-2 sm:justify-start [&_svg]:size-5'>
+                <nav
+                  aria-label='Redes sociales'
+                  className='flex flex-wrap justify-center gap-2 sm:justify-start [&_svg]:size-5'
+                >
                   {Socials.map(({ href, icon, label }, i) => (
                     <Button
                       key={i}
@@ -147,7 +153,7 @@ export function Footer() {
                       variant='flat'
                       className='size-8 hover:scale-105'
                     >
-                      <a href={href} target='_blank' aria-label={label}>
+                      <a href={href} target='_blank' rel='noopener noreferrer' aria-label={label}>
                         {icon}
                       </a>
                     </Button>
