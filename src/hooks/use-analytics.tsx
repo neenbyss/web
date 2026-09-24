@@ -2,7 +2,9 @@
 declare global {
   interface Window {
     gtag: (
-      command: 'config' | 'event' | 'js',
+      // 'consent' covers gtag('consent', 'default'|'update', {...}) from the
+      // loader and the consent banner; targetId carries 'default'/'update'.
+      command: 'config' | 'event' | 'js' | 'consent',
       targetId: string | Date,
       config?: {
         [key: string]: any;

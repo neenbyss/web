@@ -23,6 +23,15 @@ export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // Consent Mode defaults BEFORE any config: nothing is recorded
+            // until the visitor chooses via the banner. ad_* stay denied
+            // always (no ads/remarketing in scope).
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+            });
             gtag('js', new Date());
             // page_location SIN query string: los parámetros de URL pueden
             // contener datos personales (p. ej. ?email= del captador del

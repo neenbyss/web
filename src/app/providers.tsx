@@ -11,6 +11,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AnalyticsTracker } from '@/components/analytics-tracker';
 import { PageViewTracker } from '@/components/page-view-tracker';
 import { ScrollDepthTracker } from '@/components/scroll-depth-tracker';
+import { ConsentBanner } from '@/components/consent-banner';
 dayjs.locale('es');
 dayjs.extend(localizedFormat);
 
@@ -47,6 +48,7 @@ export function Providers({
       <AnalyticsTracker />
       <PageViewTracker />
       <ScrollDepthTracker />
+      <ConsentBanner />
     </MotionConfig>
   );
 }
