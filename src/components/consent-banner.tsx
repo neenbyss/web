@@ -86,8 +86,8 @@ export function ConsentBanner() {
       <div className='container-screen-2xl flex flex-col gap-4 px-4 py-4 sm:px-6 md:flex-row md:items-center md:justify-between'>
         <p className='text-foreground-2 max-w-2xl text-sm'>
           Usamos Google Analytics para medir el uso del sitio (páginas visitadas y eventos de
-          interacción). Sin tu aceptación no se registra ninguna medición; no usamos publicidad ni
-          remarketing.{' '}
+          interacción). Sin tu aceptación no se registra ninguna medición con Google Analytics; no
+          usamos publicidad ni remarketing.{' '}
           <Link href='/privacy' className='text-primary underline'>
             Ver política de privacidad
           </Link>

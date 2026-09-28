@@ -5,6 +5,7 @@ import { createMetadata } from '@/lib/metadata';
 import { Providers } from './providers';
 import { Viewport } from 'next';
 import { GoogleAnalytics } from '@/components/layout/google-analytics';
+import { AhrefsAnalytics } from '@/components/layout/ahrefs-analytics';
 
 export const viewport: Viewport = {
   themeColor: '#191B20',
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang='es'>
       <body className={font.className + ' antialiased'}>
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''} />
+        <AhrefsAnalytics analyticsKey={process.env.NEXT_PUBLIC_AHREFS_ANALYTICS_KEY ?? ''} />
         <Providers>{children}</Providers>
       </body>
     </html>
